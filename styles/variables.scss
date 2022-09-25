@@ -1,0 +1,19 @@
+$MIN-WIDTH: 375px;
+
+$MENU-HEIGHT: 80px;
+$MENU-FONT-SIZE: 18px;
+$MENU-ICON-WIDTH-GRID: 38px;
+$MENU-LEFT-PADDING: 18px;
+$MENU-RIGHT-PADDING: 18px; // Right padding is 23.42px in the design, wich is wrong
+$MENU-LOGO-WIDTH: 29px;
+
+$HISTORY-ICON-HEIGHT: 20px;
+$FAVORITE-ICON-HEIGHT: 20px;
+$SEARCH-ICON-HEIGHT: 20px;
+$IMAGE-ICON-HEIGHT: 25px;
+
+$ICON-HEART-WHITE: "%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='132' viewBox='-74 -20 148 133'%3E %3Cpath fill='white' d='M-28 -19 C-73 -23 -112 45 0 112 C0 112 0 112 0 112 C112 45 73 -23 28 -18 C11 -16 4 -8 0 0 C-4 -8 -11 -16 -28 -19Z'/%3E /%3E %3C/svg%3E";
+$ICON-HEART-RED: "%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='132' viewBox='-74 -20 148 133'%3E %3Cpath fill='red' d='M-28 -19 C-73 -23 -112 45 0 112 C0 112 0 112 0 112 C112 45 73 -23 28 -18 C11 -16 4 -8 0 0 C-4 -8 -11 -16 -28 -19Z'/%3E /%3E %3C/svg%3E";
+$ICON-HEART-GRAY: "%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='132' viewBox='-74 -20 148 133'%3E %3Cpath fill='gray' d='M-28 -19 C-73 -23 -112 45 0 112 C0 112 0 112 0 112 C112 45 73 -23 28 -18 C11 -16 4 -8 0 0 C-4 -8 -11 -16 -28 -19Z'/%3E /%3E %3C/svg%3E";
+$ICON-OPEN-IN-FULL: "%3Csvg xmlns='http://www.w3.org/2000/svg' height='36' width='36'%3E %3Cpath fill='white' d='M 20 14 L 31 3 H 22.5 Q 21.85 3 21.425 2.575 Q 21 2.15 21 1.5 Q 21 0.85 21.425 0.425 Q 21.85 0 22.5 0 H 34.5 Q 35.15 0 35.575 0.425 Q 36 0.85 36 1.5 V 13.5 Q 36 14.15 35.575 14.575 Q 35.15 15 34.5 15 Q 33.85 15 33.425 14.575 Q 33 14.15 33 13.5 V 5.1 l -10 9.9 C 21 17 19 15 21 13Z' /%3E %3Cpath fill='white' d='M 1.5 36 Q 0.85 36 0.425 35.575 Q 0 35.15 0 34.5 V 22.5 Q 0 21.85 0.425 21.425 Q 0.85 21 1.5 21 Q 2.15 21 2.575 21.425 Q 3 21.85 3 22.5 V 30.9 L 13 21 C 15 19 17 21 15 23 L 5 33 H 13.5 Q 14.15 33 14.575 33.425 Q 15 33.85 15 34.5 Q 15 35.15 14.575 35.575 Q 14.15 36 13.5 36Z' /%3E %3C/svg%3E";
+$ICON-DOWNLOAD-WHITE: "%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='42' viewBox='-17 0 34 42'%3E %3Cpath fill='white' d='M 0 0 L 6 0 C 7 0 7 1 7 2 L 7 18 l 6 0 C 14 18 15 19 14 20 L 2 32 C 0 34 0 34 -2 32 L -14 20 C -15 19 -14 18 -13 18 l 6 0 l 0 -16.25 C -7 1 -7 0 -6 0Z'/%3E %3Cpath fill='white' d='M -15 37 L 15 37 C 16 37 17 37 17 38 l 0 3 C 17 42 16 42 15 42 L -15 42 C -16 42 -17 42 -17 41 L -17 38 C -17 37 -16 37 -15 37Z' /%3E%3C/svg%3E";

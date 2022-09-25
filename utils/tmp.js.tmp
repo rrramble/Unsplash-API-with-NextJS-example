@@ -1,0 +1,44 @@
+export async function getPhotosIds(slug) {
+  const topics = [
+    'animals',
+    '3d-renders',
+    'arts-culture',
+    'architecture',
+    'business-work',
+    'athletics',
+    'current-events',
+    'covid-19',
+    'digital-nomad',
+    'default',
+    'experimental',
+    'digital-screens',
+    'film',
+    'fashion',
+    'health',
+    'food-drink',
+    'interiors',
+    'history',
+    'people',
+    'nature',
+    'street-photography',
+    'spirituality',
+    'textures-patterns',
+    'wallpapers',
+    'travel',
+  ]
+
+  let arr = []
+
+  for(const topic of topics) {
+    const json = await getPhotos(topic)
+    let i = 0
+    Object.values(json).forEach(item => {
+      if (i < 5) {
+        arr.push(item.id)
+      }
+      i += 1
+    })
+  }
+
+  return JSON.stringify(arr)
+}

@@ -1,0 +1,30 @@
+.page {
+    align-items: stretch;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: $MIN-WIDTH;
+    position: relative;
+    width: 100%;
+}
+
+.page__block {
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+}
+
+.page__menu-margin-filler {
+    background-color: transparent;
+    border: 0;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: $MENU-HEIGHT;
+    width: 100%;
+}

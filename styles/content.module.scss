@@ -1,0 +1,12 @@
+.content {
+    align-items: stretch;
+    align-content: stretch;
+    background-color: transparent;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: $MENU-LEFT-PADDING;
+    padding-right: $MENU-RIGHT-PADDING;
+    position: relative;
+}
