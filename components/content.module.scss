@@ -1,0 +1,13 @@
+.self {
+    align-items: stretch;
+    align-content: stretch;
+    background-color: transparent;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: $MENU-HEIGHT + 50px + 100px; // TODO
+    padding-left: $MENU-LEFT-PADDING;
+    padding-right: $MENU-RIGHT-PADDING;
+    position: relative;
+}

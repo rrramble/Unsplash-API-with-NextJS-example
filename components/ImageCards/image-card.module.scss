@@ -1,0 +1,61 @@
+$IMAGE-CARD-COEFF: calc(375px / $MIN-WIDTH);
+$IMAGE-CARD-MAX-WIDTH: calc(476px / $IMAGE-CARD-COEFF);
+$IMAGE-CARD-LEFT-RIGHT-MARGIN: calc(26px / $IMAGE-CARD-COEFF / 2);
+$IMAGE-CARD-BOTTOM-MARGIN: calc(18px / $IMAGE-CARD-COEFF);
+$IMAGE-CARD--WIDTH: calc($MIN-WIDTH - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
+
+
+.main {
+    list-style: none;
+    margin-bottom: $IMAGE-CARD-BOTTOM-MARGIN;
+    max-width: $IMAGE-CARD-MAX-WIDTH;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    width: $IMAGE-CARD--WIDTH;
+}
+
+.image-container {
+    object-fit: scale-down;
+    width: 100%;
+}
+
+.image {
+    border-radius: 5px;
+    height: auto;
+    object-fit: contain;
+    width: 100%;
+}
+
+.author-menu-container {
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    font-style: normal;
+    justify-content: space-evenly;
+    min-height: 70%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 1;
+}
+
+
+.main:hover, .main:focus-within {
+    & .image {
+        filter: blur(3px) brightness(0.5);
+    }
+
+    & .author-container { //TODO
+        display: flex;
+    }
+
+    & .buttons { // TODO
+        display: flex;
+    }
+
+    .button-container:hover ~ .image-card__button-container {
+        filter: brightness(0.5);
+    }
+}

@@ -1,0 +1,35 @@
+$SEARCH-INPUT--COEFF: calc(375px / $MIN-WIDTH);
+$SEARCH-INPUT--FONT-SIZE: calc(36px / $SEARCH-INPUT--COEFF);
+$SEARCH-INPUT--LINE-HEIGHT: calc(43px / $SEARCH-INPUT--COEFF);
+$SEARCH-INPUT--PLACEHOLDER-FONT-SIZE: calc(36px / $SEARCH-INPUT--COEFF);
+$SEARCH-INPUT--PLACEHOLDER-LINE-HEIGHT: calc(43px / $SEARCH-INPUT--COEFF);
+
+.self {
+    background-color: transparent;
+    border-width: 0;
+    border-bottom-color: gray;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, black, gray, black);
+    box-sizing: border-box;
+    color: white;
+    font-size: $SEARCH-INPUT--FONT-SIZE;
+    font-weight: normal;
+    line-height: $SEARCH-INPUT--LINE-HEIGHT;
+    text-align: center;
+    width: 100%;
+}
+
+.self::placeholder {
+    color: white;
+    font-size: $SEARCH-INPUT--PLACEHOLDER-FONT-SIZE;
+    font-weight: normal;
+    color: white;
+    line-height: $SEARCH-INPUT--PLACEHOLDER-LINE-HEIGHT;
+    text-align: center;
+}
+
+.self--hidden {
+    display: none;
+}

@@ -1,0 +1,22 @@
+.self {
+    appearance: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-WHITE}");
+    background-position-x: center;
+    background-position-y: center;
+    background-size: $FAVORITE-ICON-HEIGHT, auto;
+    background-repeat: no-repeat;
+    border-width: 0;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.self::before {
+    color: white;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+}

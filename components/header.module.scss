@@ -1,0 +1,58 @@
+$MENU-COEFF: calc(375px / $MIN-WIDTH);
+$MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
+
+.self {
+    align-items: center;
+    background-color: black;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns:
+        [padding-left] $MENU-LEFT-PADDING
+        [logo] $MENU-ICON-WIDTH-GRID
+        [filler] auto
+        [search] $MENU-ICON-WIDTH-GRID
+        [search-end favorite] $MENU-ICON-WIDTH-GRID
+        [favorite-end history] $MENU-ICON-WIDTH-GRID
+        [history-end padding-right] $MENU-RIGHT-PADDING
+        [padding-right-end];
+    grid-template-rows: $MENU-HEIGHT;
+    justify-items: center;
+    row-gap: 0.5rem;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.logo {
+    grid-column: logo/filler;
+    height: $MENU-LOGO-WIDTH;
+    justify-self: left;
+    width: $MENU-LOGO-WIDTH;
+}
+
+a.logo * {
+    cursor: pointer;
+}
+
+.search {
+    grid-column: search / search-end;
+    grid-row: 1;
+    height: $MENU-ICON-WIDTH-GRID;
+    width: $MENU-ICON-WIDTH-GRID;
+}
+
+.favorite {
+    grid-column: favorite / favorite-end;
+    grid-row: 1;
+    height: $MENU-ICON-WIDTH-GRID;
+    width: $MENU-ICON-WIDTH-GRID;
+}
+
+.history {
+    grid-column: history / history-end;
+    grid-row: 1;
+    height: $MENU-ICON-WIDTH-GRID;
+    width: $MENU-ICON-WIDTH-GRID;
+}

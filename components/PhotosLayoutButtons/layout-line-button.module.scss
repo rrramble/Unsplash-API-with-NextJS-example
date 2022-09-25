@@ -1,0 +1,23 @@
+$LINES-ICON-COEFF: calc(375px / $MIN-WIDTH);
+
+$LINES-ICON-SIZE: calc(23px / $LINES-ICON-COEFF);
+$LINES-ICON-LINE: calc(10px / $LINES-ICON-COEFF);
+
+.self {
+    appearance: none;
+    box-sizing: border-box;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: $LINES-ICON-LINE;
+    border-top-width: $LINES-ICON-LINE;
+    content: "";
+    cursor: pointer;
+    height: $LINES-ICON-SIZE;
+    margin: 0;
+    width: $LINES-ICON-SIZE;
+}
+
+.self:checked {
+    border-color: black;
+}

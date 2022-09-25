@@ -1,0 +1,19 @@
+$CONTENT-MENU-COEFF: calc(375px / $MIN-WIDTH);
+$CONTENT-MENU-MARGIN-TOP: calc(29px / $CONTENT-MENU-COEFF);
+
+.self {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: $CONTENT-MENU-MARGIN-TOP;
+    overflow: hidden;
+}
+
+.item {
+    appearance: none;
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}

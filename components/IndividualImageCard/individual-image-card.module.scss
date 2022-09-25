@@ -1,0 +1,35 @@
+$ONE-PHOTO-COEFF: calc(375px / $MIN-WIDTH);
+$ONE-PHOTO-PADDING-TOP: calc(40px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH: calc(48px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-HEADER-TO-PHOTO-SPACE: calc(32px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-AUTHOR-NAME: calc(18px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-AUTHOR-INSTAGRAM: calc(14px / $ONE-PHOTO-COEFF);
+
+.self {
+    align-items: stretch;
+    align-content: stretch;
+    background-color: transparent;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: $ONE-PHOTO-PADDING-TOP;
+    padding-left: 14px;
+    padding-right: 14px;
+    position: relative;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: $ONE-PHOTO-HEADER-TO-PHOTO-SPACE;
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: relative;
+}

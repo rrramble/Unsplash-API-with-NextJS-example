@@ -1,0 +1,51 @@
+$ONE-PHOTO-COEFF: calc(375px / $MIN-WIDTH);
+$ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH: calc(48px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-BORDER-RADIUS: calc(8px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-BUTTON-WIDTH: calc(41px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-ICON-SIZE: calc(21px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-AUTHOR-NAME: calc(18px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-AUTHOR-INSTAGRAM: calc(14px / $ONE-PHOTO-COEFF);
+
+$ONE-PHOTO-INSTAGRAM-FONT-COLOR: #bdbdbd;
+
+.self {
+    display: flex;
+    // padding-left: 5px;
+    padding-right: 5px;
+}
+
+.thumbnail {
+    border-radius: $ONE-PHOTO-BORDER-RADIUS;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH;
+    margin-right: 11px;
+    object-fit: contain;
+    position: relative;
+    width: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH;
+}
+
+.name {
+    color: black;
+    display: block;
+    font-size: $ONE-PHOTO-AUTHOR-NAME;
+    font-style: normal;
+    font-weight: lighter;
+    line-height: 22px;
+    text-align: center;
+}
+
+.instagram {
+    color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR;
+    display: block;
+    font-weight: lighter;
+    font-size: $ONE-PHOTO-AUTHOR-INSTAGRAM;
+    font-style: normal;
+    line-height: 18px;
+    text-decoration: none;
+
+    &:visited, &:hover, &:link {
+        color: gray;
+    }
+}

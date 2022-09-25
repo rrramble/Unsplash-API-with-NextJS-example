@@ -1,0 +1,64 @@
+$ONE-PHOTO-COEFF: calc(375px / $MIN-WIDTH);
+$ONE-PHOTO-BORDER-RADIUS: calc(8px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-BUTTON-WIDTH: calc(41px / $ONE-PHOTO-COEFF);
+$ONE-PHOTO-ICON-SIZE: calc(21px / $ONE-PHOTO-COEFF);
+
+.self {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.button-container {
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-width: 0;
+    display: block;
+    height: $ONE-PHOTO-BUTTON-WIDTH;
+    list-style: none;
+    margin-left: 12px;
+    margin-right: 0;
+    padding: 0;
+    width: $ONE-PHOTO-BUTTON-WIDTH;
+}
+
+.button {
+    appearance: none;
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-size: $ONE-PHOTO-ICON-SIZE auto;
+    background-repeat: no-repeat;
+    border-radius: $ONE-PHOTO-BORDER-RADIUS;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    height: $ONE-PHOTO-BUTTON-WIDTH;
+    margin: 0;
+    padding: 0;
+    width: $ONE-PHOTO-BUTTON-WIDTH;
+
+    &--download {
+        background-color: #219653;
+        background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-DOWNLOAD-WHITE}");
+    }
+
+    &:hover {
+        transform:scale(1.2, 1.2);
+    }
+}
+
+.button--like {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-GRAY}");
+}
+
+.button--like:checked {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-RED}");
+}

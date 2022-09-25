@@ -1,0 +1,44 @@
+.self {
+    height: 100%;
+    width: 100%;
+}
+
+.icon {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    border-width: 0;
+    color: white;
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 43px;
+    text-align: center;
+    width: 100%;
+}
+
+.list-container {
+    align-items: stretch;
+    background-color: black;
+    display: none;
+    flex-direction: column;
+    height: calc(100vh - $MENU-HEIGHT);
+    justify-content: flex-start;
+    left: 0;
+    position: fixed;
+    top: $MENU-HEIGHT;
+    width: 100vw;
+}
+
+.self:focus-within {
+    .icon {
+        pointer-events: none;
+    }
+
+    .list-container {
+        display: initial;
+    }
+}

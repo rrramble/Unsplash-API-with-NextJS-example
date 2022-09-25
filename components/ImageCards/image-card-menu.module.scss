@@ -1,0 +1,59 @@
+.main {
+    display: flex;
+    filter: opacity(1);
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+}
+
+.main:focus-within,
+.main:hover {
+    filter: opacity(1);
+}
+
+.button-container {
+    list-style: none;
+    margin-left: 23px;
+    margin-right: 23px;
+    padding: 0;
+}
+
+.button {
+    appearance: none;
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: $IMAGE-ICON-HEIGHT;
+    width: $IMAGE-ICON-HEIGHT;
+
+    &--enlarge {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-OPEN-IN-FULL}");
+    }
+
+    &--download {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-DOWNLOAD-WHITE}");
+    }
+}
+
+.button--like {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-WHITE}");
+}
+
+.button--like:checked {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-RED}");
+}
+
+.button:hover,
+.button:focus {
+    transform: scale(1.67, 1.67);
+    transition-duration: 0.05s;
+    transition-property: all;
+    transition-timing-function: linear;
+}

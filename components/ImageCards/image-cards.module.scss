@@ -1,0 +1,12 @@
+$IMAGES-COEFF: calc(375px / $MIN-WIDTH);
+$IMAGES-MARGIN-TOP: calc(29px / $IMAGES-COEFF);
+
+.self {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+    margin-top: $IMAGES-MARGIN-TOP;
+    padding: 0;
+}
