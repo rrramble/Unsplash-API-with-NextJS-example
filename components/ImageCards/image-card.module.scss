@@ -30,6 +30,8 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 .author-menu-container {
     align-items: center;
     color: white;
+    display: flex;
+    filter: opacity(0);
     flex-direction: column;
     font-style: normal;
     justify-content: space-evenly;
@@ -47,15 +49,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
         filter: blur(3px) brightness(0.5);
     }
 
-    & .author-container { //TODO
-        display: flex;
-    }
-
-    & .buttons { // TODO
-        display: flex;
-    }
-
-    .button-container:hover ~ .image-card__button-container {
-        filter: brightness(0.5);
+    & .author-menu-container {
+        filter: opacity(1);
     }
 }
