@@ -39,7 +39,7 @@ export default function Home({ topicName, photos }) {
   return (
     <>
       <Head>
-        <title>{`Фотографии с Unsplash.com. {topicName}`}</title>
+        <title>{`Фотографии с Unsplash.com. ${topicName}`}</title>
       </Head>
       <div className={styles.self}>
         <h1 className="visually-hidden">Тема: {topicName}</h1>
