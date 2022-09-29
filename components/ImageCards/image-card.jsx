@@ -19,6 +19,8 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
     alt_description: photoAlt,
   } = photoUrls
 
+  const photoProfileUrl = '/photo/' + (photoId ?? '')
+
   return (
     <div className={styles.main}>
       <header className={styles['author-menu-container']}>
@@ -28,7 +30,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           imageUrl={profile_image.medium}
         />
         <ImageCardMenu
-          imageId={photoId}
+          photoProfileUrl={photoProfileUrl}
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
         />

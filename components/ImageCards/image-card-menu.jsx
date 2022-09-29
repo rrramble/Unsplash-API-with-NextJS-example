@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import styles from './image-card-menu.module.scss'
 
-export default function ImageCardMenu({ imageId, isLiked, onClickLikeButton }) {
+export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeButton }) {
   const likeButtonText = isLiked ?
     'Убрать лайк' :
     'Лайк!'
@@ -22,7 +22,7 @@ export default function ImageCardMenu({ imageId, isLiked, onClickLikeButton }) {
 
       <li className={styles['button-container']}>
         <Link
-          href={'/photo/' + (imageId ?? '')}
+          href={photoProfileUrl}
         >
           <a
             className={styles.button + ' ' + styles['button--enlarge']}
