@@ -36,7 +36,7 @@ $IMAGE-CARD-MENU--ZOOM-COEFF: calc(56px / $IMAGE-CARD-MENU--ICON-HEIGHT);
     height: $IMAGE-CARD-MENU--ICON-HEIGHT;
     width: $IMAGE-CARD-MENU--ICON-HEIGHT;
 
-    &--enlarge {
+    &--open {
         background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-OPEN-IN-FULL}");
     }
 

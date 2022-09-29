@@ -25,7 +25,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
           href={photoProfileUrl}
         >
           <a
-            className={styles.button + ' ' + styles['button--enlarge']}
+            className={styles.button + ' ' + styles['button--open']}
           >
             <span
               className="visually-hidden"
