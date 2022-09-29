@@ -1,3 +1,6 @@
+$IMAGE-CARD-MENU--ICON-HEIGHT: 34px;
+$IMAGE-CARD-MENU--ZOOM-COEFF: calc(56px / $IMAGE-CARD-MENU--ICON-HEIGHT);
+
 .self {
     display: flex;
     filter: opacity(1);
@@ -30,8 +33,8 @@
     border: none;
     cursor: pointer;
     display: block;
-    height: $IMAGE-ICON-HEIGHT;
-    width: $IMAGE-ICON-HEIGHT;
+    height: $IMAGE-CARD-MENU--ICON-HEIGHT;
+    width: $IMAGE-CARD-MENU--ICON-HEIGHT;
 
     &--enlarge {
         background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-OPEN-IN-FULL}");
@@ -52,7 +55,7 @@
 
 .button:hover,
 .button:focus {
-    transform: scale(1.67, 1.67);
+    transform: scale($IMAGE-CARD-MENU--ZOOM-COEFF, $IMAGE-CARD-MENU--ZOOM-COEFF);
     transition-duration: 0.05s;
     transition-property: all;
     transition-timing-function: linear;
