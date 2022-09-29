@@ -1,4 +1,4 @@
-.main {
+.self {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -6,8 +6,8 @@
     filter:opacity(1);
 }
 
-.main:focus-within,
-.main:hover {
+.self:focus-within,
+.self:hover {
     filter:opacity(1);
 }
 

@@ -11,7 +11,7 @@ export default function ImageCardAuthor({ name, instagramUsername, imageUrl }) {
 
   return (
     <address
-      className={styles.main}
+      className={styles.self}
       rel="author"
     >
       { imageUrl &&
