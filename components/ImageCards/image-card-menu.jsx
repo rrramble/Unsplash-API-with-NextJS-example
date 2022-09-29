@@ -30,7 +30,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
             <span
               className="visually-hidden"
             >
-                Открыть фотографию
+                Открыть профиль фотографии
             </span>
           </a>
         </Link>
