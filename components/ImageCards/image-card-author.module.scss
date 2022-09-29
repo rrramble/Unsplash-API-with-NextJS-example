@@ -1,3 +1,8 @@
+$AUTHOR--NAME-FONT-SIZE: 30px;
+$AUTHOR--NAME-LINE-HEIGHT: 36px;
+$AUTHOR--INSTAGRAM-FONT-SIZE: 18px;
+$AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
+
 .self {
     align-items: center;
     display: flex;
@@ -13,9 +18,10 @@
 
 .name {
     display: block;
-    font-size: 1.2rem;
+    font-size: $AUTHOR--NAME-FONT-SIZE;
     font-style: normal;
     font-weight: lighter;
+    line-height: $AUTHOR--NAME-LINE-HEIGHT;
     margin-top: 10px;
     text-align: center;
 }
@@ -23,9 +29,9 @@
 .instagram-account {
     display: block;
     font-weight: lighter;
-    font-size: 0.7rem;
+    font-size: $AUTHOR--INSTAGRAM-FONT-SIZE;
     font-style: normal;
-    line-height: 1.2;
+    line-height: $AUTHOR--INSTAGRAM-LINE-HEIGHT;
     text-decoration: none;
     &:visited, &:hover, &:link {
         color: white;
