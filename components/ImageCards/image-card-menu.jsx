@@ -8,7 +8,7 @@ export default function ImageCardMenu({ imageId, isLiked, onClickLikeButton }) {
     'Лайк!'
 
   return (
-    <menu className={styles.main}>
+    <menu className={styles.self}>
       <li className={styles['button-container']}>
         <span className="visually-hidden">{likeButtonText}</span>
         <input
