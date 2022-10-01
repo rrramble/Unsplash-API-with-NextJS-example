@@ -18,8 +18,14 @@ export async function getServerSideProps() {
 
 export default function Home() {
   const [ photos, setPhotos ] = useState([])
-  const [ likedPhotosIds, setLikedPhotos ] = useState([])
+  const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
 
+  // Get ID's of the liked photos from browser local storage
+  useEffect(() => {
+    setLikedPhotosIds(getFavoritePhotosIds())
+  }, [])
+
+  // Load photos from backend
   useEffect(() => {
     const likedIds = getFavoritePhotosIds('string')
     fetch('/api/favorite?ids=' + encodeURIComponent(likedIds)).
@@ -29,15 +35,11 @@ export default function Home() {
     })
   }, [likedPhotosIds])
 
-  useEffect(() => {
-    setLikedPhotos(getFavoritePhotosIds())
-  }, [photos])
-
   const onClickLikeButton = (id) => {
     likedPhotosIds.includes(id) ?
       removeFavoritePhotoId(id) :
       saveFavoritePhotoId(id)
-    setLikedPhotos(getFavoritePhotosIds())
+    setLikedPhotosIds(getFavoritePhotosIds())
   }
 
   return (
