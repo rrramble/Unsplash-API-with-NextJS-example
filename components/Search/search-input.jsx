@@ -1,17 +1,6 @@
-import { useRef, useEffect } from 'react'
 import styles from './search-input.module.scss'
 
-export default function SearchInput({ style, isFocused, cb }) {
-  const inputEl = useRef(null)
-  useEffect(() => {
-    if (!isFocused) {
-      return
-    }
-    debugger
-    inputEl.current.focus()
-    (typeof cb === 'function') && cb()
-  }, [isFocused, cb])
-
+export default function SearchInput({ style, inputRef }) {
   return (
     <div
       className={style}
@@ -25,7 +14,7 @@ export default function SearchInput({ style, isFocused, cb }) {
         id="topic-search"
         name="topic-search"
         placeholder="Поиск"
-        ref={inputEl}
+        ref={inputRef}
         size="10"
         type="text"
       >

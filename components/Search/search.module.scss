@@ -2,12 +2,6 @@ $SEARCH-COEFF: calc(375px / $MIN-WIDTH);
 $SEARCH-PADDING-BOTTOM: 49px;
 $SEARCH--ICON-POSITION-RIGHT: calc(2 * $MENU-ICON-WIDTH-GRID + 15px);
 $SEARCH--ICON-POSITION-TOP: calc(($MENU-HEIGHT - $MENU-ICON-WIDTH-GRID) / 2);
-// $SEARCH-FORM--COMPACT-HEIGHT: 154.5px; // TODO: calc it with constants
-
-$SEARCH-TAGS--COEFF: calc(375px / $MIN-WIDTH);
-$SEARCH-TAGS--FONT-SIZE: calc(18px / $SEARCH-TAGS--COEFF);
-$SEARCH-TAGS--LINE-HEIGHT: calc(21px / $SEARCH-TAGS--COEFF);
-$SEARCH-TAGS--LINE-HEIGHT-FOCUSED: calc(40px / $SEARCH-TAGS--COEFF);
 
 .self {
     display: block;
@@ -21,12 +15,16 @@ $SEARCH-TAGS--LINE-HEIGHT-FOCUSED: calc(40px / $SEARCH-TAGS--COEFF);
     width: 100%;
 }
 
+.icon--hidden {
+    display: hidden;
+    visibility: hidden;
+}
+
 .search-container {
     align-items: stretch;
     background-color: black;
-    display: none;
+    display: flex;
     flex-direction: column;
-    height: calc(100vh - $MENU-HEIGHT);
     justify-content: flex-start;
     left: 0;
     position: fixed;
@@ -34,73 +32,11 @@ $SEARCH-TAGS--LINE-HEIGHT-FOCUSED: calc(40px / $SEARCH-TAGS--COEFF);
     width: 100vw;
 }
 
-.self:focus-within {
-    & .icon {
-        pointer-events: none;
-        opacity: 0;
-        transform: scale(0.5);
-        transition-duration: 0.3s;
-        transition-property: all;
-    }
-
-    & .search-container {
-        display: flex;
-    }
+.search-container--full {
+    height: calc(100vh - $MENU-HEIGHT);
 }
 
-
-// FROM OLD:
-
-/*
-
-
-.search-state-toggle:checked {
-    & + .search-button {
-        display: none;
-    }
-
-    & ~ .form {
-        display: flex;
-    }
-
-    & ~ .input {
-        visibility: visible;
-    }
+.search-container--hidden {
+    display: none;
 }
 
-
-.self:focus-within {
-    .search-button {
-        display: none;
-    }
-
-    .form {
-        display: flex;
-        height: calc(100vh - $MENU-HEIGHT);
-    }
-
-    .input {
-        visibility: visible;
-    }
-
-    .tags {
-        flex-wrap: wrap;
-        justify-content: center;
-        line-height: $SEARCH-TAGS--LINE-HEIGHT-FOCUSED;
-        margin-left: 0;
-        margin-top: 30px;
-        overflow-y: auto;
-        padding-left: calc(86px - $MENU-LEFT-PADDING);
-        padding-right: calc(86px - $MENU-LEFT-PADDING); // Sic! Design mistakenly shows 106px
-    }
-
-    .tags::before {
-        display: none;
-    }
-
-    .search-tags::after {
-        display: none;
-    }
-}
-
-*/
