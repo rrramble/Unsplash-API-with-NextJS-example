@@ -6,6 +6,8 @@ import SearchInput from './search-input'
 import Tags from './tags'
 
 import styles from './search.module.scss'
+import { saveSearchedTexts } from '@/utils/local-storage'
+
 // TODO: Separate state logic from the component itself
 export default function Search({ style, topics }) {
   const searchFormRef = useRef(null)
@@ -40,6 +42,12 @@ export default function Search({ style, topics }) {
     if (key === 'Escape') {
       setComponentState('only-icon')
     }
+  }
+
+  const onFormSubmit = (e) => {
+    e.preventDefault()
+    const { value: searchedText } = inputRef.current
+    saveSearchedTexts(searchedText)
   }
 
   // Component initialisation
@@ -130,7 +138,10 @@ export default function Search({ style, topics }) {
           className={searchContainerStyle}
           onBlur={onFormBlur}
           onKeyUp={onFormEscape}
+          onSubmit={onFormSubmit}
           ref={searchFormRef}
+          action="/search/"
+          method="GET"
         >
           <SearchInput
             inputRef={inputRef}

@@ -1,3 +1,4 @@
+import { saveSearchedTexts } from '@/utils/local-storage'
 import Tag from './tag'
 
 import styles from './tags.module.scss'
@@ -14,14 +15,15 @@ export default function Tags({ topics, style, isFull }) {
         className={listStyle}
         id="search-tags"
       >
-        {topics.map(topic => (
+        {topics.map(({ slug, title }) => (
           <li
             className={styles['item-container']}
-            key={topic.slug}
+            key={slug}
           >
             <Tag
-              link={'/topic/' + topic.slug}
-              text={topic.title}
+              link={'/topic/' + slug}
+              text={title}
+              cb={() => saveSearchedTexts({ slug, title })}
             />
           </li>
         ))}
