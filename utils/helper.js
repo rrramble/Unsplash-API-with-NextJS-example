@@ -23,4 +23,3 @@ export async function getPhotos(slugName) {
 export async function getTopics() {
   return await getJSONDataFile(['topics', '__items__.json'])
 }
-
