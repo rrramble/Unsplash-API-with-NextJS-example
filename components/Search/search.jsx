@@ -26,7 +26,7 @@ export default function Search({ style, topics }) {
 
   const onScrollSetScrolled = () => setScrolled(true);
 
-  const onFormBlur = (e) => {
+  const onBlurForm = (e) => {
     const { relatedTarget } = e
     if (contains(searchFormRef.current, relatedTarget)) {
       return
@@ -34,7 +34,7 @@ export default function Search({ style, topics }) {
     setTagsBlurred(true)
   }
 
-  const onFormEscape = (e) => {
+  const onKeyUpForm = (e) => {
     const { key } = e
     if (componentState !== 'tags-in-full') {
       return
@@ -44,7 +44,7 @@ export default function Search({ style, topics }) {
     }
   }
 
-  const onFormSubmit = (e) => {
+  const onSubmitForm = (e) => {
     e.preventDefault()
     const { value: searchedText } = inputRef.current
     saveSearchedTexts(searchedText)
@@ -136,9 +136,9 @@ export default function Search({ style, topics }) {
         />
         <form
           className={searchContainerStyle}
-          onBlur={onFormBlur}
-          onKeyUp={onFormEscape}
-          onSubmit={onFormSubmit}
+          onBlur={onBlurForm}
+          onKeyUp={onKeyUpForm}
+          onSubmit={onSubmitForm}
           ref={searchFormRef}
           action="/search/"
           method="GET"
