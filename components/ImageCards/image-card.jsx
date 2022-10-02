@@ -38,7 +38,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
       <picture className={styles['image-container']}>
         <source className={styles.image} srcSet={fullPhotoUrl} media="(min-width: 960px)" />
         <source className={styles.image} srcSet={fullPhotoUrl + ' 2x, ' + regularPhotoUrl} media="(min-width: 660px)" />
-        <source className={styles.image} srcSet={regularPhotoUrl + ' 2x, ' + thumbnailPhotoUrl} media="(min-width: 320px)" />
+        <source className={styles.image} srcSet={regularPhotoUrl + ' 2x, ' + smallPhotoUrl ?? thumbnailPhotoUrl} media="(min-width: 320px)" />
         <img
           className={styles.image}
           src={thumbnailPhotoUrl}
