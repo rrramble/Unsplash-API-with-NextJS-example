@@ -1,5 +1,3 @@
-import { getPageFiles } from "next/dist/server/get-page-files"
-
 export function getFavoritePhotosIds(type) {
   return lsGet('favoritePhotosIds', type)
 }
