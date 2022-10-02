@@ -23,17 +23,17 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ topicName, photos }) {
-  const [ likedPhotosIds, setLikedPhotos ] = useState([])
+  const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
 
   useEffect(() => {
-    setLikedPhotos(getFavoritePhotosIds())
+    setLikedPhotosIds(getFavoritePhotosIds())
   }, [photos])
 
   const onClickLikeButton = (id) => {
     likedPhotosIds.includes(id) ?
       removeFavoritePhotoId(id) :
       saveFavoritePhotoId(id)
-    setLikedPhotos(getFavoritePhotosIds())
+    setLikedPhotosIds(getFavoritePhotosIds())
   }
 
   return (
