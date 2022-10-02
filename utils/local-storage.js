@@ -65,6 +65,8 @@ export function lsGet(keyName, type) {
   }
 }
 
+// Local Storage direct manipulation functions
+
 export function lsSave(keyName, item) {
   const items = lsGet(keyName)
   if (items.includes(item)) {
