@@ -84,7 +84,7 @@ export function lsRemoveItem(keyName, item, fn) {
   const items = lsGet(keyName).filter(
     oldItem => fn(oldItem) !== fn(item)
   )
-  const str = JSON.stringify(items)
+  const str = JSON.stringify(items) // TODO: remove duplication with lsSave
   try {
     localStorage.setItem(keyName, str)
     callSubscribers(keyName)
