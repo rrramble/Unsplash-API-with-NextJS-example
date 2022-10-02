@@ -28,6 +28,7 @@ $ONE-PHOTO-AUTHOR-INSTAGRAM: calc(14px / $ONE-PHOTO-COEFF);
 }
 
 .photo-container {
+    background-color: var(--data-background-color);
     display: flex;
     flex-direction: column;
     height: auto;

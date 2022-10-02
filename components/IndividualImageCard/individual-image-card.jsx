@@ -55,6 +55,7 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
         className={styles['photo-container']}
         src={photoUrl}
         alt={photoAlt}
+        style={{'--data-background-color': backgroundColor}}
       />
     }
   </div>)
