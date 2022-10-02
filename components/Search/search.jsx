@@ -136,13 +136,12 @@ export default function Search({ style, topics }) {
         />
         <form
           action="/search/"
+          className={searchContainerStyle ?? styles['search-container']}
           method="GET"
           onBlur={onBlurForm}
           onKeyUp={onKeyUpForm}
           onSubmit={onSubmitForm}
           ref={searchFormRef}
-          action="/search/"
-          method="GET"
         >
           <SearchInput
             inputRef={inputRef}
