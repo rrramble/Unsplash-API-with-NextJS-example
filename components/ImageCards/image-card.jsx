@@ -11,7 +11,6 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   } = photo;
   const { profile_image } = author
   const {
-    raw: rawPhotoUrl,
     full: fullPhotoUrl,
     regular: regularPhotoUrl,
     small: smallPhotoUrl,

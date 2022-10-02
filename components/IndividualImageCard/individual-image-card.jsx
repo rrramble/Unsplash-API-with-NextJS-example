@@ -6,8 +6,6 @@ import styles from './individual-image-card.module.scss'
 export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton }) {
   const {
     alt_description: photoAlt = 'Описание отсутствует',
-    id: photoId,
-    raw: rawPhotoUrl,
     urls: photoUrls,
     color: backgroundColor,
     user: author,
@@ -25,7 +23,6 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
   const {
       name: authorName,
       profile_image: authorProfileImages,
-      medium: authorThumbnailLink,
       instagram_username: instagramUsername,
   } = author
 

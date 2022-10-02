@@ -29,7 +29,7 @@ export default function LayoutButtons() {
             type="radio"
             className={styles_line.self}
             name="photos-layout-buttons"
-            onChange={ _ => setState(getNewState(llist, 1)) }
+            onChange={() => setState(getNewState(llist, 1))}
             defaultChecked
           />
           <span className="visually-hidden">Горизонтально</span>
@@ -42,7 +42,7 @@ export default function LayoutButtons() {
             type="radio"
             className={styles_grid.self}
             name="photos-layout-buttons"
-            onChange={ _ => setState(getNewState(llist, 2)) }
+            onChange={() => setState(getNewState(llist, 2))}
           />
             <span className="visually-hidden">В квадратик</span>
         </label>
