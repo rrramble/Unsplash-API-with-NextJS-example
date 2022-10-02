@@ -1,6 +1,6 @@
 import styles from './icon.module.scss'
 
-export default function Icon({ style }) {
+export default function Icon({ style, onClick }) {
   return (
     <div
       className={style}
@@ -8,6 +8,7 @@ export default function Icon({ style }) {
       <button
         type="button"
         className={styles.self}
+        onClick={onClick}
       >
         <span
           className={styles.title}

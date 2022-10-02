@@ -16,6 +16,10 @@ export function saveFavoritePhotoId(id) {
   return lsSave('favoritePhotosIds', id)
 }
 
+export function subscribeOnChangeSearchedTexts(cb) {
+  subscribeOnChange('searchedTexts', cb)
+}
+
 export function removeFavoritePhotoId(id) {
   return lsRemoveItem('favoritePhotosIds', id, id => id)
 }
@@ -71,6 +75,7 @@ export function lsSave(keyName, item) {
   const str = JSON.stringify(items)
   try {
     localStorage.setItem(keyName, str)
+    callSubscribers(keyName)
   } catch (e) {
   }
 }
@@ -82,8 +87,21 @@ export function lsRemoveItem(keyName, item, fn) {
   const str = JSON.stringify(items)
   try {
     localStorage.setItem(keyName, str)
+    callSubscribers(keyName)
   } catch (e) {
   }
+}
+
+const subscribers = []
+
+function subscribeOnChange(keyName, cb) {
+  subscribers.push({ keyName, cb })
+}
+
+function callSubscribers(keyName) {
+  subscribers.forEach(item =>
+    (item.keyName === keyName) && item.cb()
+  )
 }
 
 // TODO: move to its own library/part

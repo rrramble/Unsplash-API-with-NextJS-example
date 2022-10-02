@@ -20,10 +20,10 @@
     width: 100%;
 }
 
-.list-container {
+.tags-container {
     align-items: stretch;
     background-color: black;
-    display: none;
+    // display: initial;
     flex-direction: column;
     height: calc(100vh - $MENU-HEIGHT);
     justify-content: flex-start;
@@ -33,12 +33,10 @@
     width: 100vw;
 }
 
-.self:focus-within {
-    .icon {
-        pointer-events: none;
-    }
+.tags-container--hidden {
+    display: none;
+}
 
-    .list-container {
-        display: initial;
-    }
+.tags-container--shown {
+    display: initial;
 }
