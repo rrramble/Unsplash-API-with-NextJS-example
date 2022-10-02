@@ -12,26 +12,25 @@ const ESCAPE_KEY_CODE = 27
 export default function History({ style }) {
   const router = useRouter()
   const tagsContainerRef = useRef(null)
-
+  
+  const [ iconRef, setIconRef ] = useState(null)
   const [ likedPhotos, setLikedPhotos ] = useState([])
   const [ componentState, setComponentState ] = useState(null)
   const [ tagsContainerStyle, setTagsContainerStyle ] = useState(null)
+  const [ clickedElement, setClickedElement ] = useState(null)
 
-  const onClickIcon = () => {
-    const state = componentState === 'only-icon'?
-      'history-shown' :
-      'only-icon'
-    setComponentState(state)
+  const onClickWindow = ({ target, relatedTarget }) => {
+    setClickedElement(target ?? relatedTarget)
   }
-
-  const onBlurForm = (e) => {
-    if (contains(tagsContainerRef.current, e.relatedTarget)) {
+  
+  const onBlurForm = ({ relatedTarget }) => {
+    if (contains(tagsContainerRef.current, relatedTarget)) {
       return
     }
     setComponentState('only-icon')
   }
 
-  const onKeyUp = (e) => {
+  const onKeyUpWindow = (e) => {
     if (e.keyCode !== ESCAPE_KEY_CODE && e.charCode !== ESCAPE_KEY_CODE) {
       return
     }
@@ -48,13 +47,42 @@ export default function History({ style }) {
     e.preventDefault()
   }
 
-  // Component initialisation
+  // Component initialization
   useEffect(() => {
     setComponentState('only-icon')
-    window.addEventListener('keyup', onKeyUp)
     setLikedPhotos(getSearchedTexts())
     subscribeOnChangeSearchedTexts(() => setLikedPhotos(getSearchedTexts()))
+    window.addEventListener('click', onClickWindow)
+    window.addEventListener('keyup', onKeyUpWindow)
+
+    return () => {
+      window.removeEventListener('click', onClickWindow)
+      window.removeEventListener('keyUp', onKeyUpWindow)
+    }
   }, [])
+
+  // Action: window is clicked
+  useEffect((e) => {
+    if (!clickedElement) {
+      return
+    }
+    setClickedElement(null)
+
+    // Clicked inside of tags container
+    if (contains(tagsContainerRef.current, clickedElement)) {
+      return
+    }
+
+    // Clicked on icon
+    if (clickedElement === iconRef.current) {
+      return setComponentState(
+        componentState === 'only-icon' ? 'history-shown' : 'only-icon'
+      )
+    }
+    
+    // Clicked outside of list of tags and outside of icon
+    setComponentState('only-icon')
+  }, [clickedElement])
 
   // Action: changed site address
   useEffect(() => {
@@ -78,25 +106,28 @@ export default function History({ style }) {
     <div className={style}>
       <div className={styles.self}>
         <Icon
-          onClick={onClickIcon}
+          onClick={(childRef) => setIconRef(childRef)}
           style={styles.icon}
         />
-        <form
-          className={tagsContainerStyle ?? styles['tags-container']}
-          onBlur={onBlurForm}
-          onKeyUp={onKeyUpForm}
-          onSubmit={onSubmitForm}
-          ref={tagsContainerRef}
-        >
-          <header
-            className={styles.header}
+        <div className={tagsContainerStyle ?? styles['tags-container']}>
+          <form
+            action="/"
+            method="GET"
+            onBlur={onBlurForm}
+            onKeyUp={onKeyUpForm}
+            onSubmit={onSubmitForm}
+            ref={tagsContainerRef}
           >
-            Ваши запросы
-          </header>
-          <Tags
-            items={likedPhotos}
-          />
-        </form>
+            <header
+              className={styles.header}
+            >
+              Ваши запросы
+            </header>
+            <Tags
+              items={likedPhotos}
+            />
+          </form>
+        </div>
       </div>
     </div>
   )
