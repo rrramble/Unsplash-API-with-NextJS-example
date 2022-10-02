@@ -155,7 +155,7 @@ export default function Search({ style, topics }) {
     </div>
   )
 }
-
+// TODO: move to its own library
 function contains(parent, item) {
   if (parent === undefined || item === undefined || item === null) {
     return false
