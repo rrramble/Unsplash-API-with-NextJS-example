@@ -74,7 +74,7 @@ export default function History({ style }) {
     }
 
     // Clicked on icon
-    if (clickedElement === iconRef.current) {
+    if (iconRef && (iconRef.current === clickedElement)) {
       return setComponentState(
         componentState === 'only-icon' ? 'history-shown' : 'only-icon'
       )
