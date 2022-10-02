@@ -62,7 +62,7 @@ export default function History({ style }) {
   }, [])
 
   // Action: window is clicked
-  useEffect((e) => {
+  useEffect(() => {
     if (!clickedElement) {
       return
     }
