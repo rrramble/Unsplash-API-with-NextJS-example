@@ -135,7 +135,8 @@ export default function Search({ style, topics }) {
           onClick={() => setIconClicked(true)}
         />
         <form
-          className={searchContainerStyle}
+          action="/search/"
+          method="GET"
           onBlur={onBlurForm}
           onKeyUp={onKeyUpForm}
           onSubmit={onSubmitForm}
