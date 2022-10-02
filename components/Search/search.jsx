@@ -12,10 +12,14 @@ import { saveSearchedTexts } from '@/utils/local-storage'
 export default function Search({ style, topics }) {
   const searchFormRef = useRef(null)
   const inputRef = useRef(null)
+  const [ iconRef, setIconRef ] = useState(null)
   const router = useRouter()
 
   const [ isScrolled, setScrolled ] = useState(false)
+
   const [ isIconClicked, setIconClicked ] = useState(false)
+  const [ clickedElement, setClickedElement ] = useState(null)
+
   const [ isTagsBlurred, setTagsBlurred ] = useState(false)
   const [ isInputFocused, setInputFocused ] = useState(false)
   const [ componentState, setComponentState ] = useState(null)
@@ -26,12 +30,18 @@ export default function Search({ style, topics }) {
 
   const onScrollSetScrolled = () => setScrolled(true);
 
-  const onBlurForm = (e) => {
-    const { relatedTarget } = e
+  const onBlurForm = ({ relatedTarget }) => {
+    if (!relatedTarget) {
+      return
+    }
     if (contains(searchFormRef.current, relatedTarget)) {
       return
     }
     setTagsBlurred(true)
+  }
+
+  const onClickWindow = ({ target, relatedTarget }) => {
+    setClickedElement(target ?? relatedTarget)
   }
 
   const onKeyUpForm = (e) => {
@@ -54,6 +64,10 @@ export default function Search({ style, topics }) {
   useEffect(() => {
     window.addEventListener('scroll', onScrollSetScrolled)
     setComponentState('search-minimal-shown')
+    window.addEventListener('click', onClickWindow)
+    return () => {
+      window.removeEventListener('click', onClickWindow)
+    }
   }, [])
 
   // Action: Window first scroll
@@ -95,6 +109,28 @@ export default function Search({ style, topics }) {
     setComponentState('tags-in-full')
   }, [isInputFocused])
 
+  // Action: window is clicked
+  useEffect(() => {
+    if (!clickedElement) {
+      return
+    }
+    setClickedElement(null)
+
+    // Clicked on icon
+    if (iconRef && (iconRef.current === clickedElement)) {
+      return setComponentState('tags-in-full')
+    }
+        // Clicked inside of tags container
+    if (contains(searchFormRef.current, clickedElement)) {
+      return
+    }
+
+    // Clicked outside of list of tags and outside of icon
+    if (componentState === 'tags-in-full') {
+      setComponentState('only-icon')
+    }
+  }, [clickedElement])
+
   // Action: changed site address
   useEffect(() => {
     if (componentState === 'tags-in-full') {
@@ -123,7 +159,6 @@ export default function Search({ style, topics }) {
     }
   }, [componentState])
 
-
   return (
     <div className={style}>
       <div
@@ -132,25 +167,28 @@ export default function Search({ style, topics }) {
       >
         <Icon
           style={iconStyle}
-          onClick={() => setIconClicked(true)}
+          onClick={(childRef) => setIconRef(childRef)}
         />
-        <form
-          action="/search/"
+        <div
           className={searchContainerStyle ?? styles['search-container']}
-          method="GET"
-          onBlur={onBlurForm}
-          onKeyUp={onKeyUpForm}
-          onSubmit={onSubmitForm}
-          ref={searchFormRef}
         >
-          <SearchInput
-            inputRef={inputRef}
-          />
-          <Tags
-              isFull={isTagsFull}
-              topics={topics}
-          />
-        </form>
+          <form
+            action="/search/"
+            method="GET"
+            onBlur={onBlurForm}
+            onKeyUp={onKeyUpForm}
+            onSubmit={onSubmitForm}
+            ref={searchFormRef}
+          >
+            <SearchInput
+              inputRef={inputRef}
+            />
+            <Tags
+                isFull={isTagsFull}
+                topics={topics}
+            />
+          </form>
+        </div>
       </div>
     </div>
   )
