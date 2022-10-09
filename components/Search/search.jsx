@@ -10,10 +10,11 @@ import { saveSearchedTexts } from '@/utils/local-storage'
 
 // TODO: Separate state logic from the component itself
 export default function Search({ style, topics }) {
+  const router = useRouter()
   const searchFormRef = useRef(null)
+
   const [ inputRef, setInputRef ] = useState(null)
   const [ iconRef, setIconRef ] = useState(null)
-  const router = useRouter()
 
   const [ isScrolled, setScrolled ] = useState(false)
 
