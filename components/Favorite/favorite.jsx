@@ -15,8 +15,14 @@ export default function HeaderFavorite({ style }) {
           <span
             className="visually-hidden"
           >
+              Фото с лайками
+          </span>
+          <span
+            className={styles.text}
+          >
               Избранное
           </span>
+
         </a>
       </Link>
     </div>
