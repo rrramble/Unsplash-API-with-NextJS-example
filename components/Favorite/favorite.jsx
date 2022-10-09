@@ -9,6 +9,7 @@ export default function HeaderFavorite({ style }) {
         href='/favorite'
       >
         <a
+          aria-label="Photos you liked"
           className={styles.self}
         >
           <span
