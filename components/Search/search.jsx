@@ -11,7 +11,7 @@ import { saveSearchedTexts } from '@/utils/local-storage'
 // TODO: Separate state logic from the component itself
 export default function Search({ style, topics }) {
   const searchFormRef = useRef(null)
-  const inputRef = useRef(null)
+  const [ inputRef, setInputRef ] = useState(null)
   const [ iconRef, setIconRef ] = useState(null)
   const router = useRouter()
 
@@ -181,7 +181,7 @@ export default function Search({ style, topics }) {
             ref={searchFormRef}
           >
             <SearchInput
-              inputRef={inputRef}
+              passRef={(ref) => setInputRef(ref)}
             />
             <Tags
                 isFull={isTagsFull}

@@ -1,6 +1,12 @@
+import { useEffect, useRef } from 'react'
+
 import styles from './search-input.module.scss'
 
-export default function SearchInput({ style, inputRef }) {
+export default function SearchInput({ style, passRef }) {
+  const inputRef = useRef(null)
+
+  useEffect(() => passRef(inputRef))
+
   return (
     <div
       className={style}
