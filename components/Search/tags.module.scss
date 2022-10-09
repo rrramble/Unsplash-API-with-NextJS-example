@@ -68,21 +68,6 @@ $SEARCH-TAGS--LINE-HEIGHT: calc(21px / $SEARCH-TAGS--COEFF);
 
 // FROM OLD CSS:
 /*
-.tags {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    flex-wrap: no-wrap;
-    justify-content: center;
-    height: unset;
-    justify-content: space-between;
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-
 .tags::before {
     background: linear-gradient(
         90deg,
@@ -90,6 +75,5 @@ $SEARCH-TAGS--LINE-HEIGHT: calc(21px / $SEARCH-TAGS--COEFF);
         rgba(black, 40%) 70%,
         rgba(black, 100%) 100%
     );
-    z-index: 1;
 }
 */
