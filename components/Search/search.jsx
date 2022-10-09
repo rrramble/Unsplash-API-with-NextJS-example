@@ -44,8 +44,7 @@ export default function Search({ style, topics }) {
     setClickedElement(target ?? relatedTarget)
   }
 
-  const onKeyUpForm = (e) => {
-    const { key } = e
+  const onKeyUpForm = ({ key }) => {
     if (componentState !== 'tags-in-full') {
       return
     }
@@ -54,8 +53,8 @@ export default function Search({ style, topics }) {
     }
   }
 
-  const onSubmitForm = (e) => {
-    e.preventDefault()
+  const onSubmitForm = ({ preventDefault }) => {
+    preventDefault && preventDefault()
     const { value: searchedText } = inputRef.current
     saveSearchedTexts(searchedText)
     router.push({
