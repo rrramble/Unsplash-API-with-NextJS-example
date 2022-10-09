@@ -58,6 +58,11 @@ export default function Search({ style, topics }) {
     e.preventDefault()
     const { value: searchedText } = inputRef.current
     saveSearchedTexts(searchedText)
+    const { value } = inputRef.current
+    router.push({
+      pathname: '/search/[text]',
+      query: { text: value },
+    })
   }
 
   // Component initialisation

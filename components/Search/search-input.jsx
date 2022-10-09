@@ -17,8 +17,8 @@ export default function SearchInput({ style, passRef }) {
       </label>
       <input
         className={styles.self}
-        id="topic-search"
-        name="topic-search"
+        id="text"
+        name="text"
         placeholder="Поиск"
         ref={inputRef}
         size="10"
