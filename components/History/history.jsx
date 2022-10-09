@@ -12,7 +12,7 @@ const ESCAPE_KEY_CODE = 27
 export default function History({ style }) {
   const router = useRouter()
   const tagsContainerRef = useRef(null)
-  
+
   const [ iconRef, setIconRef ] = useState(null)
   const [ likedPhotos, setLikedPhotos ] = useState([])
   const [ componentState, setComponentState ] = useState(null)
@@ -22,7 +22,7 @@ export default function History({ style }) {
   const onClickWindow = ({ target, relatedTarget }) => {
     setClickedElement(target ?? relatedTarget)
   }
-  
+
   const onBlurForm = ({ relatedTarget }) => {
     if (contains(tagsContainerRef.current, relatedTarget)) {
       return
@@ -79,7 +79,7 @@ export default function History({ style }) {
         componentState === 'only-icon' ? 'history-shown' : 'only-icon'
       )
     }
-    
+
     // Clicked outside of list of tags and outside of icon
     setComponentState('only-icon')
   }, [clickedElement])
