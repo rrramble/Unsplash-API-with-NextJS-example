@@ -8,7 +8,7 @@ export default function Tag({ link, text, cb }) {
       href={link}
     >
       <a
-        className={styles.text}
+        className={styles.self}
         onClick={cb}
       >
         {text}
