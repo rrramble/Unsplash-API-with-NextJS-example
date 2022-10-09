@@ -7,7 +7,7 @@ export default function Tags({ style, items }) {
       className={style}
     >
       <menu
-        className={styles.list}
+        className={styles.self}
         id="history-texts"
       >
         { items.map(item => (
