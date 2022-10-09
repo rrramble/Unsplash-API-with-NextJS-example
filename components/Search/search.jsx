@@ -178,7 +178,7 @@ export default function Search({ style, topics }) {
           className={searchContainerStyle ?? styles['search-container']}
         >
           <form
-            action="/search/"
+            action="/search"
             method="GET"
             onBlur={onBlurForm}
             onKeyUp={onKeyUpForm}
