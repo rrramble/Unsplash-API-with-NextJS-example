@@ -22,7 +22,9 @@ $SEARCH-TAGS--LINE-HEIGHT: calc(21px / $SEARCH-TAGS--COEFF);
 
 .self--minimized {
     flex-wrap: nowrap;
+    -ms-overflow-style: none;
     overflow-x: scroll;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
         display: none;
