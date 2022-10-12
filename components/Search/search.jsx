@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import Icon from './icon'
@@ -8,50 +8,29 @@ import Tags from './tags'
 import styles from './search.module.scss'
 import { saveSearchedTexts } from '@/utils/local-storage'
 
-// TODO: Separate state logic from the component itself
-export default function Search({ style, topics }) {
+// TODO: Separate state logic from the component file
+function Search({ style, topics }) {
+  const [ state, dispatch ] = useReducer(reducer, { componentState: null, iconStyle: null, searchContainerStyle: null })
   const router = useRouter()
   const searchFormRef = useRef(null)
+  const [ iconRef, setIconRef ] = useState()
+  const [ inputRef, setInputRef ] = useState()
+  const [ clickedElement, setClickedElement] = useState(null)
 
-  const [ inputRef, setInputRef ] = useState(null)
-  const [ iconRef, setIconRef ] = useState(null)
-
-  const [ isScrolled, setScrolled ] = useState(false)
-
-  const [ isIconClicked, setIconClicked ] = useState(false)
-  const [ clickedElement, setClickedElement ] = useState(null)
-
-  const [ isTagsBlurred, setTagsBlurred ] = useState(false)
-  const [ isInputFocused, setInputFocused ] = useState(false)
-  const [ componentState, setComponentState ] = useState(null)
-
-  const [ iconStyle, setIconStyle ] = useState(null)
-  const [ searchContainerStyle, setSearchContainerStyle ] = useState(null)
-  const [ isTagsFull, setIsTagsFull ] = useState(null)
-
-  const onScrollSetScrolled = () => setScrolled(true);
-
-  const onBlurForm = ({ relatedTarget }) => {
-    if (!relatedTarget) {
-      return
-    }
-    if (contains(searchFormRef.current, relatedTarget)) {
-      return
-    }
-    setTagsBlurred(true)
-  }
+  const onScrollWindow = () => dispatch({ type: 'window-scrolled'});
 
   const onClickWindow = ({ target, relatedTarget }) => {
     setClickedElement(target ?? relatedTarget)
   }
 
+  const onBlurForm = ({ relatedTarget }) => {
+    relatedTarget &&
+    !contains(searchFormRef.current, relatedTarget) &&
+    dispatch({ type: 'tags-blurred'})
+  }
+
   const onKeyUpForm = ({ key }) => {
-    if (componentState !== 'tags-in-full') {
-      return
-    }
-    if (key === 'Escape') {
-      setComponentState('only-icon')
-    }
+    key === 'Escape' && dispatch('tags-blurred')
   }
 
   const onSubmitForm = ({ preventDefault }) => {
@@ -66,102 +45,35 @@ export default function Search({ style, topics }) {
 
   // Component initialisation
   useEffect(() => {
-    window.addEventListener('scroll', onScrollSetScrolled)
-    setComponentState('search-minimal-shown')
+    dispatch({ type: 'init' })
+    window.addEventListener('scroll', onScrollWindow)
     window.addEventListener('click', onClickWindow)
     return () => {
+      window.removeEventListener('scroll', onScrollWindow)
       window.removeEventListener('click', onClickWindow)
     }
   }, [])
 
-  // Action: Window first scroll
+  // Action: changed site address
   useEffect(() => {
-    if (!isScrolled) {
-      return
-    }
-    window.removeEventListener('scroll', onScrollSetScrolled)
-    setComponentState('only-icon')
-  }, [isScrolled])
+    dispatch({ type: 'init' })
+  }, [router.asPath])
 
-  // Action: Search icon is clicked
-  useEffect(() => {
-    if (!isIconClicked) {
-      return
-    }
-    setIconClicked(false)
-    setComponentState('tags-in-full')
-  }, [isIconClicked])
-
-  // Action: search field or tags are escaped
-  useEffect(() => {
-    if (!isTagsBlurred) {
-      return
-    }
-    setTagsBlurred(false)
-    if (componentState === 'search-minimal-shown') {
-      return
-    }
-    setComponentState('only-icon')
-  }, [isTagsBlurred])
-
-  // Action: input field is focused
-  useEffect(() => {
-    if (!isInputFocused) {
-      return
-    }
-    setInputFocused(false)
-    setComponentState('tags-in-full')
-  }, [isInputFocused])
-
-  // Action: window is clicked
   useEffect(() => {
     if (!clickedElement) {
       return
     }
     setClickedElement(null)
 
-    // Clicked on icon
-    if (iconRef && (iconRef.current === clickedElement)) {
-      return setComponentState('tags-in-full')
-    }
-        // Clicked inside of tags container
     if (contains(searchFormRef.current, clickedElement)) {
       return
     }
-
-    // Clicked outside of list of tags and outside of icon
-    if (componentState === 'tags-in-full') {
-      setComponentState('only-icon')
+    if (clickedElement === iconRef.current) {
+      dispatch({ type: 'icon-clicked' })
+      return
     }
+    onBlurForm({ relatedTarget: clickedElement })
   }, [clickedElement])
-
-  // Action: changed site address
-  useEffect(() => {
-    if (componentState === 'tags-in-full') {
-      setComponentState('only-icon')
-    }
-  }, [router.asPath])
-
-  useEffect(() => {
-    switch (componentState) {
-      case 'search-minimal-shown':
-        setIconStyle(styles['icon--hidden'])
-        setSearchContainerStyle(styles['search-container'])
-        setIsTagsFull(false)
-        break
-      case 'only-icon':
-        setIconStyle(styles.icon)
-        setSearchContainerStyle(styles['search-container'] + ' ' + styles['search-container--hidden'])
-        setIsTagsFull(false)
-        break
-      case 'tags-in-full':
-        setIconStyle(styles['icon--hidden'])
-        setSearchContainerStyle(styles['search-container'] + ' ' + styles['search-container--full'])
-        setIsTagsFull(true)
-        setTimeout(() => inputRef.current && inputRef.current.focus(), 0)
-        break
-    }
-  }, [componentState])
 
   return (
     <div className={style}>
@@ -170,11 +82,12 @@ export default function Search({ style, topics }) {
         id="search"
       >
         <Icon
-          style={iconStyle}
-          onClick={(childRef) => setIconRef(childRef)}
+          style={state.iconStyle}
+          onClick={() => dispatch('icon-clicked')}
+          passRef={(childRef) => setIconRef(childRef)}
         />
         <div
-          className={searchContainerStyle ?? styles['search-container']}
+          className={state.searchContainerStyle}
         >
           <form
             action="/search"
@@ -185,10 +98,10 @@ export default function Search({ style, topics }) {
             ref={searchFormRef}
           >
             <SearchInput
-              passRef={(ref) => setInputRef(ref)}
+              passRef={(childRef) => setInputRef(childRef)}
             />
             <Tags
-                isFull={isTagsFull}
+                isFull={state.componentState === 'tags-in-full'}
                 topics={topics}
             />
           </form>
@@ -214,3 +127,37 @@ function contains(parent, item) {
 
   return contains(parent, itemParentNode)
 }
+
+function reducer (state, { type }) {
+  switch (true) {
+    case type === 'init':
+      return {
+        componentState: 'search-minimal-shown',
+        iconStyle: styles.icon + ' ' + styles['icon--hidden'],
+        searchContainerStyle: styles['search-container'],
+      }
+
+    case
+      (state.componentState === 'search-minimal-shown' && type === 'window-scrolled') ||
+      (state.componentState === 'tags-in-full' && type === 'tags-blurred'):
+      return {
+        ...state,
+        componentState: 'only-icon',
+        iconStyle: styles.icon,
+        searchContainerStyle: styles['search-container'] + ' ' + styles['search-container--hidden'],
+      }
+
+    case
+      (state.componentState === 'only-icon' && type === 'icon-clicked') ||
+      (state.componentState === 'search-minimal-shown' && type === 'input-focused'):
+      return {
+        ...state,
+        componentState: 'tags-in-full',
+        iconStyle: styles.icon + ' ' + styles['icon--hidden'],
+        searchContainerStyle: styles['search-container'] + ' ' + styles['search-container--full'], // TODO: add useEffect for this property to focus search input field
+      }
+  }
+  return state
+}
+
+export default Search

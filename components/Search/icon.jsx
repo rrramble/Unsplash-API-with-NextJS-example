@@ -1,9 +1,11 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import styles from './icon.module.scss'
 
-export default function Icon({ style, onClick }) {
+export default function Icon({ style, onClick, passRef }) {
   const iconRef = useRef()
+
+  useEffect(() => passRef(iconRef), [])
 
   return (
     <div
@@ -11,7 +13,7 @@ export default function Icon({ style, onClick }) {
     >
       <button
         className={styles.self}
-        onClick={() => onClick(iconRef)} // TODO: send Ref one time
+        onClick={onClick}
         ref={iconRef}
         type="button"
       >
