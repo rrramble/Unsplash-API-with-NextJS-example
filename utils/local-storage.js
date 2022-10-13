@@ -1,9 +1,9 @@
 export function getFavoritePhotosIds(type) {
-  return lsGet('favoritePhotosIds', type)
+  return lsGetArray('favoritePhotosIds', type)
 }
 
 export function getSearchedTexts(type) {
-  return lsGet('searchedTexts', type)
+  return lsGetArray('searchedTexts', type)
 }
 
 export function isPhotoIdLiked(id) {
@@ -23,7 +23,7 @@ export function removeFavoritePhotoId(id) {
 }
 
 export function saveSearchedTexts(topic) {
-  const searchedTopics = lsGet('searchedTexts')
+  const searchedTopics = lsGetArray('searchedTexts')
 
   if (typeof topic === 'string') {
     const isAlreadySearched = searchedTopics.some(({ title }) => title === topic)
@@ -44,7 +44,7 @@ export function saveSearchedTexts(topic) {
   return lsSave('searchedTexts', topic)
 }
 
-export function lsGet(keyName, type) {
+function lsGetArray(keyName, type) {
   let asString
   try {
     asString = localStorage.getItem(keyName)
@@ -63,10 +63,7 @@ export function lsGet(keyName, type) {
   }
 }
 
-// Local Storage direct manipulation functions
-
-export function lsSave(keyName, item) {
-  const items = lsGet(keyName)
+  const items = lsGetArray(keyName)
   if (items.includes(item)) {
     return
   }
@@ -80,8 +77,7 @@ export function lsSave(keyName, item) {
   }
 }
 
-export function lsRemoveItem(keyName, item, fn) {
-  const items = lsGet(keyName).filter(
+  const items = lsGetArray(keyName).filter(
     oldItem => fn(oldItem) !== fn(item)
   )
   const str = JSON.stringify(items) // TODO: remove duplication with lsSave
