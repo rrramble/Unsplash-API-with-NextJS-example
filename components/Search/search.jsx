@@ -70,7 +70,7 @@ function Search({ style, topics }) {
     }
     if (clickedElement === iconRef.current) {
       dispatch({ type: 'icon-clicked' })
-      return
+      return // TODO: can 'dispatch' be combined with 'return'?
     }
     onBlurForm({ relatedTarget: clickedElement })
   }, [clickedElement])
