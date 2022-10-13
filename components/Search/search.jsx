@@ -33,8 +33,8 @@ function Search({ style, topics }) {
     key === 'Escape' && dispatch('tags-blurred')
   }
 
-  const onSubmitForm = ({ preventDefault }) => {
-    preventDefault && preventDefault()
+  const onSubmitForm = (e) => {
+    e.preventDefault()
     const { value: searchedText } = inputRef.current
     saveSearchedTexts(searchedText)
     router.push({
