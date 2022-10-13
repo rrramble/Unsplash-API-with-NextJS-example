@@ -23,8 +23,8 @@ export default function History({ style }) {
   }
 
   const onKeyUpWindow = (e) => {
-    if (e.keyCode === ESCAPE_KEY_CODE || e.charCode === ESCAPE_KEY_CODE) {
-      dispatch({ type: 'tags-blurred' })
+    if (e.key === 'Escape' || e.code === 'Escape') {
+      dispatch({ type: 'history-blurred' })
     }
   }
 
