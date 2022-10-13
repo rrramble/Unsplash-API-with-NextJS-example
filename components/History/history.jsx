@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 
@@ -8,48 +8,39 @@ import styles from './history.module.scss'
 
 const ESCAPE_KEY_CODE = 27
 
-// TODO: Separate component logic
+// TODO: Separate component logic from component file
 export default function History({ style }) {
   const router = useRouter()
+  const [ state, dispatch ] = useReducer(reduce, { componentState: null, tagsContainerStyle: null })
   const tagsContainerRef = useRef(null)
 
-  const [ iconRef, setIconRef ] = useState(null)
   const [ likedPhotos, setLikedPhotos ] = useState([])
-  const [ componentState, setComponentState ] = useState(null)
-  const [ tagsContainerStyle, setTagsContainerStyle ] = useState(null)
   const [ clickedElement, setClickedElement ] = useState(null)
 
+  // Global event listeners
   const onClickWindow = ({ target, relatedTarget }) => {
     setClickedElement(target ?? relatedTarget)
   }
 
-  const onBlurForm = ({ relatedTarget }) => {
-    if (contains(tagsContainerRef.current, relatedTarget)) {
-      return
-    }
-    setComponentState('only-icon')
-  }
-
   const onKeyUpWindow = (e) => {
-    if (e.keyCode !== ESCAPE_KEY_CODE && e.charCode !== ESCAPE_KEY_CODE) {
-      return
+    if (e.keyCode === ESCAPE_KEY_CODE || e.charCode === ESCAPE_KEY_CODE) {
+      dispatch({ type: 'tags-blurred' })
     }
-    setComponentState('only-icon')
   }
 
-  const onKeyUpForm = (e) => {
-    if (e.key === 'Escape') {
-      setComponentState('only-icon')
-    }
+  // Component event listeners
+  const onBlurForm = ({ relatedTarget }) => {
+    !contains(tagsContainerRef.current, relatedTarget) &&
+    dispatch({ type: 'tags-blurred' })
   }
 
   function onSubmitForm(e) {
-    e.preventDefault()
+    e.preventDefault() // TODO: Remove form
   }
 
   // Component initialization
   useEffect(() => {
-    setComponentState('only-icon')
+    dispatch({ type: 'init' })
     setLikedPhotos(getSearchedTexts())
     subscribeOnChangeSearchedTexts(() => setLikedPhotos(getSearchedTexts()))
     window.addEventListener('click', onClickWindow)
@@ -69,52 +60,26 @@ export default function History({ style }) {
     setClickedElement(null)
 
     // Clicked inside of tags container
-    if (contains(tagsContainerRef.current, clickedElement)) {
-      return
-    }
-
-    // Clicked on icon
-    if (iconRef && (iconRef.current === clickedElement)) {
-      return setComponentState(
-        componentState === 'only-icon' ? 'history-shown' : 'only-icon'
-      )
-    }
-
-    // Clicked outside of list of tags and outside of icon
-    setComponentState('only-icon')
+    !contains(tagsContainerRef.current, clickedElement) &&
+      dispatch({ type: 'icon-clicked'})
   }, [clickedElement])
 
   // Action: changed site address
   useEffect(() => {
-    setComponentState('only-icon')
+    dispatch({ type: 'init' })
   }, [router.asPath])
-
-  useEffect(() => {
-    switch (componentState) {
-      case 'only-icon':
-        setTagsContainerStyle(styles['tags-container'] + ' ' + styles['tags-container--hidden'])
-        break
-      case 'history-shown':
-        setTagsContainerStyle(styles['tags-container'] + ' ' + styles['tags-container--shown'])
-        break
-      default:
-        break
-    }
-  }, [componentState])
 
   return (
     <div className={style}>
       <div className={styles.self}>
         <Icon
-          onClick={(childRef) => setIconRef(childRef)}
           style={styles.icon}
         />
-        <div className={tagsContainerStyle ?? styles['tags-container']}>
+        <div className={state.tagsContainerStyle}>
           <form
             action="/"
             method="GET"
             onBlur={onBlurForm}
-            onKeyUp={onKeyUpForm}
             onSubmit={onSubmitForm}
             ref={tagsContainerRef}
           >
@@ -149,4 +114,27 @@ function contains(parent, item) {
   }
 
   return contains(parent, itemParentNode)
+}
+
+function reduce (state, { type }) {
+  switch (true) {
+    case
+      (type === 'init') ||
+      (state.componentState === 'history-shown' && type === 'history-blurred') ||
+      (state.componentState === 'history-shown' && type === 'icon-clicked'):
+      return {
+        ...state,
+        componentState: 'only-icon',
+        tagsContainerStyle: styles['tags-container'] + ' ' + styles['tags-container--hidden'],
+      }
+
+    case
+      state.componentState === 'only-icon' && type === 'icon-clicked':
+      return {
+        ...state,
+        componentState: 'history-shown',
+        tagsContainerStyle: styles['tags-container'] + ' ' + styles['search-container--shown'],
+      }
+  }
+  return state
 }

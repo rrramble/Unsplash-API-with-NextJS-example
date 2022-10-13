@@ -1,10 +1,6 @@
-import { useRef } from 'react'
-
 import styles from './icon.module.scss'
 
-export default function Icon({ style, onClick }) {
-  const buttonRef = useRef(null)
-
+export default function Icon({ style }) {
   return (
     <div
       className={style}
@@ -12,8 +8,6 @@ export default function Icon({ style, onClick }) {
       <button
         type="button"
         className={styles.self}
-        onClick={() => onClick(buttonRef)}
-        ref={buttonRef}
       >
         <span
           className={styles.title}
