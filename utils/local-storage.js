@@ -11,7 +11,7 @@ export function isPhotoIdLiked(id) {
 }
 
 export function saveFavoritePhotoId(id) {
-  return lsSave('favoritePhotosIds', id)
+  return lsAddItem('favoritePhotosIds', id)
 }
 
 export function subscribeOnChangeSearchedTexts(cb) {
@@ -31,7 +31,7 @@ export function saveSearchedTexts(topic) {
       return
     }
 
-    return lsSave('searchedTexts', {
+    return lsAddItem('searchedTexts', {
       id: generateUniqueID(),
       title: topic,
     })
@@ -41,9 +41,11 @@ export function saveSearchedTexts(topic) {
   if (isAlreadySearched) {
     return
   }
-  return lsSave('searchedTexts', topic)
+  return lsAddItem('searchedTexts', topic)
 }
 
+
+// Local Storage direct manipulation functions
 function lsGetArray(keyName, type) {
   let asString
   try {
@@ -63,20 +65,26 @@ function lsGetArray(keyName, type) {
   }
 }
 
+function lsAddItem(keyName, item) {
   const items = lsGetArray(keyName)
   if (items.includes(item)) {
     return
   }
 
   items.push(item)
-  const str = JSON.stringify(items)
   try {
-    localStorage.setItem(keyName, str)
+    lsSaveArray(keyName, items)
     callSubscribers(keyName)
   } catch (e) {
   }
 }
 
+function lsSaveArray(keyName, items) {
+  const str = JSON.stringify(items)
+  localStorage.setItem(keyName, str)
+}
+
+function lsRemoveItem(keyName, item, fn) {
   const items = lsGetArray(keyName).filter(
     oldItem => fn(oldItem) !== fn(item)
   )
