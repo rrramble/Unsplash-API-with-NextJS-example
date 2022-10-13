@@ -23,7 +23,7 @@ function Search({ style, topics }) {
     setClickedElement(target ?? relatedTarget)
   }
 
-  const onBlurForm = ({ relatedTarget }) => {
+   const onBlurForm = ({ relatedTarget }) => {
     relatedTarget &&
     !contains(searchFormRef.current, relatedTarget) &&
     dispatch({ type: 'tags-blurred'})
@@ -102,6 +102,7 @@ function Search({ style, topics }) {
             />
             <Tags
                 isFull={state.componentState === 'tags-in-full'}
+                onClick={(item) => saveSearchedTexts(item)}
                 topics={topics}
             />
           </form>

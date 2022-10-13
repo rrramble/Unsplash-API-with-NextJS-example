@@ -1,9 +1,8 @@
-import { saveSearchedTexts } from '@/utils/local-storage'
 import Tag from './tag'
 
 import styles from './tags.module.scss'
 
-export default function Tags({ topics, style, isFull }) {
+export default function Tags({ topics, style, isFull, onClick }) {
   const listStyle = styles.self + ' ' +
     (isFull ? styles['self--full'] : styles['self--minimized'])
 
@@ -23,7 +22,7 @@ export default function Tags({ topics, style, isFull }) {
             <Tag
               link={'/topic/' + slug}
               text={title}
-              cb={() => saveSearchedTexts({ slug, title })}
+              cb={() => onClick({ slug, title })}
             />
           </li>
         ))}
