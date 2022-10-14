@@ -42,7 +42,7 @@ export default function Home({ topicName, photos }) {
         <title>{`Фотографии с Unsplash.com. ${topicName}`}</title>
       </Head>
       <div className={styles.self}>
-        <h1 className="visually-hidden">Тема: {topicName}</h1>
+        <h1 className="visually-hidden" aria-label={`Photos on topic: ${topicName}`}>Фотографии на тему {topicName}</h1>
         <LayoutButtons />
         <form id="images" method="POST" action="/">
           <ImageCards
