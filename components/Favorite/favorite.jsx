@@ -14,6 +14,7 @@ export default function HeaderFavorite({ style }) {
         >
           <span
             className={styles.text}
+            aria-label="List of liked photos"
           >
               Избранное
           </span>
