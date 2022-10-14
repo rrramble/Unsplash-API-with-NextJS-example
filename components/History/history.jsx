@@ -77,20 +77,19 @@ export default function History({ style }) {
           passRef={(childRef) => setIconRef(childRef)}
           style={styles.icon}
         />
-        <div className={state.tagsContainerStyle}>
-          <div
-            onBlur={onBlurForm}
-            ref={tagsContainerRef}
+        <div
+          className={state.tagsContainerStyle}
+          onBlur={onBlurForm}
+          ref={tagsContainerRef}
+        >
+          <header
+            className={styles.header}
           >
-            <header
-              className={styles.header}
-            >
-              Ваши запросы
-            </header>
-            <Tags
-              items={likedPhotos}
-            />
-          </div>
+            Ваши запросы
+          </header>
+          <Tags
+            items={likedPhotos}
+          />
         </div>
       </div>
     </div>
