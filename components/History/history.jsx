@@ -12,6 +12,7 @@ const ESCAPE_KEY_CODE = 27
 export default function History({ style }) {
   const router = useRouter()
   const [ state, dispatch ] = useReducer(reduce, { componentState: null, tagsContainerStyle: null })
+  const [ iconRef, setIconRef ] = useState(useRef())
   const tagsContainerRef = useRef(null)
 
   const [ likedPhotos, setLikedPhotos ] = useState([])
@@ -34,11 +35,7 @@ export default function History({ style }) {
     dispatch({ type: 'tags-blurred' })
   }
 
-  function onSubmitForm(e) {
-    e.preventDefault() // TODO: Remove form
-  }
-
-  // Component initialization
+    // Component initialization
   useEffect(() => {
     dispatch({ type: 'init' })
     setLikedPhotos(getSearchedTexts())
@@ -59,9 +56,13 @@ export default function History({ style }) {
     }
     setClickedElement(null)
 
-    // Clicked inside of tags container
+    if (clickedElement === iconRef.current) {
+      return dispatch({ type: 'icon-clicked'})
+    }
+
+    // Clicked inside of history container
     !contains(tagsContainerRef.current, clickedElement) &&
-      dispatch({ type: 'icon-clicked'})
+      dispatch({ type: 'history-blurred'})
   }, [clickedElement])
 
   // Action: changed site address
@@ -73,6 +74,7 @@ export default function History({ style }) {
     <div className={style}>
       <div className={styles.self}>
         <Icon
+          passRef={(childRef) => setIconRef(childRef)}
           style={styles.icon}
         />
         <div className={state.tagsContainerStyle}>
@@ -80,7 +82,7 @@ export default function History({ style }) {
             action="/"
             method="GET"
             onBlur={onBlurForm}
-            onSubmit={onSubmitForm}
+            onSubmit={() => e.preventDefault()}
             ref={tagsContainerRef}
           >
             <header
