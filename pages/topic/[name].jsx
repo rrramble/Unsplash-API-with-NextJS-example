@@ -39,12 +39,23 @@ export default function Home({ topicName, photos }) {
   return (
     <>
       <Head>
-        <title>{`Фотографии с Unsplash.com. ${topicName}`}</title>
+        <title>
+          {`Фотографии с Unsplash.com. ${topicName}`}
+        </title>
       </Head>
       <div className={styles.self}>
-        <h1 className="visually-hidden" aria-label={`Photos on topic: ${topicName}`}>Фотографии на тему {topicName}</h1>
+        <h1
+          aria-label={`Photos on topic: ${topicName}`}
+          className="visually-hidden"
+        >
+          Фотографии на тему {topicName}
+        </h1>
         <LayoutButtons />
-        <form id="images" method="POST" action="/">
+        <form
+          action="/"
+          id="images"
+          method="POST"
+        >
           <ImageCards
             photos={photos}
             likedPhotosIds={likedPhotosIds}
