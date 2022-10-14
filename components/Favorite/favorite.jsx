@@ -13,11 +13,6 @@ export default function HeaderFavorite({ style }) {
           className={styles.self}
         >
           <span
-            className="visually-hidden"
-          >
-              Фото с лайками
-          </span>
-          <span
             className={styles.text}
           >
               Избранное
