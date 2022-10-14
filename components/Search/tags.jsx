@@ -10,6 +10,13 @@ export default function Tags({ topics, style, isFull, onClick }) {
     <div
       className={style}
     >
+      <header
+          aria-label="Available photos by topic:"
+          className="visually-hidden"
+        >
+          <b>Другие темы фотографий:</b>
+      </header>
+
       <menu
         className={listStyle}
         id="search-tags"
