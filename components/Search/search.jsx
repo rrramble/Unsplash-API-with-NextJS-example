@@ -86,27 +86,24 @@ function Search({ style, topics }) {
           onClick={() => dispatch('icon-clicked')}
           passRef={(childRef) => setIconRef(childRef)}
         />
-        <div
+        <form
+          action="/search"
           className={state.searchContainerStyle}
+          method="GET"
+          onBlur={onBlurForm}
+          onKeyUp={onKeyUpForm}
+          onSubmit={onSubmitForm}
+          ref={searchFormRef}
         >
-          <form
-            action="/search"
-            method="GET"
-            onBlur={onBlurForm}
-            onKeyUp={onKeyUpForm}
-            onSubmit={onSubmitForm}
-            ref={searchFormRef}
-          >
-            <SearchInput
-              passRef={(childRef) => setInputRef(childRef)}
-            />
-            <Tags
-                isFull={state.componentState === 'tags-in-full'}
-                onClick={(item) => saveSearchedTexts(item)}
-                topics={topics}
-            />
-          </form>
-        </div>
+          <SearchInput
+            passRef={(childRef) => setInputRef(childRef)}
+          />
+          <Tags
+              isFull={state.componentState === 'tags-in-full'}
+              onClick={(item) => saveSearchedTexts(item)}
+              topics={topics}
+          />
+        </form>
       </div>
     </div>
   )
