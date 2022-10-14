@@ -2,14 +2,12 @@ import Tag from './tag'
 
 import styles from './tags.module.scss'
 
-export default function Tags({ topics, style, isFull, onClick }) {
+export default function Tags({ topics, isFull, onClick }) {
   const listStyle = styles.self + ' ' +
     (isFull ? styles['self--full'] : styles['self--minimized'])
 
   return (topics &&
-    <div
-      className={style}
-    >
+    <>
       <header
           aria-label="Available photos by topic:"
           className="visually-hidden"
@@ -34,6 +32,6 @@ export default function Tags({ topics, style, isFull, onClick }) {
           </li>
         ))}
       </menu>
-    </div>
+    </>
   )
 }
