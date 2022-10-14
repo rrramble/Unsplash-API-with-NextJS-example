@@ -32,7 +32,7 @@ export default function History({ style }) {
   // Component event listeners
   const onBlurForm = ({ relatedTarget }) => {
     !contains(tagsContainerRef.current, relatedTarget) &&
-    dispatch({ type: 'tags-blurred' })
+    dispatch({ type: 'history-blurred' })
   }
 
     // Component initialization
