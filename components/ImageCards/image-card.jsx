@@ -21,8 +21,8 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   const photoProfileUrl = '/photo/' + (photoId ?? '')
 
   return (
-    <div className={styles.main}>
-      <header className={styles['author-menu-container']}>
+    <figure className={styles.main}>
+      <figcaption className={styles['author-menu-container']}>
         <ImageCardAuthor
           name={author.name}
           instagramUsername={author.instagram_username}
@@ -33,7 +33,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
         />
-      </header>
+      </figcaption>
 
       <picture className={styles['image-container']}>
         <source className={styles.image} srcSet={fullPhotoUrl} media="(min-width: 960px)" />
@@ -47,6 +47,6 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           loading="lazy"
         />
       </picture>
-    </div>
+    </figure>
   )
 }
