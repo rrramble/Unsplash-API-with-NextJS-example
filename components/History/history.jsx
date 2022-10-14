@@ -78,11 +78,8 @@ export default function History({ style }) {
           style={styles.icon}
         />
         <div className={state.tagsContainerStyle}>
-          <form
-            action="/"
-            method="GET"
+          <div
             onBlur={onBlurForm}
-            onSubmit={() => e.preventDefault()}
             ref={tagsContainerRef}
           >
             <header
@@ -93,7 +90,7 @@ export default function History({ style }) {
             <Tags
               items={likedPhotos}
             />
-          </form>
+          </div>
         </div>
       </div>
     </div>
