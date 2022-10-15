@@ -2,25 +2,23 @@ import Link from 'next/link'
 
 import styles from './favorite.module.scss'
 
-export default function HeaderFavorite({ style }) {
+export default function HeaderFavorite() {
   return (
-    <div className={style}>
-      <Link
-        href='/favorite'
+    <Link
+      href='/favorite'
+    >
+      <a
+        aria-label="Photos you liked"
+        className={styles.self}
       >
-        <a
-          aria-label="Photos you liked"
-          className={styles.self}
+        <span
+          className={styles.text}
+          aria-label="List of liked photos"
         >
-          <span
-            className={styles.text}
-            aria-label="List of liked photos"
-          >
-              Избранное
-          </span>
+            Избранное
+        </span>
 
-        </a>
-      </Link>
-    </div>
+      </a>
+    </Link>
   )
 }

@@ -9,7 +9,7 @@ import styles from './search.module.scss'
 import { saveSearchedTexts } from '@/utils/local-storage'
 
 // TODO: Separate state logic from the component file
-function Search({ style, topics }) {
+function Search({ topics }) {
   const [ state, dispatch ] = useReducer(reducer, { componentState: null, iconStyle: null, searchContainerStyle: null })
   const router = useRouter()
   const searchFormRef = useRef(null)
@@ -76,35 +76,33 @@ function Search({ style, topics }) {
   }, [clickedElement])
 
   return (
-    <div className={style}>
-      <div
-        className={styles.self}
-        id="search"
+    <div
+      className={styles.self}
+      id="search"
+    >
+      <Icon
+        style={state.iconStyle}
+        onClick={() => dispatch('icon-clicked')}
+        passRef={(childRef) => setIconRef(childRef)}
+      />
+      <form
+        action="/search"
+        className={state.searchContainerStyle}
+        method="GET"
+        onBlur={onBlurForm}
+        onKeyUp={onKeyUpForm}
+        onSubmit={onSubmitForm}
+        ref={searchFormRef}
       >
-        <Icon
-          style={state.iconStyle}
-          onClick={() => dispatch('icon-clicked')}
-          passRef={(childRef) => setIconRef(childRef)}
+        <SearchInput
+          passRef={(childRef) => setInputRef(childRef)}
         />
-        <form
-          action="/search"
-          className={state.searchContainerStyle}
-          method="GET"
-          onBlur={onBlurForm}
-          onKeyUp={onKeyUpForm}
-          onSubmit={onSubmitForm}
-          ref={searchFormRef}
-        >
-          <SearchInput
-            passRef={(childRef) => setInputRef(childRef)}
-          />
-          <Tags
-              isFull={state.componentState === 'tags-in-full'}
-              onClick={(item) => saveSearchedTexts(item)}
-              topics={topics}
-          />
-        </form>
-      </div>
+        <Tags
+            isFull={state.componentState === 'tags-in-full'}
+            onClick={(item) => saveSearchedTexts(item)}
+            topics={topics}
+        />
+      </form>
     </div>
   )
 }

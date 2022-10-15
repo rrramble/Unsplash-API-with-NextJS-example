@@ -9,7 +9,7 @@ import styles from './history.module.scss'
 const ESCAPE_KEY_CODE = 27
 
 // TODO: Separate component logic from component file
-export default function History({ style }) {
+export default function History() {
   const router = useRouter()
   const [ state, dispatch ] = useReducer(reduce, { componentState: null, tagsContainerStyle: null })
   const [ iconRef, setIconRef ] = useState(useRef())
@@ -71,26 +71,24 @@ export default function History({ style }) {
   }, [router.asPath])
 
   return (
-    <div className={style}>
-      <div className={styles.self}>
-        <Icon
-          passRef={(childRef) => setIconRef(childRef)}
-          style={styles.icon}
-        />
-        <div
-          className={state.tagsContainerStyle}
-          onBlur={onBlurForm}
-          ref={tagsContainerRef}
+    <div className={styles.self}>
+      <Icon
+        passRef={(childRef) => setIconRef(childRef)}
+        style={styles.icon}
+      />
+      <div
+        className={state.tagsContainerStyle}
+        onBlur={onBlurForm}
+        ref={tagsContainerRef}
+      >
+        <header
+          className={styles.header}
         >
-          <header
-            className={styles.header}
-          >
-            Ваши запросы
-          </header>
-          <Tags
-            items={likedPhotos}
-          />
-        </div>
+          Ваши запросы
+        </header>
+        <Tags
+          items={likedPhotos}
+        />
       </div>
     </div>
   )

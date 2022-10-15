@@ -7,14 +7,16 @@ import styles from './header.module.scss'
 
 export default function Header({ topics, isRootPage }) {
   return (
-    <nav
-      className={styles.self}
-      id='menu'
-    >
-      <HeaderLogo style={styles.logo} isRootPage={isRootPage} />
-      <Search topics={topics} style={styles.search} />
-      <Favorite style={styles.favorite} />
-      <History style={styles.history} />
+    <nav>
+      <ul
+        className={styles.self}
+        id='menu'
+      >
+        <li className={styles.logo}><HeaderLogo isRootPage={isRootPage} /></li>
+        <li className={styles.search}><Search topics={topics} /></li>
+        <li className={styles.favorite}><Favorite /></li>
+        <li className={styles.history}><History /></li>
+      </ul>
     </nav>
   )
 }
