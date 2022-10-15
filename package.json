@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next lint && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "cypress run"
   },
   "dependencies": {
     "next": "12.2.5",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@types/node": "^18.11.0",
     "@types/react": "^18.0.21",
+    "cypress": "^10.10.0",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.5",
     "sass": "^1.54.4"
