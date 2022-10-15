@@ -21,4 +21,6 @@ module.exports = defineConfig({
   component: {
     supportFile: "tests-cypress/support/component.js"
   },
+
+  video: false,
 });
