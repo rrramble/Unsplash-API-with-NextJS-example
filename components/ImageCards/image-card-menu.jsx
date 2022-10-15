@@ -12,6 +12,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
       <li className={styles['button-container']}>
         <span className="visually-hidden">{likeButtonText}</span>
         <input
+          aria-label="Like status"
           className={styles.button + ' ' + styles['button--like']}
           type="checkbox"
           name="like-toggle"
@@ -25,6 +26,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
           href={photoProfileUrl}
         >
           <a
+            aria-label="Open profile of photo"
             className={styles.button + ' ' + styles['button--open']}
           >
             <span
@@ -38,6 +40,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
 
       <li className={styles['button-container']}>
         <button
+          aria-label="Download photo"
           className={styles.button + ' ' + styles['button--download']}
           type="button"
         >
