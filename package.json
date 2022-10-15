@@ -7,7 +7,8 @@
     "build": "next lint && next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "cypress run"
+    "test": "cypress run",
+    "cy": "cypress open"
   },
   "dependencies": {
     "next": "12.2.5",
