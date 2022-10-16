@@ -6,8 +6,6 @@ import Icon from './icon'
 import Tags from './tags'
 import styles from './history.module.scss'
 
-const ESCAPE_KEY_CODE = 27
-
 // TODO: Separate component logic from component file
 export default function History() {
   const router = useRouter()
