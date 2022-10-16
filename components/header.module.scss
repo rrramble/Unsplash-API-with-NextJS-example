@@ -36,10 +36,6 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     width: $MENU-LOGO-WIDTH;
 }
 
-a.logo * {
-    cursor: pointer;
-}
-
 .search {
     grid-column: search / search-end;
     grid-row: 1;
