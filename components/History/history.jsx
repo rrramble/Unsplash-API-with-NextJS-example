@@ -76,6 +76,7 @@ export default function History() {
       />
       <div
         className={state.tagsContainerStyle}
+        data-test="menu-history__modal"
         onBlur={onBlurForm}
         ref={tagsContainerRef}
       >
