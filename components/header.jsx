@@ -1,5 +1,5 @@
 import Favorite from './Favorite/favorite'
-import HeaderLogo from './header-logo'
+import HeaderLogo from '@/components/HeaderLogo/header-logo'
 import History from '@/components/History/history'
 import Search from './Search/search'
 
