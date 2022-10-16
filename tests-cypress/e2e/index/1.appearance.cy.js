@@ -1,24 +1,24 @@
 describe('Index page "/"', () => {
-    beforeEach(() => {
-      cy.visit('/').wait(100)
-    })
+  beforeEach(() => {
+    cy.visit('/').wait(100)
+  })
 
-    it('checks Layout buttons', () => {
-      cy.get('[data-test="images-layout-button"]').
-        should('be.visible').
-        should('have.length', 2)
-    })
+  it('checks Layout buttons', () => {
+    cy.get('[data-test="images-layout-button"]').
+      should('be.visible').
+      should('have.length', 2)
+  })
 
-    it('checks Images', () => {
-      cy.get('[data-test="image-card"]').
-      each(($imageCard, index) => {
-        if (index > 5) {
-          return false
-        }
-        cy.wrap($imageCard).within(checkImageCard)
-      })
+  it('checks Images', () => {
+    cy.get('[data-test="image-card"]').
+    each(($imageCard, index) => {
+      if (index > 5) {
+        return false
+      }
+      cy.wrap($imageCard).within(checkImageCard)
     })
   })
+})
 
 function checkImageCard() {
   cy.get('[data-test="image-card__image"]').
