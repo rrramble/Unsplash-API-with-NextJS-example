@@ -19,6 +19,7 @@ describe('Index page "/"', () => {
     })
 
     it('checks Search modal', () => {
+      cy.get('[data-test="menu-search__icon"]').should('not.be.visible')
       cy.get('[data-test="menu-search__modal"]').should('be.visible')
       cy.get('[data-test="menu-search__input-container').should('be.visible')
       cy.get('[data-test="menu-search__topic-list').should('be.visible')
