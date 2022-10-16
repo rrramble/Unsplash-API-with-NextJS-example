@@ -16,7 +16,7 @@ export default function Header({ topics, isRootPage }) {
           className={styles.logo}
           data-test="menu-logo"
         >
-            <HeaderLogo isRootPage={isRootPage} />
+          <HeaderLogo isRootPage={isRootPage} />
         </li>
 
         <li
