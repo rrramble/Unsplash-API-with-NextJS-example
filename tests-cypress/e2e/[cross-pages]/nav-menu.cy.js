@@ -1,5 +1,6 @@
 import {
   checkSearchModalHalfOpen,
+  checkHistoryModalOpen,
 } from './nav-menu'
 
 describe('Site menu behaviour', () => {
@@ -18,5 +19,12 @@ describe('Site menu behaviour', () => {
       checkSearchModalHalfOpen()
     })
 
+    it('checks click on History', () => {
+      cy.get('[data-test="menu-history"]').click().wait(50)
+      checkHistoryModalOpen()
+
+      cy.get('[data-test="menu-history"]').click().wait(50)
+      checkSearchModalHalfOpen()
+    })
   })
 })
