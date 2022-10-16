@@ -17,9 +17,9 @@ describe('Site menu behaviour', () => {
     })
 
     it('checks click on Favorite', () => {
-      cy.get('[data-test="menu-favorite"]').click().wait(50)
-      cy.location('pathname').should('eq', '/favorite')
-      checkSearchModalHalfOpen()
+      cy.get('[data-test="menu-favorite"]').click().wait(50).
+        location('pathname').should('eq', '/favorite').
+        get('body').within(checkSearchModalHalfOpen)
     })
 
     it('checks click on History', () => {
