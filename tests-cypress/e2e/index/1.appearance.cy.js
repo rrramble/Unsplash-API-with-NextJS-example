@@ -20,6 +20,12 @@ describe('Index page "/"', () => {
         find('button').eq(0).should('have.text', 'История поиска')
     })
 
+    it('checks Search modal', () => {
+      cy.get('[data-test="menu-search__modal"]').should('be.visible')
+      cy.get('[data-test="menu-search__input-container').should('be.visible')
+      cy.get('[data-test="menu-search__topic-list').should('be.visible')
+    })
+
     it('Checks Images', () => {
       cy.get('main ul[class^="image-cards"] > li').
         each(($imageCard, index) => {
