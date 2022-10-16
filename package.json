@@ -21,6 +21,7 @@
     "cypress": "^10.10.0",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.5",
+    "eslint-plugin-cypress": "^2.12.1",
     "sass": "^1.54.4"
   }
 }

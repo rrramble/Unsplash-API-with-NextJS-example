@@ -11,9 +11,12 @@
     "browser": true,
     "es6": true
   },
+  "plugins": [
+    "cypress"
+  ],
   "extends": [
     "next/core-web-vitals",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:cypress/recommended"
   ]
-
 }
