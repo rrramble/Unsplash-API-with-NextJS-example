@@ -3,7 +3,7 @@ describe('Index page "/"', () => {
       cy.visit('/').wait(100)
     })
 // TODO: change "[class]" to "[data-]"" attribute
-    it('Checks menu icons: Logotype, Search, Favorites, History)', () => {
+    it('checks menu icons: Logotype, Search, Favorites, History)', () => {
       cy.get('header nav [data-test="menu-logo"]').
         find('a').should('have.attr', 'href', '/').
         find('img:visible').should('have.attr', 'alt', 'Логотип')
@@ -34,7 +34,7 @@ describe('Index page "/"', () => {
         should('have.length', 2)
     })
 
-    it('Checks Images', () => {
+    it('checks Images', () => {
       cy.get('main ul[class^="image-cards"] > li').
         each(($imageCard, index) => {
           if (index > 5) {
