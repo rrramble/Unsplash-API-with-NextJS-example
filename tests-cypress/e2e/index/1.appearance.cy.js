@@ -27,18 +27,10 @@ function checkImageCard($imageCard) {
       should('have.attr', 'src').
       and('match', /^https:\/\/images.unsplash.com\/photo-/)
 
-    checkLikeButton(
-      $imageCard.find('[data-test="menu-item"]').get()[0]
-    )
-
-    checkOpenButton(
-      $imageCard.find('[data-test="menu-item"]').get()[1]
-    )
-
-    checkDownloadButton(
-      $imageCard.find('[data-test="menu-item"]').get()[2]
-    )
-  }
+  cy.get('[data-test="menu-item--like"]').within(checkLikeButton)
+  cy.get('[data-test="menu-item--open"]').within(checkOpenButton)
+  cy.get('[data-test="menu-item--download"]').within(checkDownloadButton)
+}
 
 function checkLikeButton($el) {
   cy.wrap($el).find('input').should('exist')
