@@ -6,10 +6,18 @@ describe('Index page "/"', () => {
     })
 // TODO: change "[class]" to "[data-]"" attribute
     it('Checks menu icons: Logotype, Search, Favorites, History)', () => {
-      cy.get('header nav ul > li[class^="header_logo"]').find('a').find('img:visible').eq(0).should('have.attr', 'alt', 'Логотип')
-      cy.get('header nav ul > li[class^="header_search"]').find('button').eq(0).should('not.be.visible').should('have.text', 'Поиск')
-      cy.get('header nav ul > li[class^="header_favorite"]').find('a').eq(0).should('have.attr', 'href', '/favorite').should('have.text', 'Избранное')
-      cy.get('header nav ul > li[class^="header_history"]').find('button').eq(0).should('have.text', 'История поиска')
+      cy.get('header nav [data-test="menu-logo"]').
+        find('a').should('have.attr', 'href', '/').
+        find('img:visible').should('have.attr', 'alt', 'Логотип')
+
+      cy.get('header nav [data-test="menu-search"]').
+        find('button').eq(0).should('not.be.visible').should('have.text', 'Поиск')
+
+      cy.get('header nav [data-test="menu-favorite"]').
+        find('a').eq(0).should('have.attr', 'href', '/favorite').should('have.text', 'Избранное')
+
+      cy.get('header nav [data-test="menu-history"').
+        find('button').eq(0).should('have.text', 'История поиска')
     })
 
     it('Checks Images', () => {
