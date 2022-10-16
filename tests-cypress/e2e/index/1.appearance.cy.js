@@ -28,6 +28,12 @@ describe('Index page "/"', () => {
       cy.get('[data-test="menu-history__modal"]').should('not.be.visible')
     })
 
+    it('checks Layout buttons', () => {
+      cy.get('[data-test="images-layout-button"]').
+        should('be.visible').
+        should('have.length', 2)
+    })
+
     it('Checks Images', () => {
       cy.get('main ul[class^="image-cards"] > li').
         each(($imageCard, index) => {
