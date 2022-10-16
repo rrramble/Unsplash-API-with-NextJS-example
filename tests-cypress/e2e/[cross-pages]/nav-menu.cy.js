@@ -30,12 +30,11 @@ describe('Site menu behaviour', () => {
       checkSearchModalHalfOpen()
     })
 
-    it('scrolls window', () => {
-      cy.scrollTo(0, 0)
-      checkSearchModalHalfOpen()
-
-      cy.scrollTo(0, 1)
-      checkMenuModalsClosed()
+    it('check Search apperance when scrolling window', () => {
+      cy.scrollTo(0, -1).wait(50).
+        get('body').within(checkSearchModalHalfOpen).
+        get(window).scrollTo(0, 1, { ensureScrollable: false }).wait(50).
+        get('body').within(checkMenuModalsClosed)
     })
 
     it('checks click on Search icon', () => {
