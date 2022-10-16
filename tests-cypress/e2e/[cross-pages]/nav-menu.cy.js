@@ -1,4 +1,4 @@
-import { checkDefaultSiteState } from './nav-menu'
+import { checkSearchModalHalfOpen } from './nav-menu'
 
 describe('Site menu behaviour', () => {
   beforeEach('', () => {
@@ -7,13 +7,13 @@ describe('Site menu behaviour', () => {
 
   context('with initial site state', () => {
     it('checks default state', () => {
-      checkDefaultSiteState()
+      checkSearchModalHalfOpen()
     })
 
     it('checks click on Favorite', () => {
       cy.get('[data-test="menu-favorite"]').click().wait(50)
       cy.location('pathname').should('eq', '/favorite')
-      checkDefaultSiteState()
+      checkSearchModalHalfOpen()
     })
 
   })

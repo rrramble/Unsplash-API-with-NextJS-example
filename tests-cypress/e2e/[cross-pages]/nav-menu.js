@@ -1,4 +1,4 @@
-export function checkDefaultSiteState() {
+export function checkSearchModalHalfOpen() {
   it('checks menu icons: Logotype, Search, Favorites, History', () => {
     cy.get('header nav [data-test="menu-logo"]').
       find('a').should('have.attr', 'href', '/').
