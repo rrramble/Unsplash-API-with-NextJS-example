@@ -10,7 +10,8 @@ export default function HeaderLogo() {
         <figure>
           <Image
             src="/logo-white-on-black.svg"
-            alt="Логотип" width="32" height="32"
+            alt="Логотип"
+            height="29px" width="29px"
           />
 
           <figcaption
