@@ -38,7 +38,7 @@ describe('Site menu behaviour', () => {
       checkMenuModalsClosed()
     })
 
-    it.only('checks click on Search icon', () => {
+    it('checks click on Search icon', () => {
       cy.
         scrollTo(0, 1).get('body').within(checkMenuModalsClosed).
         get('[data-test="menu-search__icon"]').click().
