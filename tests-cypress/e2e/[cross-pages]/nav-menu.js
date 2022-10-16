@@ -40,7 +40,7 @@ export function checkSearchModalHalfOpen() {
 
 
 export function checkHistoryModalOpen() {
-  it('checks menu icons: Logotype, Search, Favorites, History', () => {
+  context('checks menu icons: Logotype, Search, Favorites, History', () => {
     cy.get('header nav [data-test="menu-logo"]').
       find('a').should('have.attr', 'href', '/').
       find('img:visible').should('have.attr', 'alt', 'Логотип')
@@ -59,7 +59,7 @@ export function checkHistoryModalOpen() {
       find('button').eq(0).should('have.text', 'История поиска')
   })
 
-  it('checks Search modal', () => {
+  context('checks Search modal', () => {
     cy.get('[data-test="menu-search__icon"]').
       should('not.be.visible')
     cy.get('[data-test="menu-search__modal"]').
@@ -70,7 +70,7 @@ export function checkHistoryModalOpen() {
       should('not.be.visible')
   })
 
-  it('checks History modal', () => {
+  context('checks History modal', () => {
     cy.get('[data-test="menu-history__modal"]').
       should('be.visible')
   })
