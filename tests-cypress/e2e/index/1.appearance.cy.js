@@ -20,12 +20,12 @@ describe('Index page "/"', () => {
     })
   })
 
-function checkImageCard($imageCard) {
-    cy.get('[data-test="image-card__image"]').
-      should('be.visible').
-      should('have.length', 1).
-      should('have.attr', 'src').
-      and('match', /^https:\/\/images.unsplash.com\/photo-/)
+function checkImageCard() {
+  cy.get('[data-test="image-card__image"]').
+    should('be.visible').
+    should('have.length', 1).
+    should('have.attr', 'src').
+    and('match', /^https:\/\/images.unsplash.com\/photo-/)
 
   cy.get('[data-test="menu-item--like"]').within(checkLikeButton)
   cy.get('[data-test="menu-item--open"]').within(checkOpenButton)
