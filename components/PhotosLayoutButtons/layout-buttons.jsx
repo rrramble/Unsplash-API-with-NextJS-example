@@ -23,7 +23,7 @@ export default function LayoutButtons() {
   return (
     <fieldset className={styles.self}>
       <legend className="visually-hidden">Раскладка фотографий:</legend>
-      <div className={styles.item}>
+      <div className={styles.item} data-test="images-layout-button">
         <label>
           <input
             type="radio"
@@ -36,7 +36,7 @@ export default function LayoutButtons() {
         </label>
       </div>
 
-      <div className={styles.item}>
+      <div className={styles.item} data-test="images-layout-button">
         <label>
           <input
             type="radio"
