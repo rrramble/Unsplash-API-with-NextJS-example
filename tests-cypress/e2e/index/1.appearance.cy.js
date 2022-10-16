@@ -46,7 +46,8 @@ describe('Index page "/"', () => {
   })
 
 function checkImageCard($imageCard) {
-    cy.wrap($imageCard).find('img[class^="image-card_image"]:visible').
+    cy.wrap($imageCard).find('[data-test="image-card__image"]').
+      should('be.visible').
       should('have.length', 1).
       should('have.attr', 'src').
       and('match', /^https:\/\/images.unsplash.com\/photo-/)
