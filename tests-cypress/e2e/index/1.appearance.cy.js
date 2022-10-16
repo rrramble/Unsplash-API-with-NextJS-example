@@ -24,6 +24,10 @@ describe('Index page "/"', () => {
       cy.get('[data-test="menu-search__topic-list').should('be.visible')
     })
 
+    it('checks History modal', () => {
+      cy.get('[data-test="menu-history__modal"]').should('not.be.visible')
+    })
+
     it('Checks Images', () => {
       cy.get('main ul[class^="image-cards"] > li').
         each(($imageCard, index) => {
