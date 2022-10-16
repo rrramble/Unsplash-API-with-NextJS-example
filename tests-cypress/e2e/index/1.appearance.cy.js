@@ -66,7 +66,7 @@ function checkImageCard($imageCard) {
   }
 
 function checkLikeButton($el) {
-  cy.wrap($el).find('input')
+  cy.wrap($el).find('input').should('exist')
 }
 
 function checkOpenButton($el) {
@@ -76,5 +76,5 @@ function checkOpenButton($el) {
 }
 
 function checkDownloadButton($el) {
-  cy.wrap($el).find('button')
+  cy.wrap($el).find('button').should('exist')
 }
