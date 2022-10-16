@@ -88,6 +88,7 @@ function Search({ topics }) {
       <form
         action="/search"
         className={state.searchContainerStyle}
+        data-test="menu-search__modal"
         method="GET"
         onBlur={onBlurForm}
         onKeyUp={onKeyUpForm}

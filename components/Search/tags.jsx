@@ -17,6 +17,7 @@ export default function Tags({ topics, isFull, onClick }) {
 
       <menu
         className={listStyle}
+        data-test={"menu-search__topic-list"}
         id="search-tags"
       >
         {topics.map(({ slug, title }) => (

@@ -10,6 +10,7 @@ export default function SearchInput({ style, passRef }) {
   return (
     <div
       className={style}
+      data-test="menu-search__input-container"
     >
       <label
         className="visually-hidden"
