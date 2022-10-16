@@ -80,11 +80,15 @@ function Search({ topics }) {
       className={styles.self}
       id="search"
     >
-      <Icon
-        style={state.iconStyle}
-        onClick={() => dispatch('icon-clicked')}
-        passRef={(childRef) => setIconRef(childRef)}
-      />
+      <div
+        className={styles.icon}
+      >
+        <Icon
+          isHidden={state.isIconHidden}
+          onClick={() => dispatch('icon-clicked')}
+          passRef={(childRef) => setIconRef(childRef)}
+        />
+      </div>
       <form
         action="/search"
         className={state.searchContainerStyle}
@@ -130,7 +134,7 @@ function reducer (state, { type }) {
     case type === 'init':
       return {
         componentState: 'search-minimal-shown',
-        iconStyle: styles.icon + ' ' + styles['icon--hidden'],
+        isIconHidden: true,
         searchContainerStyle: styles['search-container'],
       }
 
@@ -140,7 +144,7 @@ function reducer (state, { type }) {
       return {
         ...state,
         componentState: 'only-icon',
-        iconStyle: styles.icon,
+        isIconHidden: false,
         searchContainerStyle: styles['search-container'] + ' ' + styles['search-container--hidden'],
       }
 
@@ -150,7 +154,7 @@ function reducer (state, { type }) {
       return {
         ...state,
         componentState: 'tags-in-full',
-        iconStyle: styles.icon + ' ' + styles['icon--hidden'],
+        isIconHidden: true,
         searchContainerStyle: styles['search-container'] + ' ' + styles['search-container--full'], // TODO: add useEffect for this property to focus search input field
       }
   }

@@ -14,11 +14,6 @@ $SEARCH--ICON-POSITION-TOP: calc(($MENU-HEIGHT - $MENU-ICON-WIDTH-GRID) / 2);
     width: 100%;
 }
 
-.icon--hidden {
-    display: hidden;
-    visibility: hidden;
-}
-
 .search-container {
     align-items: stretch;
     background-color: black;
