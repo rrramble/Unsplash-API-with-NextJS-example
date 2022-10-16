@@ -23,11 +23,11 @@ describe('Site menu behaviour', () => {
     })
 
     it('checks click on History', () => {
-      cy.get('[data-test="menu-history"]').click().wait(50)
-      checkHistoryModalOpen()
+      cy.get('[data-test="menu-history"]').click().wait(50).
+        get('body').within(checkHistoryModalOpen)
 
-      cy.get('[data-test="menu-history"]').click().wait(50)
-      checkSearchModalHalfOpen()
+      cy.get('[data-test="menu-history"]').click().wait(50).
+        get('body').within(checkSearchModalHalfOpen)
     })
 
     it('check Search apperance when scrolling window', () => {
