@@ -35,7 +35,7 @@ describe('Index page "/"', () => {
     })
 
     it('checks Images', () => {
-      cy.get('main ul[class^="image-cards"] > li').
+      cy.get('[data-test="image-card"]').
         each(($imageCard, index) => {
           if (index > 5) {
             return false
