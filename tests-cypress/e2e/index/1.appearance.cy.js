@@ -36,12 +36,12 @@ describe('Index page "/"', () => {
 
     it('checks Images', () => {
       cy.get('[data-test="image-card"]').
-        each(($imageCard, index) => {
-          if (index > 5) {
-            return false
-          }
-          checkImageCard($imageCard)
-        })
+      each(($imageCard, index) => {
+        if (index > 5) {
+          return false
+        }
+        checkImageCard($imageCard)
+      })
     })
   })
 
