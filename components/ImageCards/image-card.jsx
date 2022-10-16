@@ -41,6 +41,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
         <source className={styles.image} srcSet={regularPhotoUrl + ' 2x, ' + smallPhotoUrl ?? thumbnailPhotoUrl} media="(min-width: 320px)" />
         <img
           className={styles.image}
+          data-test="image-card__image"
           src={thumbnailPhotoUrl}
           alt={photoAlt}
           sizes="(min-width: 660px) 30vw, 100vw"
