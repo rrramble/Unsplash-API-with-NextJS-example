@@ -2,6 +2,7 @@ import {
   checkSearchModalHalfOpen,
   checkHistoryModalOpen,
   checkMenuModalsClosed,
+  checkSearchModalOpen,
 } from './nav-menu'
 
 describe('Site menu behaviour', () => {
@@ -35,6 +36,13 @@ describe('Site menu behaviour', () => {
 
       cy.scrollTo(0, 1)
       checkMenuModalsClosed()
+    })
+
+    it.only('checks click on Search icon', () => {
+      cy.
+        scrollTo(0, 1).get('body').within(checkMenuModalsClosed).
+        get('[data-test="menu-search__icon"]').click().
+        get('body').within(checkSearchModalOpen)
     })
   })
 })
