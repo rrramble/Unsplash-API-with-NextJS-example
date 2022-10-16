@@ -9,7 +9,9 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
 
   return (
     <menu className={styles.self}>
-      <li className={styles['button-container']} data-test="menu-item">
+      <li className={styles['button-container']}
+        data-test="menu-item"
+      >
         <span className="visually-hidden">{likeButtonText}</span>
         <input
           aria-label="Like status"
@@ -21,7 +23,9 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
         />
       </li>
 
-      <li className={styles['button-container']} data-test="menu-item">
+      <li className={styles['button-container']}
+        data-test="menu-item"
+      >
         <Link
           href={photoProfileUrl}
         >
@@ -38,7 +42,9 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
         </Link>
       </li>
 
-      <li className={styles['button-container']} data-test="menu-item">
+      <li className={styles['button-container']}
+        data-test="menu-item"
+      >
         <button
           aria-label="Download photo"
           className={styles.button + ' ' + styles['button--download']}
