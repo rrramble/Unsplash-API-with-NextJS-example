@@ -55,7 +55,7 @@ export function checkHistoryModalOpen() {
       should('have.attr', 'href', '/favorite').
       should('have.text', 'Избранное')
 
-    cy.get('header nav [data-test="menu-history"').
+    cy.get('header nav [data-test="menu-history"]').
       find('button').eq(0).should('have.text', 'История поиска')
   })
 
@@ -64,9 +64,9 @@ export function checkHistoryModalOpen() {
       should('not.be.visible')
     cy.get('[data-test="menu-search__modal"]').
       should('not.be.visible')
-    cy.get('[data-test="menu-search__input-container').
+    cy.get('[data-test="menu-search__input-container"]').
       should('not.be.visible')
-    cy.get('[data-test="menu-search__topic-list').
+    cy.get('[data-test="menu-search__topic-list"]').
       should('not.be.visible')
   })
 
