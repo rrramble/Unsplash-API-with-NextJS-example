@@ -11,7 +11,7 @@ describe('Site menu behaviour', () => {
   })
 
   context('with initial site state', () => {
-    it.only('checks default state', () => {
+    it('checks default state', () => {
       cy.get('body').within(checkSearchModalHalfOpen).
         focused().should('not.exist')
     })
