@@ -6,6 +6,8 @@ describe('Site menu behaviour', () => {
   })
 
   context('with initial site state', () => {
-    checkDefaultSiteState()
+    it('checks default state', () => {
+      checkDefaultSiteState()
+    })
   })
 })
