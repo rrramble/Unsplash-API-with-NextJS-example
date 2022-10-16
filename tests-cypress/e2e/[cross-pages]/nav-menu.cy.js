@@ -6,7 +6,7 @@ import {
 
 describe('Site menu behaviour', () => {
   beforeEach('', () => {
-    cy.visit('/').wait(100)
+    cy.viewport(375, 600).visit('/').wait(100)
   })
 
   context('with initial site state', () => {
