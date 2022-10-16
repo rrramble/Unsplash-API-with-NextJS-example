@@ -11,9 +11,9 @@ describe('Site menu behaviour', () => {
   })
 
   context('with initial site state', () => {
-    it('checks default state', () => {
-      checkSearchModalHalfOpen()
-      cy.focused().should('not.exist')
+    it.only('checks default state', () => {
+      cy.get('body').within(checkSearchModalHalfOpen).
+        focused().should('not.exist')
     })
 
     it('checks click on Favorite', () => {
