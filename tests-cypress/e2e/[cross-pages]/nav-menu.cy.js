@@ -1,4 +1,6 @@
-import { checkSearchModalHalfOpen } from './nav-menu'
+import {
+  checkSearchModalHalfOpen,
+} from './nav-menu'
 
 describe('Site menu behaviour', () => {
   beforeEach('', () => {
