@@ -2,7 +2,7 @@ const { assert } = require("console")
 
 describe('Index page "/"', () => {
     beforeEach(() => {
-      cy.visit('/')
+      cy.visit('/').wait(100)
     })
 // TODO: change "[class]" to "[data-]"" attribute
     it('Checks menu icons: Logotype, Search, Favorites, History)', () => {
