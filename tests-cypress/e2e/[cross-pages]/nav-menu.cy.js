@@ -9,5 +9,12 @@ describe('Site menu behaviour', () => {
     it('checks default state', () => {
       checkDefaultSiteState()
     })
+
+    it('checks click on Favorite', () => {
+      cy.get('[data-test="menu-favorite"]').click().wait(50)
+      cy.location('pathname').should('eq', '/favorite')
+      checkDefaultSiteState()
+    })
+
   })
 })
