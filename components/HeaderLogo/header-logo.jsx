@@ -7,7 +7,9 @@ export default function HeaderLogo() {
   return (
     <Link href="/">
       <a className={styles.self}>
-        <figure>
+        <figure
+          className={styles.container}
+        >
           <Image
             src="/logo-white-on-black.svg"
             alt="Логотип"
