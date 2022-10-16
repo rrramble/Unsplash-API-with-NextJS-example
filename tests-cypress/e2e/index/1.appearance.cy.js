@@ -2,7 +2,7 @@ describe('Index page "/"', () => {
     beforeEach(() => {
       cy.visit('/').wait(100)
     })
-// TODO: change "[class]" to "[data-]"" attribute
+
     it('checks menu icons: Logotype, Search, Favorites, History)', () => {
       cy.get('header nav [data-test="menu-logo"]').
         find('a').should('have.attr', 'href', '/').
