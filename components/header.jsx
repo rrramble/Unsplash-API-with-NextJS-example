@@ -12,10 +12,33 @@ export default function Header({ topics, isRootPage }) {
         className={styles.self}
         id='menu'
       >
-        <li className={styles.logo} data-test="menu-logo"><HeaderLogo isRootPage={isRootPage} /></li>
-        <li className={styles.search} data-test="menu-search"><Search topics={topics} /></li>
-        <li className={styles.favorite} data-test="menu-favorite"><Favorite /></li>
-        <li className={styles.history} data-test="menu-history"><History /></li>
+        <li
+          className={styles.logo}
+          data-test="menu-logo"
+        >
+            <HeaderLogo isRootPage={isRootPage} />
+        </li>
+
+        <li
+          className={styles.search}
+          data-test="menu-search"
+        >
+          <Search topics={topics} />
+        </li>
+
+        <li
+          className={styles.favorite}
+          data-test="menu-favorite"
+        >
+          <Favorite />
+        </li>
+
+        <li
+          className={styles.history}
+          data-test="menu-history"
+        >
+          <History />
+        </li>
       </ul>
     </nav>
   )
