@@ -1,5 +1,3 @@
-const { assert } = require("console")
-
 describe('Index page "/"', () => {
     beforeEach(() => {
       cy.visit('/').wait(100)
