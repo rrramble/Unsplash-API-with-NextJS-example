@@ -13,6 +13,7 @@ export default function Icon({ style, onClick, passRef }) {
     >
       <button
         className={styles.self}
+        data-test="menu-search__icon"
         onClick={onClick}
         ref={iconRef}
         type="button"
