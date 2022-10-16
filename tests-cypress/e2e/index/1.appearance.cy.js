@@ -52,11 +52,17 @@ function checkImageCard($imageCard) {
       should('have.attr', 'src').
       and('match', /^https:\/\/images.unsplash.com\/photo-/)
 
-    $imageCard.find('menu > li[class^="image-card-menu_"]').map((index, i) => {
-      if (index === 0) checkLikeButton(i)
-      if (index === 1) checkOpenButton(i)
-      if (index === 2) checkDownloadButton(i)
-    })
+    checkLikeButton(
+      $imageCard.find('[data-test="menu-item"]').get()[0]
+    )
+
+    checkOpenButton(
+      $imageCard.find('[data-test="menu-item"]').get()[1]
+    )
+
+    checkDownloadButton(
+      $imageCard.find('[data-test="menu-item"]').get()[2]
+    )
   }
 
 function checkLikeButton($el) {
