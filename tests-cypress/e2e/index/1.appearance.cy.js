@@ -15,13 +15,13 @@ describe('Index page "/"', () => {
         if (index > 5) {
           return false
         }
-        checkImageCard($imageCard)
+        cy.wrap($imageCard).within(checkImageCard)
       })
     })
   })
 
 function checkImageCard($imageCard) {
-    cy.wrap($imageCard).find('[data-test="image-card__image"]').
+    cy.get('[data-test="image-card__image"]').
       should('be.visible').
       should('have.length', 1).
       should('have.attr', 'src').
