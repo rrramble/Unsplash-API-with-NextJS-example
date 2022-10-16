@@ -24,9 +24,8 @@ describe('Site menu behaviour', () => {
 
     it('checks click on History', () => {
       cy.get('[data-test="menu-history"]').click().wait(50).
-        get('body').within(checkHistoryModalOpen)
-
-      cy.get('[data-test="menu-history"]').click().wait(50).
+        get('body').within(checkHistoryModalOpen).
+        get('[data-test="menu-history"]').click().wait(50).
         get('body').within(checkSearchModalHalfOpen)
     })
 
