@@ -13,13 +13,45 @@
     margin: 0;
     padding: 0;
     pointer-events: inherit;
+    position: relative;
     width: 100%;
 }
 
 .title {
-    font-size: 1px;
-    font-size: 0;
-    color: transparent;
-    position: fixed;
-    top: -10000px;
+    color: white;
+    font-size: 18px;
+    line-height: 22px;
+    position: relative;
+
+    &::before {
+        background-color: white;
+        bottom: -9px;
+        height: 3px;
+        position: absolute;
+        right: 0;
+        width: 30px;
+    }
+}
+
+.title:hover {
+    &::before {
+        content: "";
+    }
+}
+
+@media (max-width: calc($SCREEN--BIG - 0.01px)) {
+    .title {
+        @include visually-hidden
+    }
+}
+
+@media (min-width: calc($SCREEN--BIG)) {
+    .self {
+        background-position-x: 0;
+        padding-left: calc($MENU--SEARCH-ICON-HEIGHT + 12px);
+    }
+
+    .title {
+        background-position-x: 0;
+    }
 }
