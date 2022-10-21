@@ -21,4 +21,15 @@ $ICON-OPEN-IN-FULL: '<svg width="34" height="33" viewBox="0 0 34 33" fill="none"
 $ICON-DOWNLOAD-WHITE: '<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.2499 13.4584H23.5024C24.7633 13.4584 25.3866 14.9884 24.4941 15.8809L17.9916 22.3834C17.4391 22.9359 16.5466 22.9359 15.9941 22.3834L9.49159 15.8809C8.59909 14.9884 9.23659 13.4584 10.4974 13.4584H12.7499V6.37504C12.7499 5.59587 13.3874 4.95837 14.1666 4.95837H19.8333C20.6124 4.95837 21.2499 5.59587 21.2499 6.37504V13.4584ZM8.49992 29.0417C7.72075 29.0417 7.08325 28.4042 7.08325 27.6251C7.08325 26.8459 7.72075 26.2084 8.49992 26.2084H25.4999C26.2791 26.2084 26.9166 26.8459 26.9166 27.6251C26.9166 28.4042 26.2791 29.0417 25.4999 29.0417H8.49992Z" fill="white"/></svg>';
 
  // TODO: later change to 1307px or 1290px specified by design
-$MAX-CONTENT-WINDOW-SIZE: calc(600px + $MENU-LEFT-PADDING + $MENU-RIGHT-PADDING);
+@mixin visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
