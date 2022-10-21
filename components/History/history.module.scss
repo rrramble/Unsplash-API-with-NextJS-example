@@ -27,10 +27,20 @@
     height: calc(100vh - $MENU-HEIGHT);
     justify-content: flex-start;
     left: 0;
-    max-width: $MAX-CONTENT-WINDOW-SIZE;
-    position: fixed;
+    right: 0;
+    position: absolute;
     top: $MENU-HEIGHT;
-    width: 100vw;
+
+    &::before {
+        bottom: 0;
+        content: "";
+        background-color: black;
+        left: -5000px;
+        position: absolute;
+        right: -5000px;
+        top: 0;
+        z-index: -1;
+    }
 }
 
 .tags-container--hidden {
