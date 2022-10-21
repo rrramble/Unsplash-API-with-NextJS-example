@@ -18,9 +18,6 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     row-gap: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: hidden;
-
     position: fixed;
     top: 0;
     width: 100%;
