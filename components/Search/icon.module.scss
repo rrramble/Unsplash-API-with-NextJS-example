@@ -24,20 +24,40 @@
 
 .title {
     color: white;
-    font-size: 12px;
-}
+    font-size: 18px;
+    line-height: 22px;
+    position: relative;
 
-@media (max-width: 639.9px) {
-    .title {
-        border: 0;
-        clip: rect(0 0 0 0);
-        clip-path: inset(100%);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
+    &::before {
+        background-color: white;
+        bottom: -9px;
+        height: 3px;
         position: absolute;
-        white-space: nowrap;
-        width: 1px;
+        right: 0;
+        width: 30px;
     }
 }
+
+.title:hover {
+    &::before {
+        content: "";
+    }
+}
+
+@media (max-width: calc($SCREEN--BIG - 0.01px)) {
+    .title {
+        @include visually-hidden
+    }
+}
+
+@media (min-width: calc($SCREEN--BIG)) {
+    .self {
+        background-position-x: 0;
+        padding-left: calc($MENU--SEARCH-ICON-HEIGHT + 12px);
+    }
+
+    .title {
+        background-position-x: 0;
+    }
+}
+
