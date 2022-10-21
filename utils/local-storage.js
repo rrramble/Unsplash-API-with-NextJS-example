@@ -46,7 +46,7 @@ export function saveSearchedTexts(topic) {
 
 
 // Local Storage direct manipulation functions
-function lsGetArray(keyName, type) {
+function lsGetArray(keyName, resultType) {
   let asString
   try {
     asString = localStorage.getItem(keyName)
@@ -54,7 +54,7 @@ function lsGetArray(keyName, type) {
     asString = '{}'
   }
 
-  if (type === 'string') {
+  if (resultType === 'string') {
     return asString
   }
 
