@@ -3,12 +3,6 @@ $SEARCH-PADDING-BOTTOM: 49px;
 $SEARCH--ICON-POSITION-RIGHT: calc(2 * $MENU-ICON-WIDTH-GRID + 15px);
 $SEARCH--ICON-POSITION-TOP: calc(($MENU-HEIGHT - $MENU-ICON-WIDTH-GRID) / 2);
 
-.self {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
 .icon {
     height: 100%;
     width: 100%;
