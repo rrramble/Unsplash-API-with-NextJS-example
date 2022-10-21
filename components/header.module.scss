@@ -13,6 +13,7 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     height: $MENU-HEIGHT;
     margin-block-start: 0;
     margin-block-end: 0;
+    max-width: $MAX-CONTENT-WINDOW-SIZE;
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     row-gap: 0.5rem;
@@ -22,7 +23,6 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     position: fixed;
     top: 0;
     width: 100%;
-    max-width: $MAX-CONTENT-WINDOW-SIZE;
     z-index: 5;
 }
 
