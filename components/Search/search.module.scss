@@ -15,6 +15,7 @@ $SEARCH--ICON-POSITION-TOP: calc(($MENU-HEIGHT - $MENU-ICON-WIDTH-GRID) / 2);
     flex-direction: column;
     justify-content: flex-start;
     left: 0;
+    max-width: $MAX-CONTENT-WINDOW-SIZE;
     position: fixed;
     top: $MENU-HEIGHT;
     width: 100vw;
