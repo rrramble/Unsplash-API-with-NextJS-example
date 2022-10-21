@@ -5,6 +5,7 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     align-items: center;
     background-color: black;
     box-sizing: border-box;
+    column-gap: 24px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,17 +42,17 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
 }
 
 .search {
-    height: $MENU-ICON-WIDTH-GRID;
+    height: $MENU--SEARCH-ICON-HEIGHT;
     margin-left: auto;
-    width: $MENU-ICON-WIDTH-GRID;
+    min-width: $MENU--SEARCH-ICON-HEIGHT;
 }
 
 .favorite {
-    height: $MENU-ICON-WIDTH-GRID;
-    width: $MENU-ICON-WIDTH-GRID;
+    height: $MENU--FAVORITE-ICON-HEIGHT;
+    min-width: $MENU--FAVORITE-ICON-HEIGHT;
 }
 
 .history {
-    height: $MENU-ICON-WIDTH-GRID;
-    width: $MENU-ICON-WIDTH-GRID;
+    height: $MENU--HISTORY-ICON-HEIGHT;
+    min-width: $MENU--HISTORY-ICON-HEIGHT;
 }
