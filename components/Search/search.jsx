@@ -68,7 +68,7 @@ function Search({ topics }) {
     if (contains(searchFormRef.current, clickedElement)) {
       return
     }
-    if (clickedElement === iconRef.current) {
+    if (contains(iconRef.current, clickedElement))   {
       dispatch({ type: 'icon-clicked' })
       return // TODO: can 'dispatch' be combined with 'return'?
     }
