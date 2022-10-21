@@ -22,6 +22,7 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     position: fixed;
     top: 0;
     width: 100%;
+    max-width: $MAX-CONTENT-WINDOW-SIZE;
     z-index: 5;
 }
 
