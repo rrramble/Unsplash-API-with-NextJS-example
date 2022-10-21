@@ -26,6 +26,17 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     z-index: 5;
 }
 
+.self::before {
+    background-color: black;
+    content: "";
+    height: $MENU-HEIGHT;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -10;
+}
+
 .logo {
     object-fit: scale-down;
     height: $MENU-LOGO-HEIGHT;
