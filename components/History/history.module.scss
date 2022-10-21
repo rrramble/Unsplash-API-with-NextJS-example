@@ -27,6 +27,7 @@
     height: calc(100vh - $MENU-HEIGHT);
     justify-content: flex-start;
     left: 0;
+    max-width: $MAX-CONTENT-WINDOW-SIZE;
     position: fixed;
     top: $MENU-HEIGHT;
     width: 100vw;
