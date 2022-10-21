@@ -76,10 +76,7 @@ function Search({ topics }) {
   }, [clickedElement])
 
   return (
-    <div
-      className={styles.self}
-      id="search"
-    >
+    <>
       <div
         className={styles.icon}
       >
@@ -108,7 +105,7 @@ function Search({ topics }) {
             topics={topics}
         />
       </form>
-    </div>
+    </>
   )
 }
 // TODO: move to its own library

@@ -22,6 +22,7 @@ export default function Header({ topics, isRootPage }) {
         <li
           className={styles.search}
           data-test="menu-search"
+          id="search"
         >
           <Search topics={topics} />
         </li>
