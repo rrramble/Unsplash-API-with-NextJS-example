@@ -14,6 +14,7 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     margin-block-start: 0;
     margin-block-end: 0;
     max-width: $MAX-CONTENT-WINDOW-SIZE;
+    min-width: $MIN-WIDTH;
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     row-gap: 0.5rem;
