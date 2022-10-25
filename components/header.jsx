@@ -20,7 +20,7 @@ export default function Header({ topics, isRootPage }) {
         </li>
 
         <li
-          className={styles.search}
+          className={styles.item}
           data-test="menu-search"
           id="search"
         >
@@ -28,14 +28,14 @@ export default function Header({ topics, isRootPage }) {
         </li>
 
         <li
-          className={styles.favorite}
+          className={styles.item}
           data-test="menu-favorite"
         >
           <Favorite />
         </li>
 
         <li
-          className={styles.history}
+          className={styles.item}
           data-test="menu-history"
         >
           <History />

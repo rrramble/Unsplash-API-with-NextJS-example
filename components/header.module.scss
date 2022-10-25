@@ -39,20 +39,10 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
 .logo {
     object-fit: scale-down;
     height: $MENU-LOGO-HEIGHT;
+    margin-right: auto;
 }
 
-.search {
-    height: $MENU--ICON-HEIGHT;
-    margin-left: auto;
-    min-width: $MENU--ICON-WIDTH;
-}
-
-.favorite {
-    height: $MENU--ICON-HEIGHT;
-    min-width: $MENU--ICON-WIDTH;
-}
-
-.history {
+.item {
     height: $MENU--ICON-HEIGHT;
     min-width: $MENU--ICON-WIDTH;
 }
