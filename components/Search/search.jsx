@@ -30,7 +30,7 @@ function Search({ topics }) {
   }
 
   const onKeyUpForm = ({ key }) => {
-    key === 'Escape' && dispatch('tags-blurred')
+    key === 'Escape' && dispatch({ type: 'tags-blurred' })
   }
 
   const onSubmitForm = (e) => {
