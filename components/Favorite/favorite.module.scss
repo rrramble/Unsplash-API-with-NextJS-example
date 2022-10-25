@@ -4,7 +4,7 @@
     background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-WHITE}");
     background-position-x: center;
     background-position-y: center;
-    background-size: $MENU--FAVORITE-ICON-HEIGHT, auto;
+    background-size: $MENU--ICON-WIDTH, $MENU--ICON-HEIGHT;
     background-repeat: no-repeat;
     border-width: 0;
     cursor: pointer;

@@ -4,7 +4,7 @@
     background-image: url('/icon-search.svg');
     background-position-x: center;
     background-position-y: center;
-    background-size: $MENU--SEARCH-ICON-HEIGHT, $MENU--SEARCH-ICON-HEIGHT;
+    background-size: $MENU--ICON-WIDTH, $MENU--ICON-HEIGHT;
     background-repeat: no-repeat;
     border-width: 0;
     cursor: pointer;
@@ -55,7 +55,7 @@
 @media (min-width: calc($SCREEN--BIG)) {
     .self {
         background-position-x: 0;
-        padding-left: calc($MENU--SEARCH-ICON-HEIGHT + 12px);
+        padding-left: calc($MENU--ICON-HEIGHT + 12px);
     }
 
     .title {

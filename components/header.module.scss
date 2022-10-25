@@ -42,17 +42,17 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
 }
 
 .search {
-    height: $MENU--SEARCH-ICON-HEIGHT;
+    height: $MENU--ICON-HEIGHT;
     margin-left: auto;
-    min-width: $MENU--SEARCH-ICON-HEIGHT;
+    min-width: $MENU--ICON-WIDTH;
 }
 
 .favorite {
-    height: $MENU--FAVORITE-ICON-HEIGHT;
-    min-width: $MENU--FAVORITE-ICON-HEIGHT;
+    height: $MENU--ICON-HEIGHT;
+    min-width: $MENU--ICON-WIDTH;
 }
 
 .history {
-    height: $MENU--HISTORY-ICON-HEIGHT;
-    min-width: $MENU--HISTORY-ICON-HEIGHT;
+    height: $MENU--ICON-HEIGHT;
+    min-width: $MENU--ICON-WIDTH;
 }
