@@ -19,21 +19,21 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     row-gap: 0.5rem;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     z-index: 5;
-}
 
-.self::before {
-    background-color: black;
-    content: "";
-    height: $MENU-HEIGHT;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: -10;
+    &::before {
+        background-color: black;
+        content: "";
+        height: $MENU-HEIGHT;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: -10;
+    }
 }
 
 .logo {
@@ -45,4 +45,33 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
 .item {
     height: $MENU--ICON-HEIGHT;
     min-width: $MENU--ICON-WIDTH;
+}
+
+.submenu {
+    background-color: black;
+    left: 0;
+    max-width: $SCREEN--BIG;
+    right: 0;
+    position: absolute;
+    top: $MENU-HEIGHT;
+    z-index: 5;
+
+    &::before {
+        bottom: 0;
+        content: "";
+        background-color: black;
+        left: -5000px;
+        position: absolute;
+        right: -5000px;
+        top: 0;
+        z-index: -1;
+    }
+}
+
+.submenu--hidden {
+    display: none;
+}
+
+.submenu--shown {
+    display: flex;
 }

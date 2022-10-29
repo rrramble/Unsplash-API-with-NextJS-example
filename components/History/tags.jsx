@@ -3,20 +3,17 @@ import styles from './tags.module.scss'
 
 export default function Tags({ style, items }) {
   return (items &&
-    <div
-      className={style}
+    <menu
+      className={styles.self}
+      id="history-texts"
     >
-      <menu
-        className={styles.self}
-        id="history-texts"
-      >
-        { items.map(item => (
-          <Tag
-            key={item.slug || item.id}
-            item={item}
-          />
-        ))}
-      </menu>
-    </div>
+      {
+        items.map(item => (
+        <Tag
+          key={item.slug || item.id}
+          item={item}
+        />
+      ))}
+    </menu>
   )
 }

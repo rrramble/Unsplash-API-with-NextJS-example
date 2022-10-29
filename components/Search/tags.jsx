@@ -2,11 +2,11 @@ import Tag from './tag'
 
 import styles from './tags.module.scss'
 
-export default function Tags({ topics, isFull, onClick }) {
+export default function Tags({ items, isFull, onClick }) {
   const listStyle = styles.self + ' ' +
     (isFull ? styles['self--full'] : styles['self--minimized'])
 
-  return (topics &&
+  return (items &&
     <>
       <header
           aria-label="Available photos by topic:"
@@ -20,7 +20,7 @@ export default function Tags({ topics, isFull, onClick }) {
         data-test={"menu-search__topic-list"}
         id="search-tags"
       >
-        {topics.map(({ slug, title }) => (
+        {items.map(({ slug, title }) => (
           <li
             className={styles['item-container']}
             key={slug}

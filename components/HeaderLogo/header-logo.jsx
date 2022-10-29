@@ -3,26 +3,31 @@ import Link from 'next/link'
 
 import styles from './header-logo.module.scss'
 
-export default function HeaderLogo() {
+export default function HeaderLogo({ className = '', dataTest }) {
   return (
-    <Link href="/">
-      <a className={styles.self}>
-        <figure
-          className={styles.container}
-        >
-          <Image
-            src="/logo-white-on-black.svg"
-            alt="Логотип"
-            height="29px" width="29px"
-          />
-
-          <figcaption
-            className={styles.header}
+    <div
+      className={className}
+      data-test={dataTest}
+    >
+      <Link href="/">
+        <a className={styles.self}>
+          <figure
+            className={styles.container}
           >
-            ImageStock
-          </figcaption>
-        </figure>
-      </a>
-    </Link>
+            <Image
+              src="/logo-white-on-black.svg"
+              alt="Логотип"
+              height="29px" width="29px"
+            />
+
+            <figcaption
+              className={styles.header}
+            >
+              ImageStock
+            </figcaption>
+          </figure>
+        </a>
+      </Link>
+    </div>
   )
 }

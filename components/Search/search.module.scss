@@ -1,39 +1,21 @@
 $SEARCH-COEFF: calc(375px / $MIN-WIDTH);
 $SEARCH-PADDING-BOTTOM: 49px;
 
-.icon {
-    height: 100%;
-    width: 100%;
-}
 
-.search-container {
+.self {
     align-items: stretch;
-    background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    left: 0;
-    right: 0;
-    position: absolute;
-    top: $MENU-HEIGHT;
+    width: 100%;
 
-    &::before {
-        bottom: 0;
-        content: "";
-        background-color: black;
-        left: -5000px;
-        position: absolute;
-        right: -5000px;
-        top: 0;
-        z-index: -1;
-    }
 }
 
-.search-container--full {
+.self--full {
     height: calc(100vh - $MENU-HEIGHT);
 }
 
-.search-container--hidden {
+.self--hidden {
     display: none;
 }
 
