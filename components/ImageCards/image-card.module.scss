@@ -6,24 +6,24 @@ $IMAGE-CARD--WIDTH: calc($MIN-WIDTH - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
 $IMAGE-CARD--BORDER-RADIUS: 8px;
 
 .main {
+    display: block;
     list-style: none;
     margin-bottom: $IMAGE-CARD-BOTTOM-MARGIN;
     max-width: $IMAGE-CARD-MAX-WIDTH;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0;
     position: relative;
-    width: $IMAGE-CARD--WIDTH;
 }
 
 .image-container {
+    display: block;
     object-fit: scale-down;
     width: 100%;
 }
 
 .image {
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
-    height: auto;
+    display: block;
+    max-width: calc(100vw - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
     object-fit: contain;
     width: 100%;
 }
