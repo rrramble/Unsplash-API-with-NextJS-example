@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useReducer, useState } from 'react'
-import { saveSearchedTexts } from '@/utils/local-storage'
-import { getSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
+import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 
 import Favorite from './Favorite/favorite'
 import HeaderLogo from '@/components/HeaderLogo/header-logo'
