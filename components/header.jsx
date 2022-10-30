@@ -83,7 +83,7 @@ export default function Header({ topics, isRootPage }) {
         className={styles.submenu}
       >
         <Search
-          onBlur={onBlurSearch(dispatch, searchContainerRef).bind(this)}
+          onBlur={onBlurModal(dispatch, searchContainerRef).bind(this)}
           onSubmit={onSubmitSearch(router)}
           passRef={(childRef) => setSearchContainerRef(childRef)}
           isFull={state.isSearchFull}
@@ -92,7 +92,7 @@ export default function Header({ topics, isRootPage }) {
         />
         <History
           isHidden={state.isHistoryHidden}
-          onBlur={onBlurHistory(dispatch, historyContainerRef).bind(this)}
+          onBlur={onBlurModal(dispatch, historyContainerRef).bind(this)}
           passRef={(childRef) => {setHistoryContainerRef(childRef)}}
           items={likedPhotos}
         />
@@ -101,25 +101,13 @@ export default function Header({ topics, isRootPage }) {
   )
 }
 
-const onBlurHistory = (dispatch, historyContainerRef) => {
-  return ({ relatedTarget }) => {
-    if (!relatedTarget) {
-      return dispatch({ type: 'history-tags-blurred' })
-    }
-    if (!contains(historyContainerRef?.current, relatedTarget)) {
-      return dispatch({ type: 'history-tags-blurred' })
-    }
+const onBlurModal = (dispatch, modalRef) => ({ relatedTarget }) => {
+  if (!relatedTarget) {
+    return dispatch({ type: 'modal-blurred' })
   }
-}
 
-const onBlurSearch = (dispatch, searchFormRef) => {
-  return ({ relatedTarget }) => {
-    if (!relatedTarget) {
-      return dispatch({ type: 'search-tags-blurred' })
-    }
-    if (!contains(searchFormRef?.current, relatedTarget)) {
-      return dispatch({ type: 'search-tags-blurred' })
-    }
+  if (!contains(modalRef?.current, relatedTarget)) {
+    return dispatch({ type: 'modal-blurred' })
   }
 }
 
@@ -172,9 +160,8 @@ function reducer (state, { type }) {
       type === 'escape-pressed' ||
       type === 'window-scrolled' ||
       (type === 'search-icon-clicked' && state.isSearchFull) ||
-      (type === 'search-tags-blurred' && state.isSearchFull) ||
       (type === 'history-icon-clicked' && !state.isHistoryHidden) ||
-      (type === 'history-tags-blurred' && !state.isHistoryHidden):
+      type === 'modal-blurred':
       return {
         // Close modals
         isSearchIconHidden: false,
