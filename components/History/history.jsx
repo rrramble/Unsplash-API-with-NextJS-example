@@ -3,7 +3,13 @@ import { useEffect, useRef } from 'react'
 import Tags from './tags'
 import styles from './history.module.scss'
 
-export default function History({ isShown, items, onBlurForm, onClick, passRef }) {
+export default function History({
+  isHidden,
+  items,
+  onBlur,
+  onClick,
+  passRef,
+}) {
   const ref = useRef()
 
   useEffect(() => {
@@ -12,9 +18,9 @@ export default function History({ isShown, items, onBlurForm, onClick, passRef }
 
   return (
     <form
-      className={styles.self + ' ' + (isShown ? styles['self--shown'] : styles['self--hidden'])}
+      className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : styles['self--shown'])}
       data-test="menu-history__modal"
-      onBlur={onBlurForm}
+      onBlur={onBlur}
       ref={ref}
     >
       <header

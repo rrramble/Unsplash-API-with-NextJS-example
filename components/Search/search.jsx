@@ -12,14 +12,14 @@ export default function Search({
     passRef,
     items,
     isFull,
-    isOpen,
+    isHidden,
 }) {
 
   const ref = useRef()
   const [ inputRef, setInputRef] = useState()
 
   let additionalClassName
-  if (!isOpen) {
+  if (isHidden) {
     additionalClassName = styles['self--hidden']
   } else if (isFull) {
     additionalClassName = styles['self--full']

@@ -74,6 +74,7 @@ export default function Header({ topics, isRootPage }) {
         <HistoryIcon
           className={styles.item}
           dataTest="menu-history"
+          isHidden={state.isHistoryIconHidden}
           onClick={() => dispatch({ type: 'history-icon-clicked' })}
         />
       </nav>
@@ -85,12 +86,12 @@ export default function Header({ topics, isRootPage }) {
           onBlur={onBlurSearch(dispatch, searchContainerRef).bind(this)}
           onSubmit={onSubmitSearch(router)}
           passRef={(childRef) => setSearchContainerRef(childRef)}
-          isOpen={state.isSearchContainerOpen}
-          isFull={state.isSearchContainerFull}
+          isFull={state.isSearchFull}
+          isHidden={state.isSearchHidden}
           items={topics}
         />
         <History
-          isShown={state.isHistoryShown}
+          isHidden={state.isHistoryHidden}
           onBlur={onBlurHistory(dispatch, historyContainerRef).bind(this)}
           passRef={(childRef) => {setHistoryContainerRef(childRef)}}
           items={likedPhotos}
@@ -138,42 +139,50 @@ function reducer (state, { type }) {
     case
       type === 'init':
       return {
-        isHistoryShown: false,
-        isSearchIconHidden: false,
-        isSearchContainerOpen: true,
-        isSearchContainerFull: false,
+        isSearchIconHidden: true,
+        isSearchHidden: false,
+        isSearchFull: false,
+        isHistoryIconHidden: false,
+        isHistoryHidden: true,
       }
 
     case
-      (type === 'search-icon-clicked' && !state.isSearchContainerFull):
+      (type === 'search-icon-clicked' && !state.isSearchFull):
       return {
-        isHistoryShown: false,
-        isSearchIconHidden: false,
-        isSearchContainerOpen: true,
-        isSearchContainerFull: true,
+        // Open Search modal
+        isSearchIconHidden: true,
+        isSearchHidden: false,
+        isSearchFull: true,
+        isHistoryIconHidden: false,
+        isHistoryHidden: true,
       }
+
+    case
+      (type === 'history-icon-clicked' && state.isHistoryHidden):
+      return {
+        // Open History modal
+        isSearchIconHidden: false,
+        isSearchHidden: true,
+        isSearchFull: false,
+        isHistoryIconHidden: true,
+        isHistoryHidden: false,
+    }
 
     case
       type === 'escape-pressed' ||
       type === 'window-scrolled' ||
-      (type === 'search-icon-clicked' && state.isSearchContainerFull) ||
-      (type === 'history-icon-clicked' && state.isHistoryShown) ||
-      (type === 'search-tags-blurred' && state.isSearchContainerFull):
+      (type === 'search-icon-clicked' && state.isSearchFull) ||
+      (type === 'search-tags-blurred' && state.isSearchFull) ||
+      (type === 'history-icon-clicked' && !state.isHistoryHidden) ||
+      (type === 'history-tags-blurred' && !state.isHistoryHidden):
       return {
-        isHistoryShown: false,
+        // Close modals
         isSearchIconHidden: false,
-        isSearchContainerOpen: false,
-        isSearchContainerFull: false,
+        isSearchHidden: true,
+        isSearchFull: false,
+        isHistoryIconHidden: false,
+        isHistoryHidden: true,
       }
-
-    case
-      (type === 'history-icon-clicked' && !state.isHistoryShown):
-      return {
-        isHistoryShown: true,
-        isSearchIconHidden: false,
-        isSearchContainerOpen: false,
-        isSearchContainerFull: false,
-    }
   }
   return state
 }
