@@ -39,7 +39,7 @@ export default function Search({
       className={styles.self + ' ' + additionalClassName}
       data-test="menu-search__modal"
       method="GET"
-      onBlur={onBlur}
+      onBlur={isRelatedTargetInsideComponent(onBlur)}
       onKeyUp={onKeyUp}
       onSubmit={(e) => onSubmit(e, inputRef?.current?.value)}
       ref={ref}
@@ -54,4 +54,24 @@ export default function Search({
       />
     </form>
   )
+}
+
+function isRelatedTargetInsideComponent(callback) {
+  return e => {
+    !contains(e.currentTarget, e.relatedTarget) && callback(e)
+  }
+}
+
+// TODO: move to its own library
+function contains (parent, item) {
+  if (parent === undefined || item === undefined || item === null) {
+    return false
+  }
+
+  if (parent === item) {
+    return true
+  }
+
+  const { parentNode: itemParentNode } = item
+  return contains(parent, itemParentNode)
 }
