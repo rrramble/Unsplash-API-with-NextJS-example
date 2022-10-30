@@ -143,7 +143,7 @@ function reducer (state, { type }) {
     }
 
     case
-      type === 'escape-pressed' ||
+      (type === 'escape-pressed' && (state.isSearchFull || !state.isHistoryHidden))||
       type === 'window-scrolled' ||
       (type === 'search-icon-clicked' && state.isSearchFull) ||
       (type === 'history-icon-clicked' && !state.isHistoryHidden) ||
