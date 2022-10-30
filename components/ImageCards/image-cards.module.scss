@@ -2,11 +2,17 @@ $IMAGES-COEFF: calc(375px / $MIN-WIDTH);
 $IMAGES-MARGIN-TOP: calc(29px / $IMAGES-COEFF);
 
 .self {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    column-gap: 27px;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 476px));
+    justify-content: center;
     list-style: none;
-    margin-top: $IMAGES-MARGIN-TOP;
+    margin: 0;
     padding: 0;
+    row-gap: 26px;
+}
+
+.li {
+    display: block;
 }
