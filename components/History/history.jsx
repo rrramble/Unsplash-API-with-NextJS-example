@@ -20,7 +20,7 @@ export default function History({
     <form
       className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : styles['self--shown'])}
       data-test="menu-history__modal"
-      onBlur={onBlur}
+      onBlur={isRelatedTargetInsideComponent(onBlur)}
       ref={ref}
     >
       <header
@@ -34,4 +34,24 @@ export default function History({
       />
     </form>
   )
+}
+
+function isRelatedTargetInsideComponent(callback) {
+  return e => {
+    !contains(e.currentTarget, e.relatedTarget) && callback(e)
+  }
+}
+
+// TODO: move to its own library
+function contains (parent, item) {
+  if (parent === undefined || item === undefined || item === null) {
+    return false
+  }
+
+  if (parent === item) {
+    return true
+  }
+
+  const { parentNode: itemParentNode } = item
+  return contains(parent, itemParentNode)
 }
