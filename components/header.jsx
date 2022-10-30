@@ -16,8 +16,6 @@ import styles from './header.module.scss'
 export default function Header({ topics, isRootPage }) {
   const router = useRouter()
   const [ state, dispatch ] = useReducer(reducer, {})
-  const [ searchContainerRef, setSearchContainerRef ] = useState(null)
-  const [ historyContainerRef, setHistoryContainerRef ] = useState(null)
   const [ likedPhotos, setLikedPhotos ] = useState([])
 
   const onKeyUpWindow = ({ key }) => key === 'Escape' && dispatch({ type: 'escape-pressed' })
@@ -25,8 +23,7 @@ export default function Header({ topics, isRootPage }) {
 
   useEffect(() => {
     dispatch({ type: 'init' })
-    const likedPhotos = getSearchedTexts()
-    setLikedPhotos(likedPhotos)
+    setLikedPhotos(getSearchedTexts())
     subscribeOnChangeSearchedTexts(() => setLikedPhotos(getSearchedTexts()))
 
     window.addEventListener('scroll', onScrollWindow)
@@ -60,7 +57,7 @@ export default function Header({ topics, isRootPage }) {
           dataTest="menu-search"
           id="search"
           isHidden={state.isSearchIconHidden}
-          onClick={() => dispatch({ type: 'search-icon-clicked' })}
+          onClick={(e) => e.stopPropagation() || dispatch({ type: 'search-icon-clicked' })}
           state={state.searchIcon}
           topics={topics}
         />
@@ -74,7 +71,7 @@ export default function Header({ topics, isRootPage }) {
           className={styles.item}
           dataTest="menu-history"
           isHidden={state.isHistoryIconHidden}
-          onClick={() => dispatch({ type: 'history-icon-clicked' })}
+          onClick={(e) => e.stopPropagation() || dispatch({ type: 'history-icon-clicked' })}
         />
       </nav>
 
@@ -82,32 +79,22 @@ export default function Header({ topics, isRootPage }) {
         className={styles.submenu}
       >
         <Search
-          onBlur={onBlurModal(dispatch, searchContainerRef).bind(this)}
+          isFirstFocused={true}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
           onSubmit={onSubmitSearch(router)}
-          passRef={(childRef) => setSearchContainerRef(childRef)}
           isFull={state.isSearchFull}
           isHidden={state.isSearchHidden}
           items={topics}
         />
         <History
+          isFirstFocused={true}
           isHidden={state.isHistoryHidden}
-          onBlur={onBlurModal(dispatch, historyContainerRef).bind(this)}
-          passRef={(childRef) => {setHistoryContainerRef(childRef)}}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
           items={likedPhotos}
         />
       </MenuModal>
     </>
   )
-}
-
-const onBlurModal = (dispatch, modalRef) => ({ relatedTarget }) => {
-  if (!relatedTarget) {
-    return dispatch({ type: 'modal-blurred' })
-  }
-
-  if (!contains(modalRef?.current, relatedTarget)) {
-    return dispatch({ type: 'modal-blurred' })
-  }
 }
 
 const onSubmitSearch = (router) => {
@@ -160,7 +147,7 @@ function reducer (state, { type }) {
       type === 'window-scrolled' ||
       (type === 'search-icon-clicked' && state.isSearchFull) ||
       (type === 'history-icon-clicked' && !state.isHistoryHidden) ||
-      type === 'modal-blurred':
+      (type === 'modal-blurred' && (state.isSearchFull || !state.isHistoryHidden)):
       return {
         // Close modals
         isSearchIconHidden: false,
@@ -171,22 +158,4 @@ function reducer (state, { type }) {
       }
   }
   return state
-}
-
-// TODO: move to its own library
-function contains (parent, item) {
-  if (parent === undefined || item === undefined || item === null) {
-    return false
-  }
-
-  if (parent === item) {
-    return true
-  }
-
-  const { parentNode: itemParentNode } = item
-  if (itemParentNode === undefined) {
-    return false
-  }
-
-  return contains(parent, itemParentNode)
 }
