@@ -73,26 +73,26 @@ export default function Header({ topics, isRootPage }) {
           isHidden={state.isHistoryIconHidden}
           onClick={(e) => e.stopPropagation() || dispatch({ type: 'history-icon-clicked' })}
         />
-      </nav>
 
-      <MenuModal
-        className={styles.submenu}
-      >
-        <Search
-          isFirstFocused={true}
-          onBlur={() => dispatch({ type: 'modal-blurred' })}
-          onSubmit={onSubmitSearch(router)}
-          isFull={state.isSearchFull}
-          isHidden={state.isSearchHidden}
-          items={topics}
-        />
-        <History
-          isFirstFocused={true}
-          isHidden={state.isHistoryHidden}
-          onBlur={() => dispatch({ type: 'modal-blurred' })}
-          items={likedPhotos}
-        />
-      </MenuModal>
+        <MenuModal
+          className={styles.submenu}
+        >
+          <Search
+            isFirstFocused={true}
+            onBlur={() => dispatch({ type: 'modal-blurred' })}
+            onSubmit={onSubmitSearch(router)}
+            isFull={state.isSearchFull}
+            isHidden={state.isSearchHidden}
+            items={topics}
+          />
+          <History
+            isFirstFocused={true}
+            isHidden={state.isHistoryHidden}
+            onBlur={() => dispatch({ type: 'modal-blurred' })}
+            items={likedPhotos}
+          />
+        </MenuModal>
+      </nav>
     </>
   )
 }

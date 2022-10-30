@@ -50,7 +50,6 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
 .submenu {
     background-color: black;
     left: 0;
-    max-width: $SCREEN--BIG;
     right: 0;
     position: absolute;
     top: $MENU-HEIGHT;
