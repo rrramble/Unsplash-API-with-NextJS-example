@@ -4,6 +4,7 @@ import Tags from './tags'
 import styles from './history.module.scss'
 
 export default function History({
+  isFirstFocused,
   isHidden,
   items,
   onBlur,
@@ -13,7 +14,7 @@ export default function History({
   const ref = useRef()
 
   useEffect(() => {
-    passRef(ref)
+    passRef && passRef(ref)
   })
 
   return (
@@ -29,6 +30,7 @@ export default function History({
         Ваши запросы
       </header>
       <Tags
+        isFirstFocused={isFirstFocused}
         items={items}
         onClick={onClick}
       />
