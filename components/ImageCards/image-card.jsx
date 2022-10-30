@@ -40,12 +40,11 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
         <source className={styles.image} srcSet={fullPhotoUrl + ' 2x, ' + regularPhotoUrl} media="(min-width: 660px)" />
         <source className={styles.image} srcSet={regularPhotoUrl + ' 2x, ' + smallPhotoUrl ?? thumbnailPhotoUrl} media="(min-width: 320px)" />
         <img
+          alt={photoAlt}
           className={styles.image}
           data-test="image-card__image"
-          src={thumbnailPhotoUrl}
-          alt={photoAlt}
-          sizes="(min-width: 660px) 30vw, 100vw"
           loading="lazy"
+          src={thumbnailPhotoUrl}
         />
       </picture>
     </figure>
