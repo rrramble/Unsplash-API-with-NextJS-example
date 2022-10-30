@@ -64,8 +64,10 @@ export function checkHistoryModalOpen() {
       should('not.be.visible')
     cy.get('[data-test="menu-search__modal"]').
       should('not.be.visible')
+
     cy.get('[data-test="menu-search__input-container"]').
       should('not.be.visible')
+
     cy.get('[data-test="menu-search__topic-list"]').
       should('not.be.visible')
   })
