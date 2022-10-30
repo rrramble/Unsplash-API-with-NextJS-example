@@ -5,7 +5,10 @@ export default function ImageCards({ photos, likedPhotosIds = [], onClickLikeBut
   return (
     <ul className={styles.self}>
       { photos.map(photo =>
-          <li key={photo.id}>
+          <li
+            className={styles.li}
+            key={photo.id}
+          >
             <ImageCard
               photo={photo}
               isLiked={likedPhotosIds.includes(photo.id)}
