@@ -14,8 +14,7 @@
 Исходники залить в любой репозиторий git и развернуть результат на
 VPS, можно использовать Heroku.
 
-[Требуемый дизайн интерфейса]
-(https://www.figma.com/file/VHHUfQm7sQsziibED8EAa5/Rocket-frontend-test?node-id=151%3A123)
+[Требуемый дизайн интерфейса](https://www.figma.com/file/VHHUfQm7sQsziibED8EAa5/Rocket-frontend-test?node-id=151%3A123)
 в Фигме
 
 ## Дополнительно задание
