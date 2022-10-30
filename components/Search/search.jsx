@@ -15,14 +15,14 @@ export default function Search({
     isOpen,
 }) {
 
-  let classNames = styles.self
   const ref = useRef()
   const [ inputRef, setInputRef] = useState()
 
+  let additionalClassName
   if (!isOpen) {
-    classNames += (' ' + styles['self--hidden'])
+    additionalClassName = styles['self--hidden']
   } else if (isFull) {
-      classNames += (' ' + styles['self--full'])
+    additionalClassName = styles['self--full']
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Search({
   return (
     <form
       action="/search"
-      className={classNames}
+      className={styles.self + ' ' + additionalClassName}
       data-test="menu-search__modal"
       method="GET"
       onBlur={onBlur}
