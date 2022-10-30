@@ -21,7 +21,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   const photoProfileUrl = '/photo/' + (photoId ?? '')
 
   return (
-    <figure className={styles.main} data-test="image-card">
+    <figure className={styles.self} data-test="image-card">
       <figcaption className={styles['author-menu-container']}>
         <ImageCardAuthor
           name={author.name}
