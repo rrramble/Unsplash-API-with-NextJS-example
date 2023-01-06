@@ -7,7 +7,7 @@ import {
 
 describe('Site menu behaviour', () => {
   beforeEach('', () => {
-    cy.viewport(375, 600).visit('/').wait(100)
+    cy.viewport(375, 600).visit('/')
   })
 
   context('with initial site state', () => {
@@ -17,22 +17,22 @@ describe('Site menu behaviour', () => {
     })
 
     it('checks click on Favorite', () => {
-      cy.get('[data-test="menu-favorite"]').click().wait(50).
+      cy.get('[data-test="menu-favorite"]').click().
         location('pathname').should('eq', '/favorite').
         get('body').within(checkSearchModalHalfOpen)
     })
 
     it('checks click on History', () => {
-      cy.get('[data-test="menu-history"]').click().wait(50).
+      cy.get('[data-test="menu-history"]').click().
         get('body').within(checkHistoryModalOpen).
-        get('[data-test="menu-history"]').click().wait(50).
+        get('[data-test="menu-history"]').click().
         get('body').within(checkSearchModalHalfOpen)
     })
 
     it('check Search apperance when scrolling window', () => {
-      cy.scrollTo(0, -1).wait(50).
+      cy.scrollTo(0, -1).
         get('body').within(checkSearchModalHalfOpen).
-        get(window).scrollTo(0, 1, { ensureScrollable: false }).wait(50).
+        get(window).scrollTo(0, 1, { ensureScrollable: false }).
         get('body').within(checkMenuModalsClosed)
     })
 
