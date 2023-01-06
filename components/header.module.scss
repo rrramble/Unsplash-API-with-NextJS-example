@@ -46,31 +46,3 @@ $MENU-LOGO-WIDTH: calc(25px / $MENU-COEFF);
     height: $MENU--ICON-HEIGHT;
     min-width: $MENU--ICON-WIDTH;
 }
-
-.submenu {
-    background-color: black;
-    left: 0;
-    right: 0;
-    position: absolute;
-    top: $MENU-HEIGHT;
-    z-index: 5;
-
-    &::before {
-        bottom: 0;
-        content: "";
-        background-color: black;
-        left: -5000px;
-        position: absolute;
-        right: -5000px;
-        top: 0;
-        z-index: -1;
-    }
-}
-
-.submenu--hidden {
-    display: none;
-}
-
-.submenu--shown {
-    display: flex;
-}
