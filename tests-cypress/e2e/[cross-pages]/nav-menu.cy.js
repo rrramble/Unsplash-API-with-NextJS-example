@@ -29,7 +29,7 @@ describe('Site menu behaviour', () => {
         get('body').within(checkSearchModalHalfOpen)
     })
 
-    it('check Search apperance when scrolling window', () => {
+    it('checks Search apperance when scrolling window', () => {
       cy.scrollTo(0, -1).
         get('body').within(checkSearchModalHalfOpen).
         get(window).scrollTo(0, 1, { ensureScrollable: false }).
