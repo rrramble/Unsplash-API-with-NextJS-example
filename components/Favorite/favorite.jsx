@@ -8,7 +8,7 @@ export default function HeaderFavorite({ className, dataTest }) {
       className={className}
       data-test={dataTest}
     >
-      <Link
+      <Link legacyBehavior
         href='/favorite'
       >
         <a

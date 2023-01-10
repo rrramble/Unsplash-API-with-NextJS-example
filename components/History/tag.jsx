@@ -18,7 +18,7 @@ export default function Tag({ isFocused, item }) {
     <li
       className={styles.self}
     >
-      <Link
+      <Link legacyBehavior
         href={href}
       >
         <a

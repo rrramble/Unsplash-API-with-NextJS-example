@@ -12,7 +12,7 @@ export default function SimilarTags({ tags = [] }) {
             key={title}
             className={styles['tag-container']}
           >
-            <Link href={links.html}>
+            <Link legacyBehavior href={links.html}>
               <a
                 target="_blank"
                 className={styles.tag}

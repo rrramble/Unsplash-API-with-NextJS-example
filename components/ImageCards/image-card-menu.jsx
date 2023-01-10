@@ -26,7 +26,7 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
       <li className={styles['button-container']}
         data-test="menu-item--open"
       >
-        <Link
+        <Link legacyBehavior
           href={photoProfileUrl}
         >
           <a

@@ -5,7 +5,7 @@ import styles from './footer.module.scss'
 
 export default function Footer() {
   return (
-    <Link
+    <Link legacyBehavior
       href='#menu-margin-filler'
     >
       <a className={styles['go-up-button']}>

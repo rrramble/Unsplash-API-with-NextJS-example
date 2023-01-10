@@ -9,7 +9,7 @@ export default function HeaderLogo({ className = '', dataTest }) {
       className={className}
       data-test={dataTest}
     >
-      <Link href="/">
+      <Link legacyBehavior href="/">
         <a className={styles.self}>
           <figure
             className={styles.container}
@@ -17,7 +17,7 @@ export default function HeaderLogo({ className = '', dataTest }) {
             <Image
               src="/logo-white-on-black.svg"
               alt="Логотип"
-              height="29px" width="29px"
+              height="29" width="29"
             />
 
             <figcaption

@@ -19,15 +19,15 @@ export default function ImageCardAuthor({ name, instagramUsername, imageUrl }) {
           className={styles.thumbnail}
           src={imageUrl}
           alt="Аватар автора"
-          width="70px"
-          height="70px"
+          width="70"
+          height="70"
         />
       }
 
     <span className={styles.name}>{name}</span>
     <span className="visually-hidden">Инстаграм:</span>
     { instagramUsername &&
-      <Link
+      <Link legacyBehavior
         href={instagramLink}
       >
         <a className={styles['instagram-account']}>@{instagramUsername}</a>

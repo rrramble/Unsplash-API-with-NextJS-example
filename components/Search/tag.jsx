@@ -4,7 +4,7 @@ import styles from './tag.module.scss'
 
 export default function Tag({ link, text, cb }) {
   return (
-    <Link
+    <Link legacyBehavior
       href={link}
     >
       <a
