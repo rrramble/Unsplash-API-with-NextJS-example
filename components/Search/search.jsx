@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { saveSearchedTexts } from '../../utils/local-storage'
 
 import SearchInput from './search-input'
 import Tags from './tags'
