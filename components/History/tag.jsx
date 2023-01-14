@@ -18,14 +18,11 @@ export default function Tag({ isFocused, item }) {
     <li
       className={styles.self}
     >
-      <Link legacyBehavior
+      <Link
         href={href}
+        ref={ref}
       >
-        <a
-          ref={ref}
-        >
-          {title}
-        </a>
+        {title}
       </Link>
     </li>
   )

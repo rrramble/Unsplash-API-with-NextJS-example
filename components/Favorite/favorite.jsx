@@ -8,21 +8,17 @@ export default function HeaderFavorite({ className, dataTest }) {
       className={className}
       data-test={dataTest}
     >
-      <Link legacyBehavior
+      <Link
+        aria-label="Photos you liked"
+        className={styles.self}
         href='/favorite'
       >
-        <a
-          aria-label="Photos you liked"
-          className={styles.self}
+        <span
+          className={styles.text}
+          aria-label="List of liked photos"
         >
-          <span
-            className={styles.text}
-            aria-label="List of liked photos"
-          >
-              Избранное
-          </span>
-
-        </a>
+          Избранное
+        </span>
       </Link>
     </div>
   )

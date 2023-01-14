@@ -27,10 +27,11 @@ export default function ImageCardAuthor({ name, instagramUsername, imageUrl }) {
     <span className={styles.name}>{name}</span>
     <span className="visually-hidden">Инстаграм:</span>
     { instagramUsername &&
-      <Link legacyBehavior
+      <Link
+        className={styles['instagram-account']}
         href={instagramLink}
       >
-        <a className={styles['instagram-account']}>@{instagramUsername}</a>
+        @{instagramUsername}
       </Link>
     }
     </address>

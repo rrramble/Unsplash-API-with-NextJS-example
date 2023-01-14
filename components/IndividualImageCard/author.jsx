@@ -31,10 +31,11 @@ export default function Author({ name, instagramUsername, imageUrl }) {
         { instagramUsername && (
           <>
             <span className="visually-hidden">Инстаграм:</span>
-            <Link legacyBehavior
+            <Link
+              className={styles.instagram}
               href={instagramLink}
             >
-              <a className={styles.instagram}>@{instagramUsername}</a>
+              @{instagramUsername}
             </Link>
           </>
         )}
