@@ -9,14 +9,14 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
     urls: photoUrls,
     color: backgroundColor,
     user: author,
-  } = photo
+  } = photo || {}
 
   const {
       full: fullPhotoUrl,
       regular: regularPhotoUrl,
       small: smallPhotoUrl,
       thumb: thumbPhotoUrl,
-  } = photoUrls
+  } = photoUrls || {}
 
   const photoUrl = regularPhotoUrl && smallPhotoUrl && fullPhotoUrl && thumbPhotoUrl
 
@@ -24,12 +24,12 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
       name: authorName,
       profile_image: authorProfileImages,
       instagram_username: instagramUsername,
-  } = author
+  } = author || {}
 
   const authorProfileUrl =
-    authorProfileImages.large ||
-    authorProfileImages.medium ||
-    authorProfileImages.small
+    authorProfileImages?.large ||
+    authorProfileImages?.medium ||
+    authorProfileImages?.small || null
 
   return (
     <div

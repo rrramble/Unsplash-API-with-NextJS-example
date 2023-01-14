@@ -27,18 +27,15 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
         data-test="menu-item--open"
       >
         <Link
+          aria-label="Open profile of photo"
+          className={styles.button + ' ' + styles['button--open']}
           href={photoProfileUrl}
         >
-          <a
-            aria-label="Open profile of photo"
-            className={styles.button + ' ' + styles['button--open']}
+          <span
+            className="visually-hidden"
           >
-            <span
-              className="visually-hidden"
-            >
-                Открыть профиль фотографии
-            </span>
-          </a>
+            Открыть профиль фотографии
+          </span>
         </Link>
       </li>
 

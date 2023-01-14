@@ -32,9 +32,10 @@ export default function Author({ name, instagramUsername, imageUrl }) {
           <>
             <span className="visually-hidden">Инстаграм:</span>
             <Link
+              className={styles.instagram}
               href={instagramLink}
             >
-              <a className={styles.instagram}>@{instagramUsername}</a>
+              @{instagramUsername}
             </Link>
           </>
         )}

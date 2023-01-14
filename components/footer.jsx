@@ -7,12 +7,11 @@ export default function Footer() {
   return (
     <Link
       href='#menu-margin-filler'
+      className={styles['go-up-button']}
     >
-      <a className={styles['go-up-button']}>
-        <span className='visually-hidden'>
-            В начало страницы
-        </span>
-      </a>
+      <span className='visually-hidden'>
+          В начало страницы
+      </span>
     </Link>
   )
 }

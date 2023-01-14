@@ -6,13 +6,10 @@ export default function Tag({ link, text, cb }) {
   return (
     <Link
       href={link}
+      className={styles.self}
+      onClick={cb}
     >
-      <a
-        className={styles.self}
-        onClick={cb}
-      >
-        {text}
-      </a>
+      {text}
     </Link>
   )
 }

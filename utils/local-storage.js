@@ -76,6 +76,7 @@ function lsAddItem(keyName, item) {
     lsSaveArray(keyName, items)
     callSubscribers(keyName)
   } catch (e) {
+    return
   }
 }
 
