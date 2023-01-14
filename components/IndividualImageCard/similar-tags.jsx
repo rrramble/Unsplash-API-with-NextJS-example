@@ -2,7 +2,11 @@ import Link from 'next/link'
 
 import styles from './similar-tags.module.scss'
 
-export default function SimilarTags({ tags = [] }) {
+export default function SimilarTags({ tags }) {
+  if (!tags) {
+    tags = []
+  }
+
   return (
     <aside>
       <h2 className={styles.header}>Похожие тэги</h2>
@@ -13,11 +17,11 @@ export default function SimilarTags({ tags = [] }) {
             className={styles['tag-container']}
           >
             <Link
-                className={styles.tag}
+              className={styles.tag}
               href={links.html}
               target="_blank"
-              >
-                {title}
+            >
+              {title}
             </Link>
           </li>
         ))}

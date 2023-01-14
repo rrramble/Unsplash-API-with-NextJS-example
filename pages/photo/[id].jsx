@@ -27,10 +27,10 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function Home({ photo = [], photos = [] }) {
-  const { description, user, related_collections, id: photoId } = photo
-  const { name: authorName = null } = user
-  const { results: realtedTags = null } = related_collections
+export default function Home({ photo, photos = [] }) {
+  const { description, user, related_collections, id: photoId } = photo || {}
+  const { name: authorName = null } = user || {}
+  const { results: realtedTags = null } = related_collections || {}
   const titleText = (description || authorName) ?
     `. ${description ? description + '. ' : ''} ${authorName ?? ''}` :
     ''
