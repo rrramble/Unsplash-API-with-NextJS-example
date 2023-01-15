@@ -2,12 +2,12 @@ import Link from 'next/link'
 
 import styles from './favorite.module.scss'
 
-export default function HeaderFavorite({ className, dataTest }) {
+export default function HeaderFavorite({ className }) {
   return (
     <div
       className={className}
-      data-test={dataTest}
-    >
+      data-test="menu-favorite"
+      >
       <Link
         aria-label="Photos you liked"
         className={styles.self}

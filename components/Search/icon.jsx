@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import styles from './icon.module.scss'
 
-export default function Icon({ className, dataTest, isHidden, onClick, passRef }) {
+export default function Icon({ className, isHidden, onClick, passRef }) {
   const iconRef = useRef()
 
   useEffect(() => passRef && passRef(iconRef), [])
@@ -10,7 +10,8 @@ export default function Icon({ className, dataTest, isHidden, onClick, passRef }
   return (
     <div
       className={className}
-      data-test={dataTest}
+      data-test="menu-search"
+      id="search"
     >
       <button
         className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : '')}

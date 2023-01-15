@@ -48,14 +48,11 @@ export default function Header({ topics, isRootPage }) {
       >
         <HeaderLogo
           className={styles.logo}
-          dataTest="menu-logo"
           isRootPage={isRootPage}
         />
 
         <SearchIcon
           className={styles.item}
-          dataTest="menu-search"
-          id="search"
           isHidden={state.isSearchIconHidden}
           onClick={(e) => e.stopPropagation() || dispatch({ type: 'search-icon-clicked' })}
           state={state.searchIcon}
@@ -64,12 +61,10 @@ export default function Header({ topics, isRootPage }) {
 
         <Favorite
           className={styles.item}
-          dataTest="menu-favorite"
         />
 
         <HistoryIcon
           className={styles.item}
-          dataTest="menu-history"
           isHidden={state.isHistoryIconHidden}
           onClick={(e) => e.stopPropagation() || dispatch({ type: 'history-icon-clicked' })}
         />

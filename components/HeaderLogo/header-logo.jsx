@@ -3,12 +3,12 @@ import Link from 'next/link'
 
 import styles from './header-logo.module.scss'
 
-export default function HeaderLogo({ className = '', dataTest }) {
+export default function HeaderLogo({ className = '' }) {
   return (
     <div
       className={className}
-      data-test={dataTest}
-    >
+      data-test="menu-logo"
+      >
       <Link
         className={styles.self}
         href="/"

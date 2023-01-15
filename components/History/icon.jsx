@@ -3,7 +3,6 @@ import styles from './icon.module.scss'
 
 export default function Icon({
   className,
-  dataTest,
   isHidden,
   onClick,
   passRef,
@@ -15,8 +14,8 @@ export default function Icon({
   return (
     <div
       className={className}
-      data-test={dataTest}
-    >
+      data-test="menu-history"
+      >
       <button
         type="button"
         className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : '')}
