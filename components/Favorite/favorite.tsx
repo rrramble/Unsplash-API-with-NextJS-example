@@ -2,7 +2,11 @@ import Link from 'next/link'
 
 import styles from './favorite.module.scss'
 
-export default function HeaderFavorite({ className }) {
+type ThisProps = {
+  className: string;
+};
+
+export default function HeaderFavorite({ className }: ThisProps) {
   return (
     <div
       className={className}
