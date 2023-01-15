@@ -3,7 +3,11 @@ import Link from 'next/link'
 
 import styles from './header-logo.module.scss'
 
-export default function HeaderLogo({ className = '' }) {
+type ThisProps = {
+  className: string;
+};
+
+export default function HeaderLogo({ className = '' }: ThisProps) {
   return (
     <div
       className={className}
