@@ -1,9 +1,9 @@
 import path from 'path'
 import { promises as fs } from 'fs'
 
-async function getJSONDataFile(pathParts) {
+async function getJSONDataFile(pathParts: string[]) {
   const jsonFileFullPath = path.join(process.cwd(), 'data', ...pathParts)
-  let contents
+  let contents: string
   try {
     contents = await fs.readFile(jsonFileFullPath, 'utf8')
     return JSON.parse(contents)
@@ -12,11 +12,11 @@ async function getJSONDataFile(pathParts) {
   }
 }
 
-export async function getPhoto(id) {
+export async function getPhoto(id: string) {
   return await getJSONDataFile(['photos', id + '.json'])
 }
 
-export async function getPhotos(slugName) {
+export async function getPhotos(slugName: string) {
   return await getJSONDataFile(['topics', slugName + '.json'])
 }
 
