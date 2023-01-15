@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '../../utils/local-storage'
+import { contains } from '@/utils/helper-browser'
 
 import SearchInput from './search-input'
 import Tags from './tags'
@@ -61,18 +62,4 @@ function isRelatedTargetInsideComponent(callback) {
   return e => {
     !contains(e.currentTarget, e.relatedTarget) && callback(e)
   }
-}
-
-// TODO: move to its own library
-function contains (parent, item) {
-  if (parent === undefined || item === undefined || item === null) {
-    return false
-  }
-
-  if (parent === item) {
-    return true
-  }
-
-  const { parentNode: itemParentNode } = item
-  return contains(parent, itemParentNode)
 }

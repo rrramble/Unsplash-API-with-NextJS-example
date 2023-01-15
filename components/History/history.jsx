@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { contains } from '@/utils/helper-browser'
 
 import Tags from './tags'
 import styles from './history.module.scss'
@@ -42,18 +43,4 @@ function isRelatedTargetInsideComponent(callback) {
   return e => {
     !contains(e.currentTarget, e.relatedTarget) && callback(e)
   }
-}
-
-// TODO: move to its own library
-function contains (parent, item) {
-  if (parent === undefined || item === undefined || item === null) {
-    return false
-  }
-
-  if (parent === item) {
-    return true
-  }
-
-  const { parentNode: itemParentNode } = item
-  return contains(parent, itemParentNode)
 }
