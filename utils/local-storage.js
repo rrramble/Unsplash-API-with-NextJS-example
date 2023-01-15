@@ -1,3 +1,5 @@
+import { generateUniqueID } from '@/utils/helper-browser'
+
 export function getFavoritePhotosIds(type) {
   return lsGetArray('favoritePhotosIds', type)
 }
@@ -102,11 +104,4 @@ function callSubscribers(keyName) {
   subscribers.forEach(item =>
     (item.keyName === keyName) && item.cb()
   )
-}
-
-// TODO: move to its own library/part
-function generateUniqueID() {
-  const timePart = Date.now()
-  const randomPart = Math.floor(Math.random() * 1000000)
-  return `${timePart}${randomPart}`
 }
