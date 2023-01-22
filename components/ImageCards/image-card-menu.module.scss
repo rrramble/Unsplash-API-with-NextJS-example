@@ -43,14 +43,14 @@ $IMAGE-CARD-MENU--ZOOM-COEFF: calc(56px / $IMAGE-CARD-MENU--ICON-HEIGHT);
     &--download {
         background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-DOWNLOAD-WHITE}");
     }
-}
 
-.button--like {
-    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-WHITE}");
-}
+    &--like {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-WHITE}");
+    }
 
-.button--like:checked {
-    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-RED}");
+    &--like:checked {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-HEART-RED}");
+    }
 }
 
 .button:hover,
