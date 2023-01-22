@@ -8,7 +8,7 @@ export default function Footer({ onClick }) {
       onClick={onClick}
     >
       <span className='visually-hidden'>
-          В начало страницы
+        В начало страницы
       </span>
     </button>
   )
