@@ -50,13 +50,11 @@ export default function Home() {
       <div className={styles.self}>
         <h1 className="visually-hidden">Избранные фотографии</h1>
         <LayoutButtons />
-        <form id="images" method="POST" action="/">
-          <ImageCards
-            photos={photos}
-            likedPhotosIds={likedPhotosIds}
-            onClickLikeButton={onClickLikeButton}
-          />
-        </form>
+        <ImageCards
+          photos={photos}
+          likedPhotosIds={likedPhotosIds}
+          onClickLikeButton={onClickLikeButton}
+        />
       </div>
     </>
   )
