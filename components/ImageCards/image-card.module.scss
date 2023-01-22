@@ -9,7 +9,6 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     display: block;
     list-style: none;
     margin-bottom: $IMAGE-CARD-BOTTOM-MARGIN;
-    max-width: $IMAGE-CARD-MAX-WIDTH;
     margin: 0;
     position: relative;
 }
@@ -23,7 +22,6 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 .image {
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     display: block;
-    max-width: calc(100vw - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
     object-fit: contain;
     width: 100%;
 }
