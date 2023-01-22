@@ -50,9 +50,9 @@ export default function Search({
         passRef={(childRef) => setInputRef(childRef)}
       />
       <Tags
-          isFull={isFull}
-          onClick={(item) => saveSearchedTexts(item)}
-          items={items}
+        isFull={isFull}
+        onClick={(item) => saveSearchedTexts(item)}
+        items={items}
       />
     </form>
   )
