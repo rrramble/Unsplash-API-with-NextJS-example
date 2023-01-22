@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg"
-  width="22" height="22" viewBox="-8 -8 22 22" fill="none">
-  <path
-    fill-rule="evenodd" clip-rule="evenodd" fill="white"
-    d="M 6.616 5.6924 H 7.6364 L 13.1131 11.1949 C 13.6426 11.7245 13.6426 12.5899 13.1131 13.1195 C 12.5835 13.6491 11.7181 13.6491 11.1885 13.1195 L 5.6989 7.6299 V 6.6095 L 5.3501 6.2478 C 2 7 6 2 6.2543 5.3437 L 6.616 5.6924 Z Z"
-  />
-  <circle cx="0" cy="0" r="7" stroke-width="2" stroke="white" fill="none" />
-</svg>
