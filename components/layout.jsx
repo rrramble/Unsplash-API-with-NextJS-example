@@ -16,8 +16,12 @@ export default function Layout({ children, topics }) {
       >
         <Header topics={topics} />
       </header>
-      <main>{children}</main>
-      <footer><Footer onClick={() => window.scrollTo(0, 0)} /></footer>
+      <main>
+        {children}
+      </main>
+      <footer>
+        <Footer onClick={() => window.scrollTo(0, 0)} />
+      </footer>
     </>
   )
 }
