@@ -1,17 +1,15 @@
-import Link from 'next/link'
-
 import styles from './footer.module.scss'
 
 
-export default function Footer() {
+export default function Footer({ onClick }) {
   return (
-    <Link
-      href='#menu-margin-filler'
+    <button
       className={styles['go-up-button']}
+      onClick={onClick}
     >
       <span className='visually-hidden'>
           В начало страницы
       </span>
-    </Link>
+    </button>
   )
 }
