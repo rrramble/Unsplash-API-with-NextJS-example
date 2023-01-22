@@ -28,7 +28,7 @@
     }
 }
 
-.text {
+.title {
     color: white;
     background-position-x: 0;
     display: block;
@@ -39,7 +39,7 @@
 }
 
 @media (max-width: calc($SCREEN--BIG - 0.01px)) {
-    .text {
+    .title {
         @include visually-hidden;
         bottom: $MINUS-INFINITY;
         right: $MINUS-INFINITY;

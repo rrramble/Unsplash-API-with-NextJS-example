@@ -18,7 +18,7 @@ export default function HeaderFavorite({ className }: ThisProps) {
         href='/favorite'
       >
         <span
-          className={styles.text}
+          className={styles.title}
           aria-label="List of liked photos"
         >
           Избранное
