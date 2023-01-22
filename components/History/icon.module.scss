@@ -15,6 +15,17 @@
     pointer-events: inherit;
     position: relative;
     width: 100%;
+
+    &::before {
+        background-color: white;
+        bottom: -9px;
+        content: "";
+        display: none;
+        height: 3px;
+        position: absolute;
+        right: 0;
+        width: 30px;
+    }
 }
 
 .self--hidden {
@@ -23,31 +34,19 @@
 
 .title {
     color: white;
+    background-position-x: 0;
+    display: block;
     font-size: 18px;
     line-height: 22px;
     position: relative;
-
-    &::before:not(:focus) {
-        background-color: white;
-        bottom: -9px;
-        content: "";
-        height: 3px;
-        position: absolute;
-        right: 0;
-        visibility: hidden;
-        width: 30px;
-    }
-}
-
-.title:hover {
-    &::before {
-        visibility: visible;
-    }
+    text-overflow: clip;
 }
 
 @media (max-width: calc($SCREEN--BIG - 0.01px)) {
     .title {
-        @include visually-hidden
+        @include visually-hidden;
+        bottom: $MINUS-INFINITY;
+        right: $MINUS-INFINITY;
     }
 }
 
@@ -57,7 +56,11 @@
         padding-left: calc($MENU--ICON-HEIGHT + 12px);
     }
 
+    .self:not(:focus-within):hover::before {
+        display: block;
+    }
+
     .title {
-        background-position-x: 0;
+
     }
 }
