@@ -12,15 +12,47 @@
     height: 100%;
     margin: 0;
     padding: 0;
-}
+    pointer-events: inherit;
+    position: relative;
+    width: 100%;
 
-.self::before {
-    color: white;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
+    &::before {
+        background-color: white;
+        bottom: -9px;
+        content: "";
+        display: none;
+        height: 3px;
+        position: absolute;
+        right: 0;
+        width: 30px;
+    }
 }
 
 .text {
-    display: none;
+    color: white;
+    background-position-x: 0;
+    display: block;
+    font-size: 18px;
+    line-height: 22px;
+    position: relative;
+    text-overflow: clip;
+}
+
+@media (max-width: calc($SCREEN--BIG - 0.01px)) {
+    .text {
+        @include visually-hidden;
+        bottom: $MINUS-INFINITY;
+        right: $MINUS-INFINITY;
+    }
+}
+
+@media (min-width: calc($SCREEN--BIG)) {
+    .self {
+        background-position-x: 0;
+        padding-left: calc($MENU--ICON-HEIGHT + 12px);
+    }
+
+    .self:not(:focus-within):hover::before {
+        display: block;
+    }
 }
