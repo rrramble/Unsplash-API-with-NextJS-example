@@ -6,7 +6,7 @@ $FOOTER-RADIUS: 8px;
 
 .go-up-button {
     background-color: transparent;
-    background-image: url('/icon-arrow-up-gray.svg');
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-ARROW-SCROLL-UP}");
     background-size: $FOOTER-ICON-WIDTH;
     background-position: 50% 50%;
     background-repeat: no-repeat;
