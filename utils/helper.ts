@@ -3,12 +3,12 @@ import { promises as fs } from 'fs'
 
 async function getJSONDataFile(pathParts: string[]) {
   const jsonFileFullPath = path.join(process.cwd(), 'data', ...pathParts)
-  let contents: string
+  const contents: string = await fs.readFile(jsonFileFullPath, 'utf8')
+
   try {
-    contents = await fs.readFile(jsonFileFullPath, 'utf8')
     return JSON.parse(contents)
   } catch (e) {
-    return null
+    return JSON.parse('[]')
   }
 }
 
