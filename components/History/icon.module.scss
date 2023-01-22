@@ -27,7 +27,7 @@
     line-height: 22px;
     position: relative;
 
-    &::before {
+    &::before:not(:focus) {
         background-color: white;
         bottom: -9px;
         content: "";
