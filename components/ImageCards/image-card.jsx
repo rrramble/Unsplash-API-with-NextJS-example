@@ -8,6 +8,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
+    alt_description: photoAlt = `photo by ${author.name}` ,
   } = photo;
   const { profile_image } = author
   const {
@@ -15,7 +16,6 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
     regular: regularPhotoUrl,
     small: smallPhotoUrl,
     thumb: thumbnailPhotoUrl,
-    alt_description: photoAlt,
   } = photoUrls
 
   const photoProfileUrl = '/photo/' + (photoId ?? '')
