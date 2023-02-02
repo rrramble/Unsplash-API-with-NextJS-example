@@ -2,14 +2,10 @@
     column-gap: 27px;
     display: grid;
     grid-auto-flow: dense;
+    grid-auto-rows: 1px;
     grid-template-columns: repeat(auto-fit, minmax(330px, 476px));
     justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    row-gap: 26px;
-}
-
-.li {
-    display: block;
 }

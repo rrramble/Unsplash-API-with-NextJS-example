@@ -1,22 +1,29 @@
+import Image from 'next/image'
+
 import ImageCardAuthor from './image-card-author'
 import ImageCardMenu from './image-card-menu'
 
 import styles from './image-card.module.scss'
 
-export default function ImageCard({ photo, isLazy, isLiked, onClickLikeButton }) {
+const RENDERED_WIDTH = 476
+
+export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   const {
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
+    height,
+    width,
   } = photo
   const photoAlt = photo.alt_description ?? `photo by ${author.name}`
   const { profile_image } = author
   const {
-    full: fullPhotoUrl,
     regular: regularPhotoUrl,
     small: smallPhotoUrl,
     thumb: thumbnailPhotoUrl,
   } = photoUrls
+
+  const renderedHeight = height / width * RENDERED_WIDTH
 
   const photoProfileUrl = '/photo/' + (photoId ?? '')
 
@@ -35,17 +42,19 @@ export default function ImageCard({ photo, isLazy, isLiked, onClickLikeButton })
         />
       </figcaption>
 
-      <picture className={styles['image-container']}>
-        <source className={styles.image} srcSet={fullPhotoUrl + ' 2x, ' + regularPhotoUrl} media="(min-width: 660px)" />
-        <source className={styles.image} srcSet={regularPhotoUrl + ' 2x, ' + smallPhotoUrl ?? thumbnailPhotoUrl} media="(min-width: 320px)" />
-        <img
-          alt={photoAlt}
-          className={styles.image}
-          data-test="image-card__image"
-          loading={isLazy ? "lazy" : undefined}
-          src={thumbnailPhotoUrl}
-        />
-      </picture>
+      <div className={styles['image-container']}>
+        <div className={styles.image}>
+          <Image
+            alt={photoAlt}
+            height={renderedHeight}
+            src={regularPhotoUrl ?? smallPhotoUrl ?? thumbnailPhotoUrl}
+            style={{
+              borderRadius: 'inherit',
+            }}
+            width={RENDERED_WIDTH}
+          />
+        </div>
+      </div>
     </figure>
   )
 }
