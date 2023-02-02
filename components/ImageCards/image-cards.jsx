@@ -11,7 +11,7 @@ export default function ImageCards({ photos, likedPhotosIds = [], onClickLikeBut
           >
             <ImageCard
               photo={photo}
-              isLazy={index <= 3}
+              isLazy={index >= 4}
               isLiked={likedPhotosIds.includes(photo.id)}
               onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
             />
