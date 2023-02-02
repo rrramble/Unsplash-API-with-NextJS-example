@@ -9,10 +9,11 @@ const nextConfig = {
     prependData: `@import "variables.scss";`
   },
   images: {
-    domains: [
-      'unsplash.com',
-      'images.unsplash.com',
-      'api.unsplash.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.unsplash.com'
+      }
     ]
   },
   async rewrites() {
