@@ -18,7 +18,7 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
       thumb: thumbPhotoUrl,
   } = photoUrls || {}
 
-  const photoUrl = fullPhotoUrl || regularPhotoUrl || smallPhotoUrl || thumbPhotoUrl
+  const photoUrl = regularPhotoUrl || fullPhotoUrl || smallPhotoUrl || thumbPhotoUrl
 
   const {
       name: authorName,
