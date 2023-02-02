@@ -1,8 +1,4 @@
-$IMAGE-CARD-COEFF: calc(375px / $MIN-WIDTH);
-$IMAGE-CARD-MAX-WIDTH: calc(476px / $IMAGE-CARD-COEFF);
-$IMAGE-CARD-LEFT-RIGHT-MARGIN: calc(26px / $IMAGE-CARD-COEFF / 2);
-$IMAGE-CARD-BOTTOM-MARGIN: calc(18px / $IMAGE-CARD-COEFF);
-$IMAGE-CARD--WIDTH: calc($MIN-WIDTH - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
+$IMAGE-CARD-BOTTOM-MARGIN: 18px;
 $IMAGE-CARD--BORDER-RADIUS: 8px;
 
 .self {
@@ -41,7 +37,6 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     width: 100%;
     z-index: 1;
 }
-
 
 .self:hover, .self:focus-within {
     & .image {
