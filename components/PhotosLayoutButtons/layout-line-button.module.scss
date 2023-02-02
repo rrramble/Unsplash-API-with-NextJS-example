@@ -1,7 +1,5 @@
-$LINES-ICON-COEFF: calc(375px / $MIN-WIDTH);
-
-$LINES-ICON-SIZE: calc(23px / $LINES-ICON-COEFF);
-$LINES-ICON-LINE: calc(10px / $LINES-ICON-COEFF);
+$LINES-ICON-SIZE: 23px;
+$LINES-ICON-LINE: 10px;
 
 .self {
     appearance: none;
