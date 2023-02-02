@@ -8,8 +8,8 @@ export default function ImageCard({ photo, isLazy, isLiked, onClickLikeButton })
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
-    alt_description: photoAlt = `photo by ${author.name}` ,
-  } = photo;
+  } = photo
+  const photoAlt = photo.alt_description ?? `photo by ${author.name}`
   const { profile_image } = author
   const {
     full: fullPhotoUrl,
