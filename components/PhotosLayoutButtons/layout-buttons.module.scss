@@ -1,7 +1,7 @@
-$CONTENT-MENU-COEFF: calc(375px / $MIN-WIDTH);
-$CONTENT-MENU-MARGIN-TOP: calc(29px / $CONTENT-MENU-COEFF);
+$CONTENT-MENU-MARGIN-TOP: 29px;
 
 .self {
+    background-color: white;
     border: none;
     display: flex;
     flex-direction: row;
