@@ -3,7 +3,7 @@ import ImageCardMenu from './image-card-menu'
 
 import styles from './image-card.module.scss'
 
-export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
+export default function ImageCard({ photo, isLazy, isLiked, onClickLikeButton }) {
   const {
     user: author = [],
     urls: photoUrls = [],
@@ -42,7 +42,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           alt={photoAlt}
           className={styles.image}
           data-test="image-card__image"
-          loading="lazy"
+          loading={isLazy ? "lazy" : undefined}
           src={thumbnailPhotoUrl}
         />
       </picture>
