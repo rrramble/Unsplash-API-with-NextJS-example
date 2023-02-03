@@ -12,6 +12,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 .image-container {
     display: block;
     object-fit: scale-down;
+    overflow: clip;
     width: 100%;
 }
 
