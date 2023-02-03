@@ -16,6 +16,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 }
 
 .image {
+    background-color: var(--data-background-color);
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     display: block;
     object-fit: contain;

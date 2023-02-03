@@ -9,6 +9,7 @@ const RENDERED_WIDTH = 476
 
 export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   const {
+    color,
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
@@ -43,7 +44,11 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
       </figcaption>
 
       <div className={styles['image-container']}>
-        <div className={styles.image}>
+        <div
+          className={styles.image}
+          style={{
+            '--data-background-color': color,
+          }}        >
           <Image
             alt={photoAlt}
             height={renderedHeight}
