@@ -19,9 +19,11 @@ export default function Author({ name, instagramUsername, imageUrl }) {
           className={styles.thumbnail}
         >
           <Image
-            src={imageUrl}
             alt="Аватар автора"
             fill
+            priority
+            sizes="70px"
+            src={imageUrl}
           />
         </div>
       }
