@@ -21,7 +21,7 @@ export default function Author({ name, instagramUsername, imageUrl }) {
           <Image
             src={imageUrl}
             alt="Аватар автора"
-            layout="fill"
+            fill
           />
         </div>
       }
