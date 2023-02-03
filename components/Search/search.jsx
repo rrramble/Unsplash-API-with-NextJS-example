@@ -6,7 +6,7 @@ import SearchInput from './search-input'
 import Tags from './tags'
 
 import styles from './search.module.scss'
-
+// TODO: tags must not expand to the whole window on wide screen
 export default function Search({
     onBlur,
     onKeyUp,
