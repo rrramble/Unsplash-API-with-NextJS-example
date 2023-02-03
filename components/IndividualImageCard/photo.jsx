@@ -6,7 +6,7 @@ import SimilarTags from './similar-tags'
 
 import styles from './photo.module.scss'
 
-export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton, relatedTags }) {
+export default function IndividualImageCard({ photo, isLiked, onClickLikeButton, relatedTags }) {
   const {
     color: backgroundColor,
     height,
@@ -37,10 +37,10 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
     authorProfileImages?.small
 
   return (
-    <div
+    <figure
       className={styles.self}
     >
-      <header
+      <figcaption
         className={styles.header}
       >
         <Author
@@ -53,7 +53,7 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
         />
-      </header>
+      </figcaption>
 
       <div
         className={styles['photo-container']}
@@ -76,5 +76,5 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
       <aside>
         <SimilarTags tags={relatedTags} />
       </aside>
-    </div>)
+    </figure>)
 }
