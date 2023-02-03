@@ -17,11 +17,16 @@ export async function getServerSideProps(context) {
     return { notFound: true }
   }
 
+  const [ photos, topics ] = await Promise.allSettled(
+    getPhotos('default'),
+    getTopics(),
+  )
+
   return {
     props: {
       photo,
-      photos: await getPhotos('default'),
-      topics: await getTopics(),
+      photos,
+      topics,
     },
   }
 }
