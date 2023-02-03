@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import Author from './author'
 import Menu from './menu'
 import SimilarTags from './similar-tags'
@@ -6,9 +8,11 @@ import styles from './photo.module.scss'
 
 export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton, relatedTags }) {
   const {
-    urls: photoUrls,
     color: backgroundColor,
+    height,
+    urls: photoUrls,
     user: author,
+    width,
   } = photo || {}
 
   const {
@@ -51,12 +55,23 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
         />
       </header>
 
-      <img
-          className={styles['photo-container']}
-          src={photoUrl}
+      <div
+        className={styles['photo-container']}
+      >
+        <Image
           alt={photoAlt}
-          style={{'--data-background-color': backgroundColor}}
+          height={height}
+          priority
+          src={photoUrl}
+          style={{
+            '--data-background-color': backgroundColor,
+            '--data-url': photoUrl,
+            'height': 'auto',
+            'width': '100%',
+          }}
+          width={width}
         />
+      </div>
 
       <aside>
         <SimilarTags tags={relatedTags} />
