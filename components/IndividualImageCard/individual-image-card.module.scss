@@ -14,9 +14,8 @@ $ONE-PHOTO-AUTHOR-INSTAGRAM: calc(14px / $ONE-PHOTO-COEFF);
     flex-direction: column;
     justify-content: flex-start;
     padding-top: $ONE-PHOTO-PADDING-TOP;
-    padding-left: 14px;
-    padding-right: 14px;
     position: relative;
+    row-gap: 32px;
 }
 
 .header {

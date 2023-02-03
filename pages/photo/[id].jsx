@@ -2,9 +2,7 @@ import { getPhoto, getPhotos, getTopics } from '@/utils/helper'
 import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from '@/utils/local-storage'
 
 import Head from 'next/head'
-import ImageCards from '@/components/ImageCards/image-cards'
-import IndividualImageCard from '@/components/IndividualImageCard/individual-image-card'
-import SimilarTags from '@/components/IndividualImageCard/similar-tags'
+import Photo from '@/components/IndividualImageCard/photo'
 
 import styles from '@/components/content.module.scss'
 import { useEffect, useState } from 'react'
@@ -28,33 +26,28 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ photo, photos = [] }) {
-  const { description, user, related_collections, id: photoId } = photo || {}
-  const { name: authorName = null } = user || {}
-  const { results: realtedTags = null } = related_collections || {}
+  const { description, user, id: photoId } = photo || {}
+  const authorName = user?.name
   const titleText = (description || authorName) ?
     `. ${description ? description + '. ' : ''} ${authorName ?? ''}` :
     ''
 
-  const [ likedPhotosIds, setLikedPhotos ] = useState([])
-  const [ isLikedPhoto, setLikePhoto ] = useState(false)
+  const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
+  const [ isLikedPhoto, setIsLikedPhoto ] = useState(false)
 
   useEffect(() => {
-    setLikedPhotos(getFavoritePhotosIds())
-  }, [photo, photos])
-
-  useEffect(()=> {
     const isLiked = likedPhotosIds.includes(photoId)
-    setLikePhoto(isLiked)
+    setIsLikedPhoto(isLiked)
   }, [likedPhotosIds, photoId])
 
   const onClickLikeButton = (id) => {
     likedPhotosIds.includes(id) ?
       removeFavoritePhotoId(id) :
       saveFavoritePhotoId(id)
-    setLikedPhotos(getFavoritePhotosIds())
+    setLikedPhotosIds(getFavoritePhotosIds())
   }
 
-  return (
+  return(
     <>
       <Head>
         <title>
@@ -62,21 +55,15 @@ export default function Home({ photo, photos = [] }) {
         </title>
       </Head>
 
+      <h1 className="visually-hidden">Фотография с Unsplash.com</h1>
       <div className={styles.self}>
-        <h1 className="visually-hidden">Фотография с Unsplash.com</h1>
-        <IndividualImageCard
+        <Photo
+          isLikedPhoto={isLikedPhoto}
+          likedPhotosIds={likedPhotosIds}
+          onClickLikeButton={onClickLikeButton}
           photo={photo}
-          isLiked={isLikedPhoto}
-          onClickLikeButton={() => onClickLikeButton(photoId)}
+          photos={photos}
         />
-        <aside>
-          <SimilarTags tags={realtedTags} />
-          <ImageCards
-            photos={photos.filter(({id}) => id !== photoId)}
-            likedPhotosIds={likedPhotosIds}
-            onClickLikeButton={onClickLikeButton}
-            />
-        </aside>
       </div>
     </>
   )

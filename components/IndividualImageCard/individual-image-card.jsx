@@ -1,11 +1,11 @@
 import Author from './author'
 import Menu from './menu'
+import SimilarTags from '@/components/IndividualImageCard/similar-tags'
 
 import styles from './individual-image-card.module.scss'
 
-export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton }) {
+export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton, relatedTags }) {
   const {
-    alt_description: photoAlt = 'Описание отсутствует',
     urls: photoUrls,
     color: backgroundColor,
     user: author,
@@ -21,15 +21,16 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
   const photoUrl = regularPhotoUrl || fullPhotoUrl || smallPhotoUrl || thumbPhotoUrl
 
   const {
-      name: authorName,
       profile_image: authorProfileImages,
-      instagram_username: instagramUsername,
   } = author || {}
+
+  const photoAlt = photo?.alt_descrtiption ??
+    `Фотография от автора: ${author?.name}`
 
   const authorProfileUrl =
     authorProfileImages?.large ||
     authorProfileImages?.medium ||
-    authorProfileImages?.small || null
+    authorProfileImages?.small
 
   return (
     <div
@@ -39,9 +40,9 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
         className={styles.header}
       >
         <Author
-          name={authorName ?? null}
-          instagramUsername={instagramUsername ?? null}
-          imageUrl={authorProfileUrl ?? null}
+          name={author?.name}
+          instagramUsername={author?.instagram_username}
+          imageUrl={authorProfileUrl}
         />
 
         <Menu
@@ -50,13 +51,15 @@ export default function IndividualImageCard({ photo = [], isLiked, onClickLikeBu
         />
       </header>
 
-    { photoUrl &&
       <img
-        className={styles['photo-container']}
-        src={photoUrl}
-        alt={photoAlt}
-        style={{'--data-background-color': backgroundColor}}
-      />
-    }
-  </div>)
+          className={styles['photo-container']}
+          src={photoUrl}
+          alt={photoAlt}
+          style={{'--data-background-color': backgroundColor}}
+        />
+
+      <aside>
+        <SimilarTags tags={relatedTags} />
+      </aside>
+    </div>)
 }
