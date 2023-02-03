@@ -24,7 +24,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
   } = photoUrls
 
   const renderedHeight = height / width * RENDERED_WIDTH
-
+  const photoUrl = regularPhotoUrl || smallPhotoUrl || thumbnailPhotoUrl
   const photoProfileUrl = '/photo/' + (photoId ?? '')
 
   return (
@@ -47,7 +47,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           <Image
             alt={photoAlt}
             height={renderedHeight}
-            src={regularPhotoUrl ?? smallPhotoUrl ?? thumbnailPhotoUrl}
+            src={photoUrl}
             style={{
               borderRadius: 'inherit',
             }}
