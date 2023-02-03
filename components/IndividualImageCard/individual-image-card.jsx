@@ -1,65 +1,41 @@
-import Author from './author'
-import Menu from './menu'
-import SimilarTags from '@/components/IndividualImageCard/similar-tags'
+import Photo from '@/components/IndividualImageCard/photo'
+import SimilarPhotos from '@/components/IndividualImageCard/similar-photos'
 
-import styles from './individual-image-card.module.scss'
-
-export default function IndividualImageCard({ photo = [], isLiked, onClickLikeButton, relatedTags }) {
-  const {
-    urls: photoUrls,
-    color: backgroundColor,
-    user: author,
-  } = photo || {}
+export default function IndividualImageCard({
+  isLikedPhoto,
+  likedPhotosIds,
+  onClickLikeButton,
+  photo,
+  photos,
+}) {
 
   const {
-      full: fullPhotoUrl,
-      regular: regularPhotoUrl,
-      small: smallPhotoUrl,
-      thumb: thumbPhotoUrl,
-  } = photoUrls || {}
-
-  const photoUrl = regularPhotoUrl || fullPhotoUrl || smallPhotoUrl || thumbPhotoUrl
-
-  const {
-      profile_image: authorProfileImages,
-  } = author || {}
-
-  const photoAlt = photo?.alt_descrtiption ??
-    `Фотография от автора: ${author?.name}`
-
-  const authorProfileUrl =
-    authorProfileImages?.large ||
-    authorProfileImages?.medium ||
-    authorProfileImages?.small
+    related_collections,
+    id: photoId,
+  } = photo
+  const relatedTags = related_collections?.results
 
   return (
-    <div
-      className={styles.self}
-    >
-      <header
-        className={styles.header}
-      >
-        <Author
-          name={author?.name}
-          instagramUsername={author?.instagram_username}
-          imageUrl={authorProfileUrl}
-        />
-
-        <Menu
-          isLiked={isLiked}
-          onClickLikeButton={onClickLikeButton}
-        />
-      </header>
-
-      <img
-          className={styles['photo-container']}
-          src={photoUrl}
-          alt={photoAlt}
-          style={{'--data-background-color': backgroundColor}}
-        />
-
+    <>
+      <Photo
+        photo={photo}
+        isLiked={isLikedPhoto}
+        onClickLikeButton={() => onClickLikeButton(photoId)}
+        relatedTags={relatedTags}
+      />
       <aside>
-        <SimilarTags tags={relatedTags} />
+        <SimilarPhotos
+          likedPhotosIds={likedPhotosIds}
+          onClickLikeButton={onClickLikeButton}
+          photos={excludeMainPhoto(photos, photoId)}
+        />
       </aside>
-    </div>)
+    </>
+  )
+}
+
+function excludeMainPhoto(photos = [], photoId) {
+  return photos.filter(
+    photo => photoId !== photo.id
+  )
 }

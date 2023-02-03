@@ -2,9 +2,10 @@ import { getPhoto, getPhotos, getTopics } from '@/utils/helper'
 import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from '@/utils/local-storage'
 
 import Head from 'next/head'
-import Photo from '@/components/IndividualImageCard/photo'
 
+import IndividualImageCard from '@/components/IndividualImageCard/individual-image-card'
 import styles from '@/components/content.module.scss'
+
 import { useEffect, useState } from 'react'
 
 export async function getServerSideProps(context) {
@@ -57,7 +58,7 @@ export default function Home({ photo, photos = [] }) {
 
       <h1 className="visually-hidden">Фотография с Unsplash.com</h1>
       <div className={styles.self}>
-        <Photo
+        <IndividualImageCard
           isLikedPhoto={isLikedPhoto}
           likedPhotosIds={likedPhotosIds}
           onClickLikeButton={onClickLikeButton}
