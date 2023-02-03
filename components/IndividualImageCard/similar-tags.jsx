@@ -8,9 +8,11 @@ export default function SimilarTags({ tags }) {
   }
 
   return (
-    <aside>
-      <h2 className={styles.header}>Похожие тэги</h2>
-      <menu className={styles.container}>
+    <div
+      className={styles.self}
+    >
+      <header className={styles.header}>Похожие тэги</header>
+      <menu className={styles.tags}>
         {tags.map(({ title, links }) => (
           <li
             key={title}
@@ -26,6 +28,6 @@ export default function SimilarTags({ tags }) {
           </li>
         ))}
       </menu>
-    </aside>
+    </div>
   )
 }
