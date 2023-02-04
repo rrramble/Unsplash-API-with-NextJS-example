@@ -7,7 +7,13 @@ import styles from './image-card.module.scss'
 
 const RENDERED_WIDTH = 476
 
-export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
+export default function ImageCard(
+  {
+    isLiked,
+    isPrefetched,
+    onClickLikeButton,
+    photo,
+  }) {
   const {
     color,
     user: author = [],
@@ -52,6 +58,7 @@ export default function ImageCard({ photo, isLiked, onClickLikeButton }) {
           <Image
             alt={photoAlt}
             height={renderedHeight}
+            priority={isPrefetched}
             src={photoUrl}
             style={{
               borderRadius: 'inherit',
