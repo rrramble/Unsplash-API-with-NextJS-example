@@ -17,18 +17,24 @@ export async function getServerSideProps(context) {
     return { notFound: true }
   }
 
-  const [ photos, topics ] = await Promise.allSettled(
+  const [ photos, topics ] = await Promise.allSettled([
     getPhotos('default'),
     getTopics(),
-  )
+  ])
 
   return {
     props: {
       photo,
-      photos,
-      topics,
+      photos: getFulfilledValue(photos),
+      topics: getFulfilledValue(topics),
     },
   }
+}
+
+function getFulfilledValue({ status, value }) {
+  return  status === 'fulfilled' ?
+    value :
+    null
 }
 
 export default function Home({ photo, photos = [] }) {
