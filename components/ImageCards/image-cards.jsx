@@ -12,17 +12,19 @@ export default function ImageCards({ photos, likedPhotosIds = [], onClickLikeBut
           const { height, width } = photo
           const rowSpanCount = Math.floor((height / width * RENDERED_WIDTH + IMAGE_BOTTOM_MARGIN) / ROW_HEIGHT + 1)
 
-          return <li
-            key={photo.id}
-            style={{gridRow: 'span ' + rowSpanCount}}
-          >
-            <ImageCard
-              isLiked={likedPhotosIds.includes(photo.id)}
-              isPrefetched={index <= 2}
-              onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
-              photo={photo}
-            />
-          </li>
+          return (
+            <li
+              key={photo.id}
+              style={{gridRow: 'span ' + rowSpanCount}}
+            >
+              <ImageCard
+                isLiked={likedPhotosIds.includes(photo.id)}
+                isPrefetched={index <= 2}
+                onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
+                photo={photo}
+              />
+            </li>
+          )
       })}
     </ul>
   )
