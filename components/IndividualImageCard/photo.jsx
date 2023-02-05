@@ -22,7 +22,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
       thumb: thumbPhotoUrl,
   } = photoUrls || {}
 
-  const photoUrl = regularPhotoUrl || fullPhotoUrl || smallPhotoUrl || thumbPhotoUrl
+  const photoUrl = fullPhotoUrl || regularPhotoUrl || smallPhotoUrl || thumbPhotoUrl
 
   const {
       profile_image: authorProfileImages,
