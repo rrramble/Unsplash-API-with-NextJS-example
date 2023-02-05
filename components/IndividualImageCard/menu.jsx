@@ -12,21 +12,23 @@ export default function IndividualImageMenu({ isLiked, onClickLikeButton }) {
         >
           <span className="visually-hidden">{likeButtonText}</span>
           <input
-            className={`${styles.button} ${styles['button--like']}`}
-            type="checkbox"
-            name="like-toggle"
-            id="like-toggle"
             checked={isLiked}
+            className={`${styles.button} ${styles['button--like']}`}
+            id="like-toggle"
+            name="like-toggle"
             onChange={onClickLikeButton}
+            type="checkbox"
           />
         </label>
       </li>
       <li className={styles['button-container']}>
           <button
-            type="button"
             className={`${styles.button} ${styles['button--download']}`}
+            type="button"
           >
-            <span className="visually-hidden">Скачать фотографию</span>
+            <span
+              className="visually-hidden">Скачать фотографию
+            </span>
           </button>
       </li>
     </menu>

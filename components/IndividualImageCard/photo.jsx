@@ -48,9 +48,9 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
         className={styles.header}
       >
         <Author
-          name={author?.name}
-          instagramUsername={author?.instagram_username}
           imageUrl={authorProfileUrl}
+          instagramUsername={author?.instagram_username}
+          name={author?.name}
         />
 
         <Menu
