@@ -62,6 +62,7 @@ export default function ImageCard(
             src={photoUrl}
             style={{
               borderRadius: 'inherit',
+              display: 'block',
             }}
             width={RENDERED_WIDTH}
           />
