@@ -73,8 +73,8 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
         />
       </div>
 
-      <aside>
+      <section>
         <SimilarTags tags={relatedTags} />
-      </aside>
+      </section>
     </figure>)
 }
