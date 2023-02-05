@@ -15,17 +15,36 @@ $ONE-PHOTO-AUTHOR-INSTAGRAM: 14px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin: 0;
     padding-top: $ONE-PHOTO-PADDING-TOP;
     position: relative;
-    row-gap: 32px;
+    row-gap: $ONE-PHOTO-HEADER-TO-PHOTO-SPACE;
+}
+
+.self::before {
+    background-color: gray;
+    background-color: var(--data-background-color);
+    background-image: var(--data-with-url-tag);
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-width: 0;
+    filter: blur(1px) brightness(0.3);
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
 }
 
 .header {
-    align-items: center;
+    align-items:flex-start;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: $ONE-PHOTO-HEADER-TO-PHOTO-SPACE;
+    width: 100%;
+    z-index: 1;
 }
 
 .photo-container {
@@ -35,4 +54,19 @@ $ONE-PHOTO-AUTHOR-INSTAGRAM: 14px;
     flex-direction: column;
     height: auto;
     position: relative;
+}
+
+@media (min-width: $SCREEN--BIG) {
+    .self {
+        row-gap: $ONE-PHOTO-HEADER-TO-PHOTO-SPACE--BIG-SCREEN;
+        padding-bottom: 63px;
+    }
+
+    .self::before {
+        content: "";
+    }
+
+    .header {
+        top: 46px;
+    }
 }
