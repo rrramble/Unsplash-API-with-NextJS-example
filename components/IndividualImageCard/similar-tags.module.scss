@@ -1,10 +1,12 @@
 .self {
     display: flex;
     flex-direction: column;
+    position: relative;
     row-gap: 14px;
 }
 
 .header {
+    color: black;
     font-size: 18px;
     font-weight: bold;
     line-height: 21px;
@@ -38,4 +40,26 @@
     padding-bottom: 6px;
     padding-top: 7px;
     text-decoration: none;
+}
+
+@media (min-width: $SCREEN--BIG) {
+    .self {
+        align-items: center;
+        row-gap: 20px;
+    }
+
+    .header {
+        color: white;
+        font-size: 24px;
+        font-weight: normal;
+        line-height: 29px;
+    }
+
+    .tag {
+        font-size: 18px;
+        line-height: 21px;
+        padding: 11px;
+        padding-top: 5px;
+        padding-bottom: 4px;
+    }
 }
