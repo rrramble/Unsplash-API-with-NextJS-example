@@ -1,0 +1,20 @@
+.self {
+    align-items: stretch;
+    align-content: stretch;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: $MENU-HEIGHT;
+    padding-left: $MENU-LEFT-PADDING;
+    padding-right: $MENU-RIGHT-PADDING;
+    position: relative;
+    row-gap: 30px;
+}
+
+@media (min-width: $SCREEN--BIG) {
+    .self {
+        row-gap: 80px;
+    }
+}

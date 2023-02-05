@@ -4,7 +4,7 @@ import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from
 import Head from 'next/head'
 
 import IndividualImageCard from '@/components/IndividualImageCard/individual-image-card'
-import styles from '@/components/content.module.scss'
+import styles from './[id].module.scss'
 
 import { useEffect, useState } from 'react'
 
