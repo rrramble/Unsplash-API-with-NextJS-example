@@ -39,6 +39,10 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
   return (
     <figure
       className={styles.self}
+      style={{
+        '--data-background-color': backgroundColor,
+        '--data-with-url-tag': `url(${photoUrl})`,
+      }}
     >
       <figcaption
         className={styles.header}
