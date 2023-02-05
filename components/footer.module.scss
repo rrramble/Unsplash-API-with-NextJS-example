@@ -3,7 +3,7 @@ $FOOTER-ICON-WIDTH: 16px;
 $FOOTER-RADIUS: 8px;
 
 .go-up-button {
-    background-color: transparent;
+    background-color: white;
     background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-ARROW-SCROLL-UP}");
     background-size: $FOOTER-ICON-WIDTH;
     background-position: 50% 50%;
