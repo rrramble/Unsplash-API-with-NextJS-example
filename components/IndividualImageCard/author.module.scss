@@ -1,11 +1,18 @@
-$ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH: 48px;
 $ONE-PHOTO-BORDER-RADIUS: 8px;
 $ONE-PHOTO-BUTTON-WIDTH: 41px;
 $ONE-PHOTO-ICON-SIZE: 21px;
+
+$ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH: 48px;
+$ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH--BIG-SCREEN: 54px;
+
 $ONE-PHOTO-AUTHOR-NAME: 18px;
+$ONE-PHOTO-AUTHOR-NAME--BIG-SCREEN: 32px;
+
 $ONE-PHOTO-AUTHOR-INSTAGRAM: 14px;
+$ONE-PHOTO-AUTHOR-INSTAGRAM--BIG-SCREEN: 20px;
 
 $ONE-PHOTO-INSTAGRAM-FONT-COLOR: #bdbdbd;
+$ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
 
 .self {
     display: flex;
@@ -29,7 +36,7 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR: #bdbdbd;
     font-size: $ONE-PHOTO-AUTHOR-NAME;
     font-style: normal;
     font-weight: lighter;
-    line-height: 22px;
+    line-height: 1.1333em;
     text-align: center;
 }
 
@@ -39,10 +46,27 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR: #bdbdbd;
     font-weight: lighter;
     font-size: $ONE-PHOTO-AUTHOR-INSTAGRAM;
     font-style: normal;
-    line-height: 18px;
+    line-height: 1.1333em;
     text-decoration: none;
 
     &:visited, &:hover, &:link {
         color: gray;
+    }
+}
+
+@media (min-width: $SCREEN--BIG) {
+    .name {
+        color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN;
+        font-size: $ONE-PHOTO-AUTHOR-NAME--BIG-SCREEN;
+    }
+
+    .instagram {
+        color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN;
+        font-size: $ONE-PHOTO-AUTHOR-INSTAGRAM--BIG-SCREEN;
+    }
+
+    .thumbnail {
+        height: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH--BIG-SCREEN;
+        width: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH--BIG-SCREEN;
     }
 }
