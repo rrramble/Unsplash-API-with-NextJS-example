@@ -1,13 +1,11 @@
-$CONTENT-MENU-MARGIN-TOP: 29px;
-
 .self {
     background-color: white;
     border: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: $CONTENT-MENU-MARGIN-TOP;
     overflow: hidden;
+    padding: 0;
 }
 
 .item {
