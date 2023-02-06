@@ -17,3 +17,9 @@ $SEARCH-PADDING-BOTTOM: 49px;
 .self--hidden {
     display: none;
 }
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        row-gap: 44px;
+    }
+}
