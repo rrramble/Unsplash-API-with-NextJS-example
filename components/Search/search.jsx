@@ -20,12 +20,9 @@ export default function Search({
   const ref = useRef()
   const [ inputRef, setInputRef] = useState()
 
-  let additionalClassName
-  if (isHidden) {
-    additionalClassName = styles['self--hidden']
-  } else if (isFull) {
-    additionalClassName = styles['self--full']
-  }
+  const additionalClassName = isHidden ?
+    styles['self--hidden'] :
+    styles['self--full']
 
   useEffect(() => {
     passRef && passRef(ref)
