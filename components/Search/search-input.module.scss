@@ -29,3 +29,15 @@ $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN: 86px;
     line-height: $SEARCH-INPUT--LINE-HEIGHT;
     text-align: center;
 }
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        font-size: $SEARCH-INPUT--FONT-SIZE-BIG-SCREEN;
+        line-height: $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN;
+        border-image-outset: 14px;
+    }
+    .self::placeholder {
+        font-size: $SEARCH-INPUT--FONT-SIZE-BIG-SCREEN;
+        line-height: $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN;
+    }
+}
