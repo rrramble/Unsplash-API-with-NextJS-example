@@ -23,9 +23,9 @@ $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN: 86px;
 
 .self::placeholder {
     color: white;
-    font-size: $SEARCH-INPUT--PLACEHOLDER-FONT-SIZE;
+    font-size: $SEARCH-INPUT--FONT-SIZE;
     font-weight: normal;
     color: white;
-    line-height: $SEARCH-INPUT--PLACEHOLDER-LINE-HEIGHT;
+    line-height: $SEARCH-INPUT--LINE-HEIGHT;
     text-align: center;
 }
