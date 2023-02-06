@@ -72,6 +72,7 @@ export default function Header({ topics, isRootPage }) {
 
         <MenuModal
           className={styles.submenu}
+          isHidden={state.isSearchHidden}
         >
           <Search
             isFirstFocused={true}
