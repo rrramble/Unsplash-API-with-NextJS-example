@@ -12,8 +12,16 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: $MENU-HEIGHT + 50px + 100px; // TODO
+    margin-top: $MENU-HEIGHT-FULL-SIZE + $MARGIN-FROM-MODAL;
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     position: relative;
+    row-gap: $MARGIN-BETWEEN-INSIDE-ELEMENTS;
+}
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        margin-top: calc($MENU-HEIGHT-FULL-SIZE-BIG-SCREEN + $MARGIN-FROM-MODAL-BIG-SCREEN);
+        row-gap: 72px;
+    }
 }
