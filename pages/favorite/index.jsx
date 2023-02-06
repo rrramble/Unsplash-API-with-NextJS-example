@@ -6,7 +6,7 @@ import Head from 'next/head'
 import ImageCards from '@/components/ImageCards/image-cards'
 import LayoutButtons from '@/components/PhotosLayoutButtons/layout-buttons'
 
-import styles from '@/components/content.module.scss'
+import styles from './index.module.scss'
 
 export async function getServerSideProps() {
   return {

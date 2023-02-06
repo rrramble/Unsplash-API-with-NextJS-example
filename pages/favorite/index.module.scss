@@ -1,0 +1,31 @@
+$MENU-HEIGHT-FULL-SIZE: 240px;
+$MENU-HEIGHT-FULL-SIZE-BIG-SCREEN: 400px;
+
+$MARGIN-FROM-MODAL: 29px;
+$MARGIN-FROM-MODAL-BIG-SCREEN: 77px;
+
+$MARGIN-BETWEEN-INSIDE-ELEMENTS: 29px;
+$MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
+
+
+.self {
+    align-items: stretch;
+    align-content: stretch;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: $MENU-HEIGHT-FULL-SIZE + $MARGIN-FROM-MODAL;
+    padding-left: $MENU-LEFT-PADDING;
+    padding-right: $MENU-RIGHT-PADDING;
+    position: relative;
+    row-gap: $MARGIN-BETWEEN-INSIDE-ELEMENTS;
+}
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        margin-top: calc($MENU-HEIGHT-FULL-SIZE-BIG-SCREEN + $MARGIN-FROM-MODAL-BIG-SCREEN);
+        row-gap: 111px;
+    }
+}
