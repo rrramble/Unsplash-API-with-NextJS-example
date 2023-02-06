@@ -25,6 +25,10 @@
     height: calc(100vh - $MENU-HEIGHT);
 }
 
+.self--hidden {
+    display: none;
+}
+
 @media (width >= $SCREEN--BIG) {
     .self {
         top: $MENU-HEIGHT-BIG-SCREEN;
@@ -32,8 +36,4 @@
         height: unset;
         padding-bottom: 91px;
     }
-}
-
-.self--hidden {
-    display: none;
 }
