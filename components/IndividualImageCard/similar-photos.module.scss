@@ -5,7 +5,41 @@
 }
 
 .header {
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
     font-size: 18px;
     font-weight: bold;
-    line-height: 21px;
+    line-height: calc(21em/18em);
+}
+
+.show-more {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.show-more::before {
+    content: "show more";
+    color: #828282;
+    font-size: 14px;
+    line-height: calc(17em/14em);
+    text-underline-offset: 2px;
+    text-decoration: underline solid;
+}
+
+@media (width >= $SCREEN--BIG) {
+    .title{
+        font-size: 36px;
+    }
+
+    .show-more {
+        visibility: visible;
+    }
 }
