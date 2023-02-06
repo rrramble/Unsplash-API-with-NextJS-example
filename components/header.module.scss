@@ -45,3 +45,13 @@ $MENU-LOGO-WIDTH: 25px;
     height: $MENU--ICON-HEIGHT;
     min-width: $MENU--ICON-WIDTH;
 }
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        height: $MENU-HEIGHT-BIG-SCREEN;
+
+        &::before {
+            height: $MENU-HEIGHT-BIG-SCREEN;
+        }
+    }
+}
