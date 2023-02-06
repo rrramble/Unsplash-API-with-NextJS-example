@@ -10,11 +10,10 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     margin-bottom: 0;
     margin-top: 0;
     overflow-y: visible; // Content MUST be shown, even beaking design
-    padding-bottom: 49px;
     padding-inline-start: 0;
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-LEFT-PADDING;
-    padding-top: 20px;
+    padding-top: 0;
     scrollbar-width: none;
     width: 100%;
 }
