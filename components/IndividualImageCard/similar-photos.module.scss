@@ -35,6 +35,10 @@
 }
 
 @media (width >= $SCREEN--BIG) {
+    .self {
+        row-gap: 48px;
+    }
+
     .title{
         font-size: 36px;
     }
