@@ -50,7 +50,8 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
     text-decoration: none;
 
     &:visited, &:hover, &:link {
-        color: gray;
+        color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR;
+    }
     }
 }
 
@@ -60,9 +61,14 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
         font-size: $ONE-PHOTO-AUTHOR-NAME--BIG-SCREEN;
     }
 
+    .instagram,
     .instagram {
         color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN;
         font-size: $ONE-PHOTO-AUTHOR-INSTAGRAM--BIG-SCREEN;
+
+        &:visited, &:hover, &:link {
+            color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN;
+        }
     }
 
     .thumbnail {
