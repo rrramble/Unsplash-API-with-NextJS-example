@@ -15,6 +15,7 @@
 
 @media (min-width: $SCREEN--BIG) {
     .self {
+        margin-top: $MENU-HEIGHT-BIG-SCREEN;
         row-gap: 80px;
     }
 }
