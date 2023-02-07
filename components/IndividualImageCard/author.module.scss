@@ -53,6 +53,9 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
     &:visited, &:hover, &:link {
         color: $ONE-PHOTO-INSTAGRAM-FONT-COLOR;
     }
+
+    &::before {
+        content: "@";
     }
 }
 
