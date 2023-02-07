@@ -16,6 +16,7 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
 
 .self {
     display: flex;
+    column-gap: 11px;
 }
 
 .thumbnail {
@@ -24,8 +25,8 @@ $ONE-PHOTO-INSTAGRAM-FONT-COLOR--BIG-SCREEN: #f2f2f2;
     border-style: solid;
     border-width: 1px;
     height: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH;
-    margin-right: 11px;
-    object-fit: contain;
+    object-fit: scale-down;
+    overflow: hidden;
     position: relative;
     width: $ONE-PHOTO-AUTHOR-THUMBNAIL-WIDTH;
 }
