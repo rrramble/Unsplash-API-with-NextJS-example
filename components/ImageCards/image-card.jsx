@@ -23,7 +23,7 @@ export default function ImageCard(
     width,
   } = photo
   const photoAlt = photo.alt_description ?? `photo by ${author.name}`
-  const { profile_image } = author
+  const { profile_image: authorProfileImages } = author
   const {
     regular: regularPhotoUrl,
     small: smallPhotoUrl,
@@ -33,6 +33,10 @@ export default function ImageCard(
   const renderedHeight = height / width * RENDERED_WIDTH
   const photoUrl = regularPhotoUrl || smallPhotoUrl || thumbnailPhotoUrl
   const photoProfileUrl = '/photo/' + (photoId ?? '')
+  const authorProfileUrl =
+    authorProfileImages?.large ||
+    authorProfileImages?.medium ||
+    authorProfileImages?.small
 
   return (
     <figure className={styles.self} data-test="image-card">
@@ -40,7 +44,7 @@ export default function ImageCard(
         <ImageCardAuthor
           name={author.name}
           instagramUsername={author.instagram_username}
-          imageUrl={profile_image.medium}
+          imageUrl={authorProfileUrl}
         />
         <ImageCardMenu
           photoProfileUrl={photoProfileUrl}
