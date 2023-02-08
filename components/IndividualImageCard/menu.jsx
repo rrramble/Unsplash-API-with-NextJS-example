@@ -1,6 +1,6 @@
 import styles from './menu.module.scss'
 
-export default function IndividualImageMenu({
+export default function Menu({
   downloadPhotoUrl,
   isLiked,
   onClickLikeButton,
