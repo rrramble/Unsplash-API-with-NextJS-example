@@ -46,6 +46,8 @@ export default function ImageCard(
     regularPhotoUrl ||
     smallPhotoUrl
 
+  const savingFilename = `${photoAlt}-${photoId}`
+
   return (
     <figure className={styles.self} data-test="image-card">
       <figcaption className={styles['author-menu-container']}>
@@ -60,6 +62,7 @@ export default function ImageCard(
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
           photoId={photoId}
+          savingFilename={savingFilename}
         />
       </figcaption>
 
