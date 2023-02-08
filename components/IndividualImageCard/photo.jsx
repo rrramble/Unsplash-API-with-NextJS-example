@@ -31,6 +31,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
   const photoAlt = photo?.alt_descrtiption ??
     `Фотография от автора: ${author?.name}`
 
+  const smallQualityPhotoUrl = smallPhotoUrl ?? thumbPhotoUrl ?? regularPhotoUrl
   const authorProfileUrl =
     authorProfileImages?.large ||
     authorProfileImages?.medium ||
@@ -41,7 +42,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
       className={styles.self}
       style={{
         '--data-background-color': backgroundColor,
-        '--data-with-url-tag': `url(${photoUrl})`,
+        '--data-with-url-tag': `url(${smallQualityPhotoUrl})`,
       }}
     >
       <figcaption
