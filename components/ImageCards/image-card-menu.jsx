@@ -61,7 +61,7 @@ export default function ImageCardMenu({
     </menu>
   )
 }
-
+// TODO: extract to separate file (DRY)
 async function downloadPhotoByUrl(evt, url, filename) {
     evt.preventDefault()
     const image = await fetch(url)
