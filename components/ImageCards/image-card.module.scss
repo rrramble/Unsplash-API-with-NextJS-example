@@ -42,6 +42,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 .self:hover, .self:focus-within {
     & .image {
         filter: blur(3px) brightness(0.5);
+        // TODO: blurring causing image span out of border-radius
     }
 
     & .author-menu-container {
