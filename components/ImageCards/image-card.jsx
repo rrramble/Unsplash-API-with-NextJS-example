@@ -71,7 +71,8 @@ export default function ImageCard(
           className={styles.image}
           style={{
             '--data-background-color': color,
-          }}        >
+          }}
+        >
           <Image
             alt={photoAlt}
             height={renderedHeight}
