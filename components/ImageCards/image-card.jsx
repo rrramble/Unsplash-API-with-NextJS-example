@@ -25,6 +25,8 @@ export default function ImageCard(
   const photoAlt = photo.alt_description ?? `photo by ${author.name}`
   const { profile_image: authorProfileImages } = author
   const {
+    raw: rawPhotoUrl,
+    full: fullPhotoUrl,
     regular: regularPhotoUrl,
     small: smallPhotoUrl,
     thumb: thumbnailPhotoUrl,
@@ -38,6 +40,12 @@ export default function ImageCard(
     authorProfileImages?.medium ||
     authorProfileImages?.small
 
+  const maxQualityPhotoUrl =
+    rawPhotoUrl ||
+    fullPhotoUrl ||
+    regularPhotoUrl ||
+    smallPhotoUrl
+
   return (
     <figure className={styles.self} data-test="image-card">
       <figcaption className={styles['author-menu-container']}>
@@ -47,9 +55,11 @@ export default function ImageCard(
           imageUrl={authorProfileUrl}
         />
         <ImageCardMenu
+          downloadPhotoUrl={maxQualityPhotoUrl}
           photoProfileUrl={photoProfileUrl}
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
+          photoId={photoId}
         />
       </figcaption>
 

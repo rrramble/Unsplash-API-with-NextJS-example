@@ -2,7 +2,13 @@ import Link from 'next/link'
 
 import styles from './image-card-menu.module.scss'
 
-export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeButton }) {
+export default function ImageCardMenu({
+  downloadPhotoUrl,
+  isLiked,
+  savingFilename,
+  onClickLikeButton,
+  photoProfileUrl,
+}) {
   const likeButtonText = isLiked ?
     'Убрать лайк' :
     'Лайк!'
@@ -42,14 +48,30 @@ export default function ImageCardMenu({ photoProfileUrl, isLiked, onClickLikeBut
       <li className={styles['button-container']}
         data-test="menu-item--download"
       >
-        <button
-          aria-label="Download photo"
+        <a
           className={styles.button + ' ' + styles['button--download']}
-          type="button"
+          download={savingFilename}
+          href={downloadPhotoUrl}
+          onClick={async evt => downloadPhotoByUrl(evt, downloadPhotoUrl, savingFilename)}
+          rel="noreferrer"
         >
-          <span className="visually-hidden">Скачать</span>
-        </button>
+          <span className="visually-hidden">Скачать фотографию</span>
+        </a>
       </li>
     </menu>
   )
+}
+
+async function downloadPhotoByUrl(evt, url, filename) {
+    evt.preventDefault()
+    const image = await fetch(url)
+    const blob = await image.blob()
+    const imageURL = URL.createObjectURL(blob)
+    const el = document.createElement('a')
+    el.href = imageURL
+    el.download = filename ?? `${url}.jpeg`
+    el.style.display = 'none'
+    document.body.appendChild(el)
+    el.click()
+    document.body.removeChild(el)
 }
