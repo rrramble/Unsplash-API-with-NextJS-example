@@ -8,6 +8,7 @@ import styles from './photo.module.scss'
 
 export default function IndividualImageCard({ photo, isLiked, onClickLikeButton, relatedTags }) {
   const {
+    id: photoId,
     color: backgroundColor,
     height,
     urls: photoUrls,
@@ -34,6 +35,8 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
 
   const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl
   const smallQualityPhotoUrl = smallPhotoUrl ?? thumbPhotoUrl ?? regularPhotoUrl
+  const savingFilename = `${photoAlt}-${photoId}`
+
   const authorProfileUrl =
     authorProfileImages?.large ||
     authorProfileImages?.medium ||
@@ -60,6 +63,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
           isLiked={isLiked}
           downloadPhotoUrl={maxQualityPhotoUrl}
           onClickLikeButton={onClickLikeButton}
+          savingFilename={savingFilename}
         />
       </figcaption>
 
