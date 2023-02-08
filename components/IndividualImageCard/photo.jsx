@@ -17,6 +17,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
 
   const {
       full: fullPhotoUrl,
+      raw: rawPhotoUrl,
       regular: regularPhotoUrl,
       small: smallPhotoUrl,
       thumb: thumbPhotoUrl,
@@ -31,6 +32,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
   const photoAlt = photo?.alt_descrtiption ??
     `Фотография от автора: ${author?.name}`
 
+  const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl
   const smallQualityPhotoUrl = smallPhotoUrl ?? thumbPhotoUrl ?? regularPhotoUrl
   const authorProfileUrl =
     authorProfileImages?.large ||
@@ -56,6 +58,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
 
         <Menu
           isLiked={isLiked}
+          downloadPhotoUrl={maxQualityPhotoUrl}
           onClickLikeButton={onClickLikeButton}
         />
       </figcaption>
