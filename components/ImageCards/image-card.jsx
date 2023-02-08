@@ -52,16 +52,16 @@ export default function ImageCard(
     <figure className={styles.self} data-test="image-card">
       <figcaption className={styles['author-menu-container']}>
         <ImageCardAuthor
-          name={author.name}
-          instagramUsername={author.instagram_username}
           imageUrl={authorProfileUrl}
+          instagramUsername={author.instagram_username}
+          name={author.name}
         />
         <ImageCardMenu
           downloadPhotoUrl={maxQualityPhotoUrl}
-          photoProfileUrl={photoProfileUrl}
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
           photoId={photoId}
+          photoProfileUrl={photoProfileUrl}
           savingFilename={savingFilename}
         />
       </figcaption>
