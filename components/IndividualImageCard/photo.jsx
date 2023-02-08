@@ -24,8 +24,6 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
       thumb: thumbPhotoUrl,
   } = photoUrls || {}
 
-  const photoUrl = fullPhotoUrl || regularPhotoUrl || smallPhotoUrl || thumbPhotoUrl
-
   const {
       profile_image: authorProfileImages,
   } = author || {}
@@ -34,6 +32,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
     `Фотография от автора: ${author?.name}`
 
   const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl
+  const photoUrl = fullPhotoUrl || regularPhotoUrl || smallPhotoUrl || thumbPhotoUrl
   const smallQualityPhotoUrl = smallPhotoUrl ?? thumbPhotoUrl ?? regularPhotoUrl
   const savingFilename = `${photoAlt}-${photoId}`
 
