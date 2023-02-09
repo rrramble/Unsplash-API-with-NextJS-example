@@ -28,7 +28,8 @@ export default function Home() {
   // Load photos from backend
   useEffect(() => {
     const likedIds = getFavoritePhotosIds('string')
-    fetch('/api/favorite?ids=' + encodeURIComponent(likedIds)).
+    const url = `/api/favorite?ids=${encodeURIComponent(likedIds)}`
+    fetch(url).
       then(res => res.status === 200 && res.json()).
       then(photos => {
         const onlyFoundPhotoPromises = photos.filter(
