@@ -42,61 +42,59 @@ export default function Header({ topics, isRootPage }) {
   }, [router.asPath])
 
   return (
-    <>
-      <nav
-        className={styles.self}
-        id='menu'
+    <nav
+      className={styles.self}
+      id='menu'
+    >
+      <HeaderLogo
+        className={styles.logo}
+        isRootPage={isRootPage}
+      />
+
+      <SearchIcon
+        className={styles.icon}
+        isHidden={state.isSearchIconHidden}
+        onClick={e => {
+          e.stopPropagation()
+          dispatch({ type: 'search-icon-clicked' })
+        }}
+        state={state.searchIcon}
+        topics={topics}
+      />
+
+      <Favorite
+        className={styles.icon}
+      />
+
+      <HistoryIcon
+        className={styles.icon}
+        isHidden={state.isHistoryIconHidden}
+        onClick={(e) => {
+          e.stopPropagation()
+          dispatch({ type: 'history-icon-clicked' })
+        }}
+      />
+
+      <MenuModal
+        className={styles.submenu}
+        isHidden={state.isSearchHidden}
       >
-        <HeaderLogo
-          className={styles.logo}
-          isRootPage={isRootPage}
-        />
-
-        <SearchIcon
-          className={styles.icon}
-          isHidden={state.isSearchIconHidden}
-          onClick={e => {
-            e.stopPropagation()
-            dispatch({ type: 'search-icon-clicked' })
-          }}
-          state={state.searchIcon}
-          topics={topics}
-        />
-
-        <Favorite
-          className={styles.icon}
-        />
-
-        <HistoryIcon
-          className={styles.icon}
-          isHidden={state.isHistoryIconHidden}
-          onClick={(e) => {
-            e.stopPropagation()
-            dispatch({ type: 'history-icon-clicked' })
-          }}
-        />
-
-        <MenuModal
-          className={styles.submenu}
+        <Search
+          isFirstFocused={true}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
+          onSubmit={onSubmitSearch(router)}
+          isFull={state.isSearchFull}
           isHidden={state.isSearchHidden}
-        >
-          <Search
-            isFirstFocused={true}
-            onBlur={() => dispatch({ type: 'modal-blurred' })}
-            onSubmit={onSubmitSearch(router)}
-            isFull={state.isSearchFull}
-            isHidden={state.isSearchHidden}
-            items={topics}
-          />
-          <History
-            isFirstFocused={true}
-            isHidden={state.isHistoryHidden}
-            onBlur={() => dispatch({ type: 'modal-blurred' })}
-            items={likedPhotos}
-          />
-        </MenuModal>
-      </nav>
-    </>
+          items={topics}
+        />
+        <History
+          isFirstFocused={true}
+          isHidden={state.isHistoryHidden}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
+          items={likedPhotos}
+        />
+      </MenuModal>
+    </nav>
   )
 }
 
