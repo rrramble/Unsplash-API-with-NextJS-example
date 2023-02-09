@@ -3,8 +3,9 @@ import Tag from './tag'
 import styles from './tags.module.scss'
 
 export default function Tags({ items, isFull, onClick }) {
-  const listStyle = styles.self + ' ' +
-    (isFull ? styles['self--full'] : styles['self--minimized'])
+  const additionalClassName = isFull ?
+    styles['self--full'] :
+    styles['self--minimized']
 
   return (items &&
     <>
@@ -16,7 +17,7 @@ export default function Tags({ items, isFull, onClick }) {
       </header>
 
       <menu
-        className={listStyle}
+        className={styles.self + ' ' + additionalClassName}
         data-test={"menu-search__topic-list"}
         id="search-tags"
       >
