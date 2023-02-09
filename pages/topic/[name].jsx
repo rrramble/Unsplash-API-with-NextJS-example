@@ -36,6 +36,10 @@ export default function Home({ topicName, photos }) {
     setLikedPhotosIds(getFavoritePhotosIds())
   }
 
+  const mainH1Header = topicName === 'default' ?
+    'Случайные фотографии' :
+    `Фотографии на тему: ${topicName}`
+
   return (
     <>
       <Head>
@@ -45,10 +49,9 @@ export default function Home({ topicName, photos }) {
       </Head>
       <div className={styles.self}>
         <h1
-          aria-label={`Photos on topic: ${topicName}`}
           className="visually-hidden"
         >
-          Фотографии на тему {topicName}
+          {mainH1Header}
         </h1>
         <LayoutButtons />
         <form
