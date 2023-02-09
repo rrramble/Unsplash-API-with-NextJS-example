@@ -29,10 +29,16 @@ export default function Home() {
   useEffect(() => {
     const likedIds = getFavoritePhotosIds('string')
     fetch('/api/favorite?ids=' + encodeURIComponent(likedIds)).
-    then(res => {
-      res.status === 200 && res.json().
-      then(photos => setPhotos(photos))
-    })
+      then(res => res.status === 200 && res.json()).
+      then(photos => {
+        const onlyFoundPhotoPromises = photos.filter(
+          ({ status, value }) => status === 'fulfilled' && value !== null
+        )
+        const onlyFoundPhotos = onlyFoundPhotoPromises.map(
+          ({ value }) => value
+        )
+        setPhotos(onlyFoundPhotos)
+      })
   }, [likedPhotosIds])
 
   const onClickLikeButton = (id) => {
