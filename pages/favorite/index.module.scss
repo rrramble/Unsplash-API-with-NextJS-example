@@ -1,8 +1,5 @@
-$MARGIN-FROM-MODAL: 29px;
-$MARGIN-FROM-MODAL-BIG-SCREEN: 77px;
-
-$MARGIN-BETWEEN-INSIDE-ELEMENTS: 29px;
-$MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
+$MARGIN-FROM-MENU: 40px;
+$MARGIN-FROM-MENU-BIG-SCREEN: 110px;
 
 .self {
     align-items: stretch;
@@ -12,16 +9,39 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: $MENU-HEIGHT-FULL-SIZE + $MARGIN-FROM-MODAL;
+    margin-top: $MENU-HEIGHT + $MARGIN-FROM-MENU;
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     position: relative;
-    row-gap: $MARGIN-BETWEEN-INSIDE-ELEMENTS;
+    row-gap: 40px;
+}
+
+.header {
+    color: black;
+    font-size: 36px;
+    line-height: 43em / 36px;
+    margin: 0;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
 }
 
 @media (width >= $SCREEN--BIG) {
     .self {
-        margin-top: calc($MENU-HEIGHT-FULL-SIZE-BIG-SCREEN + $MARGIN-FROM-MODAL-BIG-SCREEN);
+        margin-top: calc($MENU-HEIGHT-BIG-SCREEN + $MARGIN-FROM-MENU-BIG-SCREEN);
+        row-gap: 71px;
+    }
+
+    .header {
+        font-size: 72px;
+        line-height: 86em / 72em;
+    }
+
+    .content {
         row-gap: 111px;
     }
 }

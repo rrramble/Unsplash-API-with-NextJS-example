@@ -55,13 +55,17 @@ export default function Home() {
         <title>Избранные фотографии с Unsplash.com</title>
       </Head>
       <div className={styles.self}>
-        <h1 className="visually-hidden">Избранные фотографии</h1>
-        <LayoutButtons />
-        <ImageCards
-          photos={photos}
-          likedPhotosIds={likedPhotosIds}
-          onClickLikeButton={onClickLikeButton}
-        />
+        <h1 className={styles.header}>Избранное</h1>
+        <section
+          className={styles.content}
+        >
+          <LayoutButtons />
+          <ImageCards
+            photos={photos}
+            likedPhotosIds={likedPhotosIds}
+            onClickLikeButton={onClickLikeButton}
+          />
+        </section>
       </div>
     </>
   )
