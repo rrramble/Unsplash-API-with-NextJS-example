@@ -20,7 +20,7 @@ export default function Search({
   const ref = useRef()
   const [ inputRef, setInputRef] = useState()
 
-  let additionalClassName
+  let additionalClassName = ''
   if (isHidden) {
     additionalClassName = styles['self--hidden']
   } else if (isFull) {
