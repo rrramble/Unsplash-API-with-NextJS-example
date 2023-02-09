@@ -53,7 +53,7 @@ export default function Header({ topics, isRootPage }) {
         />
 
         <SearchIcon
-          className={styles.item}
+          className={styles.icon}
           isHidden={state.isSearchIconHidden}
           onClick={(e) => e.stopPropagation() || dispatch({ type: 'search-icon-clicked' })}
           state={state.searchIcon}
@@ -61,11 +61,11 @@ export default function Header({ topics, isRootPage }) {
         />
 
         <Favorite
-          className={styles.item}
+          className={styles.icon}
         />
 
         <HistoryIcon
-          className={styles.item}
+          className={styles.icon}
           isHidden={state.isHistoryIconHidden}
           onClick={(e) => e.stopPropagation() || dispatch({ type: 'history-icon-clicked' })}
         />
