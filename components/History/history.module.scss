@@ -41,3 +41,9 @@
     width: 100%;
 }
 
+@media (width >= $SCREEN--BIG) {
+    .self {
+        height: unset;
+        overflow: hidden;
+    }
+}
