@@ -55,7 +55,10 @@ export default function Header({ topics, isRootPage }) {
         <SearchIcon
           className={styles.icon}
           isHidden={state.isSearchIconHidden}
-          onClick={(e) => e.stopPropagation() || dispatch({ type: 'search-icon-clicked' })}
+          onClick={e => {
+            e.stopPropagation()
+            dispatch({ type: 'search-icon-clicked' })
+          }}
           state={state.searchIcon}
           topics={topics}
         />
@@ -67,7 +70,10 @@ export default function Header({ topics, isRootPage }) {
         <HistoryIcon
           className={styles.icon}
           isHidden={state.isHistoryIconHidden}
-          onClick={(e) => e.stopPropagation() || dispatch({ type: 'history-icon-clicked' })}
+          onClick={(e) => {
+            e.stopPropagation()
+            dispatch({ type: 'history-icon-clicked' })
+          }}
         />
 
         <MenuModal
