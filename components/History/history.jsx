@@ -16,7 +16,7 @@ export default function History({
 
   useEffect(() => {
     passRef && passRef(ref)
-  })
+  }, [passRef, ref])
 
   return (
     <form
