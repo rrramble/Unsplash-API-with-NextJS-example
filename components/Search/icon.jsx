@@ -5,7 +5,10 @@ import styles from './icon.module.scss'
 export default function Icon({ className, isHidden, onClick, passRef }) {
   const iconRef = useRef()
 
-  useEffect(() => passRef && passRef(iconRef), [])
+  useEffect(
+    () => passRef && passRef(iconRef),
+    [iconRef, passRef]
+  )
 
   return (
     <div
