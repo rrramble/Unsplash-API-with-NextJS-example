@@ -5,7 +5,9 @@ import styles from './search-input.module.scss'
 export default function SearchInput({ style, passRef }) {
   const inputRef = useRef(null)
 
-  useEffect(() => passRef(inputRef))
+  useEffect(() => {
+    passRef && passRef(inputRef)
+  }, [passRef, inputRef])
 
   return (
     <div
