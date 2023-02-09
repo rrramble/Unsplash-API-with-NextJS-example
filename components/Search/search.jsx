@@ -29,7 +29,7 @@ export default function Search({
 
   useEffect(() => {
     passRef && passRef(ref)
-  })
+  }, [passRef, ref])
 
   useEffect(() => {
     isFull && inputRef?.current?.focus()
