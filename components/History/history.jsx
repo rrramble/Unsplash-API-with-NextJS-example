@@ -18,9 +18,13 @@ export default function History({
     passRef && passRef(ref)
   }, [passRef, ref])
 
+  const additionalClassName = isHidden ?
+    styles['self--hidden'] :
+    styles['self--shown']
+
   return (
     <form
-      className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : styles['self--shown'])}
+      className={styles.self + ' ' + additionalClassName}
       data-test="menu-history__modal"
       onBlur={isRelatedTargetInsideComponent(onBlur)}
       ref={ref}
