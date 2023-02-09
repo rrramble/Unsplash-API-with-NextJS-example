@@ -51,8 +51,8 @@ export default function Search({
       />
       <Tags
         isFull={isFull}
-        onClick={(item) => saveSearchedTexts(item)}
         items={items}
+        onClick={(item) => saveSearchedTexts(item)}
       />
     </form>
   )
