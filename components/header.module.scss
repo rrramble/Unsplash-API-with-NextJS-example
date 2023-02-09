@@ -4,7 +4,7 @@ $MENU-LOGO-WIDTH: 25px;
     align-items: center;
     background-color: black;
     box-sizing: border-box;
-    column-gap: 24px;
+    column-gap: 22px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -49,6 +49,7 @@ $MENU-LOGO-WIDTH: 25px;
 @media (width >= $SCREEN--BIG) {
     .self {
         height: $MENU-HEIGHT-BIG-SCREEN;
+        column-gap: 40px;
 
         &::before {
             height: $MENU-HEIGHT-BIG-SCREEN;
