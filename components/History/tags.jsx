@@ -2,8 +2,11 @@ import Tag from './tag'
 import styles from './tags.module.scss'
 
 export default function Tags({ isFirstFocused, items }) {
+  if (!items || !items.length) {
+    return null
+  }
 
-  return (items &&
+  return (
     <menu
       className={styles.self}
       id="history-texts"
