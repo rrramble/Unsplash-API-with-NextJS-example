@@ -66,25 +66,23 @@ export default function ImageCard(
         />
       </figcaption>
 
-      <div className={styles['image-container']}>
-        <div
-          className={styles.image}
+      <div
+        className={styles['image']}
+        style={{
+          '--data-background-color': color,
+        }}
+      >
+        <Image
+          alt={photoAlt}
+          height={renderedHeight}
+          priority={isPrefetched}
+          src={photoUrl}
           style={{
-            '--data-background-color': color,
+            borderRadius: 'inherit',
+            display: 'block',
           }}
-        >
-          <Image
-            alt={photoAlt}
-            height={renderedHeight}
-            priority={isPrefetched}
-            src={photoUrl}
-            style={{
-              borderRadius: 'inherit',
-              display: 'block',
-            }}
-            width={RENDERED_WIDTH}
-          />
-        </div>
+          width={RENDERED_WIDTH}
+        />
       </div>
     </figure>
   )

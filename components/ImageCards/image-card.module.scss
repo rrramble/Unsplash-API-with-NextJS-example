@@ -7,19 +7,13 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     position: relative;
 }
 
-.image-container {
-    display: block;
-    object-fit: scale-down;
-    overflow: clip;
-    width: 100%;
-}
-
 .image {
     background-color: gray;
     background-color: var(--data-background-color);
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     display: block;
-    object-fit: contain;
+    object-fit: scale-down;
+    overflow: clip;
     width: 100%;
 }
 
@@ -40,9 +34,8 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 }
 
 .self:hover, .self:focus-within {
-    & .image {
+    & .image img {
         filter: blur(3px) brightness(0.5);
-        // TODO: blurring causing image span out of border-radius
     }
 
     & .author-menu-container {
