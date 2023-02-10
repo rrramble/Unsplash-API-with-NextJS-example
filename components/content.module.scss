@@ -11,6 +11,7 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
     color: black;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     justify-content: flex-start;
     margin-top: $MENU-HEIGHT-WITH-TAGS + $MARGIN-FROM-MODAL;
     min-height: 101vw; // prevents disappearing of scroll bar
