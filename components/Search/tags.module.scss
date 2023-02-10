@@ -95,6 +95,19 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
             display: none;
         }
 
+        &::after {
+            background-image: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 1)
+            );
+            content: "";
+            height: 100%;
+            position: absolute;
+            right: 0;
+            width: 50%;
+            z-index: 1;
+        }
 
         &:hover::after,
         &:focus-within::after {
