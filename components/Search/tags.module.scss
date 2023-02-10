@@ -54,7 +54,7 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     justify-content: center;
     line-height: $SEARCH-TAGS--LINE-HEIGHT-FOCUSED;
     padding-left: calc(86px - $MENU-LEFT-PADDING);
-    padding-right: calc(86px - $MENU-LEFT-PADDING); // Design shows 106px, but by simmetry 86px
+    padding-right: calc(86px - $MENU-LEFT-PADDING); // 106px in design, but 86px by simmetry
 }
 
 .item-container {
