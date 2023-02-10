@@ -11,7 +11,7 @@ export default function SearchInput({ style, passRef }) {
 
   return (
     <div
-      className={style}
+      className={styles.self}
       data-test="menu-search__input-container"
     >
       <label
@@ -19,7 +19,7 @@ export default function SearchInput({ style, passRef }) {
         htmlFor="topic-search">Поиск
       </label>
       <input
-        className={styles.self}
+        className={styles.input}
         id="text"
         name="text"
         placeholder="Поиск"

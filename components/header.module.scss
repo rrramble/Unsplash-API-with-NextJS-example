@@ -1,23 +1,15 @@
 $MENU-LOGO-WIDTH: 25px;
 
 .self {
-    align-items: center;
-    background-color: black;
     box-sizing: border-box;
-    column-gap: 22px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: $MENU-HEIGHT;
-    justify-content: space-between;
-    list-style: none;
-    margin-block-end: 0;
-    margin-block-start: 0;
+    flex-direction: column;
+    margin: 0;
     max-width: $MAX-CONTENT-WINDOW-SIZE;
-    min-width: $MIN-WIDTH;
+    min-width: $MIN-WIDTH; // TODO: really needed?
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 5;
@@ -25,13 +17,28 @@ $MENU-LOGO-WIDTH: 25px;
     &::before {
         background-color: black;
         content: "";
-        height: $MENU-HEIGHT;
-        left: 0;
-        position: fixed;
-        right: 0;
+        height: 100%;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
         top: 0;
+        width: 100vw;
         z-index: -10;
     }
+}
+
+.menu-bar {
+    align-items: center;
+    background-color: black;
+    column-gap: 22px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    min-height: $MENU-HEIGHT;
+    padding-bottom: 26px;
+    padding-top: 25px;
+    justify-content: space-between;
 }
 
 .logo {
@@ -47,13 +54,16 @@ $MENU-LOGO-WIDTH: 25px;
     min-width: $MENU--ICON-WIDTH;
 }
 
+.submenu {
+    position: relative;
+}
+
 @media (width >= $SCREEN--BIG) {
     .self {
-        height: $MENU-HEIGHT-BIG-SCREEN;
         column-gap: 40px;
+    }
 
-        &::before {
-            height: $MENU-HEIGHT-BIG-SCREEN;
-        }
+    .submenu {
+        max-height: 80vh;
     }
 }

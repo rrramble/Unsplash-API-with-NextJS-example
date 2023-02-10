@@ -83,3 +83,22 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
         padding-right: 0;
     }
 }
+
+@media (width >= $SCREEN--BIG) {
+    .self--full {
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;
+        overflow-x: scroll;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        &:hover::after,
+        &:focus-within::after {
+            visibility: hidden;
+        }
+    }
+}

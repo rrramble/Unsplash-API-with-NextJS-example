@@ -1,25 +1,6 @@
 .self {
-    align-items: stretch;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    left: 0;
     padding-bottom: 49px;
-    position: absolute;
-    right: 0;
-    top: $MENU-HEIGHT;
-
-    &::before {
-        background-color: black;
-        bottom: 0;
-        content: "";
-        left: -5000px;
-        position: absolute;
-        right: -5000px;
-        top: 0;
-        z-index: -1;
-    }
+    position: relative;
 }
 
 .self--fill-window {
@@ -27,14 +8,12 @@
 }
 
 .self--hidden {
-    display: none;
+    padding: 0;
+    visibility: hidden;
 }
 
 @media (width >= $SCREEN--BIG) {
     .self {
-        top: $MENU-HEIGHT-BIG-SCREEN;
-        max-height: 400px;
         height: unset;
-        padding-bottom: 91px;
     }
 }

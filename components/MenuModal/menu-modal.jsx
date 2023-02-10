@@ -1,6 +1,11 @@
 import styles from './menu-modal.module.scss'
 
-export default function MenuModal({ children, isHidden, isFullHeight }) {
+export default function MenuModal({
+  children,
+  className,
+  isHidden,
+  isFullHeight,
+}) {
   const additionalClassNames = isHidden ?
     styles['self--hidden'] :
     isFullHeight ?
@@ -9,9 +14,13 @@ export default function MenuModal({ children, isHidden, isFullHeight }) {
 
   return (
     <div
-      className={styles.self + ' ' + additionalClassNames}
+      className={className}
     >
-      {children}
+      <div
+        className={styles.self + ' ' + additionalClassNames}
+      >
+        {children}
+      </div>
     </div>
   )
 }

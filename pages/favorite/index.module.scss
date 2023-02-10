@@ -33,7 +33,10 @@ $MARGIN-FROM-MENU-BIG-SCREEN: 110px;
 
 @media (width >= $SCREEN--BIG) {
     .self {
-        margin-top: calc($MENU-HEIGHT-BIG-SCREEN + $MARGIN-FROM-MENU-BIG-SCREEN);
+        margin-top: calc(
+            $MENU-HEIGHT-START-PAGE-BIG-SCREEN +
+            $MARGIN-FROM-MENU-BIG-SCREEN
+        );
         row-gap: 71px;
     }
 

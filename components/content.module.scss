@@ -12,7 +12,7 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: $MENU-HEIGHT-FULL-SIZE + $MARGIN-FROM-MODAL;
+    margin-top: $MENU-HEIGHT-WITH-TAGS + $MARGIN-FROM-MODAL;
     min-height: 101vw; // prevents disappearing of scroll bar
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
@@ -22,7 +22,10 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
 
 @media (width >= $SCREEN--BIG) {
     .self {
-        margin-top: calc($MENU-HEIGHT-FULL-SIZE-BIG-SCREEN + $MARGIN-FROM-MODAL-BIG-SCREEN);
+        margin-top: calc(
+            $MENU-HEIGHT-WITH-TAGS-BIG-SCREEN +
+            $MARGIN-FROM-MODAL-BIG-SCREEN
+        );
         row-gap: 72px;
     }
 }

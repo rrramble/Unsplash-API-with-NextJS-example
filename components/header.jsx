@@ -46,34 +46,38 @@ export default function Header({ topics, isRootPage }) {
       className={styles.self}
       id='menu'
     >
-      <HeaderLogo
-        className={styles.logo}
-        isRootPage={isRootPage}
-      />
+      <div
+        className={styles['menu-bar']}
+      >
+        <HeaderLogo
+          className={styles.logo}
+          isRootPage={isRootPage}
+        />
 
-      <SearchIcon
-        className={styles.icon}
-        isHidden={state.isSearchIconHidden}
-        onClick={e => {
-          e.stopPropagation()
-          dispatch({ type: 'search-icon-clicked' })
-        }}
-        state={state.searchIcon}
-        topics={topics}
-      />
+        <SearchIcon
+          className={styles.icon}
+          isHidden={state.isSearchIconHidden}
+          onClick={e => {
+            e.stopPropagation()
+            dispatch({ type: 'search-icon-clicked' })
+          }}
+          state={state.searchIcon}
+          topics={topics}
+        />
 
-      <Favorite
-        className={styles.icon}
-      />
+        <Favorite
+          className={styles.icon}
+        />
 
-      <HistoryIcon
-        className={styles.icon}
-        isHidden={state.isHistoryIconHidden}
-        onClick={(e) => {
-          e.stopPropagation()
-          dispatch({ type: 'history-icon-clicked' })
-        }}
-      />
+        <HistoryIcon
+          className={styles.icon}
+          isHidden={state.isHistoryIconHidden}
+          onClick={(e) => {
+            e.stopPropagation()
+            dispatch({ type: 'history-icon-clicked' })
+          }}
+        />
+      </div>
 
       <MenuModal
         className={styles.submenu}
