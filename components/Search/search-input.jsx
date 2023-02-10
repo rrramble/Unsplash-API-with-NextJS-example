@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import styles from './search-input.module.scss'
 
-export default function SearchInput({ style, passRef }) {
+export default function SearchInput({ passRef }) {
   const inputRef = useRef(null)
 
   useEffect(() => {
