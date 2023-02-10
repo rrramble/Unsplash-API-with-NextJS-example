@@ -86,6 +86,7 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     .self--full {
         flex-wrap: nowrap;
         -ms-overflow-style: none;
+        justify-content: start;
         overflow-x: scroll;
         scrollbar-width: none;
 
