@@ -12,7 +12,7 @@ export default function Tags({ items, isFull, onClick }) {
       <header
         className="visually-hidden"
       >
-        <b>Другие темы фотографий:</b>
+        Темы фотографий:
       </header>
 
       <menu
