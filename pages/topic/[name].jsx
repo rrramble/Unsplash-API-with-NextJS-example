@@ -54,17 +54,11 @@ export default function Home({ topicName, photos }) {
           {mainH1Header}
         </h1>
         <LayoutButtons />
-        <form
-          action="/"
-          id="images"
-          method="POST"
-        >
-          <ImageCards
-            photos={photos}
-            likedPhotosIds={likedPhotosIds}
-            onClickLikeButton={onClickLikeButton}
-          />
-        </form>
+        <ImageCards
+          photos={photos}
+          likedPhotosIds={likedPhotosIds}
+          onClickLikeButton={onClickLikeButton}
+        />
       </div>
     </>
   )
