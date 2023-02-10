@@ -10,7 +10,6 @@ export default function Tags({ items, isFull, onClick }) {
   return (items &&
     <>
       <header
-        aria-label="Available photos by topic:"
         className="visually-hidden"
       >
         <b>Другие темы фотографий:</b>
