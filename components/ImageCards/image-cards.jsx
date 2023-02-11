@@ -71,7 +71,9 @@ export default function ImageCards({
             <ImageCard
               isLiked={likedPhotosIds.includes(photo.id)}
               isPrefetched={index <= 2}
-              onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
+              onClickLikeButton={
+                () => onClickLikeButton && onClickLikeButton(photo.id)
+              }
               photo={photo}
             />
           </li>
