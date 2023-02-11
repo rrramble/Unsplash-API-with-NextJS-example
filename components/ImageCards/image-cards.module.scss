@@ -16,30 +16,68 @@ $VIEPORT-WIDTH-WITH-3-PHOTOS:
     $MENU-LEFT-PADDING + $MENU-RIGHT-PADDING
 ;
 
+
+// Layout with Flexbox
+// https://tobiasahlin.com/blog/masonry-with-css/
+
 .self {
-    appearance: none;
-    column-count: 1;
-    column-gap: 26px;
-    column-fill: balance;
+    align-content: space-around;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
-    width: 100%;
+    row-gap: 26px;
 }
 
 .item {
-    break-inside: avoid-column;
     list-style: none;
-    margin-bottom: 26px;
+    display: block;
+    width: 100%;
+}
+
+.self::before,
+.self::after {
+    content: "";
+    flex-basis: 100%;
+    order: 2;
+    width: 0;
 }
 
 @media (width >= $VIEPORT-WIDTH-WITH-2-MIN-PHOTOS) {
     .self {
-        column-count: 2;
+        height: 10000px;
+        height: var(--data-max-height-2-columns);
+    }
+
+    .item {
+        width: calc((99.9% - (1 * 26px)) / 2);
+        &:nth-child(2n - 1) {
+            order: 1;
+        }
+        &:nth-child(2n) {
+            order: 2;
+        }
     }
 }
 
 @media (width >= $VIEPORT-WIDTH-WITH-3-PHOTOS) {
     .self {
-        column-count: 3;
+        height: 20000px;
+        height: var(--data-max-height-3-columns);
+    }
+
+    .item {
+        width: calc((99.9% - (2 * 26px)) / 3);
+
+        &:nth-child(3n - 2) {
+            order: 1;
+        }
+        &:nth-child(3n - 1) {
+            order: 2;
+        }
+        &:nth-child(3n) {
+            order: 3;
+        }
     }
 }
