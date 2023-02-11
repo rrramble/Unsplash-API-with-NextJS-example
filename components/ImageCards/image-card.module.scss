@@ -14,6 +14,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     display: block;
     height: 100%;
+    min-height: 202px; // Author avatar, gap, name, insta, gap, buttons
     object-fit: scale-down;
     overflow: clip;
     width: 100%;
@@ -27,7 +28,6 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     flex-direction: column;
     font-style: normal;
     justify-content: space-evenly;
-    min-height: 70%; // TODO
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
