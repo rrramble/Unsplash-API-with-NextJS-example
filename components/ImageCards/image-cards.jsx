@@ -1,30 +1,33 @@
 import ImageCard from './image-card'
 import styles from './image-cards.module.scss'
 
-const RENDERED_WIDTH = 476
-const ROW_HEIGHT = 1
-const IMAGE_BOTTOM_MARGIN = 26
-
-export default function ImageCards({ photos, likedPhotosIds = [], onClickLikeButton }) {
+export default function ImageCards({
+  likedPhotosIds = [],
+  onClickLikeButton,
+  photos,
+}) {
   return (
-    <ul className={styles.self}>
+    <ul
+      className={styles.self}
+    >
       { photos.map((photo, index) => {
-          const { height, width } = photo
-          const rowSpanCount = Math.floor((height / width * RENDERED_WIDTH + IMAGE_BOTTOM_MARGIN) / ROW_HEIGHT + 1)
-
-          return (
-            <li
-              key={photo.id}
-              style={{gridRow: 'span ' + rowSpanCount}}
-            >
-              <ImageCard
-                isLiked={likedPhotosIds.includes(photo.id)}
-                isPrefetched={index <= 2}
-                onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
-                photo={photo}
-              />
-            </li>
-          )
+        const { height = '1', width = '1' } = photo
+        return (
+          <li
+            className={styles.item}
+            key={photo.id}
+            style={{
+              aspectRatio: `auto ${width} / ${height}`,
+            }}
+          >
+            <ImageCard
+              isLiked={likedPhotosIds.includes(photo.id)}
+              isPrefetched={index <= 2}
+              onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
+              photo={photo}
+            />
+          </li>
+        )
       })}
     </ul>
   )

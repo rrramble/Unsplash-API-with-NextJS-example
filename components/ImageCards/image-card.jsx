@@ -5,8 +5,6 @@ import ImageCardMenu from './image-card-menu'
 
 import styles from './image-card.module.scss'
 
-const RENDERED_WIDTH = 476
-
 export default function ImageCard(
   {
     isLiked,
@@ -14,13 +12,12 @@ export default function ImageCard(
     onClickLikeButton,
     photo,
   }) {
+
   const {
     color,
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
-    height,
-    width,
   } = photo
   const photoAlt = photo.alt_description ?? `photo by ${author.name}`
   const { profile_image: authorProfileImages } = author
@@ -32,7 +29,6 @@ export default function ImageCard(
     thumb: thumbnailPhotoUrl,
   } = photoUrls
 
-  const renderedHeight = height / width * RENDERED_WIDTH
   const photoUrl = regularPhotoUrl || smallPhotoUrl || thumbnailPhotoUrl
   const photoProfileUrl = '/photo/' + (photoId ?? '')
   const authorProfileUrl =
@@ -74,14 +70,13 @@ export default function ImageCard(
       >
         <Image
           alt={photoAlt}
-          height={renderedHeight}
+          fill={true}
           priority={isPrefetched}
           src={photoUrl}
           style={{
             borderRadius: 'inherit',
             display: 'block',
           }}
-          width={RENDERED_WIDTH}
         />
       </div>
     </figure>

@@ -13,6 +13,7 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
     background-color: var(--data-background-color);
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     display: block;
+    height: 100%;
     object-fit: scale-down;
     overflow: clip;
     width: 100%;

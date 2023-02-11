@@ -1,11 +1,41 @@
+$PHOTO-MIN-WIDTH: ($MIN-WIDTH - $MENU-LEFT-PADDING - $MENU-RIGHT-PADDING);
+$PHOTO-MAX-WIDTH: 476px; // See the design
+$VIEPORT-WIDTH-WITH-2-MIN-PHOTOS:
+    $PHOTO-MIN-WIDTH * 2 +
+    26px +
+    $MENU-LEFT-PADDING + $MENU-RIGHT-PADDING
+;
+
+$VIEPORT-WIDTH-WITH-3-PHOTOS:
+    $PHOTO-MIN-WIDTH * 3 +
+    26px * 2 +
+    $MENU-LEFT-PADDING + $MENU-RIGHT-PADDING
+;
+
 .self {
-    column-gap: 27px;
-    display: grid;
-    grid-auto-flow: dense;
-    grid-auto-rows: 1px;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 476px));
-    justify-content: center;
-    list-style: none;
+    appearance: none;
+    column-count: 1;
+    column-gap: 26px;
+    column-fill: balance;
     margin: 0;
     padding: 0;
+    width: 100%;
+}
+
+.item {
+    break-inside: avoid-column;
+    list-style: none;
+    margin-bottom: 26px;
+}
+
+@media (width >= $VIEPORT-WIDTH-WITH-2-MIN-PHOTOS) {
+    .self {
+        column-count: 2;
+    }
+}
+
+@media (width >= $VIEPORT-WIDTH-WITH-3-PHOTOS) {
+    .self {
+        column-count: 3;
+    }
 }
