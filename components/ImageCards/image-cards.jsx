@@ -13,8 +13,13 @@ export default function ImageCards({
 }) {
 
   const liRef = useRef()
-  const [ twoColumnsMaxHeight, setTwoColumnsMaxHeight ] = useState(INITIAL_MAX_HEIGTH)
-  const [ threeColumnsMaxHeight, setThreeColumnsMaxHeight ] = useState(INITIAL_MAX_HEIGTH)
+  const [ twoColumnsMaxHeight, setTwoColumnsMaxHeight ] = useState(
+    INITIAL_MAX_HEIGTH
+  )
+  const [ threeColumnsMaxHeight, setThreeColumnsMaxHeight ] = useState(
+    INITIAL_MAX_HEIGTH
+  )
+
   const [ randomNumber, setRandomNumber] = useState(0)
 
   const onResizeWindow = () => {
@@ -33,12 +38,14 @@ export default function ImageCards({
     if (!renderedWidth) {
       return
     }
-    const [ { width: firstPhotoWidth} ] = photos
-    const ratio = firstPhotoWidth / renderedWidth
-    const twoColumnsTableHeight = calcMaxColumnHeight(photos, 2, ROW_GAP, ratio)
-    const threeColumnsTableHeight = calcMaxColumnHeight(photos, 3, ROW_GAP, ratio)
-    setTwoColumnsMaxHeight(twoColumnsTableHeight)
-    setThreeColumnsMaxHeight(threeColumnsTableHeight)
+    const twoColumnsSumHeight = calcColumnsSumHeight(
+      photos, 2, ROW_GAP, renderedWidth
+    )
+    const threeColumnsSumHeight = calcColumnsSumHeight(
+      photos, 3, ROW_GAP, renderedWidth
+    )
+    setTwoColumnsMaxHeight(twoColumnsSumHeight)
+    setThreeColumnsMaxHeight(threeColumnsSumHeight)
   }, [liRef, randomNumber])
 
   return (
@@ -74,21 +81,41 @@ export default function ImageCards({
   )
 }
 
-function sumColumnsHeights(items, columnCount) {
-  const nullushArray = Array(columnCount).fill(0)
+function sumRenderedHeightsByColumns(
+  items,
+  columnCount,
+  renderedWidth,
+) {
+  const nullishHeights = Array(columnCount).fill(0)
+  const nullishRowCounts = Array(columnCount).fill(0)
 
-  const heights = items.reduce((accu, { height }, index) => {
+  const results = items.reduce((
+    [columnHeights, rowCounts], { height, width }, index
+  ) => {
+    // 1 is correction for 1px of rounding fractions in web browsers
+    const ratio = width / (renderedWidth + 1)
+
     const columnNumber = index % columnCount
-    accu[columnNumber] += height
-    return accu
-  }, nullushArray)
+    columnHeights[columnNumber] += height / ratio
+    rowCounts[columnNumber] += 1
+    return [ columnHeights, rowCounts ]
+  }, [nullishHeights, nullishRowCounts])
 
-  return heights
+  return results
 }
 
-function calcMaxColumnHeight(items, columnCount, rowGap, ratio) {
-  const heights = sumColumnsHeights(items, columnCount)
-  const rowCount = Math.ceil(items.length / columnCount)
-  const maxHeight = Math.max(...heights) / ratio
-  return Math.ceil(maxHeight) + (rowCount - 1) * rowGap
+function calcColumnsSumHeight(
+  items,
+  columnCount,
+  rowGap,
+  renderedWidth,
+) {
+  const [ columnSumHeights, rowCounts ] = sumRenderedHeightsByColumns(
+    items, columnCount, renderedWidth
+  )
+  const maxSumHeight = Math.max(...columnSumHeights)
+  const index = columnSumHeights.indexOf(maxSumHeight)
+  const rowCount = rowCounts[index]
+  const result = Math.ceil(maxSumHeight + (rowCount - 1) * rowGap)
+  return result
 }
