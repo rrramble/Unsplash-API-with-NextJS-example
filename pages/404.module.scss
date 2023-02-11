@@ -1,7 +1,14 @@
 .self {
   align-items: center;
+  color: black;
   display: flex;
   flex-direction: column;
   font-weight: normal;
-  margin-top: calc($MENU-HEIGHT + 150px);
+  margin-top: calc($MENU-HEIGHT-WITH-TAGS + 30px);
+}
+
+@media (width >= $SCREEN--BIG) {
+    .self {
+        margin-top: calc($MENU-HEIGHT-WITH-TAGS-BIG-SCREEN + 30px);
+    }
 }
