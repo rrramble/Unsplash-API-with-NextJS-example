@@ -11,14 +11,10 @@ export default function ImageCards({
       className={styles.self}
     >
       { photos.map((photo, index) => {
-        const { height = '1', width = '1' } = photo
         return (
           <li
             className={styles.item}
             key={photo.id}
-            style={{
-              aspectRatio: `auto ${width} / ${height}`,
-            }}
           >
             <ImageCard
               isLiked={likedPhotosIds.includes(photo.id)}

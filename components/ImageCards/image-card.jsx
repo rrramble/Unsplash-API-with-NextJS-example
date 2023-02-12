@@ -15,9 +15,11 @@ export default function ImageCard(
 
   const {
     color,
+    height,
     user: author = [],
     urls: photoUrls = [],
     id: photoId,
+    width,
   } = photo
   const photoAlt = photo.alt_description ?? `photo by ${author.name}`
   const { profile_image: authorProfileImages } = author
@@ -66,6 +68,7 @@ export default function ImageCard(
         className={styles['image']}
         style={{
           '--data-background-color': color,
+          aspectRatio: `auto ${width} / ${height}`,
         }}
       >
         <Image
