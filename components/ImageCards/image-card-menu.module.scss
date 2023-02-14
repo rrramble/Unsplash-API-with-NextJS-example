@@ -2,11 +2,12 @@ $IMAGE-CARD-MENU--ICON-HEIGHT: 34px;
 $IMAGE-CARD-MENU--ZOOM-COEFF: calc(56px / $IMAGE-CARD-MENU--ICON-HEIGHT);
 
 .self {
+    column-gap: 46px;
     display: flex;
     filter: opacity(1);
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 0;
+    margin: 0;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
@@ -19,8 +20,6 @@ $IMAGE-CARD-MENU--ZOOM-COEFF: calc(56px / $IMAGE-CARD-MENU--ICON-HEIGHT);
 
 .button-container {
     list-style: none;
-    margin-left: 23px;
-    margin-right: 23px;
     padding: 0;
 }
 
