@@ -14,6 +14,8 @@ $VIEPORT-WIDTH-WITH-3-PHOTOS:
     $MENU-LEFT-PADDING + $MENU-RIGHT-PADDING
 ;
 
+$IMAGE-CARD--BORDER-RADIUS: 8px;
+
 .self {
     appearance: none;
     column-count: 1;
@@ -25,6 +27,7 @@ $VIEPORT-WIDTH-WITH-3-PHOTOS:
 }
 
 .item {
+    border-radius: $IMAGE-CARD--BORDER-RADIUS;
     break-inside: avoid-column;
     list-style: none;
     margin-bottom: 26px;
