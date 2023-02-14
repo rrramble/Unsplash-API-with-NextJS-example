@@ -18,7 +18,7 @@ export default function ImageCardAuthor({
       className={styles.self}
       rel="author"
     >
-      { imageUrl &&
+      { imageUrl ?
         <Image
           className={styles.thumbnail}
           src={imageUrl}
@@ -26,6 +26,7 @@ export default function ImageCardAuthor({
           width="70"
           height="70"
         />
+        : null
       }
 
     <span className={styles.name}>{name}</span>
