@@ -29,16 +29,12 @@ export default function ImageCardAuthor({
         : null
       }
 
-    <span className={styles.name}>{name}</span>
-    <span className="visually-hidden">Инстаграм:</span>
-    { instagramUsername &&
-      <Link
-        className={styles['instagram-account']}
-        href={instagramLink}
-      >
-        @{instagramUsername}
-      </Link>
-    }
+        <p className={styles.name}>
+          <span className={'visually-hidden'}>Автор: </span>
+          {name}
+        </p>
+
+        { instagramUsername ?
     </address>
   )
 }
