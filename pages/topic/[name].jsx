@@ -20,9 +20,9 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      photos: getFulfilledValue(photos),
+      photos: getFulfilledValue(photos) ?? [],
       topicName: topicSlug,
-      topics: getFulfilledValue(topics),
+      topics: getFulfilledValue(topics) ?? [],
     },
   }
 }
