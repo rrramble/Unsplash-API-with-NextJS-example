@@ -10,7 +10,7 @@ export default function Layout({ children, topics }) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Training project using API of the 'Unsplash.com' portal."></meta>
+        <meta name="description" content="Training project using API of the 'Unsplash.com' portal." />
       </Head>
       <header
         className={styles.header}
