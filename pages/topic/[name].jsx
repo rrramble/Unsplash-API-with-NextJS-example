@@ -13,13 +13,24 @@ import styles from '@/components/content.module.scss'
 
 export async function getServerSideProps(context) {
   const { name: topicSlug } = context.params
+  const [ photos, topics ] = await Promise.allSettled([
+    getPhotos(topicSlug),
+    getTopics(),
+  ])
+
   return {
     props: {
-      photos: await getPhotos(topicSlug),
+      photos: getFulfilledValue(photos),
       topicName: topicSlug,
-      topics: await getTopics(),
+      topics: getFulfilledValue(topics),
     },
   }
+}
+// TODO: extract to module, or other refactoring
+function getFulfilledValue({ status, value }) {
+  return  status === 'fulfilled' ?
+    value :
+    null
 }
 
 export default function Home({ topicName, photos }) {
