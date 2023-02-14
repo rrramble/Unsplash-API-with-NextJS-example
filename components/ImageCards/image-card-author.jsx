@@ -2,7 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './image-card-author.module.scss'
 
-export default function ImageCardAuthor({ name, instagramUsername, imageUrl }) {
+export default function ImageCardAuthor({
+  instagramUsername,
+  imageUrl,
+  name,
+}) {
   const instagramLink = instagramUsername &&
     (instagramUsername.includes('https://') ?
       instagramUsername :
