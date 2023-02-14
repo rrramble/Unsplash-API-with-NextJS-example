@@ -47,27 +47,15 @@ export default function ImageCard(
   const savingFilename = `${photoAlt}-${photoId}`
 
   return (
-    <figure className={styles.self} data-test="image-card">
-      <figcaption className={styles['author-menu-container']}>
-        <ImageCardAuthor
-          imageUrl={authorProfileUrl}
-          instagramUsername={author.instagram_username}
-          name={author.name}
-        />
-        <ImageCardMenu
-          downloadPhotoUrl={maxQualityPhotoUrl}
-          isLiked={isLiked}
-          onClickLikeButton={onClickLikeButton}
-          photoId={photoId}
-          photoProfileUrl={photoProfileUrl}
-          savingFilename={savingFilename}
-        />
-      </figcaption>
-
+    <figure
+      className={styles.self} data-test="image-card"
+      style={{
+        '--data-background-color': color,
+      }}
+    >
       <div
         className={styles['image']}
         style={{
-          '--data-background-color': color,
           aspectRatio: `auto ${width} / ${height}`,
         }}
       >
@@ -79,9 +67,35 @@ export default function ImageCard(
           style={{
             borderRadius: 'inherit',
             display: 'block',
+            aspectRatio: 'inherit',
           }}
         />
       </div>
+
+      <figcaption className={styles['author-menu-container']}>
+        <ImageCardAuthor
+          imageUrl={authorProfileUrl}
+          instagramUsername={author.instagram_username}
+          name={author.name}
+          aspectRatio={width / height}
+        />
+
+        <div
+          className={styles.gutter}
+          style={{
+            '--data-aspect-ratio': (width / height).toString(),
+          }}
+        >.
+        </div>
+        <ImageCardMenu
+          downloadPhotoUrl={maxQualityPhotoUrl}
+          isLiked={isLiked}
+          onClickLikeButton={onClickLikeButton}
+          photoId={photoId}
+          photoProfileUrl={photoProfileUrl}
+          savingFilename={savingFilename}
+        />
+      </figcaption>
     </figure>
   )
 }
