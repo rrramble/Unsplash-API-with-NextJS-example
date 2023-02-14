@@ -10,9 +10,9 @@ export default function IndividualImageCard({
 }) {
 
   const {
-    related_collections,
+    related_collections = [],
     id: photoId,
-  } = photo
+  } = photo ?? {}
   const relatedTags = related_collections?.results
 
   return (
