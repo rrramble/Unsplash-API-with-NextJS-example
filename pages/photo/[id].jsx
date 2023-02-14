@@ -16,6 +16,9 @@ export async function getServerSideProps(context) {
   } catch (e) {
     return { notFound: true }
   }
+  if (!photo) {
+    return { notFound: true }
+  }
 
   const [ photos, topics ] = await Promise.allSettled([
     getPhotos('default'),
