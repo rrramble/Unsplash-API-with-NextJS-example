@@ -1,5 +1,5 @@
-$AUTHOR--NAME-FONT-SIZE: 30px;
-$AUTHOR--NAME-LINE-HEIGHT: 36px;
+$AUTHOR--NAME-FONT-SIZE-BIG-SCREEN: 30px;
+$AUTHOR--NAME-LINE-HEIGHT: calc(36/30);
 $AUTHOR--INSTAGRAM-FONT-SIZE: 18px;
 $AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
 
@@ -7,19 +7,19 @@ $AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    filter:opacity(1);
-    max-width: 100%;
+    justify-items: center;
+    row-gap: 0.433em; // ~13px out of 30px
 }
 
 .self:focus-within,
 .self:hover {
-    filter:opacity(1);
+    filter: opacity(1);
 }
 
 .name {
+    color: white;
     display: block;
-    font-size: $AUTHOR--NAME-FONT-SIZE;
+    font-size: clamp($AUTHOR--INSTAGRAM-FONT-SIZE, 2vw, $AUTHOR--NAME-FONT-SIZE-BIG-SCREEN);
     font-style: normal;
     font-weight: lighter;
     line-height: $AUTHOR--NAME-LINE-HEIGHT;
@@ -30,11 +30,13 @@ $AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
 }
 
 .instagram-account {
+    color: white;
     display: block;
     font-weight: lighter;
     font-size: $AUTHOR--INSTAGRAM-FONT-SIZE;
     font-style: normal;
     line-height: $AUTHOR--INSTAGRAM-LINE-HEIGHT;
+    text-align: center;
     text-decoration: none;
     &:visited, &:hover, &:link {
         color: white;
