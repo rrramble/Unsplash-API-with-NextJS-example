@@ -1,3 +1,29 @@
+// https://www.cdnfonts.com/ru/sf-ui-display.font
+// https://fonts.cdnfonts.com/css/sf-ui-display
+@font-face {
+    font-family: "SF UI Display";
+    font-style: normal;
+    font-weight: 300;
+    src: local("SF UI Display"),
+    url("/fonts/sf-ui-display-light-58646b33e0551.woff") format("woff")
+}
+
+@font-face {
+    font-family: "SF UI Display";
+    font-style: normal;
+    font-weight: 400;
+    src: local("SF UI Display"),
+    url("/fonts/sf-ui-display-medium-58646be638f96.woff") format("woff")
+}
+
+@font-face {
+    font-family: "SF UI Display";
+    font-style: normal;
+    font-weight: 700;
+    src: local("SF UI Display"),
+    url("/fonts/sf-ui-display-bold-58646a511e3d9.woff") format("woff")
+}
+
 html,
 body {
     padding: 0;
