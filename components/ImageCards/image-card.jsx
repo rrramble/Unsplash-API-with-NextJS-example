@@ -5,6 +5,9 @@ import ImageCardMenu from './image-card-menu'
 
 import styles from './image-card.module.scss'
 
+// This constant must be the same as in 'varibales.scss'
+const SCREEN__BIG = 768
+
 export default function ImageCard(
   {
     isLiked,
@@ -63,6 +66,10 @@ export default function ImageCard(
           alt={photoAlt}
           fill={true}
           priority={isPrefetched}
+          sizes={`
+            (min-width: ${SCREEN__BIG}px) 45vw,
+            90vw
+          `}
           src={photoUrl}
           style={{
             borderRadius: 'inherit',
