@@ -14,6 +14,7 @@ export async function getServerSideProps(context) {
   try {
     photo = await getPhoto(id)
   } catch (e) {
+    console.error(e.message)
     return { notFound: true }
   }
   if (!photo) {
