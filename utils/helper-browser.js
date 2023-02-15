@@ -26,7 +26,7 @@ export async function downloadPhotoByUrl(url, filename) {
       throw new Error(`Error ${image.status} fetching file: ${url}`)
     }
   } catch(e) {
-    return;
+    return
   }
 
   const blob = await image.blob()
