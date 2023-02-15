@@ -19,7 +19,16 @@ export function generateUniqueID() {
 }
 
 export async function downloadPhotoByUrl(url, filename) {
-  const image = await fetch(url)
+  let image
+  try {
+    image = await fetch(url);
+    if (!image.ok) {
+      throw new Error(`Error ${image.status} fetching file: ${url}`)
+    }
+  } catch(e) {
+    return;
+  }
+
   const blob = await image.blob()
   const imageURL = URL.createObjectURL(blob)
   const el = document.createElement('a')
