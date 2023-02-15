@@ -5,7 +5,7 @@ import { fetchPhoto } from './unsplash'
 export async function getPhoto(id: string) {
   try {
     return await getJSONDataFile(['photos', id + '.json'])
-  } catch(e) {
+  } catch (e) {
     console.info(e.message)
   }
 
@@ -19,13 +19,13 @@ export async function getPhoto(id: string) {
   let json
   try {
     json = JSON.parse(contents)
-  } catch(e) {
+  } catch (e) {
     throw new Error(`Could not parse json with photo ID: ${id}`)
   }
 
   try {
     saveFile(['photos', `${id}.json`], contents)
-  } catch(e) {
+  } catch (e) {
     console.log(`Could not save photo info with ID: ${id}`)
   }
   return json
