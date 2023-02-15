@@ -24,7 +24,7 @@ export async function getPhoto(id: string) {
   }
 
   try {
-    saveFile(['photos', `${id}.json`], contents)
+    await saveFile(['photos', `${id}.json`], contents)
   } catch (e) {
     console.log(`Could not save photo info with ID: ${id}`)
   }
