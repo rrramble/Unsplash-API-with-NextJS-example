@@ -1,4 +1,5 @@
 import styles from './menu.module.scss'
+import { downloadPhotoByUrl } from '@/utils/helper-browser'
 
 export default function Menu({
   downloadPhotoUrl,
@@ -31,7 +32,9 @@ export default function Menu({
           className={`${styles.button} ${styles['button--download']}`}
           download={savingFilename}
           href={downloadPhotoUrl}
-          onClick={async evt => downloadPhotoByUrl(evt, downloadPhotoUrl, savingFilename)}
+          onClick={async evt =>
+            onClickDownload(evt, downloadPhotoUrl, savingFilename)
+          }
           rel="noreferrer"
         >
           <span
@@ -43,17 +46,7 @@ export default function Menu({
   )
 }
 
-// TODO: extract to outer function or component
-async function downloadPhotoByUrl(evt, url, filename) {
+async function onClickDownload(evt, url, savingFilename) {
   evt.preventDefault()
-  const image = await fetch(url)
-  const blob = await image.blob()
-  const imageURL = URL.createObjectURL(blob)
-  const el = document.createElement('a')
-  el.href = imageURL
-  el.download = filename ?? `${url}.jpeg`
-  el.style.display = 'none'
-  document.body.appendChild(el)
-  el.click()
-  document.body.removeChild(el)
+  await downloadPhotoByUrl(url, savingFilename)
 }

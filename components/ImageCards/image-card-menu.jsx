@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { downloadPhotoByUrl } from '@/utils/helper-browser'
 
 import styles from './image-card-menu.module.scss'
 
@@ -52,7 +53,9 @@ export default function ImageCardMenu({
           className={styles.button + ' ' + styles['button--download']}
           download={savingFilename}
           href={downloadPhotoUrl}
-          onClick={async evt => downloadPhotoByUrl(evt, downloadPhotoUrl, savingFilename)}
+          onClick={async evt =>
+            onClickDownload(evt, downloadPhotoUrl, savingFilename)
+          }
           rel="noreferrer"
         >
           <span className="visually-hidden">Скачать фотографию</span>
@@ -61,17 +64,8 @@ export default function ImageCardMenu({
     </menu>
   )
 }
-// TODO: extract to separate file (DRY)
-async function downloadPhotoByUrl(evt, url, filename) {
-    evt.preventDefault()
-    const image = await fetch(url)
-    const blob = await image.blob()
-    const imageURL = URL.createObjectURL(blob)
-    const el = document.createElement('a')
-    el.href = imageURL
-    el.download = filename ?? `${url}.jpeg`
-    el.style.display = 'none'
-    document.body.appendChild(el)
-    el.click()
-    document.body.removeChild(el)
+
+async function onClickDownload(evt, url, savingFilename) {
+  evt.preventDefault()
+  await downloadPhotoByUrl(url, savingFilename)
 }
