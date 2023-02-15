@@ -17,3 +17,16 @@ export function generateUniqueID() {
   const randomPart = Math.floor(Math.random() * 1000000)
   return `${timePart}${randomPart}`
 }
+
+export async function downloadPhotoByUrl(url, filename) {
+  const image = await fetch(url)
+  const blob = await image.blob()
+  const imageURL = URL.createObjectURL(blob)
+  const el = document.createElement('a')
+  el.href = imageURL
+  el.download = filename ?? `${url}.jpeg`
+  el.style.display = 'none'
+  document.body.appendChild(el)
+  el.click()
+  document.body.removeChild(el)
+}
