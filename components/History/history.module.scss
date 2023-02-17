@@ -34,7 +34,9 @@
         height: unset;
         max-height: 80vh;
         overflow: hidden;
-        padding-bottom: 132px;
+
+        // total - header - gap - tags
+        padding-bottom: calc(360px - 43px - 45px - 80px);
         row-gap: 45px;
     }
 }
