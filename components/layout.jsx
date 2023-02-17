@@ -16,7 +16,7 @@ export default function Layout({ children, topics }) {
       <header
         className={styles.header}
       >
-        <Header topics={topics} />
+        <Header topics={topics} isRootPage={children?.props?.isRootPage} />
       </header>
       <main>
         {children}

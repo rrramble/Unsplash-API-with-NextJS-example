@@ -20,6 +20,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
+      isRootPage: topicSlug === 'default',
       photos: getFulfilledValue(photos) ?? [],
       topicName: topicSlug,
       topics: getFulfilledValue(topics) ?? [],

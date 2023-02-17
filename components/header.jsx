@@ -36,10 +36,11 @@ export default function Header({ topics, isRootPage }) {
     }
   }, [])
 
-  // Action: changed site address
   useEffect(() => {
-    dispatch({ type: 'init' })
-  }, [router.asPath])
+    isRootPage ?
+      dispatch({ type: 'init' }) :
+      dispatch({ type: 'minimize-menu' })
+  }, [isRootPage])
 
   return (
     <nav
