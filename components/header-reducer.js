@@ -37,7 +37,9 @@ export function headerReducer (state, { type }) {
       type === 'window-scrolled' ||
       (type === 'search-icon-clicked' && state.isSearchFull) ||
       (type === 'history-icon-clicked' && !state.isHistoryHidden) ||
-      (type === 'modal-blurred' && (state.isSearchFull || !state.isHistoryHidden)):
+      (type === 'modal-blurred' && (state.isSearchFull || !state.isHistoryHidden)) ||
+      (type === 'minimize-menu')
+      :
       return {
         // Close modals
         isSearchIconHidden: false,
