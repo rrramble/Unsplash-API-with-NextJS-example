@@ -1,16 +1,46 @@
+$ICON-SIZE: 23px;
+
 .self {
     background-color: white;
     border: none;
+    column-gap: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 0;
     padding: 0;
 }
 
 .item {
     appearance: none;
     display: block;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: $ICON-SIZE;
     text-align: center;
+    width: $ICON-SIZE;
+}
+
+.item--by-squares {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-LIGHT)}");
+    background-size: auto;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.item--by-squares:checked {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-DARK)}");
+}
+
+.item--by-lines {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-LINES-LIGHT)}");
+    background-size: auto;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.item--by-lines:checked {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-LINES-DARK)}");
 }
