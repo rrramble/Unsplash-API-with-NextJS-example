@@ -9,7 +9,10 @@ $MARGIN-FROM-MENU-BIG-SCREEN: 110px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: $MENU-HEIGHT + $MARGIN-FROM-MENU;
+    margin-top: calc(
+        map-get($MENU-HEIGHTS, FAVORITE-PAGE-SMALL-SCREEN) +
+        map-get($MENU-TO-CONTENT-GAPS, FAVORITE-PAGE-SMALL-SCREEN)
+    );
     min-height: 101vw; // prevents disappearing of scroll bar
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
@@ -34,8 +37,8 @@ $MARGIN-FROM-MENU-BIG-SCREEN: 110px;
 @media (width >= $SCREEN--BIG) {
     .self {
         margin-top: calc(
-            $MENU-HEIGHT-START-PAGE-BIG-SCREEN +
-            $MARGIN-FROM-MENU-BIG-SCREEN
+            map-get($MENU-HEIGHTS, FAVORITE-PAGE-BIG-SCREEN) +
+            map-get($MENU-TO-CONTENT-GAPS, FAVORITE-PAGE-BIG-SCREEN)
         );
         row-gap: 71px;
     }
