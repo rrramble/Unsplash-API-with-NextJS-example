@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { contains } from '@/utils/helper-browser'
 
+import HiddenInput from './hidden-input'
 import Tags from './tags'
 import styles from './history.module.scss'
 
@@ -36,6 +37,9 @@ export default function History({
       >
         Ваши запросы
       </header>
+      <HiddenInput
+        isFocused={!isHidden}
+      />
       <Tags
         isFirstFocused={isFirstFocused}
         items={items}
