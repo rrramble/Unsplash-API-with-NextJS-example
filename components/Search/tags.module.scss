@@ -3,6 +3,7 @@ $SEARCH-TAGS--FONT-SIZE: 18px;
 $SEARCH-TAGS--LINE-HEIGHT: 21px;
 
 .self {
+    column-gap: 12px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -68,23 +69,12 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     float: left;
     flex-shrink: 0;
     flex-grow: 0;
-    padding-left: calc(22px / 2 - 2px);
-    padding-right: calc(22px / 2 - 2px);
     position: relative;
     text-decoration: none;
     white-space: nowrap;
     word-break: keep-all;
-
-    &:first-of-type {
-        margin-left: 0;
-        padding-left: 0;
-    }
-
-    &:last-of-type {
-        margin-right: 0;
-        padding-right: 0;
-    }
 }
+
 
 @media (width >= $SCREEN--BIG) {
     .self--full {
