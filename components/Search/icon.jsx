@@ -17,6 +17,7 @@ export default function Icon({ className, isHidden, onClick, passRef }) {
       id="search"
     >
       <button
+        aria-haspopup="true"
         className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : '')}
         data-test="menu-search__icon"
         onClick={onClick}

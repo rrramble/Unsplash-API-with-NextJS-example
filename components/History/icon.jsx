@@ -17,6 +17,7 @@ export default function Icon({
       data-test="menu-history"
       >
       <button
+        aria-haspopup="true"
         type="button"
         className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : '')}
         onClick={onClick}
