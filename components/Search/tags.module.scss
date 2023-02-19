@@ -76,6 +76,9 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     word-break: keep-all;
 }
 
+.shadow:has(.self--full)::before {
+    visibility: hidden;
+}
 
 @media (width >= $SCREEN--BIG) {
     .self--full {
