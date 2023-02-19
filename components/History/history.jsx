@@ -24,9 +24,11 @@ export default function History({
 
   return (
     <form
+      action=""
       className={styles.self + ' ' + additionalClassName}
       data-test="menu-history__modal"
       onBlur={isRelatedTargetInsideComponent(onBlur)}
+      method="GET"
       ref={ref}
     >
       <header
