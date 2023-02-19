@@ -23,7 +23,6 @@ export default function Header({ topics, isRootPage }) {
   const onScrollWindow = () => dispatch({ type: 'window-scrolled' })
 
   useEffect(() => {
-    dispatch({ type: 'init' })
     setLikedPhotos(getSearchedTexts())
     subscribeOnChangeSearchedTexts(() => setLikedPhotos(getSearchedTexts()))
 
@@ -86,17 +85,17 @@ export default function Header({ topics, isRootPage }) {
       >
         <Search
           isFirstFocused={true}
-          onBlur={() => dispatch({ type: 'modal-blurred' })}
-          onSubmit={onSubmitSearch(router)}
           isFull={state.isSearchFull}
           isHidden={state.isSearchHidden}
           items={topics}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
+          onSubmit={onSubmitSearch(router)}
         />
         <History
           isFirstFocused={true}
           isHidden={state.isHistoryHidden}
-          onBlur={() => dispatch({ type: 'modal-blurred' })}
           items={likedPhotos}
+          onBlur={() => dispatch({ type: 'modal-blurred' })}
         />
       </MenuModal>
     </nav>
