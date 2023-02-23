@@ -1,5 +1,5 @@
 $AUTHOR--NAME-FONT-SIZE-BIG-SCREEN: 30px;
-$AUTHOR--NAME-LINE-HEIGHT: calc(36/30);
+$AUTHOR--NAME-LINE-HEIGHT: calc(36 / 30);
 $AUTHOR--INSTAGRAM-FONT-SIZE: 18px;
 $AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
 
@@ -38,6 +38,7 @@ $AUTHOR--INSTAGRAM-LINE-HEIGHT: 22px;
     line-height: $AUTHOR--INSTAGRAM-LINE-HEIGHT;
     text-align: center;
     text-decoration: none;
+
     &:visited, &:hover, &:link {
         color: white;
     }

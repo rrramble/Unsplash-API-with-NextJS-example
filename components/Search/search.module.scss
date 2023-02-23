@@ -19,6 +19,7 @@
 @media (width >= $SCREEN--BIG) {
     .self--full {
         $MENU-TO-MODAL-GAP: 69px;
+
         height: unset;
         margin-top: $MENU-TO-MODAL-GAP;
 
