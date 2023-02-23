@@ -45,8 +45,8 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
     &::before {
         background-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 1)
+            rgba(0 0 0 / 20%),
+            rgba(0 0 0 / 100%)
         );
         content: "";
         height: 100%;
@@ -97,8 +97,8 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
         &::before {
             background-image: linear-gradient(
                 to right,
-                rgba(0, 0, 0, 0.2),
-                rgba(0, 0, 0, 1)
+                rgba(0 0 0 / 20%),
+                rgba(0 0 0 / 100%)
             );
             content: "";
             height: 100%;
