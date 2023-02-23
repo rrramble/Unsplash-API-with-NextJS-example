@@ -112,5 +112,9 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
         &:focus-within::before {
             visibility: hidden;
         }
+
+        &:has(.self--full)::before {
+            visibility: visible;
+        }
     }
 }
