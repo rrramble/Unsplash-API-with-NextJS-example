@@ -17,7 +17,7 @@ export default function Search({
     isHidden,
 }) {
 
-  const ref = useRef()
+  const formRef = useRef()
   const [ inputRef, setInputRef] = useState()
 
   let additionalClassName = ''
@@ -28,8 +28,8 @@ export default function Search({
   }
 
   useEffect(() => {
-    passRef && passRef(ref)
-  }, [passRef, ref])
+    passRef && passRef(formRef)
+  }, [passRef, formRef])
 
   useEffect(() => {
     isFull && inputRef?.current?.focus()
@@ -44,7 +44,7 @@ export default function Search({
       onBlur={isRelatedTargetInsideComponent(onBlur)}
       onKeyUp={onKeyUp}
       onSubmit={(e) => onSubmit(e, inputRef?.current?.value)}
-      ref={ref}
+      ref={formRef}
     >
       <SearchInput
         passRef={(childRef) => setInputRef(childRef)}
