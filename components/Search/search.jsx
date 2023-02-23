@@ -18,7 +18,7 @@ export default function Search({
 }) {
 
   const formRef = useRef()
-  const [ inputRef, setInputRef] = useState()
+  const [ inputRef, setInputRef ] = useState()
 
   let additionalClassName = ''
   if (isHidden) {
