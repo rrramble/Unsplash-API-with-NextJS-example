@@ -10,9 +10,9 @@ $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN: 86px;
     &::after {
         background: linear-gradient(
             to right,
-            rgba(255, 255, 255, 0),
-            rgba(255, 255, 255, 0.8),
-            rgba(255, 255, 255, 0)
+            rgba(255 255 255 / 0%),
+            rgba(255 255 255 / 80%),
+            rgba(255 255 255 / 0%)
         );
         bottom: -13px;
         content: "";
@@ -42,7 +42,6 @@ $SEARCH-INPUT--LINE-HEIGHT-BIG-SCREEN: 86px;
     color: white;
     font-size: $SEARCH-INPUT--FONT-SIZE;
     font-weight: normal;
-    color: white;
     line-height: $SEARCH-INPUT--LINE-HEIGHT;
     text-align: center;
 }

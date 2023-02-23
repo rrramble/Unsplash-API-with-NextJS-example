@@ -45,6 +45,7 @@
 @media (max-width: calc($SCREEN--BIG - 0.01px)) {
     .title {
         @include visually-hidden;
+
         bottom: $MINUS-INFINITY;
         right: $MINUS-INFINITY;
     }

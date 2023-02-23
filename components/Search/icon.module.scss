@@ -16,6 +16,7 @@
     position: relative;
     width: 100%;
     z-index: 5;
+
     &::before {
         background-color: white;
         bottom: -9px;
@@ -45,6 +46,7 @@
 @media (max-width: calc($SCREEN--BIG - 0.01px)) {
     .title {
         @include visually-hidden;
+
         bottom: $MINUS-INFINITY;
         right: $MINUS-INFINITY;
     }
