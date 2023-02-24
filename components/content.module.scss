@@ -14,7 +14,6 @@ $MARGIN-BETWEEN-INSIDE-ELEMENTS-BIG-SCREEN: 29px;
     flex-grow: 1;
     justify-content: flex-start;
     margin-top: $MENU-HEIGHT-WITH-TAGS + $MARGIN-FROM-MODAL;
-    min-height: 101vw; // prevents disappearing of scroll bar
     padding-left: $MENU-LEFT-PADDING;
     padding-right: $MENU-RIGHT-PADDING;
     position: relative;
