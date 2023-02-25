@@ -23,7 +23,7 @@
 для server-side-rendering.
 
 ## Как запустить
-- Установить [NodeJS](https://nodejs.org) версии 14 или более
+- Установить [NodeJS](https://nodejs.org) версии 16 или более
 - Скачать проект: ```git clone https://github.com/rrramble/Unsplash-API-with-NextJS-example```
 - Перейти в папку проекта и запустить: ```npm install```
 - Запуск в браузере на локальном компьютере: ```npm run build```, далее ```npm run start```
