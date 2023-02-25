@@ -2,6 +2,10 @@
   "name": "nextjs-example",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next lint && next build",
