@@ -19,6 +19,13 @@ export default function Search({
   const formRef = useRef()
   const [ inputRef, setInputRef ] = useState()
 
+  const windowClickHandler = (evt) => {
+    const { target } = evt
+    if (!contains(formRef.current, target)) {
+      onBlur()
+    }
+  }
+
   let additionalClassName = ''
   if (isHidden) {
     additionalClassName = styles['self--hidden']
@@ -31,8 +38,12 @@ export default function Search({
   }, [passRef, formRef])
 
   useEffect(() => {
-    isFull && inputRef?.current?.focus()
-  }, [inputRef, isFull])
+    window.addEventListener('click', windowClickHandler)
+
+    return () => {
+      window.removeEventListener('click', windowClickHandler)
+    }
+  })
 
   return (
     <form
@@ -61,4 +72,10 @@ function isRelatedTargetInsideComponent(callback) {
   return e => {
     !contains(e.currentTarget, e.relatedTarget) && callback(e)
   }
+}
+
+function wrapCallback(callback, predicate) {
+  return x => predicate ?
+    callback(x) :
+    null
 }
