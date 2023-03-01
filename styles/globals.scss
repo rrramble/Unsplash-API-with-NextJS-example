@@ -33,15 +33,11 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-html {
-    // Prevents layout shift
-    margin-left: calc(100vw - 100%);
-}
-
 body {
     margin-left: auto;
     margin-right: auto;
     max-width: $MAX-CONTENT-WINDOW-SIZE;
+    min-height: 101vh;
     width: 100%;
 }
 
