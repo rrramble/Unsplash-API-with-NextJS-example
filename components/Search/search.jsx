@@ -73,9 +73,3 @@ function isRelatedTargetInsideComponent(callback) {
     !contains(e.currentTarget, e.relatedTarget) && callback(e)
   }
 }
-
-function wrapCallback(callback, predicate) {
-  return x => predicate ?
-    callback(x) :
-    null
-}
