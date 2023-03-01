@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { contains } from '@/utils/helper-browser'
 
-import HiddenInput from './hidden-input'
 import Tags from './tags'
 import styles from './history.module.scss'
 
 export default function History({
-  isFirstFocused,
   isHidden,
   items,
   onBlur,
@@ -14,6 +12,19 @@ export default function History({
   passRef,
 }) {
   const ref = useRef()
+  const windowClickHandler = (evt) => {
+    const { target } = evt
+    if (!contains(ref.current, target) && !isHidden) {
+      onBlur()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', windowClickHandler)
+    return () => {
+      window.removeEventListener('click', windowClickHandler)
+    }
+  })
 
   useEffect(() => {
     passRef && passRef(ref)
@@ -24,12 +35,9 @@ export default function History({
     styles['self--shown']
 
   return (
-    <form
-      action=""
+    <div
       className={styles.self + ' ' + additionalClassName}
       data-test="menu-history__modal"
-      onBlur={isRelatedTargetInsideComponent(onBlur)}
-      method="GET"
       ref={ref}
     >
       <header
@@ -37,20 +45,10 @@ export default function History({
       >
         Ваши запросы
       </header>
-      <HiddenInput
-        isFocused={!isHidden}
-      />
       <Tags
-        isFirstFocused={isFirstFocused}
         items={items}
         onClick={onClick}
       />
-    </form>
+    </div>
   )
-}
-
-function isRelatedTargetInsideComponent(callback) {
-  return e => {
-    !contains(e.currentTarget, e.relatedTarget) && callback(e)
-  }
 }
