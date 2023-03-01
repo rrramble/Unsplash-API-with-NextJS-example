@@ -102,8 +102,8 @@ export default function Header({ topics, isRootPage }) {
 }
 
 const onSubmitSearch = (router) => {
-  return (e, text) => {
-    e.preventDefault()
+  return (evt, text) => {
+    evt.preventDefault()
     saveSearchedTexts(text)
     router.push({
       pathname: '/search/[text]',
