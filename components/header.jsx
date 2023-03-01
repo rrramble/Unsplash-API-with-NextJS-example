@@ -62,7 +62,6 @@ export default function Header({ topics, isRootPage }) {
             dispatch({ type: 'search-icon-clicked' })
           }}
           state={state.searchIcon}
-          topics={topics}
         />
 
         <Favorite
