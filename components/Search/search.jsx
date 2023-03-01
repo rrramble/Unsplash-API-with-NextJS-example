@@ -21,7 +21,7 @@ export default function Search({
 
   const windowClickHandler = (evt) => {
     const { target } = evt
-    if (!contains(formRef.current, target)) {
+    if (!contains(formRef.current, target) && !isHidden) {
       onBlur()
     }
   }
