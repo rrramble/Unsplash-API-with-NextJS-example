@@ -1,7 +1,7 @@
 import Tag from './tag'
 import styles from './tags.module.scss'
 
-export default function Tags({ isFirstFocused, items }) {
+export default function Tags({ items }) {
   if (!items || !items.length) {
     return null
   }
@@ -12,9 +12,8 @@ export default function Tags({ isFirstFocused, items }) {
       id="history-texts"
     >
       {
-        items.map((item, index) => (
+        items.map(item => (
         <Tag
-          isFocused={isFirstFocused && index === 0}
           key={item.slug || item.id}
           item={item}
         />
