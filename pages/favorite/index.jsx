@@ -8,7 +8,7 @@ import LayoutButtons from '@/components/PhotosLayoutButtons/layout-buttons'
 
 import styles from './index.module.scss'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     props: {
       topics: await getTopics(),
