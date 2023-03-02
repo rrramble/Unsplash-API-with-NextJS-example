@@ -11,18 +11,22 @@ import LayoutButtons from '@/components/PhotosLayoutButtons/layout-buttons'
 
 import styles from '@/components/content.module.scss'
 
+const DEFAULT_TOPIC_SLUG = 'default'
+
 export async function getServerSideProps(context) {
-  const { name: topicSlug } = context.params
+  const { names: topicNames } = context.params
+  const topicName = topicNames ? topicNames[0] : DEFAULT_TOPIC_SLUG
+
   const [ photos, topics ] = await Promise.allSettled([
-    getPhotos(topicSlug),
+    getPhotos(topicName),
     getTopics(),
-  ])
+  ]);
 
   return {
     props: {
-      isRootPage: topicSlug === 'default',
+      isRootPage: topicName === DEFAULT_TOPIC_SLUG,
       photos: getFulfilledValue(photos) ?? [],
-      topicName: topicSlug,
+      topicName,
       topics: getFulfilledValue(topics) ?? [],
     },
   }
