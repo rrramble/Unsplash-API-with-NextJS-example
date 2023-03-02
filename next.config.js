@@ -20,7 +20,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/topic/default',
+        destination: '/topic',
       },
     ]
   },
