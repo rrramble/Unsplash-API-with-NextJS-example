@@ -3,8 +3,8 @@ import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId } from
 import { useEffect, useState } from 'react'
 
 import Head from 'next/head'
-import ImageCards from '@/components/ImageCards/image-cards'
-import LayoutButtons from '@/components/PhotosLayoutButtons/layout-buttons'
+import ImageCards from '@/components/image-cards/image-cards'
+import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 
 import styles from './index.module.scss'
 

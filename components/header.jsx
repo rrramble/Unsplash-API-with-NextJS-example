@@ -4,12 +4,12 @@ import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } f
 import { headerReducer } from './header-reducer'
 
 import Favorite from './Favorite/favorite'
-import HeaderLogo from '@/components/HeaderLogo/header-logo'
-import { default as HistoryIcon } from '@/components/History/icon'
-import { default as SearchIcon } from './Search/icon'
-import MenuModal from '@/components/MenuModal/menu-modal'
-import Search from '@/components/Search/search'
-import History from '@/components/History/history'
+import HeaderLogo from '@/components/header-logo/header-logo'
+import { default as HistoryIcon } from '@/components/history/icon'
+import { default as SearchIcon } from './search/icon'
+import MenuModal from '@/components/menu-modal/menu-modal'
+import Search from '@/components/search/search'
+import History from '@/components/history/history'
 
 
 import styles from './header.module.scss'

@@ -1,5 +1,5 @@
-import Photo from '@/components/IndividualImageCard/photo'
-import SimilarPhotos from '@/components/IndividualImageCard/similar-photos'
+import Photo from '@/components/individual-image-card/photo'
+import SimilarPhotos from '@/components/individual-image-card/similar-photos'
 
 export default function IndividualImageCard({
   isLikedPhoto,

@@ -6,8 +6,8 @@ import {
 } from '@/utils/local-storage'
 
 import Head from 'next/head'
-import ImageCards from '@/components/ImageCards/image-cards'
-import LayoutButtons from '@/components/PhotosLayoutButtons/layout-buttons'
+import ImageCards from '@/components/image-cards/image-cards'
+import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 
 import styles from '@/components/content.module.scss'
 
