@@ -50,7 +50,3 @@ export default function ImageCards({
     </ul>
   )
 }
-
-function getColumnCount(node) {
-
-}
