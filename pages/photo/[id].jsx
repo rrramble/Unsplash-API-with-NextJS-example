@@ -52,6 +52,10 @@ export default function Home({ photo, photos = [] }) {
   const [ isLikedPhoto, setIsLikedPhoto ] = useState(false)
 
   useEffect(() => {
+    setLikedPhotosIds(getFavoritePhotosIds());
+  }, [])
+
+  useEffect(() => {
     const isLiked = likedPhotosIds.includes(photoId)
     setIsLikedPhoto(isLiked)
   }, [likedPhotosIds, photoId])
