@@ -108,13 +108,13 @@ $SEARCH-TAGS--LINE-HEIGHT: 21px;
             z-index: 1;
         }
 
-        &:hover::before,
-        &:focus-within::before {
-            visibility: hidden;
-        }
-
         &:has(.self--full)::before {
             visibility: visible;
+        }
+
+        &:has(.self--full):hover::before,
+        &:has(.self--full):focus-within::before {
+            visibility: hidden;
         }
     }
 }
