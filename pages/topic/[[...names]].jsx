@@ -15,7 +15,7 @@ const DEFAULT_TOPIC_SLUG = 'default'
 
 export async function getServerSideProps(context) {
   const { names: topicNames } = context.params
-  const topicName = topicNames ? topicNames[0] : DEFAULT_TOPIC_SLUG
+  const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames || []
 
   const [ photos, topics ] = await Promise.allSettled([
     getPhotos(topicName),
@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      isRootPage: topicName === DEFAULT_TOPIC_SLUG,
+      isRootPage: !!topicNames,
       photos: getFulfilledValue(photos) ?? [],
       topicName,
       topics: getFulfilledValue(topics) ?? [],
