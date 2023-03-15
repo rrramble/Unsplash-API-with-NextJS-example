@@ -20,6 +20,7 @@ $ICON-SIZE: 23px;
 }
 
 .item {
+    -webkit-appearance: none; // Safari iOS makes it round
     appearance: none;
     background-color: transparent;
     background-size: contain;
