@@ -3,7 +3,7 @@ import { useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 import { headerReducer } from './header-reducer'
 
-import Favorite from './Favorite/favorite'
+import Favorite from './favorite/favorite'
 import HeaderLogo from '@/components/header-logo/header-logo'
 import { default as HistoryIcon } from '@/components/history/icon'
 import { default as SearchIcon } from './search/icon'
