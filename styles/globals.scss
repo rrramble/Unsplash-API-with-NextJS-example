@@ -24,6 +24,10 @@
     url("/fonts/sf-ui-display-bold-58646a511e3d9.woff") format("woff")
 }
 
+html {
+    min-height: 101vh;
+}
+
 html,
 body {
     padding: 0;
@@ -37,7 +41,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     max-width: $MAX-CONTENT-WINDOW-SIZE;
-    min-height: 101vh;
     width: 100%;
 }
 
