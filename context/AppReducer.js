@@ -1,12 +1,20 @@
 export const initialState = {
   favoritePhotosIds: [],
+  photoColumnCount: 0,
 }
 
-export const AppReducer = (state, action) => {
-  switch (action.type) {
-    case null: {
-      return state
+export const AppReducer = (state, { payload, type }) => {
+  switch (type) {
+    case 'SAVE_PHOTO_COLUMN_COUNT': {
+      if (state.photoColumnCount === payload) {
+        return state
+      }
+      return {
+        ...state,
+        photoColumnCount: payload,
+      }
     }
+
     default: {
       return state
     }
