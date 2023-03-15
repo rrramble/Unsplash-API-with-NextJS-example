@@ -11,7 +11,7 @@ $ICON-SIZE: 23px;
     padding: 0;
 }
 
-.item {
+.container {
     appearance: none;
     display: block;
     height: $ICON-SIZE;
@@ -19,28 +19,30 @@ $ICON-SIZE: 23px;
     width: $ICON-SIZE;
 }
 
-.item--by-squares {
+.item {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-LIGHT)}");
-    background-size: auto;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 0;
     height: 100%;
     margin: 0;
     width: 100%;
 }
 
-.item--by-squares:checked {
-    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-DARK)}");
-}
-
-.item--by-lines {
-    appearance: none;
+.item--one-column {
     background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-LINES-LIGHT)}");
-    background-size: auto;
-    height: 100%;
-    margin: 0;
-    width: 100%;
+
+    &:checked {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-LINES-DARK)}");
+    }
 }
 
-.item--by-lines:checked {
-    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-LINES-DARK)}");
+
+.item--multi-column {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-LIGHT)}");
+
+    &:checked {
+        background-image: url("data:image/svg+xml;charset=utf-8, #{map-get($ICON-LAYOUT, BY-SQUARES-DARK)}");
+    }
 }

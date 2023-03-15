@@ -7,27 +7,27 @@ export default function LayoutButtons() {
   return (
     <fieldset className={styles.self}>
       <legend className="visually-hidden">Раскладка фотографий:</legend>
-      <label className={styles.item} data-test="images-layout-button">
+      <label className={styles.container} data-test="images-layout-button">
+        <span className="visually-hidden">Одна колонка</span>
         <input
           checked={photoColumnCount <= 1}
-          className={styles['item--by-lines']}
+          className={`${styles.item} ${styles['item--one-column']}`}
           defaultChecked
           disabled
           name="photos-layout-buttons"
           type="radio"
         />
-        <span className="visually-hidden">Горизонтально</span>
       </label>
 
-    <label className={styles.item} data-test="images-layout-button">
+    <label className={styles.container} data-test="images-layout-button">
+      <span className="visually-hidden">Несколько колонок</span>
       <input
         checked={photoColumnCount >= 2}
-        className={styles['item--by-squares']}
+        className={`${styles.item} ${styles['item--multi-column']}`}
         disabled
         name="photos-layout-buttons"
         type="radio"
       />
-        <span className="visually-hidden">В квадратик</span>
     </label>
     </fieldset>
   )
