@@ -29,9 +29,11 @@ $IMAGE-CARD--BORDER-RADIUS: 8px;
 .item {
     border-radius: $IMAGE-CARD--BORDER-RADIUS;
     break-inside: avoid-column;
+    display: inline-block;
     list-style: none;
     margin-bottom: 26px;
     max-width: $PHOTO-MAX-WIDTH;
+    width: 100%;
 }
 
 @media (width >= $VIEPORT-WIDTH-WITH-2-MIN-PHOTOS) {
