@@ -12,7 +12,6 @@ export default function LayoutButtons() {
         <input
           checked={photoColumnCount <= 1}
           className={`${styles.item} ${styles['item--one-column']}`}
-          defaultChecked
           disabled
           name="photos-layout-buttons"
           type="radio"
