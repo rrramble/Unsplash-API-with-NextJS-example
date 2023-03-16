@@ -12,7 +12,7 @@ export default function HeaderLogo({ className = '' }: ThisProps) {
     <div
       className={className}
       data-test="menu-logo"
-      >
+    >
       <Link
         className={styles.self}
         href="/"

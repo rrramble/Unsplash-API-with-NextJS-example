@@ -15,7 +15,7 @@ export default function Icon({
     <div
       className={className}
       data-test="menu-history"
-      >
+    >
       <button
         aria-haspopup="true"
         type="button"

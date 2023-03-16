@@ -8,13 +8,12 @@ import styles from './image-card.module.scss'
 // This constant must be the same as in 'varibales.scss'
 const SCREEN__BIG = 768
 
-export default function ImageCard(
-  {
-    isLiked,
-    isPrefetched,
-    onClickLikeButton,
-    photo,
-  }) {
+export default function ImageCard({
+  isLiked,
+  isPrefetched,
+  onClickLikeButton,
+  photo,
+}) {
 
   const {
     color,

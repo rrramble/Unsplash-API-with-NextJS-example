@@ -36,6 +36,6 @@ export default function IndividualImageCard({
 
 function excludeMainPhoto(photos = [], photoId) {
   return photos.filter(
-    photo => photoId !== photo.id
+      photo => photoId !== photo.id
   )
 }

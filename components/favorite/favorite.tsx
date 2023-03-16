@@ -11,7 +11,7 @@ export default function HeaderFavorite({ className }: ThisProps) {
     <div
       className={className}
       data-test="menu-favorite"
-      >
+    >
       <Link
         className={styles.self}
         href='/favorite'

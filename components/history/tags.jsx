@@ -13,11 +13,12 @@ export default function Tags({ items }) {
     >
       {
         items.map(item => (
-        <Tag
-          key={item.slug || item.id}
-          item={item}
-        />
-      ))}
+          <Tag
+            key={item.slug || item.id}
+            item={item}
+          />
+        ))
+      }
     </menu>
   )
 }

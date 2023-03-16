@@ -33,10 +33,10 @@ export default function Home() {
       then(res => res.status === 200 && res.json()).
       then(photos => {
         const onlyFoundPhotoPromises = photos.filter(
-          ({ status, value }) => status === 'fulfilled' && value !== null
+            ({ status, value }) => status === 'fulfilled' && value !== null
         )
         const onlyFoundPhotos = onlyFoundPhotoPromises.map(
-          ({ value }) => value
+            ({ value }) => value
         )
         setPhotos(onlyFoundPhotos)
       })

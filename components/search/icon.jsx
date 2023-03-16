@@ -6,8 +6,8 @@ export default function Icon({ className, isHidden, onClick, passRef }) {
   const iconRef = useRef()
 
   useEffect(
-    () => passRef && passRef(iconRef),
-    [iconRef, passRef]
+      () => passRef && passRef(iconRef),
+      [iconRef, passRef]
   )
 
   return (

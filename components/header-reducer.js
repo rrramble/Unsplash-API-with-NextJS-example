@@ -1,4 +1,4 @@
-export function headerReducer (state, { type }) {
+export function headerReducer(state, { type }) {
   switch (true) {
     case
       type === 'init':
@@ -30,10 +30,10 @@ export function headerReducer (state, { type }) {
         isSearchFull: false,
         isHistoryIconHidden: true,
         isHistoryHidden: false,
-    }
+      }
 
     case
-      (type === 'escape-pressed' && (state.isSearchFull || !state.isHistoryHidden))||
+      (type === 'escape-pressed' && (state.isSearchFull || !state.isHistoryHidden)) ||
       type === 'window-scrolled' ||
       (type === 'search-icon-clicked' && state.isSearchFull) ||
       (type === 'history-icon-clicked' && !state.isHistoryHidden) ||

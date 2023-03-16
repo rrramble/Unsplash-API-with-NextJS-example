@@ -2,7 +2,7 @@ import ImageCards from '@/components/image-cards/image-cards'
 
 import styles from './similar-photos.module.scss'
 
-export default function SimilarPhotos ({
+export default function SimilarPhotos({
   likedPhotosIds,
   onClickLikeButton,
   photos,
