@@ -29,5 +29,13 @@
     "sass": "^1.58.3",
     "stylelint": "^15.2.0",
     "stylelint-config-standard-scss": "^7.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-next"
+    ],
+    "rules": {
+      "indent": ["error", 2]
+    }
   }
 }
