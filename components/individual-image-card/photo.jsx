@@ -17,15 +17,15 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
   } = photo || {}
 
   const {
-      full: fullPhotoUrl,
-      raw: rawPhotoUrl,
-      regular: regularPhotoUrl,
-      small: smallPhotoUrl,
-      thumb: thumbPhotoUrl,
+    full: fullPhotoUrl,
+    raw: rawPhotoUrl,
+    regular: regularPhotoUrl,
+    small: smallPhotoUrl,
+    thumb: thumbPhotoUrl,
   } = photoUrls || {}
 
   const {
-      profile_image: authorProfileImages,
+    profile_image: authorProfileImages,
   } = author || {}
 
   const photoAlt = photo?.alt_descrtiption ??

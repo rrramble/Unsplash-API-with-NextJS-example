@@ -7,13 +7,13 @@ import Tags from './tags'
 
 import styles from './search.module.scss'
 export default function Search({
-    onBlur,
-    onKeyUp,
-    onSubmit,
-    passRef,
-    items,
-    isFull,
-    isHidden,
+  onBlur,
+  onKeyUp,
+  onSubmit,
+  passRef,
+  items,
+  isFull,
+  isHidden,
 }) {
 
   const formRef = useRef()

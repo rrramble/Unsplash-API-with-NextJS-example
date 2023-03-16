@@ -18,16 +18,16 @@ export default function LayoutButtons() {
         />
       </label>
 
-    <label className={styles.container} data-test="images-layout-button">
-      <span className="visually-hidden">Несколько колонок</span>
-      <input
-        checked={photoColumnCount >= 2}
-        className={`${styles.item} ${styles['item--multi-column']}`}
-        disabled
-        name="photos-layout-buttons"
-        type="radio"
-      />
-    </label>
+      <label className={styles.container} data-test="images-layout-button">
+        <span className="visually-hidden">Несколько колонок</span>
+        <input
+          checked={photoColumnCount >= 2}
+          className={`${styles.item} ${styles['item--multi-column']}`}
+          disabled
+          name="photos-layout-buttons"
+          type="radio"
+        />
+      </label>
     </fieldset>
   )
 }
