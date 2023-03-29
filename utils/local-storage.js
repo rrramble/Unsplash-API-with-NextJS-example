@@ -16,6 +16,10 @@ export function saveFavoritePhotoId(id) {
   return lsAddItem('favoritePhotosIds', id)
 }
 
+export function subscribeOnChangeFavorites(cb) {
+  subscribeOnChange('favoritePhotosIds', cb)
+}
+
 export function subscribeOnChangeSearchedTexts(cb) {
   subscribeOnChange('searchedTexts', cb)
 }
@@ -91,7 +95,12 @@ function lsRemoveItem(keyName, item, fn) {
   const items = lsGetArray(keyName).filter(
       oldItem => fn(oldItem) !== fn(item)
   )
-  lsSaveArray(keyName, items)
+  try {
+    lsSaveArray(keyName, items)
+    callSubscribers(keyName)
+  } catch (e) {
+    return
+  }
 }
 
 const subscribers = []
