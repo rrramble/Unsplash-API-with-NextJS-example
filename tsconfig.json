@@ -26,6 +26,9 @@
       "@/context/*": [
         "context/*"
       ],
+      "@styles/*": [
+        "styles/*"
+      ],
       "@/utils/*": [
         "utils/*"
       ]
