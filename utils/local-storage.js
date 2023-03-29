@@ -89,7 +89,7 @@ function lsSaveArray(keyName, items) {
 
 function lsRemoveItem(keyName, item, fn) {
   const items = lsGetArray(keyName).filter(
-    oldItem => fn(oldItem) !== fn(item)
+      oldItem => fn(oldItem) !== fn(item)
   )
   lsSaveArray(keyName, items)
 }
