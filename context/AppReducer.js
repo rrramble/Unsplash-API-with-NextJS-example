@@ -1,5 +1,4 @@
 export const initialState = {
-  favoritePhotosIds: [],
   photoColumnCount: 0,
 }
 
