@@ -1,11 +1,9 @@
+import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import { getTopics } from '@/utils/helper'
 import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId } from '@/utils/local-storage'
-import { useEffect, useState } from 'react'
-
-import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-
 import styles from './index.module.scss'
 
 export async function getStaticProps() {
