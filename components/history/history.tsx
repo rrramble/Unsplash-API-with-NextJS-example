@@ -1,21 +1,23 @@
-import { useEffect, useRef } from 'react'
+import { MutableRefObject, useEffect, useRef } from 'react'
+import { HistoryEntry } from 'types/history'
 import { contains } from '@/utils/helper-browser'
-
 import Tags from './tags'
 import styles from './history.module.scss'
 
-export default function History({
-  isHidden,
-  items,
-  onBlur,
-  onClick,
-  passRef,
-}) {
-  const ref = useRef()
-  const windowClickHandler = (evt) => {
+type HistoryProps = {
+  isHidden: boolean,
+  items: HistoryEntry[],
+  onBlur: () => void,
+  passRef: (ref: MutableRefObject<HTMLElement>) => void,
+}
+
+export default function History(props: HistoryProps): JSX.Element {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const { passRef } = props
+  const windowClickHandler = (evt: MouseEvent) => {
     const { target } = evt
-    if (!contains(ref.current, target) && !isHidden) {
-      onBlur()
+    if (!contains(ref.current, target) && !props.isHidden) {
+      props.onBlur()
     }
   }
 
@@ -30,13 +32,13 @@ export default function History({
     passRef && passRef(ref)
   }, [passRef, ref])
 
-  const additionalClassName = isHidden ?
+  const additionalClassName = props.isHidden ?
     styles['self--hidden'] :
     styles['self--shown']
 
   return (
     <div
-      className={styles.self + ' ' + additionalClassName}
+      className={`${styles.self} ${additionalClassName}`}
       data-test="menu-history__modal"
       ref={ref}
     >
@@ -46,8 +48,7 @@ export default function History({
         Ваши запросы
       </header>
       <Tags
-        items={items}
-        onClick={onClick}
+        items={props.items}
       />
     </div>
   )
