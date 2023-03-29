@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useAppContext } from '@/context/AppContext'
+import { throttle } from '@/utils/helper-browser'
 import ImageCard from './image-card'
 import styles from './image-cards.module.scss'
 
@@ -12,12 +13,12 @@ export default function ImageCards({
   const layoutRef = useRef()
 
   useEffect(() => {
-    const handleWindowResize = () => {
+    const handleWindowResize = throttle(() => {
       const style = window.getComputedStyle(layoutRef.current, null)
       const columnCountAsString = style['column-count'] || '0'
       const columnCount = parseInt(columnCountAsString, 10)
       dispatch({ type: 'SAVE_PHOTO_COLUMN_COUNT', payload: columnCount })
-    }
+    }, 100)
 
     handleWindowResize()
     window.addEventListener('resize', handleWindowResize)
