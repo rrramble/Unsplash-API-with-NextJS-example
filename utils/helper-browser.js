@@ -1,4 +1,4 @@
-export function contains (parent, item) {
+export function contains(parent, item) {
   if (parent === undefined || item === undefined || item === null) {
     return false
   }
@@ -10,7 +10,6 @@ export function contains (parent, item) {
   const { parentNode: itemParentNode } = item
   return contains(parent, itemParentNode)
 }
-
 
 export function generateUniqueID() {
   const timePart = Date.now()
