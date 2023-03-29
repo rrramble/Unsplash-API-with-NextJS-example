@@ -11,21 +11,21 @@ export default function ImageCards({
   const { dispatch } = useAppContext()
   const layoutRef = useRef()
 
-  const handleWindowResize = () => {
-    const style = window.getComputedStyle(layoutRef.current, null)
-    const columnCountAsString = style['column-count'] || '0'
-    const columnCount = parseInt(columnCountAsString, 10)
-    dispatch({ type: 'SAVE_PHOTO_COLUMN_COUNT', payload: columnCount })
-  }
-
   useEffect(() => {
+    const handleWindowResize = () => {
+      const style = window.getComputedStyle(layoutRef.current, null)
+      const columnCountAsString = style['column-count'] || '0'
+      const columnCount = parseInt(columnCountAsString, 10)
+      dispatch({ type: 'SAVE_PHOTO_COLUMN_COUNT', payload: columnCount })
+    }
+
     handleWindowResize()
     window.addEventListener('resize', handleWindowResize)
 
     return () => {
       window.removeEventListener('resize', handleWindowResize)
     };
-  }, [])
+  }, [dispatch])
 
   return (
     <ul
