@@ -38,3 +38,22 @@ export async function downloadPhotoByUrl(url, filename) {
   el.click()
   document.body.removeChild(el)
 }
+
+export function throttle(cb, timeout) {
+  let timerId = null
+
+  function run(...args) {
+    if (timerId) {
+      return
+    }
+
+    timerId = setTimeout(() => {
+      cb(...args)
+
+      clearTimeout(timerId)
+      timerId = null
+    }, timeout)
+  }
+
+  return run
+}
