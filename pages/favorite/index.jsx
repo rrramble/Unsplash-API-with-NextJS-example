@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { getTopics } from '@/utils/helper'
-import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId } from '@/utils/local-storage'
+import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites } from '@/utils/local-storage'
+import { useFavoritePhotos } from 'hooks/use-favorite-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
@@ -15,37 +16,18 @@ export async function getStaticProps() {
 }
 
 export default function Home() {
-  const [ photos, setPhotos ] = useState([])
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
+  const photos = useFavoritePhotos(likedPhotosIds)
 
-  // Get ID's of the liked photos from browser local storage
+  subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
+
   useEffect(() => {
     setLikedPhotosIds(getFavoritePhotosIds())
   }, [])
 
-  // Load photos from backend
-  useEffect(() => {
-    const likedIds = getFavoritePhotosIds('string')
-    const url = `/api/favorite?ids=${encodeURIComponent(likedIds)}`
-    fetch(url).
-      then(res => res.status === 200 && res.json()).
-      then(photos => {
-        const onlyFoundPhotoPromises = photos.filter(
-            ({ status, value }) => status === 'fulfilled' && value !== null
-        )
-        const onlyFoundPhotos = onlyFoundPhotoPromises.map(
-            ({ value }) => value
-        )
-        setPhotos(onlyFoundPhotos)
-      })
-  }, [likedPhotosIds])
-
-  const onClickLikeButton = (id) => {
-    likedPhotosIds.includes(id) ?
-      removeFavoritePhotoId(id) :
-      saveFavoritePhotoId(id)
-    setLikedPhotosIds(getFavoritePhotosIds())
-  }
+  const onClickLikeButton = (id) => likedPhotosIds.includes(id) ?
+    removeFavoritePhotoId(id) :
+    saveFavoritePhotoId(id)
 
   return (
     <>
