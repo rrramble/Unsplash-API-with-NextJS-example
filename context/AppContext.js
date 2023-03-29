@@ -4,19 +4,19 @@ import { AppReducer, initialState } from "./AppReducer";
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-   const [ state, dispatch ] = useReducer(AppReducer, initialState)
+  const [ state, dispatch ] = useReducer(AppReducer, initialState)
 
-   const contextValue = useMemo(() => {
-      return { state, dispatch }
-   }, [state, dispatch])
+  const contextValue = useMemo(() => {
+    return { state, dispatch }
+  }, [state, dispatch])
 
-   return (
-      <AppContext.Provider value={contextValue}>
-         {children}
-      </AppContext.Provider>
-   );
+  return (
+    <AppContext.Provider value={contextValue}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export function useAppContext() {
-   return useContext(AppContext);
+  return useContext(AppContext);
 }
