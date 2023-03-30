@@ -1,6 +1,7 @@
 import { AppContextState } from 'types/context'
 
 export const initialState = {
+  // TODO: add favoritePhotosIds
   photoColumnCount: 0,
 }
 
