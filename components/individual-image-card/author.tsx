@@ -2,19 +2,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './author.module.scss'
 
-export default function Author({ name, instagramUsername, imageUrl }) {
-  const instagramLink = instagramUsername &&
-    (instagramUsername.includes('https://') ?
-      instagramUsername :
-      'https://instagram.com/' + instagramUsername
+type AuthorProps = {
+  imageUrl: string,
+  instagramUsername: string,
+  name: string,
+}
+
+export default function Author(props: AuthorProps) {
+  const instagramLink = props.instagramUsername &&
+    (props.instagramUsername.includes('https://') ?
+      props.instagramUsername :
+      'https://instagram.com/' + props.instagramUsername
     )
+
   return (
     <address
       className={styles.self}
-      rel="author"
     >
-
-      { imageUrl &&
+      { props.imageUrl &&
         <div
           className={styles.thumbnail}
         >
@@ -23,20 +28,24 @@ export default function Author({ name, instagramUsername, imageUrl }) {
             fill
             priority
             sizes="70px"
-            src={imageUrl}
+            src={props.imageUrl}
           />
         </div>
       }
 
       <div>
-        <span className={styles.name}>{name}</span>
-        { instagramUsername &&
+        <p className={styles.name}>
+          <span className={'visually-hidden'}>Автор: </span>
+          {props.name}
+        </p>
+        { props.instagramUsername &&
           <Link
             className={styles.instagram}
             href={instagramLink}
+            rel="author"
           >
             <span className="visually-hidden">Инстаграм:</span>
-            {instagramUsername}
+            {props.instagramUsername}
           </Link>
         }
       </div>
