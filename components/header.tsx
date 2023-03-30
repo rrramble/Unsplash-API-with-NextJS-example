@@ -9,27 +9,27 @@ import { default as SearchIcon } from './search/icon'
 import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
-import { SearchTags } from 'types/search-tags'
+import { SearchTopic, SearchTopics } from 'types/search-tags'
 import { initialState } from './header-reducer'
 import styles from './header.module.scss'
 import { MenuState } from 'types/menu-state'
 
 type HeaderProps = {
-  topics: SearchTags,
+  topics: SearchTopics,
   isRootPage: boolean,
 }
 
 export default function Header({ topics, isRootPage }: HeaderProps) {
   const router = useRouter()
   const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, initialState)
-  const [ likedPhotos, setLikedPhotos ] = useState([])
+  const [ searchedPhotos, setSearchedPhotos ] = useState<SearchTopics>([])
 
   const onKeyUpWindow = ({ key }) => key === 'Escape' && dispatch({ type: 'escape-pressed' })
   const onScrollWindow = () => dispatch({ type: 'window-scrolled' })
 
   useEffect(() => {
-    setLikedPhotos(getSearchedTexts())
-    subscribeOnChangeSearchedTexts(() => setLikedPhotos(getSearchedTexts()))
+    setSearchedPhotos(getSearchedTexts())
+    subscribeOnChangeSearchedTexts(() => setSearchedPhotos(getSearchedTexts()))
 
     window.addEventListener('scroll', onScrollWindow)
     window.addEventListener('keyup', onKeyUpWindow)
@@ -96,7 +96,7 @@ export default function Header({ topics, isRootPage }: HeaderProps) {
         />
         <History
           isHidden={state.isHistoryHidden}
-          items={likedPhotos}
+          items={searchedPhotos}
           onBlur={() => dispatch({ type: 'modal-blurred' })}
         />
       </MenuModal>

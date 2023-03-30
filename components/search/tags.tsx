@@ -1,11 +1,11 @@
 import Tag from './tag'
-import { SearchTag, SearchTags } from 'types/search-tags'
+import { SearchTopic, SearchTopics } from 'types/search-tags'
 import styles from './tags.module.scss'
 
 type TagsProps = {
   isFull: boolean,
-  items: SearchTags,
-  onClick: (tag: SearchTag) => void,
+  items: SearchTopics,
+  onClick: (tag: SearchTopic) => void,
 }
 
 export default function Tags({ items, isFull, onClick }: TagsProps) {
@@ -37,7 +37,7 @@ export default function Tags({ items, isFull, onClick }: TagsProps) {
               <Tag
                 link={'/topic/' + slug}
                 text={title}
-                cb={() => onClick({ slug, title })}
+                cb={() => onClick({ slug, title, id: '' })}
               />
             </li>
           ))}

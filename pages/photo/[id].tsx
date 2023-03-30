@@ -6,7 +6,7 @@ import IndividualImageCard from '@/components/individual-image-card/individual-i
 import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'
 import { GetStaticPropsContext } from 'next'
-import { SearchTags } from 'types/search-tags'
+import { SearchTopics } from 'types/search-tags'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -39,7 +39,7 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
     props: {
       photo,
       photos: getFulfilledValue<Photos>(photos),
-      topics: getFulfilledValue<SearchTags>(topics),
+      topics: getFulfilledValue<SearchTopics>(topics),
     },
   }
 }

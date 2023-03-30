@@ -1,6 +1,6 @@
-export type SearchTag = {
+export type SearchTopic = {
+  id: string,
   slug: string,
   title: string,
 }
-
-export type SearchTags = SearchTag[]
+export type SearchTopics = SearchTopic[]

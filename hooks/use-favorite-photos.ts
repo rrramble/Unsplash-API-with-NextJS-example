@@ -5,8 +5,8 @@ export function useFavoritePhotos(likedPhotosIds) {
   const [ photos, setPhotos ] = useState([])
 
   useEffect(() => {
-    const likedIds = getFavoritePhotosIds('string')
-    const url = `/api/favorite?ids=${encodeURIComponent(likedIds)}`
+    const idsAsString = JSON.stringify(getFavoritePhotosIds())
+    const url = `/api/favorite?ids=${encodeURIComponent(idsAsString)}`
     fetch(url).
       then(res => res.status === 200 && res.json()).
       then(photos => {

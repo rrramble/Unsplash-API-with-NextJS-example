@@ -11,18 +11,18 @@ export function contains(parent, item) {
   return contains(parent, itemParentNode)
 }
 
-export function generateUniqueID() {
+export function generateUniqueID(): string {
   const timePart = Date.now()
   const randomPart = Math.floor(Math.random() * 1000000)
   return `${timePart}${randomPart}`
 }
 
-export async function downloadPhotoByUrl(url, filename) {
-  let image
+export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
+  let image: Response
   try {
     image = await fetch(url);
     if (!image.ok) {
-      throw new Error(`Error ${image.status} fetching file: ${url}`)
+      return
     }
   } catch(e) {
     return
@@ -39,7 +39,7 @@ export async function downloadPhotoByUrl(url, filename) {
   document.body.removeChild(el)
 }
 
-export function throttle(cb, timeout) {
+export function throttle(cb: (...args: unknown[]) => void, timeout: number) {
   let timerId = null
 
   function run(...args) {

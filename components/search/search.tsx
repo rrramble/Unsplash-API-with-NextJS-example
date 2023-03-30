@@ -3,14 +3,14 @@ import { saveSearchedTexts } from '../../utils/local-storage'
 import { contains } from '@/utils/helper-browser'
 import SearchInput from './search-input'
 import Tags from './tags'
-import { SearchTags } from 'types/search-tags'
+import { SearchTopics } from 'types/search-tags'
 import styles from './search.module.scss'
 
 type OnBlur = () => void
 
 type SearchProps = {
   isFull: boolean,
-  items: SearchTags,
+  items: SearchTopics,
   isHidden: boolean,
   onBlur: OnBlur,
   onSubmit: (evt: FormEvent, text: string) => void,
