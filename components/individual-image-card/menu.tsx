@@ -1,13 +1,15 @@
 import styles from './menu.module.scss'
 import { downloadPhotoByUrl } from '@/utils/helper-browser'
 
-export default function Menu({
-  downloadPhotoUrl,
-  isLiked,
-  onClickLikeButton,
-  savingFilename,
-}) {
-  const likeButtonText = isLiked ?
+type MenuProps = {
+  downloadPhotoUrl: string,
+  isLiked: boolean,
+  onClickLikeButton: () => void,
+  savingFilename: string,
+}
+
+export default function Menu(props: MenuProps) {
+  const likeButtonText = props.isLiked ?
     'Убрать лайк' :
     'Поставить лайк'
 
@@ -18,11 +20,11 @@ export default function Menu({
         >
           <span className="visually-hidden">{likeButtonText}</span>
           <input
-            checked={isLiked}
+            checked={props.isLiked}
             className={`${styles.button} ${styles['button--like']}`}
             id="like-toggle"
             name="like-toggle"
-            onChange={onClickLikeButton}
+            onChange={props.onClickLikeButton}
             type="checkbox"
           />
         </label>
@@ -30,10 +32,10 @@ export default function Menu({
       <li className={styles['button-container']}>
         <a
           className={`${styles.button} ${styles['button--download']}`}
-          download={savingFilename}
-          href={downloadPhotoUrl}
+          download={props.savingFilename}
+          href={props.downloadPhotoUrl}
           onClick={async evt =>
-            onClickDownload(evt, downloadPhotoUrl, savingFilename)
+            onClickDownload(evt, props.downloadPhotoUrl, props.savingFilename)
           }
           rel="noreferrer"
         >
