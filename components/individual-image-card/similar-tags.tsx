@@ -1,9 +1,23 @@
 import Link from 'next/link'
-
 import styles from './similar-tags.module.scss'
 
-export default function SimilarTags({ tags }) {
-  if (!tags) {
+// FIXME: all types: create and import external!
+type Links = {
+  html: string,
+}
+
+type Tag = {
+  html: string,
+  links: Links,
+  title: string,
+}
+
+type SimilarTagsProps = {
+  tags: Tag[],
+}
+
+export default function SimilarTags({ tags }: SimilarTagsProps) {
+  if (!tags) { // TODO: really need?
     tags = []
   }
 
