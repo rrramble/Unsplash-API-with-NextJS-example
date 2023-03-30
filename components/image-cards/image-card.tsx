@@ -1,25 +1,37 @@
 import Image from 'next/image'
-
+import { CSSProperties } from 'react'
+import { Photo } from 'types/photos'
 import ImageCardAuthor from './image-card-author'
 import ImageCardMenu from './image-card-menu'
-
 import styles from './image-card.module.scss'
 
 // This constant must be the same as in 'varibales.scss'
 const SCREEN__BIG = 768
+
+interface CSSPropertiesWithVars extends CSSProperties {
+  '--data-background-color'?: string,
+  '--data-aspect-ratio'?: string,
+}
+
+type ImageCardProps = {
+  isLiked: boolean,
+  isPrefetched: boolean,
+  onClickLikeButton: () => void,
+  photo: Photo,
+}
 
 export default function ImageCard({
   isLiked,
   isPrefetched,
   onClickLikeButton,
   photo,
-}) {
+}: ImageCardProps) {
 
   const {
     color,
     height,
-    user: author = [],
-    urls: photoUrls = [],
+    user: author,
+    urls: photoUrls = {},
     id: photoId,
     width,
   } = photo
@@ -48,12 +60,18 @@ export default function ImageCard({
 
   const savingFilename = `${photoAlt}-${photoId}`
 
+
+  const backgroundColorStyle: CSSPropertiesWithVars = {
+    '--data-background-color': color.toString(),
+  }
+  const aspectRatioStyle: CSSPropertiesWithVars = {
+    '--data-aspect-ratio': (width / height).toString(),
+  }
+
   return (
     <figure
       className={styles.self} data-test="image-card"
-      style={{
-        '--data-background-color': color,
-      }}
+      style={backgroundColorStyle}
     >
       <div
         className={styles['image']}
@@ -83,21 +101,17 @@ export default function ImageCard({
           imageUrl={authorProfileUrl}
           instagramUsername={author.instagram_username}
           name={author.name}
-          aspectRatio={width / height}
         />
 
         <div
           className={styles.gutter}
-          style={{
-            '--data-aspect-ratio': (width / height).toString(),
-          }}
+          style={aspectRatioStyle}
         >.
         </div>
         <ImageCardMenu
           downloadPhotoUrl={maxQualityPhotoUrl}
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
-          photoId={photoId}
           photoProfileUrl={photoProfileUrl}
           savingFilename={savingFilename}
         />
