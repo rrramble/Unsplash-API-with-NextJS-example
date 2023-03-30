@@ -5,7 +5,7 @@ import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
 import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSideProps } from 'next'
 import { SearchTopics } from 'types/search-tags'
 
 type PhotoIndexProps = {
@@ -13,9 +13,13 @@ type PhotoIndexProps = {
   photos: Photos,
 }
 
-const NOT_FOUND_OBJECT = { notFound: true }
+type ContextParams = {
+  id: string
+}
 
-export async function getServerSideProps(context: GetStaticPropsContext) {
+const NOT_FOUND_OBJECT = { notFound: true } as const
+
+export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextParams> = async (context) => {
   const { id } = context.params
   if (typeof id === 'object') {
     return NOT_FOUND_OBJECT
