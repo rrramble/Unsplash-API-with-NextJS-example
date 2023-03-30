@@ -47,7 +47,7 @@ export default function Menu(props: MenuProps) {
     </menu>
   )
 }
-
+// FIXME: filenames are different between 'image-cards/image-card-menu' and 'individual-image-card/menu'
 async function onClickDownload(evt, url, savingFilename) {
   evt.preventDefault()
   await downloadPhotoByUrl(url, savingFilename)
