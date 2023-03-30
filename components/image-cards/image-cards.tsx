@@ -3,12 +3,19 @@ import { useAppContext } from '@/context/AppContext'
 import { throttle } from '@/utils/helper-browser'
 import ImageCard from './image-card'
 import styles from './image-cards.module.scss'
+import { PhotoIds, PhotoId, Photos } from 'types/photos'
+
+type ImageCardsProps = {
+  likedPhotosIds: PhotoIds,
+  onClickLikeButton: (id: PhotoId) => void,
+  photos: Photos,
+}
 
 export default function ImageCards({
   likedPhotosIds = [],
   onClickLikeButton,
   photos,
-}) {
+}: ImageCardsProps) {
   const { dispatch } = useAppContext()
   const layoutRef = useRef()
 
