@@ -1,21 +1,27 @@
+import { ReactNode } from 'react'
 import Head from 'next/head'
-
 import Footer from './footer'
 import Header from './header'
-
+import { SearchTags } from 'types/search-tags'
 import styles from './layout.module.scss'
 
-export default function Layout({ children, topics }) {
+type LayoutProps = {
+  children: ReactNode,
+  isRootPage?: boolean,
+  topics: SearchTags,
+}
+
+export default function Layout({ children, isRootPage, topics }: LayoutProps) {
   return (
     <>
       <Head>
         <meta name="description" content="Training project using API of the 'Unsplash.com' portal." />
-        <link rel="preload" href="/fonts/sf-ui-display-medium-58646be638f96.woff" as="font" crossOrigin="true" />
+        <link rel="preload" href="/fonts/sf-ui-display-medium-58646be638f96.woff" as="font" crossOrigin="" />
       </Head>
       <header
         className={styles.header}
       >
-        <Header topics={topics} isRootPage={children?.props?.isRootPage} />
+        <Header topics={topics} isRootPage={isRootPage} />
       </header>
       <main>
         {children}
