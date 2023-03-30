@@ -9,20 +9,16 @@ import styles from './search.module.scss'
 type OnBlur = () => void
 
 type SearchProps = {
-  onBlur: () => OnBlur,
-  onKeyUp: () => void,
-  onSubmit: (evt: FormEvent, text: string) => void,
-  passRef: (ref: MutableRefObject<HTMLFormElement>) => void,
-  items: SearchTags,
   isFull: boolean,
+  items: SearchTags,
   isHidden: boolean,
+  onBlur: OnBlur,
+  onSubmit: (evt: FormEvent, text: string) => void,
 }
 
 export default function Search({
   onBlur,
-  onKeyUp,
   onSubmit,
-  passRef,
   items,
   isFull,
   isHidden,
@@ -46,10 +42,6 @@ export default function Search({
   }
 
   useEffect(() => {
-    passRef && passRef(formRef)
-  }, [passRef, formRef])
-
-  useEffect(() => {
     window.addEventListener('click', windowClickHandler)
 
     return () => {
@@ -64,7 +56,6 @@ export default function Search({
       data-test="menu-search__modal"
       method="GET"
       onBlur={getCallbackOnBlur(onBlur)}
-      onKeyUp={onKeyUp}
       onSubmit={(e) => onSubmit(e, inputRef?.current?.value)}
       ref={formRef}
     >
