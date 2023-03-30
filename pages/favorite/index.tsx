@@ -1,5 +1,6 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import { getTopics } from '@/utils/helper'
 import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites } from '@/utils/local-storage'
 import { useFavoritePhotos } from 'hooks/use-favorite-photos'
@@ -7,7 +8,7 @@ import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       topics: await getTopics(),
@@ -15,7 +16,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home() {
+export default function FavoriteIndex(): JSX.Element {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
   const photos = useFavoritePhotos(likedPhotosIds)
 
