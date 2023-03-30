@@ -1,24 +1,33 @@
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { getPhoto, getPhotos, getTopics } from '@/utils/helper'
 import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from '@/utils/local-storage'
-
-import Head from 'next/head'
-
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
+import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'
+import { GetStaticPropsContext } from 'next'
+import { SearchTags } from 'types/search-tags'
 
-import { useEffect, useState } from 'react'
+type PhotoIndexProps = {
+  photo: Photo,
+  photos: Photos,
+}
 
-export async function getServerSideProps(context) {
-  let { id } = context.params
-  let photo
+const NOT_FOUND_OBJECT = { notFound: true }
+
+export async function getServerSideProps(context: GetStaticPropsContext) {
+  const { id } = context.params
+  if (typeof id === 'object') {
+    return NOT_FOUND_OBJECT
+  }
+
   try {
-    photo = await getPhoto(id)
+    var photo = await getPhoto(id)
   } catch (e) {
-    console.error(e.message)
-    return { notFound: true }
+    return NOT_FOUND_OBJECT
   }
   if (!photo) {
-    return { notFound: true }
+    return NOT_FOUND_OBJECT
   }
 
   const [ photos, topics ] = await Promise.allSettled([
@@ -29,19 +38,19 @@ export async function getServerSideProps(context) {
   return {
     props: {
       photo,
-      photos: getFulfilledValue(photos),
-      topics: getFulfilledValue(topics),
+      photos: getFulfilledValue<Photos>(photos),
+      topics: getFulfilledValue<SearchTags>(topics),
     },
   }
 }
 
-function getFulfilledValue({ status, value }) {
-  return  status === 'fulfilled' ?
-    value :
+function getFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T {
+  return  promiseResult.status === 'fulfilled' ?
+    promiseResult.value :
     null
 }
 
-export default function Home({ photo, photos = [] }) {
+export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
   const { description, user, id: photoId } = photo || {}
   const authorName = user?.name
   const titleText = (description || authorName) ?
@@ -60,7 +69,7 @@ export default function Home({ photo, photos = [] }) {
     setIsLikedPhoto(isLiked)
   }, [likedPhotosIds, photoId])
 
-  const onClickLikeButton = (id) => {
+  const onClickLikeButton = (id: string) => {
     likedPhotosIds.includes(id) ?
       removeFavoritePhotoId(id) :
       saveFavoritePhotoId(id)
