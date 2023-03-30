@@ -3,8 +3,8 @@ import Link from 'next/link'
 import styles from './image-card-author.module.scss'
 
 type ImageCardAuthorProps = {
-  instagramUsername: string,
   imageUrl: string,
+  instagramUsername: string,
   name: string,
 }
 
@@ -21,11 +21,11 @@ export default function ImageCardAuthor(props: ImageCardAuthorProps) {
     >
       { props.imageUrl ?
         <Image
+          alt="Аватар автора"
           className={styles.thumbnail}
           src={props.imageUrl}
-          alt="Аватар автора"
-          width="70"
           height="70"
+          width="70"
         />
         : null
       }
