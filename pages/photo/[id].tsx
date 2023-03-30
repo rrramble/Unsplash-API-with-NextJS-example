@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import { getPhoto, getPhotos, getTopics } from '@/utils/helper'
+import { getPhoto, getPhotos, getTopics, getPromiseFulfilledValue } from '@/utils/helper'
 import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from '@/utils/local-storage'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
 import { Photo, Photos } from 'types/photos'
@@ -42,16 +42,10 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
   return {
     props: {
       photo,
-      photos: getFulfilledValue<Photos>(photos),
-      topics: getFulfilledValue<SearchTopics>(topics),
+      photos: getPromiseFulfilledValue<Photos>(photos),
+      topics: getPromiseFulfilledValue<SearchTopics>(topics),
     },
   }
-}
-
-function getFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T {
-  return  promiseResult.status === 'fulfilled' ?
-    promiseResult.value :
-    null
 }
 
 export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
