@@ -3,7 +3,6 @@ type User = {
   instagragm?: string,
 }
 
-
 export type Photo = {
   description: string,
   id: string,
