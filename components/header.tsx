@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router'
-import { useEffect, useReducer, useState } from 'react'
+import { Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 import { headerReducer } from './header-reducer'
-
 import Favorite from './favorite/favorite'
 import HeaderLogo from '@/components/header-logo/header-logo'
 import { default as HistoryIcon } from '@/components/history/icon'
@@ -10,13 +9,19 @@ import { default as SearchIcon } from './search/icon'
 import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
-
-
+import { SearchTags } from 'types/search-tags'
+import { initialState } from './header-reducer'
 import styles from './header.module.scss'
+import { MenuState } from 'types/menu-state'
 
-export default function Header({ topics, isRootPage }) {
+type HeaderProps = {
+  topics: SearchTags,
+  isRootPage: boolean,
+}
+
+export default function Header({ topics, isRootPage }: HeaderProps) {
   const router = useRouter()
-  const [ state, dispatch ] = useReducer(headerReducer, {})
+  const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, initialState)
   const [ likedPhotos, setLikedPhotos ] = useState([])
 
   const onKeyUpWindow = ({ key }) => key === 'Escape' && dispatch({ type: 'escape-pressed' })
@@ -57,11 +62,10 @@ export default function Header({ topics, isRootPage }) {
         <SearchIcon
           className={styles.icon}
           isHidden={state.isSearchIconHidden}
-          onClick={evt => {
+          onClick={(evt) => {
             evt.stopPropagation()
             dispatch({ type: 'search-icon-clicked' })
           }}
-          state={state.searchIcon}
         />
 
         <Favorite
@@ -81,9 +85,9 @@ export default function Header({ topics, isRootPage }) {
       <MenuModal
         className={styles.submenu}
         isHidden={state.isSearchHidden && state.isHistoryHidden}
+        isFullHeight={state.isSearchFull}
       >
         <Search
-          isFirstFocused={true}
           isFull={state.isSearchFull}
           isHidden={state.isSearchHidden}
           items={topics}
@@ -91,7 +95,6 @@ export default function Header({ topics, isRootPage }) {
           onSubmit={onSubmitSearch(router)}
         />
         <History
-          isFirstFocused={true}
           isHidden={state.isHistoryHidden}
           items={likedPhotos}
           onBlur={() => dispatch({ type: 'modal-blurred' })}

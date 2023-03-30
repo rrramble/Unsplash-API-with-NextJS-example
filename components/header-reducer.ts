@@ -1,3 +1,11 @@
+export const initialState = {
+  isSearchIconHidden: true,
+  isSearchHidden: false,
+  isSearchFull: false,
+  isHistoryIconHidden: false,
+  isHistoryHidden: true,
+} as const
+
 export function headerReducer(state, { type }) {
   switch (true) {
     case
