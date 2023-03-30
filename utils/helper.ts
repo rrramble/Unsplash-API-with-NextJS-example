@@ -37,6 +37,12 @@ export async function getPhotos(slugName: string): Promise<Photos> {
   return await getJSONDataFile(['topics', slugName + '.json'])
 }
 
+export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T {
+  return  promiseResult.status === 'fulfilled' ?
+    promiseResult.value :
+    null
+}
+
 export async function getTopics(): Promise<SearchTopics> {
   return await getJSONDataFile(['topics', '__items__.json'])
 }
