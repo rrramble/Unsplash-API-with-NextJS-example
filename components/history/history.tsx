@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { HistoryEntry } from 'types/history'
 import { contains } from '@/utils/helper-browser'
 import Tags from './tags'
