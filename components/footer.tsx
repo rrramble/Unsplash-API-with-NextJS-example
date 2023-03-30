@@ -1,7 +1,10 @@
 import styles from './footer.module.scss'
 
+type FooterProps = {
+  onClick: () => void,
+}
 
-export default function Footer({ onClick }) {
+export default function Footer({ onClick }: FooterProps) {
   return (
     <button
       className={styles['go-up-button']}
