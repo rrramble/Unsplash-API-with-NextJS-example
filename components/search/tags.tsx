@@ -1,8 +1,14 @@
 import Tag from './tag'
-
+import { SearchTag, SearchTags } from 'types/search-tags'
 import styles from './tags.module.scss'
 
-export default function Tags({ items, isFull, onClick }) {
+type TagsProps = {
+  isFull: boolean,
+  items: SearchTags,
+  onClick: (tag: SearchTag) => void,
+}
+
+export default function Tags({ items, isFull, onClick }: TagsProps) {
   const additionalClassName = isFull ?
     styles['self--full'] :
     styles['self--minimized']
