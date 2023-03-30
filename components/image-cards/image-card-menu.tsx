@@ -1,32 +1,34 @@
 import Link from 'next/link'
 import { downloadPhotoByUrl } from '@/utils/helper-browser'
-
 import styles from './image-card-menu.module.scss'
 
-export default function ImageCardMenu({
-  downloadPhotoUrl,
-  isLiked,
-  savingFilename,
-  onClickLikeButton,
-  photoProfileUrl,
-}) {
-  const likeButtonText = isLiked ?
+type ImageCardMenuProps = {
+  downloadPhotoUrl: string,
+  isLiked: boolean,
+  onClickLikeButton: () => void,
+  photoProfileUrl: string,
+  savingFilename: string,
+}
+
+export default function ImageCardMenu(props: ImageCardMenuProps) {
+  const likeButtonText = props.isLiked ?
     'Убрать лайк' :
     'Лайк!'
 
   return (
     <menu className={styles.self}>
-      <li className={styles['button-container']}
+      <li
+        className={styles['button-container']}
         data-test="menu-item--like"
       >
         <span className="visually-hidden">{likeButtonText}</span>
         <input
           aria-label="Like status"
+          checked={props.isLiked}
           className={styles.button + ' ' + styles['button--like']}
-          type="checkbox"
           name="like-toggle"
-          checked={isLiked}
-          onChange={onClickLikeButton}
+          onChange={props.onClickLikeButton}
+          type="checkbox"
         />
       </li>
 
@@ -36,7 +38,7 @@ export default function ImageCardMenu({
         <Link
           aria-label="Open profile of photo"
           className={styles.button + ' ' + styles['button--open']}
-          href={photoProfileUrl}
+          href={props.photoProfileUrl}
         >
           <span
             className="visually-hidden"
@@ -51,10 +53,10 @@ export default function ImageCardMenu({
       >
         <a
           className={styles.button + ' ' + styles['button--download']}
-          download={savingFilename}
-          href={downloadPhotoUrl}
+          download={props.savingFilename}
+          href={props.downloadPhotoUrl}
           onClick={async evt =>
-            onClickDownload(evt, downloadPhotoUrl, savingFilename)
+            onClickDownload(evt, props.downloadPhotoUrl, props.savingFilename)
           }
           rel="noreferrer"
         >
@@ -65,7 +67,7 @@ export default function ImageCardMenu({
   )
 }
 
-async function onClickDownload(evt, url, savingFilename) {
+async function onClickDownload(evt, url: string, savingFilename: string) {
   evt.preventDefault()
   await downloadPhotoByUrl(url, savingFilename)
 }
