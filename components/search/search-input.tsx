@@ -1,9 +1,12 @@
-import { useEffect, useRef } from 'react'
-
+import { MutableRefObject, useEffect, useRef } from 'react'
 import styles from './search-input.module.scss'
 
-export default function SearchInput({ passRef }) {
-  const inputRef = useRef(null)
+type SearchInputProps = {
+  passRef: (ref: MutableRefObject<HTMLInputElement>) => void;
+}
+
+export default function SearchInput({ passRef }: SearchInputProps): JSX.Element {
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
     passRef && passRef(inputRef)
@@ -24,7 +27,7 @@ export default function SearchInput({ passRef }) {
         name="text"
         placeholder="Поиск"
         ref={inputRef}
-        size="10"
+        size={10}
         type="text"
       >
       </input>
