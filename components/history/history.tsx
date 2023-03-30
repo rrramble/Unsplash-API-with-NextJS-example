@@ -8,12 +8,10 @@ type HistoryProps = {
   isHidden: boolean,
   items: HistoryEntry[],
   onBlur: () => void,
-  passRef: (ref: MutableRefObject<HTMLElement>) => void,
 }
 
 export default function History(props: HistoryProps): JSX.Element {
   const ref = useRef<HTMLDivElement | null>(null)
-  const { passRef } = props
   const windowClickHandler = (evt: MouseEvent) => {
     const { target } = evt
     if (!contains(ref.current, target) && !props.isHidden) {
@@ -27,10 +25,6 @@ export default function History(props: HistoryProps): JSX.Element {
       window.removeEventListener('click', windowClickHandler)
     }
   })
-
-  useEffect(() => {
-    passRef && passRef(ref)
-  }, [passRef, ref])
 
   const additionalClassName = props.isHidden ?
     styles['self--hidden'] :
