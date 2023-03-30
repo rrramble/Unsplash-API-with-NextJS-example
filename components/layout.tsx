@@ -7,11 +7,10 @@ import styles from './layout.module.scss'
 
 type LayoutProps = {
   children: ReactNode,
-  isRootPage?: boolean,
   topics: SearchTopics,
 }
 
-export default function Layout({ children, isRootPage, topics }: LayoutProps) {
+export default function Layout({ children, topics }: LayoutProps) {
   return (
     <>
       <Head>
@@ -21,7 +20,7 @@ export default function Layout({ children, isRootPage, topics }: LayoutProps) {
       <header
         className={styles.header}
       >
-        <Header topics={topics} isRootPage={isRootPage} />
+        <Header topics={topics} />
       </header>
       <main>
         {children}

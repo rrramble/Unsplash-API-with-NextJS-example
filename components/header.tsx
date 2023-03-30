@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation';
 import { Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 import { headerReducer } from './header-reducer'
@@ -16,11 +17,11 @@ import { MenuState } from 'types/menu-state'
 
 type HeaderProps = {
   topics: SearchTopics,
-  isRootPage: boolean,
 }
 
-export default function Header({ topics, isRootPage }: HeaderProps) {
+export default function Header({ topics }: HeaderProps) {
   const router = useRouter()
+  const isRootPage = usePathname() === '/'
   const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, INITIAL_STATE)
   const [ searchedPhotos, setSearchedPhotos ] = useState<SearchTopics>([])
 
