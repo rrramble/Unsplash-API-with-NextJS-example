@@ -1,6 +1,6 @@
 import { MenuState } from 'types/menu-state'
 
-export const INITIAL_STATE = {
+export const INITIAL_STATE: MenuState = {
   isSearchIconHidden: true,
   isSearchHidden: false,
   isSearchFull: false,
@@ -8,7 +8,7 @@ export const INITIAL_STATE = {
   isHistoryHidden: true,
 } as const
 
-const SEARCH_MODAL_OPEN = {
+const SEARCH_MODAL_OPEN: MenuState = {
   isSearchIconHidden: true,
   isSearchHidden: false,
   isSearchFull: true,
@@ -16,7 +16,7 @@ const SEARCH_MODAL_OPEN = {
   isHistoryHidden: true,
 } as const
 
-const HISTORY_MODAL_OPEN = {
+const HISTORY_MODAL_OPEN: MenuState = {
   isSearchIconHidden: false,
   isSearchHidden: true,
   isSearchFull: false,
@@ -24,7 +24,7 @@ const HISTORY_MODAL_OPEN = {
   isHistoryHidden: false,
 } as const
 
-const MODALS_CLOSED = {
+const MODALS_CLOSED: MenuState = {
   isSearchIconHidden: false,
   isSearchHidden: true,
   isSearchFull: false,
