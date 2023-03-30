@@ -10,7 +10,7 @@ import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
 import { SearchTopic, SearchTopics } from 'types/search-tags'
-import { initialState } from './header-reducer'
+import { INITIAL_STATE } from './header-reducer'
 import styles from './header.module.scss'
 import { MenuState } from 'types/menu-state'
 
@@ -21,7 +21,7 @@ type HeaderProps = {
 
 export default function Header({ topics, isRootPage }: HeaderProps) {
   const router = useRouter()
-  const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, initialState)
+  const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, INITIAL_STATE)
   const [ searchedPhotos, setSearchedPhotos ] = useState<SearchTopics>([])
 
   const onKeyUpWindow = ({ key }) => key === 'Escape' && dispatch({ type: 'escape-pressed' })

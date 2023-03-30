@@ -1,3 +1,7 @@
-import { initialState } from '@/components/header-reducer';
-
-export type MenuState = typeof initialState
+export type MenuState = {
+  isSearchIconHidden: boolean,
+  isSearchHidden: boolean,
+  isSearchFull: boolean,
+  isHistoryIconHidden: boolean,
+  isHistoryHidden: boolean,
+}

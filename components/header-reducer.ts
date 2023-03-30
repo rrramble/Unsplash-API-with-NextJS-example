@@ -1,4 +1,6 @@
-export const initialState = {
+import { MenuState } from 'types/menu-state'
+
+export const INITIAL_STATE = {
   isSearchIconHidden: true,
   isSearchHidden: false,
   isSearchFull: false,
@@ -6,39 +8,43 @@ export const initialState = {
   isHistoryHidden: true,
 } as const
 
-export function headerReducer(state, { type }) {
+const SEARCH_MODAL_OPEN = {
+  isSearchIconHidden: true,
+  isSearchHidden: false,
+  isSearchFull: true,
+  isHistoryIconHidden: false,
+  isHistoryHidden: true,
+} as const
+
+const HISTORY_MODAL_OPEN = {
+  isSearchIconHidden: false,
+  isSearchHidden: true,
+  isSearchFull: false,
+  isHistoryIconHidden: true,
+  isHistoryHidden: false,
+} as const
+
+const MODALS_CLOSED = {
+  isSearchIconHidden: false,
+  isSearchHidden: true,
+  isSearchFull: false,
+  isHistoryIconHidden: false,
+  isHistoryHidden: true,
+} as const
+
+export function headerReducer(state: MenuState, { type }) {
   switch (true) {
     case
       type === 'init':
-      return {
-        isSearchIconHidden: true,
-        isSearchHidden: false,
-        isSearchFull: false,
-        isHistoryIconHidden: false,
-        isHistoryHidden: true,
-      }
+      return INITIAL_STATE
 
     case
       (type === 'search-icon-clicked' && !state.isSearchFull):
-      return {
-        // Open Search modal
-        isSearchIconHidden: true,
-        isSearchHidden: false,
-        isSearchFull: true,
-        isHistoryIconHidden: false,
-        isHistoryHidden: true,
-      }
+      return SEARCH_MODAL_OPEN
 
     case
       (type === 'history-icon-clicked' && state.isHistoryHidden):
-      return {
-        // Open History modal
-        isSearchIconHidden: false,
-        isSearchHidden: true,
-        isSearchFull: false,
-        isHistoryIconHidden: true,
-        isHistoryHidden: false,
-      }
+      return HISTORY_MODAL_OPEN
 
     case
       (type === 'escape-pressed' && (state.isSearchFull || !state.isHistoryHidden)) ||
@@ -48,14 +54,7 @@ export function headerReducer(state, { type }) {
       (type === 'modal-blurred' && (state.isSearchFull || !state.isHistoryHidden)) ||
       (type === 'minimize-menu')
       :
-      return {
-        // Close modals
-        isSearchIconHidden: false,
-        isSearchHidden: true,
-        isSearchFull: false,
-        isHistoryIconHidden: false,
-        isHistoryHidden: true,
-      }
+      return MODALS_CLOSED
   }
   return state
 }
