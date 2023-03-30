@@ -1,3 +1,6 @@
+export type PhotoId = string
+export type PhotoIds = PhotoId[]
+
 type PhotoUrls = {
   raw?: string,
   full?: string,
@@ -23,7 +26,7 @@ export type Photo = {
   color?: number,
   description?: string,
   height: number,
-  id: string,
+  id: PhotoId,
   urls: PhotoUrls,
   user: User,
   width: number,
