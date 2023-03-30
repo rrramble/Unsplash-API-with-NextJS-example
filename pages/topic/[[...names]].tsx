@@ -8,12 +8,27 @@ import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import { subscribeOnChangeFavorites } from '@/utils/local-storage'
 import styles from '@/components/content.module.scss'
+import { GetServerSideProps } from 'next'
+import { getPromiseFulfilledValue } from 'utils/helper'
+import { Photos } from 'types/photos'
+import { SearchTopics } from 'types/search-tags'
 
 const DEFAULT_TOPIC_SLUG = 'default'
 
-export async function getServerSideProps(context) {
+type HomeProps = {
+  photos: Photos,
+  topicName: string,
+}
+
+type ContextParams = {
+  names: string[] | undefined
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps, ContextParams> = async (context) => {
   const { names: topicNames } = context.params
-  const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames || []
+  const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames && typeof topicNames !== 'string' ?
+    topicNames :
+    []
 
   const [ photos, topics ] = await Promise.allSettled([
     getPhotos(topicName),
@@ -22,21 +37,14 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      isRootPage: !!topicNames,
-      photos: getFulfilledValue(photos) ?? [],
+      photos: getPromiseFulfilledValue<Photos>(photos) ?? [],
       topicName,
-      topics: getFulfilledValue(topics) ?? [],
+      topics: getPromiseFulfilledValue<SearchTopics>(topics) ?? [],
     },
   }
 }
-// TODO: extract to module, or other refactoring
-function getFulfilledValue({ status, value }) {
-  return  status === 'fulfilled' ?
-    value :
-    null
-}
 
-export default function Home({ topicName, photos }) {
+export default function Home({ topicName, photos }: HomeProps) {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
   subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
 
