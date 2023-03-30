@@ -7,7 +7,6 @@ module.exports = defineConfig({
   fixturesFolder: "tests-cypress/fixtures",
   screenshotsFolder: "tests-cypress/snapshots/actual",
   videosFolder: "tests-cypress/videos",
-
   trashAssetsBeforeRuns: true,
 
   e2e: {
