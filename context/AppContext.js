@@ -1,7 +1,7 @@
-import { createContext, useContext, useMemo, useReducer } from 'react';
-import { AppReducer, initialState } from "./AppReducer";
+import { createContext, useContext, useMemo, useReducer } from 'react'
+import { AppReducer, initialState } from './AppReducer'
 
-const AppContext = createContext();
+const AppContext = createContext()
 
 export function AppWrapper({ children }) {
   const [ state, dispatch ] = useReducer(AppReducer, initialState)
@@ -18,5 +18,5 @@ export function AppWrapper({ children }) {
 }
 
 export function useAppContext() {
-  return useContext(AppContext);
+  return useContext(AppContext)
 }
