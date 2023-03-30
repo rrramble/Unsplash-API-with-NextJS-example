@@ -1,7 +1,7 @@
 import styles from './layout-buttons.module.scss'
 import { useAppContext } from '@/context/AppContext'
 
-export default function LayoutButtons() {
+export default function LayoutButtons(): JSX.Element {
   const { state: { photoColumnCount } } = useAppContext()
 
   return (
