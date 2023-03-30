@@ -19,7 +19,7 @@ export default function ImageCardAuthor(props: ImageCardAuthorProps) {
     <address
       className={styles.self}
     >
-      { props.imageUrl ?
+      { props.imageUrl &&
         <Image
           alt="Аватар автора"
           className={styles.thumbnail}
@@ -27,7 +27,6 @@ export default function ImageCardAuthor(props: ImageCardAuthorProps) {
           height="70"
           width="70"
         />
-        : null
       }
 
       <div>
