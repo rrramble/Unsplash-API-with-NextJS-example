@@ -1,8 +1,15 @@
-import { useEffect, useRef } from 'react'
-
+import { MutableRefObject, useEffect, useRef } from 'react'
 import styles from './icon.module.scss'
 
-export default function Icon({ className, isHidden, onClick, passRef }) {
+type IconProps = {
+  className: string,
+  isHidden: boolean,
+  onClick: () => void,
+  passRef: (ref: MutableRefObject<HTMLButtonElement> | null) => void,
+}
+
+export default function Icon(props: IconProps): JSX.Element {
+  const { passRef } = props
   const iconRef = useRef()
 
   useEffect(
@@ -12,15 +19,15 @@ export default function Icon({ className, isHidden, onClick, passRef }) {
 
   return (
     <div
-      className={className}
+      className={props.className}
       data-test="menu-search"
       id="search"
     >
       <button
         aria-haspopup="true"
-        className={styles.self + ' ' + (isHidden ? styles['self--hidden'] : '')}
+        className={styles.self + ' ' + (props.isHidden ? styles['self--hidden'] : '')}
         data-test="menu-search__icon"
-        onClick={onClick}
+        onClick={props.onClick}
         ref={iconRef}
         type="button"
       >
