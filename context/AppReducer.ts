@@ -1,8 +1,10 @@
+import { AppContextState } from 'types/context'
+
 export const initialState = {
   photoColumnCount: 0,
 }
 
-export const AppReducer = (state, { payload, type }) => {
+export function AppReducer(state: AppContextState, { payload, type }): AppContextState {
   switch (type) {
     case 'SAVE_PHOTO_COLUMN_COUNT': {
       if (state.photoColumnCount === payload) {
