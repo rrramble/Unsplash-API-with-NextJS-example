@@ -7,6 +7,7 @@ import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'
 import { GetServerSideProps } from 'next'
 import { SearchTopics } from 'types/search-tags'
+import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -17,21 +18,19 @@ type ContextParams = {
   id: string
 }
 
-const NOT_FOUND_OBJECT = { notFound: true } as const
-
 export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextParams> = async (context) => {
   const { id } = context.params
   if (typeof id === 'object') {
-    return NOT_FOUND_OBJECT
+    return NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT
   }
 
   try {
     var photo = await getPhoto(id)
   } catch (e) {
-    return NOT_FOUND_OBJECT
+    return NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT
   }
   if (!photo) {
-    return NOT_FOUND_OBJECT
+    return NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT
   }
 
   const [ photos, topics ] = await Promise.allSettled([
