@@ -1,8 +1,9 @@
 import path from 'path'
 import { promises as fs } from 'fs'
 import { fetchPhoto } from './unsplash'
+import { Photo, Photos } from 'types/photos'
 
-export async function getPhoto(id: string) {
+export async function getPhoto(id: string): Promise<Photo> {
   try {
     return await getJSONDataFile(['photos', id + '.json'])
   } catch (e) {
@@ -31,7 +32,7 @@ export async function getPhoto(id: string) {
   return json
 }
 
-export async function getPhotos(slugName: string) {
+export async function getPhotos(slugName: string): Promise<Photos> {
   return await getJSONDataFile(['topics', slugName + '.json'])
 }
 
