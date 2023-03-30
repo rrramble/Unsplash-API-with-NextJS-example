@@ -1,11 +1,23 @@
-import { useEffect, useRef, useState } from 'react'
+import { FormEvent, MutableRefObject, useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '../../utils/local-storage'
 import { contains } from '@/utils/helper-browser'
-
 import SearchInput from './search-input'
 import Tags from './tags'
-
+import { SearchTags } from 'types/search-tags'
 import styles from './search.module.scss'
+
+type OnBlur = () => void
+
+type SearchProps = {
+  onBlur: () => OnBlur,
+  onKeyUp: () => void,
+  onSubmit: (evt: FormEvent, text: string) => void,
+  passRef: (ref: MutableRefObject<HTMLFormElement>) => void,
+  items: SearchTags,
+  isFull: boolean,
+  isHidden: boolean,
+}
+
 export default function Search({
   onBlur,
   onKeyUp,
@@ -14,12 +26,12 @@ export default function Search({
   items,
   isFull,
   isHidden,
-}) {
+}: SearchProps) {
 
   const formRef = useRef()
-  const [ inputRef, setInputRef ] = useState()
+  const [ inputRef, setInputRef ] = useState<MutableRefObject<HTMLInputElement> | null>(null)
 
-  const windowClickHandler = (evt) => {
+  const windowClickHandler = (evt: KeyboardEvent) => {
     const { target } = evt
     if (!contains(formRef.current, target) && !isHidden) {
       onBlur()
@@ -51,7 +63,7 @@ export default function Search({
       className={styles.self + ' ' + additionalClassName}
       data-test="menu-search__modal"
       method="GET"
-      onBlur={isRelatedTargetInsideComponent(onBlur)}
+      onBlur={getCallbackOnBlur(onBlur)}
       onKeyUp={onKeyUp}
       onSubmit={(e) => onSubmit(e, inputRef?.current?.value)}
       ref={formRef}
@@ -68,8 +80,8 @@ export default function Search({
   )
 }
 
-function isRelatedTargetInsideComponent(callback) {
-  return e => {
-    !contains(e.currentTarget, e.relatedTarget) && callback(e)
+function getCallbackOnBlur(callback: OnBlur) {
+  return function callbackIfDescendant(evt: FocusEvent) {
+    !contains(evt.currentTarget, evt.relatedTarget) && callback()
   }
 }
