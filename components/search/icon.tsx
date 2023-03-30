@@ -1,22 +1,13 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { MouseEventHandler } from 'react'
 import styles from './icon.module.scss'
 
 type IconProps = {
   className: string,
   isHidden: boolean,
-  onClick: () => void,
-  passRef: (ref: MutableRefObject<HTMLButtonElement> | null) => void,
+  onClick: MouseEventHandler<HTMLButtonElement>,
 }
 
 export default function Icon(props: IconProps): JSX.Element {
-  const { passRef } = props
-  const iconRef = useRef()
-
-  useEffect(
-      () => passRef && passRef(iconRef),
-      [iconRef, passRef]
-  )
-
   return (
     <div
       className={props.className}
@@ -28,7 +19,6 @@ export default function Icon(props: IconProps): JSX.Element {
         className={styles.self + ' ' + (props.isHidden ? styles['self--hidden'] : '')}
         data-test="menu-search__icon"
         onClick={props.onClick}
-        ref={iconRef}
         type="button"
       >
         <span
