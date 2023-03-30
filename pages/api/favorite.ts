@@ -1,7 +1,8 @@
 import { getPhoto } from "@/utils/helper"
+import { NextApiRequest, NextApiResponse } from "next"
 
-export default function handler(req, res) {
-  const parsedIds = parseIds(req?.query?.ids)
+export default function handler(req: NextApiRequest, res: NextApiResponse): void {
+  const parsedIds = parseIds(req.query?.ids)
   const photosPromises = parsedIds.map(getPhoto)
 
   Promise.allSettled(photosPromises).
@@ -12,7 +13,11 @@ export default function handler(req, res) {
     catch(e => console.log(e))
 }
 
-function parseIds(ids) {
+function parseIds(ids: string | string[]) {
+  if (typeof ids === 'object') {
+    return []
+  }
+
   try {
     return JSON.parse(ids) || []
   } catch(e) {
