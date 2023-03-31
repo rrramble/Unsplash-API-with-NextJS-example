@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getFavoritePhotosIds } from '@/utils/favorites'
 
 export function useFavoritePhotos(likedPhotosIds) {
   const [ photos, setPhotos ] = useState([])
 
   useEffect(() => {
-    const idsAsString = JSON.stringify(getFavoritePhotosIds())
+    const idsAsString = JSON.stringify(likedPhotosIds)
     const url = `/api/favorite?ids=${encodeURIComponent(idsAsString)}`
     fetch(url).
       then(res => res.status === 200 && res.json()).
