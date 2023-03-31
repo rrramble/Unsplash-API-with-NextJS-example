@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getPhotos, getTopics } from '@/utils/helper'
 import {
-  getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites
+  getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
 } from '@/utils/favorites'
 import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
@@ -14,7 +14,7 @@ import { SearchTopics } from 'types/search-tags'
 
 const DEFAULT_TOPIC_SLUG = 'default'
 
-type HomeProps = {
+type TopicIndexProps = {
   photos: Photos,
   topicName: string,
 }
@@ -23,7 +23,7 @@ type ContextParams = {
   names: string[] | undefined
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps, ContextParams> = async (context) => {
+export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextParams> = async (context) => {
   const { names: topicNames } = context.params
   const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames && typeof topicNames !== 'string' ?
     topicNames :
@@ -43,19 +43,13 @@ export const getServerSideProps: GetServerSideProps<HomeProps, ContextParams> = 
   }
 }
 
-export default function Home({ topicName, photos }: HomeProps) {
+export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
   subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
 
   useEffect(() => {
     setLikedPhotosIds(getFavoritePhotosIds())
   }, [photos])
-
-  const onClickLikeButton = (id) => {
-    likedPhotosIds.includes(id) ?
-      removeFavoritePhotoId(id) :
-      saveFavoritePhotoId(id)
-  }
 
   const mainH1Header = topicName === 'default' ?
     'Случайные фотографии' :
@@ -78,7 +72,7 @@ export default function Home({ topicName, photos }: HomeProps) {
         <ImageCards
           photos={photos}
           likedPhotosIds={likedPhotosIds}
-          onClickLikeButton={onClickLikeButton}
+          onClickLikeButton={(id) => toggleFavoriteStatus(id)}
         />
       </div>
     </>
