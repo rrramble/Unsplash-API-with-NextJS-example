@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect } from 'react'
-import { useAppContext } from '@/context/AppContext'
+import { useAppContext } from '@/context/app-context'
 import { throttle } from '@/utils/helper-browser'
 
 export function useWindowResize(
