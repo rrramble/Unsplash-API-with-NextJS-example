@@ -2,7 +2,7 @@ $FOOTER-BUTTON-WIDTH: 50px;
 $FOOTER-ICON-WIDTH: 16px;
 $FOOTER-RADIUS: 8px;
 
-.go-up-button {
+.self {
     background-color: white;
     background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-ARROW-SCROLL-UP}");
     background-size: $FOOTER-ICON-WIDTH;
@@ -24,8 +24,12 @@ $FOOTER-RADIUS: 8px;
     z-index: 1;
 }
 
-.go-up-button:hover,
-.go-up-button:focus {
+.self:hover,
+.self:focus {
     box-shadow: 0 0 20px 10px rgba(0 0 0 / 15%);
     transition: ease-in-out;
+}
+
+.self--hidden {
+    visibility: hidden;
 }
