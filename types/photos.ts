@@ -1,6 +1,15 @@
 export type PhotoId = string
 export type PhotoIds = PhotoId[]
 
+type RelatedCollection = {
+  id: string,
+  title: string,
+}
+
+export type RelatedCollectionsInfo = {
+  results: RelatedCollection[]
+}
+
 type PhotoUrls = {
   raw?: string,
   full?: string,
@@ -27,6 +36,7 @@ export type Photo = {
   description?: string,
   height: number,
   id: PhotoId,
+  related_collections: RelatedCollectionsInfo,
   urls: PhotoUrls,
   user: User,
   width: number,
