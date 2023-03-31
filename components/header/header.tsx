@@ -1,9 +1,7 @@
 import { useRouter, NextRouter } from 'next/router'
-import { FormEvent } from 'react'
 import { usePathname } from 'next/navigation';
-import { Reducer, useEffect, useReducer, useState } from 'react'
+import { FormEvent, Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
-import { headerReducer } from './header-reducer'
 import Favorite from '@/components/favorite/favorite'
 import HeaderLogo from '@/components/header-logo/header-logo'
 import { default as HistoryIcon } from '@/components/history/icon'
@@ -12,10 +10,10 @@ import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
 import { SearchTopics } from 'types/search-tags'
-import { INITIAL_STATE } from './header-reducer'
-import styles from './header.module.scss'
 import { MenuState } from 'types/menu-state'
 import { getTopicByText } from '@/utils/topics';
+import { headerReducer, INITIAL_STATE } from './header-reducer'
+import styles from './header.module.scss'
 
 type HeaderProps = {
   topics: SearchTopics,
