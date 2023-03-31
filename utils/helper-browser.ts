@@ -39,7 +39,7 @@ export async function downloadPhotoByUrl(url: string, filename: string): Promise
   document.body.removeChild(el)
 }
 
-export function throttle(cb: (...args: unknown[]) => void, timeout: number) {
+export function throttle(cb: (...args: unknown[]) => void, timeoutMs: number) {
   let timerId = null
 
   function run(...args) {
@@ -52,7 +52,7 @@ export function throttle(cb: (...args: unknown[]) => void, timeout: number) {
 
       clearTimeout(timerId)
       timerId = null
-    }, timeout)
+    }, timeoutMs)
   }
 
   return run
