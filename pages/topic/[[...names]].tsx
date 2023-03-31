@@ -6,11 +6,11 @@ import {
 import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import styles from '@/components/content.module.scss'
 import { GetServerSideProps } from 'next'
 import { getPromiseFulfilledValue } from 'utils/helper'
 import { Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
+import styles from './[[...names]].module.scss'
 
 const DEFAULT_TOPIC_SLUG = 'default'
 
