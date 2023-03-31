@@ -1,4 +1,6 @@
+import { PhotoId, PhotoIds } from 'types/photos';
 import { PlainFunction } from 'types/types'
+import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from './local-storage';
 
 export function getFavoritePhotosIds(): PhotoIds {
   return lsGetArray('favoritePhotosIds')
