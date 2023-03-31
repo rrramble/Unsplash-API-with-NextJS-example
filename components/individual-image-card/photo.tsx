@@ -1,12 +1,25 @@
 import Image from 'next/image'
-
+import { CSSProperties } from 'react'
 import Author from './author'
 import Menu from './menu'
 import SimilarTags from './similar-tags'
-
 import styles from './photo.module.scss'
+import { Photo as PhotoType, RelatedCollections } from 'types/photos'
 
-export default function IndividualImageCard({ photo, isLiked, onClickLikeButton, relatedTags }) {
+type PhotoProps = {
+  isLiked: boolean,
+  onClickLikeButton: () => void,
+  photo: PhotoType,
+  relatedTags: RelatedCollections,
+}
+
+interface CSSPropertiesWithVars extends CSSProperties {
+  '--data-background-color'?: string,
+  '--data-url'?: string,
+  '--data-with-url-tag'?: string,
+}
+
+export default function Photo(props: PhotoProps) {
   const {
     id: photoId,
     color: backgroundColor,
@@ -14,7 +27,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
     urls: photoUrls,
     user: author,
     width,
-  } = photo || {}
+  } = props.photo || {}
 
   const {
     full: fullPhotoUrl,
@@ -28,7 +41,7 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
     profile_image: authorProfileImages,
   } = author || {}
 
-  const photoAlt = photo?.alt_descrtiption ??
+  const photoAlt = props.photo?.alt_description ??
     `Фотография от автора: ${author?.name}`
 
   const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl
@@ -41,13 +54,22 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
     authorProfileImages?.medium ||
     authorProfileImages?.small
 
+  const figureStyle: CSSPropertiesWithVars = {
+    '--data-background-color': backgroundColor.toString(),
+    '--data-with-url-tag': `url(${smallQualityPhotoUrl})`,
+  }
+
+  const imageStyle: CSSPropertiesWithVars = {
+    '--data-background-color': backgroundColor.toString(),
+    '--data-url': photoUrl,
+    'height': 'auto',
+    'width': '100%',
+  }
+
   return (
     <figure
       className={styles.self}
-      style={{
-        '--data-background-color': backgroundColor,
-        '--data-with-url-tag': `url(${smallQualityPhotoUrl})`,
-      }}
+      style={figureStyle}
     >
       <figcaption
         className={styles.header}
@@ -59,9 +81,9 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
         />
 
         <Menu
-          isLiked={isLiked}
+          isLiked={props.isLiked}
           downloadPhotoUrl={maxQualityPhotoUrl}
-          onClickLikeButton={onClickLikeButton}
+          onClickLikeButton={props.onClickLikeButton}
           savingFilename={savingFilename}
         />
       </figcaption>
@@ -74,18 +96,13 @@ export default function IndividualImageCard({ photo, isLiked, onClickLikeButton,
           height={height}
           priority
           src={photoUrl}
-          style={{
-            '--data-background-color': backgroundColor,
-            '--data-url': photoUrl,
-            'height': 'auto',
-            'width': '100%',
-          }}
+          style={imageStyle}
           width={width}
         />
       </div>
 
       <section>
-        <SimilarTags tags={relatedTags} />
+        <SimilarTags tags={props.relatedTags} />
       </section>
     </figure>)
 }
