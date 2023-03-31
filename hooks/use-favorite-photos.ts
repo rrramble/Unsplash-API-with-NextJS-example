@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { PhotoIds } from 'types/photos'
 
-export function useFavoritePhotos(likedPhotosIds) {
+export function useFavoritePhotos(likedPhotosIds: PhotoIds) {
   const [ photos, setPhotos ] = useState([])
 
   useEffect(() => {
