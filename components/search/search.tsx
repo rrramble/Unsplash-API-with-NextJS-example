@@ -62,7 +62,7 @@ export default function Search(props: SearchProps) {
   )
 }
 
-function getCallbackOnBlur(callback: OnBlur) {
+function getCallbackOnBlur(callback: PlainFunction) {
   return function callbackIfDescendant(evt: FocusEvent) {
     !contains(evt.currentTarget, evt.relatedTarget) && callback()
   }
