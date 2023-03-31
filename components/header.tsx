@@ -15,6 +15,7 @@ import { SearchTopics } from 'types/search-tags'
 import { INITIAL_STATE } from './header-reducer'
 import styles from './header.module.scss'
 import { MenuState } from 'types/menu-state'
+import { getTopicByText } from '@/utils/topics';
 
 type HeaderProps = {
   topics: SearchTopics,
@@ -94,7 +95,7 @@ export default function Header({ topics }: HeaderProps) {
           isHidden={state.isSearchHidden}
           items={topics}
           onBlur={() => dispatch({ type: 'modal-blurred' })}
-          onSubmit={onSubmitSearch(router)}
+          onSubmit={onSubmitSearch(router, topics)}
         />
         <History
           isHidden={state.isHistoryHidden}
@@ -106,13 +107,16 @@ export default function Header({ topics }: HeaderProps) {
   )
 }
 
-const onSubmitSearch = (router: NextRouter) => {
+const onSubmitSearch = (router: NextRouter, topics: SearchTopics) => {
   return function headerSubmitHandler(evt: FormEvent<HTMLFormElement>, text: string) {
     evt.preventDefault()
-    saveSearchedTexts(text)
+    const topic = getTopicByText(topics, text)
+    saveSearchedTexts(topic && text)
+    const { slug } = topic
+
     router.push({
-      pathname: '/search/[text]',
-      query: { text },
+      pathname: slug === undefined ? '/search/[text]' : `/topic/${slug}`,
+      query: slug === undefined ? ({ text }) : undefined,
     })
   }
 }
