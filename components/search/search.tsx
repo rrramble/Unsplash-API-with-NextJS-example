@@ -1,4 +1,4 @@
-import { FocusEvent, FormEvent, MutableRefObject, useEffect, useRef, useState } from 'react'
+import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '@/utils/local-storage'
 import { contains } from '@/utils/helper-browser'
 import SearchInput from './search-input'
