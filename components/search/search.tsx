@@ -17,7 +17,7 @@ type SearchProps = {
 
 export default function Search(props: SearchProps) {
   const formRef = useRef()
-  const [ inputRef, setInputRef ] = useState<MutableRefObject<HTMLInputElement> | null>(null)
+  const [ searchedText, setSearchedText ] = useState<string>('')
 
   const windowClickHandler = (evt: KeyboardEvent) => {
     const { target } = evt
@@ -47,11 +47,12 @@ export default function Search(props: SearchProps) {
       data-test="menu-search__modal"
       method="GET"
       onBlur={getCallbackOnBlur(props.onBlur)}
-      onSubmit={(e) => props.onSubmit(e, inputRef?.current?.value)}
+      onSubmit={(e) => props.onSubmit(e, searchedText)}
       ref={formRef}
     >
       <SearchInput
-        passRef={(childRef) => setInputRef(childRef)}
+        text={searchedText}
+        onChange={(text) => setSearchedText(text)}
       />
       <Tags
         isFull={props.isFull}
