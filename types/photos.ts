@@ -3,8 +3,11 @@ export type PhotoIds = PhotoId[]
 
 type RelatedCollection = {
   id: string,
+  links: { html: string },
   title: string,
 }
+
+export type RelatedCollections = RelatedCollection[]
 
 export type RelatedCollectionsInfo = {
   results: RelatedCollection[]
