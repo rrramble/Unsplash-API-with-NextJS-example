@@ -3,13 +3,12 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { getTopics } from '@/utils/helper'
 import {
-  getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites
+  getFavoritePhotosIds, toggleFavoriteStatus, subscribeOnChangeFavorites, toggleLikeStatus
 } from '@/utils/favorites'
 import { useDownloadingPhotos } from 'hooks/use-downloading-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
-import { PhotoId } from 'types/photos'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -22,16 +21,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function FavoriteIndex(): JSX.Element {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
   const photos = useDownloadingPhotos(likedPhotosIds)
-
   subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
 
   useEffect(() => {
     setLikedPhotosIds(getFavoritePhotosIds())
   }, [])
-
-  const onClickLikeButton = (id: PhotoId) => likedPhotosIds.includes(id) ?
-    removeFavoritePhotoId(id) :
-    saveFavoritePhotoId(id)
 
   return (
     <>
@@ -47,7 +41,7 @@ export default function FavoriteIndex(): JSX.Element {
           <ImageCards
             photos={photos}
             likedPhotosIds={likedPhotosIds}
-            onClickLikeButton={onClickLikeButton}
+            onClickLikeButton={(id) => toggleFavoriteStatus(id)}
           />
         </section>
       </div>
