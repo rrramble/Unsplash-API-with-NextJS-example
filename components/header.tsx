@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router'
+import { useRouter, NextRouter } from 'next/router'
+import { FormEvent } from 'react'
 import { usePathname } from 'next/navigation';
 import { Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
@@ -105,8 +106,8 @@ export default function Header({ topics }: HeaderProps) {
   )
 }
 
-const onSubmitSearch = (router) => {
-  return (evt, text) => {
+const onSubmitSearch = (router: NextRouter) => {
+  return function headerSubmitHandler(evt: FormEvent<HTMLFormElement>, text: string) {
     evt.preventDefault()
     saveSearchedTexts(text)
     router.push({

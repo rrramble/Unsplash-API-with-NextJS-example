@@ -12,7 +12,7 @@ type SearchProps = {
   items: SearchTopics,
   isHidden: boolean,
   onBlur: PlainFunction,
-  onSubmit: (evt: FormEvent, text: string) => void,
+  onSubmit: (evt: FormEvent<HTMLFormElement>, text: string) => void,
 }
 
 export default function Search(props: SearchProps) {
@@ -47,7 +47,7 @@ export default function Search(props: SearchProps) {
       data-test="menu-search__modal"
       method="GET"
       onBlur={getCallbackOnBlur(props.onBlur)}
-      onSubmit={(e) => props.onSubmit(e, searchedText)}
+      onSubmit={(evt: FormEvent<HTMLFormElement>) => props.onSubmit(evt, searchedText)}
       ref={formRef}
     >
       <SearchInput
