@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { PhotoIds } from 'types/photos'
+import { PhotoIds, Photos } from 'types/photos'
 
-export function useDownloadingPhotos(photosIds: PhotoIds) {
+export function useDownloadingPhotos(photosIds: PhotoIds): Photos {
   const [ photos, setPhotos ] = useState([])
 
   useEffect(() => {
