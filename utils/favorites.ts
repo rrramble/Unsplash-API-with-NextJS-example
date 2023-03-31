@@ -22,3 +22,10 @@ export function removeFavoritePhotoId(id: PhotoId) {
 export function subscribeOnChangeFavorites(cb: PlainCallback) {
   subscribeOnChange('favoritePhotosIds', cb)
 }
+
+export function toggleFavoriteStatus(id: PhotoId) {
+  const likedPhotosIds = getFavoritePhotosIds()
+  likedPhotosIds.includes(id) ?
+    removeFavoritePhotoId(id) :
+    saveFavoritePhotoId(id)
+}
