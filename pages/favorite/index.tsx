@@ -5,7 +5,7 @@ import { getTopics } from '@/utils/helper'
 import {
   getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites
 } from '@/utils/favorites'
-import { useFavoritePhotos } from 'hooks/use-favorite-photos'
+import { useDownloadingPhotos } from 'hooks/use-downloading-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function FavoriteIndex(): JSX.Element {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
-  const photos = useFavoritePhotos(likedPhotosIds)
+  const photos = useDownloadingPhotos(likedPhotosIds)
 
   subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
 

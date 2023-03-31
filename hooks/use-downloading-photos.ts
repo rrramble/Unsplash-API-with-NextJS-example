@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { PhotoIds } from 'types/photos'
 
-export function useFavoritePhotos(likedPhotosIds: PhotoIds) {
+export function useDownloadingPhotos(photosIds: PhotoIds) {
   const [ photos, setPhotos ] = useState([])
 
   useEffect(() => {
-    const idsAsString = JSON.stringify(likedPhotosIds)
+    const idsAsString = JSON.stringify(photosIds)
     const url = `/api/favorite?ids=${encodeURIComponent(idsAsString)}`
     fetch(url).
       then(res => res.status === 200 && res.json()).
@@ -18,7 +18,7 @@ export function useFavoritePhotos(likedPhotosIds: PhotoIds) {
         )
         setPhotos(foundPhotos)
       })
-  }, [likedPhotosIds])
+  }, [photosIds])
 
   return photos
 }
