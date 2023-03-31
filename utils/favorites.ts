@@ -1,7 +1,4 @@
-import { PhotoId, PhotoIds } from "types/photos";
-import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from "./local-storage";
-
-type PlainCallback = () => void // FIXME: move to 'types/' folder
+import { PlainFunction } from 'types/types'
 
 export function getFavoritePhotosIds(): PhotoIds {
   return lsGetArray('favoritePhotosIds')
@@ -19,7 +16,7 @@ export function removeFavoritePhotoId(id: PhotoId) {
   return lsRemoveItem('favoritePhotosIds', id, id => id)
 }
 
-export function subscribeOnChangeFavorites(cb: PlainCallback) {
+export function subscribeOnChangeFavorites(cb: PlainFunction) {
   subscribeOnChange('favoritePhotosIds', cb)
 }
 

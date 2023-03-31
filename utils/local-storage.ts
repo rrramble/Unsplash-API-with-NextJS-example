@@ -1,7 +1,6 @@
 import { generateUniqueID } from '@/utils/helper-browser'
 import { SearchTopic, SearchTopics } from 'types/search-tags'
-
-type SubscriberCallback = () => void
+import { PlainFunction } from 'types/types'
 
 export function getSearchedTexts(): SearchTopics {
   const texts = lsGetArray<SearchTopic>('searchedTexts')
@@ -96,10 +95,10 @@ export function lsRemoveItem(keyName: string, item, cb) {
 const subscribers:
 {
   keyName: string,
-  cb: SubscriberCallback,
+  cb: PlainFunction,
 }[] = []
 
-export function subscribeOnChange(keyName: string, cb: SubscriberCallback) {
+export function subscribeOnChange(keyName: string, cb: PlainFunction) {
   subscribers.push({ keyName, cb })
 }
 

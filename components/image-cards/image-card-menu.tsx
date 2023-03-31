@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { downloadPhotoByUrl } from '@/utils/helper-browser'
 import styles from './image-card-menu.module.scss'
+import { PlainFunction } from 'types/types'
 
 type ImageCardMenuProps = {
   downloadPhotoUrl: string,
   isLiked: boolean,
-  onClickLikeButton: () => void,
+  onClickLikeButton: PlainFunction,
   photoProfileUrl: string,
   savingFilename: string,
 }

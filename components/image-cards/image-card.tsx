@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { CSSProperties } from 'react'
 import { Photo } from 'types/photos'
+import { PlainFunction } from 'types/types'
 import ImageCardAuthor from './image-card-author'
 import ImageCardMenu from './image-card-menu'
 import styles from './image-card.module.scss'
@@ -16,7 +17,7 @@ interface CSSPropertiesWithVars extends CSSProperties {
 type ImageCardProps = {
   isLiked: boolean,
   isPrefetched: boolean,
-  onClickLikeButton: () => void,
+  onClickLikeButton: PlainFunction,
   photo: Photo,
 }
 

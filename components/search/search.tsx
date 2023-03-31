@@ -4,6 +4,7 @@ import { contains } from '@/utils/helper-browser'
 import SearchInput from './search-input'
 import Tags from './tags'
 import { SearchTopics } from 'types/search-tags'
+import { PlainFunction } from 'types/types'
 import styles from './search.module.scss'
 
 type OnBlur = () => void
@@ -12,7 +13,7 @@ type SearchProps = {
   isFull: boolean,
   items: SearchTopics,
   isHidden: boolean,
-  onBlur: OnBlur,
+  onBlur: PlainFunction,
   onSubmit: (evt: FormEvent, text: string) => void,
 }
 

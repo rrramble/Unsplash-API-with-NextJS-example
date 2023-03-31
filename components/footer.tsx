@@ -1,7 +1,8 @@
+import { PlainFunction } from 'types/types'
 import styles from './footer.module.scss'
 
 type FooterProps = {
-  onClick: () => void,
+  onClick: PlainFunction,
 }
 
 export default function Footer({ onClick }: FooterProps) {

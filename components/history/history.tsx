@@ -3,11 +3,12 @@ import { HistoryEntry } from 'types/history'
 import { contains } from '@/utils/helper-browser'
 import Tags from './tags'
 import styles from './history.module.scss'
+import { PlainFunction } from 'types/types'
 
 type HistoryProps = {
   isHidden: boolean,
   items: HistoryEntry[],
-  onBlur: () => void,
+  onBlur: PlainFunction,
 }
 
 export default function History(props: HistoryProps): JSX.Element {

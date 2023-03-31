@@ -5,10 +5,11 @@ import Menu from './menu'
 import SimilarTags from './similar-tags'
 import styles from './photo.module.scss'
 import { Photo as PhotoType, RelatedCollections } from 'types/photos'
+import { PlainFunction } from 'types/types'
 
 type PhotoProps = {
   isLiked: boolean,
-  onClickLikeButton: () => void,
+  onClickLikeButton: PlainFunction,
   photo: PhotoType,
   relatedTags: RelatedCollections,
 }

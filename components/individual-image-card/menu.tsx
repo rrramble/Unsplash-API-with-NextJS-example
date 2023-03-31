@@ -1,10 +1,11 @@
+import { PlainFunction } from 'types/types'
 import styles from './menu.module.scss'
 import { downloadPhotoByUrl } from '@/utils/helper-browser'
 
 type MenuProps = {
   downloadPhotoUrl: string,
   isLiked: boolean,
-  onClickLikeButton: () => void,
+  onClickLikeButton: PlainFunction,
   savingFilename: string,
 }
 
