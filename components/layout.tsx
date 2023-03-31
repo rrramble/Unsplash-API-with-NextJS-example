@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import Head from 'next/head'
-import Footer from './footer'
+import Footer from '@/components/footer/footer'
 import Header from '@/components/header/header'
 import { SearchTopics } from 'types/search-tags'
 import styles from './layout.module.scss'
