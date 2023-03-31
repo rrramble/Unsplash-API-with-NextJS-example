@@ -9,6 +9,7 @@ import { useDownloadingPhotos } from 'hooks/use-downloading-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
+import { PhotoId } from 'types/photos'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -28,7 +29,7 @@ export default function FavoriteIndex(): JSX.Element {
     setLikedPhotosIds(getFavoritePhotosIds())
   }, [])
 
-  const onClickLikeButton = (id) => likedPhotosIds.includes(id) ?
+  const onClickLikeButton = (id: PhotoId) => likedPhotosIds.includes(id) ?
     removeFavoritePhotoId(id) :
     saveFavoritePhotoId(id)
 
