@@ -7,9 +7,10 @@ const AppContext = createContext<AppContextObject>(null)
 export function AppWrapper({ children }) {
   const [ state, dispatch ] = useReducer(appReducer, initialState)
 
-  const contextValue = useMemo(() => {
-    return { state, dispatch }
-  }, [state, dispatch])
+  const contextValue = useMemo(
+      () => ({ state, dispatch }),
+      [state, dispatch]
+  )
 
   return (
     <AppContext.Provider value={contextValue}>
