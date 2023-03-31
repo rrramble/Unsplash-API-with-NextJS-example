@@ -1,12 +1,13 @@
 import { MutableRefObject, useEffect } from 'react'
-import { useAppContext } from '@/context/app-context'
+import { useAppDispatch } from 'hooks/store'
 import { throttle } from '@/utils/helper-browser'
+import { saveColumnCount } from 'store/actions'
 
 export function useWindowResize(
     layoutRef: MutableRefObject<HTMLElement | null>,
     timeoutMs: number
 ) {
-  const { dispatch } = useAppContext()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const handleWindowResize = throttle(() => {
@@ -16,7 +17,7 @@ export function useWindowResize(
       const style = window.getComputedStyle(layoutRef.current, null)
       const columnCountAsString = style['column-count'] || '0'
       const columnCount = parseInt(columnCountAsString, 10)
-      dispatch({ type: 'SAVE_PHOTO_COLUMN_COUNT', payload: columnCount })
+      dispatch(saveColumnCount(columnCount))
     }, timeoutMs)
 
     handleWindowResize()

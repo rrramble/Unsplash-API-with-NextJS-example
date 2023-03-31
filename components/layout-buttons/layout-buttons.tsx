@@ -1,8 +1,8 @@
+import { useAppSelector } from 'hooks/store'
 import styles from './layout-buttons.module.scss'
-import { useAppContext } from '@/context/app-context'
 
 export default function LayoutButtons(): JSX.Element {
-  const { state: { photoColumnCount } } = useAppContext()
+  const photoColumnCount = useAppSelector(state => state.columnCount)
 
   return (
     <fieldset className={styles.self}>
