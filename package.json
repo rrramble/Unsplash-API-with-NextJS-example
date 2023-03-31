@@ -30,27 +30,5 @@
     "sass": "^1.58.3",
     "stylelint": "^15.2.0",
     "stylelint-config-standard-scss": "^7.0.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint-config-next",
-      "next/core-web-vitals"
-    ],
-    "rules": {
-      "indent": ["error", 2, {
-        "SwitchCase": 1,
-        "VariableDeclarator": 1,
-        "MemberExpression": "off",
-        "FunctionDeclaration": {"parameters": 2},
-        "FunctionExpression": {"parameters": 2},
-        "CallExpression": {"arguments": 2}
-      }],
-      "space-in-parens": ["error", "never"],
-      "space-before-blocks": "error",
-      "space-before-function-paren": ["error", {"named": "never", "anonymous": "always"}],
-      "spaced-comment": ["error", "always"],
-      "space-infix-ops": "error",
-      "space-unary-ops": ["error", {"words": true, "nonwords": false}]
-    }
   }
 }
