@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { getTopics } from '@/utils/helper'
-import { getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites } from '@/utils/local-storage'
+import {
+  getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites
+} from '@/utils/favorites'
 import { useFavoritePhotos } from 'hooks/use-favorite-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'

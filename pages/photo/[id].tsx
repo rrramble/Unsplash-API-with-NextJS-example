@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { getPhoto, getPhotos, getTopics, getPromiseFulfilledValue } from '@/utils/helper'
-import { getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId } from '@/utils/local-storage'
+import {
+  getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId
+} from '@/utils/favorites'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
 import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'

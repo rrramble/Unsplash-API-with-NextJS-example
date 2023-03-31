@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getFavoritePhotosIds } from '@/utils/local-storage'
+import { getFavoritePhotosIds } from '@/utils/favorites'
 
 export function useFavoritePhotos(likedPhotosIds) {
   const [ photos, setPhotos ] = useState([])

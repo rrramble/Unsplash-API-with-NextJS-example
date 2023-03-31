@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getPhotos, getTopics } from '@/utils/helper'
 import {
-  getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId
-} from '@/utils/local-storage'
+  getFavoritePhotosIds, removeFavoritePhotoId, saveFavoritePhotoId, subscribeOnChangeFavorites
+} from '@/utils/favorites'
 import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import { subscribeOnChangeFavorites } from '@/utils/local-storage'
 import styles from '@/components/content.module.scss'
 import { GetServerSideProps } from 'next'
 import { getPromiseFulfilledValue } from 'utils/helper'
