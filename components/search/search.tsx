@@ -15,34 +15,26 @@ type SearchProps = {
   onSubmit: (evt: FormEvent, text: string) => void,
 }
 
-export default function Search({
-  onBlur,
-  onSubmit,
-  items,
-  isFull,
-  isHidden,
-}: SearchProps) {
-
+export default function Search(props: SearchProps) {
   const formRef = useRef()
   const [ inputRef, setInputRef ] = useState<MutableRefObject<HTMLInputElement> | null>(null)
 
   const windowClickHandler = (evt: KeyboardEvent) => {
     const { target } = evt
-    if (!contains(formRef.current, target) && !isHidden) {
-      onBlur()
+    if (!contains(formRef.current, target) && !props.isHidden) {
+      props.onBlur()
     }
   }
 
   let additionalClassName = ''
-  if (isHidden) {
+  if (props.isHidden) {
     additionalClassName = styles['self--hidden']
-  } else if (isFull) {
+  } else if (props.isFull) {
     additionalClassName = styles['self--full']
   }
 
   useEffect(() => {
     window.addEventListener('click', windowClickHandler)
-
     return () => {
       window.removeEventListener('click', windowClickHandler)
     }
@@ -54,16 +46,16 @@ export default function Search({
       className={styles.self + ' ' + additionalClassName}
       data-test="menu-search__modal"
       method="GET"
-      onBlur={getCallbackOnBlur(onBlur)}
-      onSubmit={(e) => onSubmit(e, inputRef?.current?.value)}
+      onBlur={getCallbackOnBlur(props.onBlur)}
+      onSubmit={(e) => props.onSubmit(e, inputRef?.current?.value)}
       ref={formRef}
     >
       <SearchInput
         passRef={(childRef) => setInputRef(childRef)}
       />
       <Tags
-        isFull={isFull}
-        items={items}
+        isFull={props.isFull}
+        items={props.items}
         onClick={(item) => saveSearchedTexts(item)}
       />
     </form>
