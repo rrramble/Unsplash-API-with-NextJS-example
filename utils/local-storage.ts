@@ -3,33 +3,13 @@ import { SearchTopic, SearchTopics } from 'types/search-tags'
 
 type SubscriberCallback = () => void
 
-export function getFavoritePhotosIds(): string[] {
-  return lsGetArray('favoritePhotosIds')
-}
-
 export function getSearchedTexts(): SearchTopics {
   const texts = lsGetArray<SearchTopic>('searchedTexts')
   return texts
 }
 
-export function isPhotoIdLiked(id) {
-  return getFavoritePhotosIds().includes(id)
-}
-
-export function saveFavoritePhotoId(id) {
-  return lsAddItem('favoritePhotosIds', id)
-}
-
-export function subscribeOnChangeFavorites(cb) {
-  subscribeOnChange('favoritePhotosIds', cb)
-}
-
 export function subscribeOnChangeSearchedTexts(cb) {
   subscribeOnChange('searchedTexts', cb)
-}
-
-export function removeFavoritePhotoId(id: string) {
-  return lsRemoveItem('favoritePhotosIds', id, id => id)
 }
 
 export function saveSearchedTexts(topic: string | SearchTopic): void {
@@ -58,7 +38,7 @@ export function saveSearchedTexts(topic: string | SearchTopic): void {
 
 
 // Local Storage direct manipulation functions
-function lsGetArray<T>(
+export function lsGetArray<T>(
     keyName: string
 ): T[] {
   let asString: string
@@ -75,7 +55,7 @@ function lsGetArray<T>(
   }
 }
 
-function lsAddItem(keyName: string, item) {
+export function lsAddItem(keyName: string, item) {
   const items = lsGetArray(keyName)
   if (items.includes(item)) {
     return
@@ -95,7 +75,7 @@ function lsSave(keyName: string, obj: unknown) {
   localStorage.setItem(keyName, str)
 }
 
-function lsRemoveItem(keyName: string, item, cb) {
+export function lsRemoveItem(keyName: string, item, cb) {
   const unfilteredItems = lsGetArray(keyName);
   if (typeof unfilteredItems !== 'object') {
     return
@@ -119,7 +99,7 @@ const subscribers:
   cb: SubscriberCallback,
 }[] = []
 
-function subscribeOnChange(keyName: string, cb: SubscriberCallback) {
+export function subscribeOnChange(keyName: string, cb: SubscriberCallback) {
   subscribers.push({ keyName, cb })
 }
 
