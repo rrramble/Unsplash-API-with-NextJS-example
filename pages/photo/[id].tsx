@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getPhoto, getPhotos, getTopics, getPromiseFulfilledValue } from '@/utils/helper'
 import {
   getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId
 } from '@/utils/favorites'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
-import { Photo, Photos } from 'types/photos'
-import styles from './[id].module.scss'
-import { GetServerSideProps } from 'next'
-import { SearchTopics } from 'types/search-tags'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
+import { Photo, Photos } from 'types/photos'
+import { SearchTopics } from 'types/search-tags'
+import styles from './[id].module.scss'
 
 type PhotoIndexProps = {
   photo: Photo,

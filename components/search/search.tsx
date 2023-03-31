@@ -1,10 +1,10 @@
 import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '@/utils/local-storage'
 import { contains } from '@/utils/helper-browser'
-import SearchInput from './search-input'
-import Tags from './tags'
 import { SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
+import SearchInput from './search-input'
+import Tags from './tags'
 import styles from './search.module.scss'
 
 type SearchProps = {

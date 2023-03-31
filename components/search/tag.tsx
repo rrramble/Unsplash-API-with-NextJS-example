@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import styles from './tag.module.scss'
 import { PlainFunction } from 'types/types'
+import styles from './tag.module.scss'
 
 type TagProps = {
   cb: PlainFunction,

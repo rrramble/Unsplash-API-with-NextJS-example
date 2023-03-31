@@ -1,5 +1,4 @@
 import ImageCards from '@/components/image-cards/image-cards'
-
 import styles from './similar-photos.module.scss'
 
 export default function SimilarPhotos({

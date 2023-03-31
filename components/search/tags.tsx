@@ -1,5 +1,5 @@
-import Tag from './tag'
 import { SearchTopic, SearchTopics } from 'types/search-tags'
+import Tag from './tag'
 import styles from './tags.module.scss'
 
 type TagsProps = {

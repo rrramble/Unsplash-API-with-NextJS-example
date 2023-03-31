@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
 import styles from './header-logo.module.scss'
 
 type HeaderLogoProps = {

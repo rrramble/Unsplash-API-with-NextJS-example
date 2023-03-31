@@ -1,5 +1,4 @@
 import { getTopics } from '@/utils/helper'
-
 import styles from './404.module.scss'
 
 export async function getStaticProps() {

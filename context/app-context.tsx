@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useReducer } from 'react'
-import { appReducer, initialState } from './app-reducer'
 import { AppContextObject } from 'types/context'
+import { appReducer, initialState } from './app-reducer'
 
 const AppContext = createContext<AppContextObject>(null)
 

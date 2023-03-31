@@ -1,5 +1,5 @@
-import { getPhoto } from "@/utils/helper"
 import { NextApiRequest, NextApiResponse } from "next"
+import { getPhoto } from "@/utils/helper"
 
 export default function handler(req: NextApiRequest, res: NextApiResponse): void {
   const parsedIds = parseIds(req.query?.ids)

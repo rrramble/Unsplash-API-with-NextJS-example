@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import Link from 'next/link'
-
 import styles from './tag.module.scss'
 import { HistoryEntry } from 'types/history'
 
