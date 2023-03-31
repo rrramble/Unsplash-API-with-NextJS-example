@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { getTopics } from '@/utils/helper'
 import {
-  getFavoritePhotosIds, toggleFavoriteStatus, subscribeOnChangeFavorites, toggleLikeStatus
+  getFavoritePhotosIds, toggleFavoriteStatus, subscribeOnChangeFavorites
 } from '@/utils/favorites'
 import { useDownloadingPhotos } from 'hooks/use-downloading-photos'
 import ImageCards from '@/components/image-cards/image-cards'
