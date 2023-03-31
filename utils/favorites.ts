@@ -1,9 +1,9 @@
-import { PhotoId } from "types/photos";
+import { PhotoId, PhotoIds } from "types/photos";
 import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from "./local-storage";
 
 type PlainCallback = () => void // FIXME: move to 'types/' folder
 
-export function getFavoritePhotosIds(): string[] {
+export function getFavoritePhotosIds(): PhotoIds {
   return lsGetArray('favoritePhotosIds')
 }
 
