@@ -7,8 +7,6 @@ import { SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
 import styles from './search.module.scss'
 
-type OnBlur = () => void
-
 type SearchProps = {
   isFull: boolean,
   items: SearchTopics,
