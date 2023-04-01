@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { getTopics } from '@/utils/helper-filesystem'
 import {
   getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
 } from '@/utils/favorites'
-import { useDownloadingPhotos } from 'hooks/use-downloading-photos'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import { PhotoIds } from 'types/photos'
@@ -22,10 +21,14 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function FavoriteIndex(): JSX.Element {
+  const photos = useAppSelector(store => store.photos)
+  const dispatch = useAppDispatch()
   const [ likedPhotosIds, setLikedPhotosIds ] =
     useState<PhotoIds>(getFavoritePhotosIds())
-  const photos = useDownloadingPhotos(likedPhotosIds)
   subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
+  useEffect(() => {
+    dispatch(getPhotos(likedPhotosIds))
+  }, [dispatch, likedPhotosIds])
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { reducer } from 'store/reducer'
+import { fetchPhotos } from './middlewares/fetch-photo'
 
 export const store = configureStore({
   reducer,
@@ -8,5 +9,5 @@ export const store = configureStore({
       thunk: {
         extraArgument: null,
       }
-    })
+    }).concat(fetchPhotos)
 })

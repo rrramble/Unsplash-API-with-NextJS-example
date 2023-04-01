@@ -1,10 +1,10 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { saveColumnCount } from 'store/actions';
-import { PhotoEntries } from 'types/photo-entries';
+import { createReducer } from '@reduxjs/toolkit'
+import { saveColumnCount, setPhotos } from 'store/actions'
+import { Photos } from 'types/photos';
 
 const initialState = {
   columnCount: 1,
-  photoEntries: <PhotoEntries>[],
+  photos: <Photos>[],
 }
 
 export const reducer = createReducer(initialState, builder => {
@@ -13,5 +13,8 @@ export const reducer = createReducer(initialState, builder => {
       if (state.columnCount !== payload) {
         state.columnCount = payload
       }
+    })
+    .addCase(setPhotos, (state, { payload }) => {
+      state.photos = payload
     })
 })
