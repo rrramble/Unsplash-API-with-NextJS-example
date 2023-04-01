@@ -1,40 +1,48 @@
-import path from 'path'
-import { promises as fs } from 'fs'
-import { fetchPhoto } from './unsplash'
+import { saveFile, getFileContents, getFileContentsAsJSON } from 'utils/filesystem'
+import { fetchPhotoRawEntry } from './unsplash'
 import { Photo, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 
+const EMPTY_JSON_AS_TEXT = '{}'
+const EMPTY_JSON = JSON.parse(EMPTY_JSON_AS_TEXT)
+
 export async function getPhoto(id: string): Promise<Photo> {
+  const  photoRawEntry = await getPhotoRawEntry(id)
   try {
-    return await getJSONDataFile(['photos', id + '.json'])
-  } catch (e) {
-    console.info(e.message)
+    return JSON.parse(photoRawEntry)
+  } catch (err) {
+    console.info(err.message)
+    return EMPTY_JSON // TODO: Promise.reject(e.message)
+  }
+}
+
+export async function getPhotoRawEntry(id: string): Promise<string> {
+  try {
+    return await getFileContents(['photos', `${id}.json`])
+  } catch (err) {
+    console.info(err.message)
   }
 
+  // If not found - download from Unsplash API
   let contents: string
   try {
-    contents = await fetchPhoto(id)
-  } catch (e) {
-    throw new Error(e.message)
-  }
-
-  let json
-  try {
-    json = JSON.parse(contents)
-  } catch (e) {
-    throw new Error(`Could not parse json with photo ID: ${id}`)
+    contents = await fetchPhotoRawEntry(id)
+    const _ = JSON.parse(contents)
+  } catch (err) {
+    console.log(err.message)
+    return EMPTY_JSON_AS_TEXT // TODO: Promise.reject(e.message)
   }
 
   try {
-    await saveFile(['photos', `${id}.json`], contents)
-  } catch (e) {
-    console.log(e.message)
+    saveFile(['photos', `${id}.json`], contents)
+  } catch (err) {
+    console.log(err.message)
   }
-  return json
+  return contents
 }
 
 export async function getPhotos(slugName: string): Promise<Photos> {
-  return await getJSONDataFile(['topics', slugName + '.json'])
+  return await getFileContentsAsJSON(['topics', slugName + '.json'])
 }
 
 export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T {
@@ -44,41 +52,5 @@ export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<
 }
 
 export async function getTopics(): Promise<SearchTopics> {
-  return await getJSONDataFile(['topics', '__items__.json'])
-}
-
-
-// Internal functions
-
-async function getFileContents(pathParts: string[]) {
-  const fileFullPath = path.join(process.cwd(), 'data', ...pathParts)
-  try {
-    return await fs.readFile(fileFullPath, 'utf8')
-  } catch(e) {
-    throw new Error(`Error reading file: "${fileFullPath}"`)
-  }
-}
-
-async function getJSONDataFile(pathParts: string[]) {
-  let contents: string
-  try {
-    contents = await getFileContents(pathParts)
-  } catch(e) {
-    throw new Error(e.message)
-  }
-
-  try {
-    return JSON.parse(contents)
-  } catch (e) {
-    return JSON.parse('[]')
-  }
-}
-
-async function saveFile(pathParts: string[], contents: string) {
-  const fileFullPath = path.join(process.cwd(), 'data', ...pathParts)
-  try {
-    await fs.writeFile(fileFullPath, contents)
-  } catch (e) {
-    throw new Error(`Could not save file: ${fileFullPath}`)
-  }
+  return await getFileContentsAsJSON(['topics', '__items__.json'])
 }
