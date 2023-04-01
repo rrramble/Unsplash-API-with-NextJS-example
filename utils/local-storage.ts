@@ -44,7 +44,7 @@ export function lsGetArray<T>(
   try {
     asString = localStorage.getItem(keyName)
   } catch (e) {
-    asString = '{}'
+    asString = '[]'
   }
 
   try {
