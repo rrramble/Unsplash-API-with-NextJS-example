@@ -6,7 +6,7 @@ import {
 import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { getPromiseFulfilledValue } from 'utils/helper'
 import { Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
@@ -23,7 +23,7 @@ type ContextParams = {
   names: string[] | undefined
 }
 
-export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextParams> = async (context) => {
+export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextParams> = async (context: GetServerSidePropsContext) => {
   const { names: topicNames } = context.params
   const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames && typeof topicNames !== 'string' ?
     topicNames :
