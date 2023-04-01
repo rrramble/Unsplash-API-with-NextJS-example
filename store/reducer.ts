@@ -1,10 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { saveColumnCount } from 'store/actions';
-import { FavoritePhotoEntries } from 'types/favorite-photos';
+import { PhotoEntries } from 'types/photo-entries';
 
 const initialState = {
   columnCount: 1,
-  favoritePhotoEntries: <FavoritePhotoEntries>[],
+  photoEntries: <PhotoEntries>[],
 }
 
 export const reducer = createReducer(initialState, builder => {
