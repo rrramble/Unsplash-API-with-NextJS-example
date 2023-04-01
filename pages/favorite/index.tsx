@@ -21,17 +21,17 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function FavoriteIndex(): JSX.Element {
   const [ likedPhotosIds, setLikedPhotosIds ] = useState<PhotoIds>([])
-  const [ shouldUpdate, setShouldUpdate ] = useState(true)
+  const [ shouldReloadLikedIds, setShouldReloadLikedIds ] = useState(true)
   const photos = useDownloadingPhotos(likedPhotosIds)
-  subscribeOnChangeFavorites(() => setShouldUpdate(true))
+  subscribeOnChangeFavorites(() => setShouldReloadLikedIds(true))
 
   useEffect(() => {
-    if (shouldUpdate === false) {
+    if (shouldReloadLikedIds === false) {
       return
     }
-    setShouldUpdate(false)
+    setShouldReloadLikedIds(false)
     setLikedPhotosIds(getFavoritePhotosIds())
-  }, [shouldUpdate])
+  }, [shouldReloadLikedIds])
 
   return (
     <>
