@@ -11,7 +11,7 @@ function getPhotoJSONUrl(id: string) {
   )
 }
 
-export async function fetchPhoto(id: string): Promise<string> {
+export async function fetchPhotoRawEntry(id: string): Promise<string> {
   const url = getPhotoJSONUrl(id)
   let response: Response
   try {
