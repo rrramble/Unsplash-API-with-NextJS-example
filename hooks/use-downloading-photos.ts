@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { PhotoIds, Photos } from 'types/photos'
-
+// TODO: remove this file?
 export function useDownloadingPhotos(photosIds: PhotoIds): Photos {
   const [ photos, setPhotos ] = useState([])
 
