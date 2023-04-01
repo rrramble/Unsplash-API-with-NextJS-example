@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect } from 'react'
 import { useAppDispatch } from 'hooks/store'
-import { throttle } from '@/utils/helper-browser'
+import { throttle } from '@/utils/helper-common'
 import { saveColumnCount } from 'store/actions'
 
 export function useWindowResize(

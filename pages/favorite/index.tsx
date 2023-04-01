@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { getTopics } from '@/utils/helper'
+import { getTopics } from '@/utils/helper-filesystem'
 import {
   getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
 } from '@/utils/favorites'
@@ -10,6 +10,8 @@ import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import { PhotoIds } from 'types/photos'
 import styles from './index.module.scss'
+import { useAppDispatch, useAppSelector } from 'hooks/store'
+import { getPhotos } from 'store/actions'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {

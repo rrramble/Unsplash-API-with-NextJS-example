@@ -1,4 +1,4 @@
-import { generateUniqueID } from '@/utils/helper-browser'
+import { generateUniqueID } from '@/utils/helper-common'
 import { SearchTopic, SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
 

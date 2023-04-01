@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { HistoryEntry } from 'types/history'
-import { contains } from '@/utils/helper-browser'
+import { contains } from '@/utils/helper-common'
 import Tags from './tags'
 import styles from './history.module.scss'
 import { PlainFunction } from 'types/types'

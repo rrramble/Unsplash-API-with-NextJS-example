@@ -1,6 +1,6 @@
 import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '@/utils/local-storage'
-import { contains } from '@/utils/helper-browser'
+import { contains } from '@/utils/helper-common'
 import { SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
 import SearchInput from './search-input'

@@ -1,21 +1,5 @@
-export function contains(parent, item) {
-  if (parent === undefined || item === undefined || item === null) {
-    return false
-  }
-
-  if (parent === item) {
-    return true
-  }
-
-  const { parentNode: itemParentNode } = item
-  return contains(parent, itemParentNode)
-}
-
-export function generateUniqueID(): string {
-  const timePart = Date.now()
-  const randomPart = Math.floor(Math.random() * 1000000)
-  return `${timePart}${randomPart}`
-}
+import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
+import { getPromiseFulfilledValue } from './helper-common'
 
 export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
   let image: Response
@@ -39,21 +23,21 @@ export async function downloadPhotoByUrl(url: string, filename: string): Promise
   document.body.removeChild(el)
 }
 
-export function throttle(cb: (...args: unknown[]) => void, timeoutMs: number) {
-  let timerId = null
+export async function fetchPhotos(photoIds: PhotoIds): Promise<Photos> {
+  const promises = await Promise.
+    allSettled(photoIds.map(fetchPhoto))
+  const photos = promises.map(getPromiseFulfilledValue)
+  return photos
+}
 
-  function run(...args) {
-    if (timerId) {
-      return
-    }
-
-    timerId = setTimeout(() => {
-      cb(...args)
-
-      clearTimeout(timerId)
-      timerId = null
-    }, timeoutMs)
+export async function fetchPhoto(id: PhotoId): Promise<Photo> {
+  const response = await fetchPhotoInfo(id)
+  if (response.ok) {
+    return response.json()
   }
+  return Promise.reject()
+}
 
-  return run
+export async function fetchPhotoInfo(id: PhotoId) {
+  return await fetch(`/api/favorite?${id}`)
 }

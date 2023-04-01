@@ -1,13 +1,13 @@
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useEffect, useState } from 'react'
-import { getPhotos, getTopics } from '@/utils/helper'
-import {
-  getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
-} from '@/utils/favorites'
 import Head from 'next/head'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { getPromiseFulfilledValue } from 'utils/helper'
+import {
+  getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
+} from '@/utils/favorites'
+import { getPhotos, getTopics } from '@/utils/helper-filesystem'
+import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import { Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 import styles from './[[...names]].module.scss'

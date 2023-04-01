@@ -1,4 +1,4 @@
-import { getPhotoRawEntry } from '@/utils/helper'
+import { getPhotoRawEntry } from '@/utils/helper-filesystem'
 import { NextApiRequest, NextApiResponse } from "next"
 import { PhotoIds } from 'types/photos'
 

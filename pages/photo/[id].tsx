@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { getPhoto, getPhotos, getTopics, getPromiseFulfilledValue } from '@/utils/helper'
+import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
+import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import {
   getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId
 } from '@/utils/favorites'

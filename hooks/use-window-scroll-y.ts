@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { throttle } from '@/utils/helper-browser'
+import { throttle } from '@/utils/helper-common'
 
 export function useWindowScrollY(delayMs: number): number {
   const [ scrollY, setScrollY ] = useState<number>(0)
