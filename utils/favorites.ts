@@ -3,7 +3,7 @@ import { PlainFunction } from 'types/types'
 import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from './local-storage';
 
 export function getFavoritePhotosIds(): PhotoIds {
-  return lsGetArray('favoritePhotosIds')
+  return lsGetArray<PhotoId>('favoritePhotosIds')
 }
 
 export function isPhotoIdLiked(id: PhotoId) {
