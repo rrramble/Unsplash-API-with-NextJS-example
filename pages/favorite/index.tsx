@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { getTopics } from '@/utils/helper'
@@ -20,18 +20,10 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function FavoriteIndex(): JSX.Element {
-  const [ likedPhotosIds, setLikedPhotosIds ] = useState<PhotoIds>([])
-  const [ shouldReloadLikedIds, setShouldReloadLikedIds ] = useState(true)
+  const [ likedPhotosIds, setLikedPhotosIds ] =
+    useState<PhotoIds>(getFavoritePhotosIds())
   const photos = useDownloadingPhotos(likedPhotosIds)
-  subscribeOnChangeFavorites(() => setShouldReloadLikedIds(true))
-
-  useEffect(() => {
-    if (shouldReloadLikedIds === false) {
-      return
-    }
-    setShouldReloadLikedIds(false)
-    setLikedPhotosIds(getFavoritePhotosIds())
-  }, [shouldReloadLikedIds])
+  subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
 
   return (
     <>
