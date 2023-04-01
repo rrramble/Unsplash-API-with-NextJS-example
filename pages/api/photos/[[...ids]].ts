@@ -15,7 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
     return
   }
 
-  const [ id ] = ids
+  const [ id ] = ids // TODO: fetch all ids
   getPhotoRawEntry(id)
     .then(photoRawEntry => res.send(photoRawEntry))
 }
