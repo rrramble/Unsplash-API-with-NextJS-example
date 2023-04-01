@@ -1,5 +1,5 @@
 import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
-import { getPromiseFulfilledValue } from './helper-common'
+import { EMPTY_JSON, getPromiseFulfilledValue } from './helper-common'
 
 export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
   let image: Response
@@ -26,18 +26,21 @@ export async function downloadPhotoByUrl(url: string, filename: string): Promise
 export async function fetchPhotos(photoIds: PhotoIds): Promise<Photos> {
   const promises = await Promise.
     allSettled(photoIds.map(fetchPhoto))
-  const photos = promises.map(getPromiseFulfilledValue)
+  const photos = promises.map((promise) => {
+    return getPromiseFulfilledValue(promise)
+  })
   return photos
 }
 
-export async function fetchPhoto(id: PhotoId): Promise<Photo> {
-  const response = await fetchPhotoInfo(id)
-  if (response.ok) {
-    return response.json()
+export async function fetchPhoto(id: PhotoId) {
+  try {
+    const response = await fetch(`/api/photos/${id}`)
+    if (response.ok) {
+      return await response.json()
+    }
+    return EMPTY_JSON
   }
-  return Promise.reject()
-}
-
-export async function fetchPhotoInfo(id: PhotoId) {
-  return await fetch(`/api/favorite?${id}`)
+  catch (err) {
+    return Promise.reject(`Fetching error. ${err.message}`)
+  }
 }
