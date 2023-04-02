@@ -1,5 +1,5 @@
 import { useRouter, NextRouter } from 'next/router'
-import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation'
 import { FormEvent, Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 import Favorite from '@/components/favorite/favorite'
@@ -11,7 +11,7 @@ import Search from '@/components/search/search'
 import History from '@/components/history/history'
 import { SearchTopics } from 'types/search-tags'
 import { MenuState } from 'types/menu-state'
-import { getTopicByText } from '@/utils/topics';
+import { getTopicByText } from '@/utils/topics'
 import { headerReducer, INITIAL_STATE } from './header-reducer'
 import styles from './header.module.scss'
 

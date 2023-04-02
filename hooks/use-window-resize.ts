@@ -25,6 +25,6 @@ export function useWindowResize(
 
     return () => {
       window.removeEventListener('resize', handleWindowResize)
-    };
+    }
   }, [dispatch, layoutRef, timeoutMs])
 }

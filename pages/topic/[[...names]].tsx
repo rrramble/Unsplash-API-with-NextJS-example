@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextPara
   const [ photos, topics ] = await Promise.allSettled([
     getPhotos(topicName),
     getTopics(),
-  ]);
+  ])
 
   return {
     props: {

@@ -5,7 +5,7 @@ import styles from './header-logo.module.scss'
 type HeaderLogoProps = {
   className: string,
   isRootPage: boolean, // TODO: use it
-};
+}
 
 export default function HeaderLogo({ className = '' }: HeaderLogoProps): JSX.Element {
   return (

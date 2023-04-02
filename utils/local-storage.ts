@@ -75,7 +75,7 @@ function lsSave(keyName: string, obj: unknown) {
 }
 
 export function lsRemoveItem(keyName: string, item, cb) {
-  const unfilteredItems = lsGetArray(keyName);
+  const unfilteredItems = lsGetArray(keyName)
   if (typeof unfilteredItems !== 'object') {
     return
   }

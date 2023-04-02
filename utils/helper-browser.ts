@@ -4,7 +4,7 @@ import { EMPTY_JSON, getPromiseFulfilledValue } from './helper-common'
 export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
   let image: Response
   try {
-    image = await fetch(url);
+    image = await fetch(url)
     if (!image.ok) {
       return
     }
