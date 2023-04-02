@@ -27,6 +27,6 @@ export async function saveFile(pathParts: string[], contents: string) {
   try {
     await fs.writeFile(fileFullPath, contents)
   } catch (_err) {
-    throw new Error(`Could not save file: ${fileFullPath}`)
+    console.log(`Could not save file: ${fileFullPath}`)
   }
 }
