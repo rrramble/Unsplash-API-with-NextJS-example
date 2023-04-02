@@ -1,24 +1,21 @@
 import path from 'path'
 import { promises as fs } from 'fs'
 
-export async function readFileContents(pathParts: string[]) {
+export async function readFileContents(pathParts: string[]): Promise<string> {
   const fileFullPath = path.join(process.cwd(), 'data', ...pathParts)
   try {
     return await fs.readFile(fileFullPath, 'utf8')
   } catch (_err) {
-    throw new Error(`Error reading file: "${fileFullPath}"`)
+    throw new Error(`Error reading file: "${fileFullPath}"`) // TODO await?
   }
 }
 
-export async function readFileContentsAsJSON(pathParts: string[]) {
-  let contents: string
+export async function readFileContentsAsArray<T>(pathParts: string[]): Promise<Array<T>> {
   try {
-  } catch (_err) {
-
-  try {
+    let contents = await readFileContents(pathParts)
     return JSON.parse(contents)
-  } catch (e) {
-    return JSON.parse('{}')
+  } catch (_err) {
+    return []
   }
 }
 

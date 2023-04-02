@@ -1,5 +1,5 @@
 import { EMPTY_JSON, EMPTY_JSON_AS_TEXT } from '@/utils/helper-common'
-import { readFileContents, readFileContentsAsJSON, saveFile } from '@/utils/filesystem'
+import { readFileContents, readFileContentsAsArray, saveFile } from '@/utils/filesystem'
 import { fetchPhotoRawEntry } from '@/utils/unsplash'
 import { Photo, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
@@ -40,9 +40,9 @@ export async function getPhotoRawEntry(id: string): Promise<string> {
 }
 
 export async function getPhotos(slugName: string): Promise<Photos> {
-  return await readFileContentsAsJSON(['topics', slugName + '.json'])
+  return await readFileContentsAsArray<Photo>(['topics', slugName + '.json'])
 }
 
 export async function getTopics(): Promise<SearchTopics> {
-  return await readFileContentsAsJSON(['topics', '__items__.json'])
+  return await readFileContentsAsArray<SearchTopic>(['topics', '__items__.json'])
 }
