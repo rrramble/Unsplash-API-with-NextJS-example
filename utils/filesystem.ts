@@ -13,8 +13,7 @@ export async function readFileContents(pathParts: string[]) {
 export async function readFileContentsAsJSON(pathParts: string[]) {
   let contents: string
   try {
-  } catch (err) {
-    throw new Error(err.message)
+  } catch (_err) {
 
   try {
     return JSON.parse(contents)
