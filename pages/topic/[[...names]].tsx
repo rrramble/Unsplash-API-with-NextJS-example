@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
-import { toggleOneFavoriteId } from 'store/actions'
 import { useAppDispatch, useAppSelector } from 'hooks/store'
+import { clickLikeAction } from 'store/async-actions'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import { getPhotos, getTopics } from '@/utils/helper-filesystem'
@@ -66,7 +66,7 @@ export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
         <ImageCards
           photos={photos}
           likedPhotosIds={likedPhotosIds}
-          onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
+          onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
         />
       </div>
     </>

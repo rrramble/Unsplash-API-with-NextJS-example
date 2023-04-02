@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { clickLikeAction } from 'store/async-actions'
 import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
@@ -8,7 +9,6 @@ import { SearchTopics } from 'types/search-tags'
 import styles from './[id].module.scss'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 import { useAppDispatch, useAppSelector } from 'hooks/store'
-import { toggleOneFavoriteId } from 'store/actions'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -74,7 +74,7 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
         <IndividualImageCard
           isLikedPhoto={likedPhotoIds.includes(photoId)}
           likedPhotosIds={likedPhotoIds}
-          onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
+          onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
           photo={photo}
           photos={photos}
         />

@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { toggleOneFavoriteId } from 'store/actions'
+import { clickLikeAction } from 'store/async-actions'
 import { useLikedPhotos } from 'hooks/use-liked-photos'
 import { useAppDispatch } from 'hooks/store'
 import { getTopics } from '@/utils/helper-filesystem'
@@ -35,7 +35,7 @@ export default function FavoriteIndex(): JSX.Element {
           <ImageCards
             photos={likedPhotos}
             likedPhotosIds={likedPhotos.map(photo => photo.id)}
-            onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
+            onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
           />
         </section>
       </div>
