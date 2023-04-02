@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit'
-import { PhotoIds, Photos } from 'types/photos'
+import { Photo, Photos } from 'types/photos'
 
-export const saveColumnCount = createAction<number>('columnCount/save')
+export const setColumnCount = createAction<number>('columnCount/set')
 
-export const getPhotos = createAction<PhotoIds>('photos/get')
+export const addPhoto = createAction<Photo>('photos/addOne')
 export const setPhotos = createAction<Photos>('photos/set')
