@@ -17,5 +17,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
 
   const [ id ] = ids // TODO: fetch all ids
   getPhotoRawEntry(id)
-    .then(photoRawEntry => res.send(photoRawEntry))
+    .then(photoRawEntry => res.end(photoRawEntry))
 }
