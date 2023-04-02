@@ -1,6 +1,9 @@
-import { PhotoId, PhotoIds } from 'types/photos';
+import { store } from 'store'
+import { addPhoto } from 'store/actions'
+import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from 'utils/local-storage'
+import { fetchPhoto } from 'utils/helper-browser'
+import { PhotoId, PhotoIds } from 'types/photos'
 import { PlainFunction } from 'types/types'
-import { lsAddItem, lsGetArray, lsRemoveItem, subscribeOnChange } from './local-storage';
 
 export function getFavoritePhotosIds(): PhotoIds {
   return lsGetArray<PhotoId>('favoritePhotosIds')
@@ -24,7 +27,15 @@ export function subscribeOnChangeFavorites(cb: PlainFunction) {
 
 export function toggleFavoriteStatus(id: PhotoId) {
   const likedPhotosIds = getFavoritePhotosIds()
-  likedPhotosIds.includes(id) ?
-    removeFavoritePhotoId(id) :
+  if (likedPhotosIds.includes(id)) {
+    removeFavoritePhotoId(id)
+  } else {
     saveFavoritePhotoId(id)
+    fetchPhoto(id)
+      .then((photo) => {
+        const action = addPhoto(photo)
+        store.dispatch(action)
+      })
+      .catch()
+  }
 }
