@@ -3,7 +3,7 @@ import { saveColumnCount, setPhotos } from 'store/actions'
 import { Photos } from 'types/photos';
 
 const initialState = {
-  columnCount: 1,
+  columnCount: 0,
   photos: <Photos>[],
 }
 
