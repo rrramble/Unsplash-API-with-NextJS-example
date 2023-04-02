@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
-import { PhotoIds, Photos } from 'types/photos'
+import { Photos } from 'types/photos'
 import { useAppSelector } from 'hooks/store'
-import { getFavoritePhotosIds, subscribeOnChangeFavorites } from '@/utils/favorites'
+import { useLikedPhotoIds } from './use-liked-photo-ids'
 
 export function useLikedPhotos() {
   const allPhotos = useAppSelector(store => store.photos)
+  const likedPhotoIds = useLikedPhotoIds()
   const [ likedPhotos, setLikedPhotos ] = useState<Photos>([])
-  const [ likedPhotoIds, setLikedPhotoIds ] = useState<PhotoIds>(getFavoritePhotosIds())
-
-  subscribeOnChangeFavorites(() => setLikedPhotoIds(getFavoritePhotosIds()))
 
   useEffect(() => {
     const filtered = allPhotos.filter(
