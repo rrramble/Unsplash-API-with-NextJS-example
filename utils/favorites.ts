@@ -29,13 +29,17 @@ export function toggleFavoriteStatus(id: PhotoId) {
   const likedPhotosIds = getFavoritePhotosIds()
   if (likedPhotosIds.includes(id)) {
     removeFavoritePhotoId(id)
-  } else {
-    saveFavoritePhotoId(id)
-    fetchPhoto(id)
-      .then((photo) => {
-        const action = addPhoto(photo)
-        store.dispatch(action)
-      })
-      .catch()
+    return
   }
+
+  saveFavoritePhotoId(id)
+  const { photos } = store.getState()
+  const isExistInState = photos.some(photo => photo.id === id)
+  if (isExistInState) {
+    return
+  }
+
+  fetchPhoto(id)
+    .then(photo => store.dispatch(addPhoto(photo)))
+    .catch()
 }
