@@ -11,7 +11,7 @@ import Search from '@/components/search/search'
 import History from '@/components/history/history'
 import { SearchTopics } from 'types/search-tags'
 import { MenuState } from 'types/menu-state'
-import { getTopicByText } from '@/utils/topics'
+import { findTopicByText } from '@/utils/topics'
 import { headerReducer, INITIAL_STATE } from './header-reducer'
 import styles from './header.module.scss'
 
@@ -108,7 +108,7 @@ export default function Header({ topics }: HeaderProps) {
 const onSubmitSearch = (router: NextRouter, topics: SearchTopics) => {
   return function headerSubmitHandler(evt: FormEvent<HTMLFormElement>, text: string) {
     evt.preventDefault()
-    const topic = getTopicByText(topics, text)
+    const topic = findTopicByText(topics, text)
     saveSearchedTexts(topic && text)
     const { slug } = topic
 

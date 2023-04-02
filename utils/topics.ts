@@ -1,6 +1,6 @@
 import { SearchTopic, SearchTopics } from 'types/search-tags'
 
-export function getTopicByText(topics: SearchTopics, text: string): SearchTopic | null {
+export function findTopicByText(topics: SearchTopics, text: string): SearchTopic | null {
   text = text.toLowerCase()
 
   for (const topic of topics) {
