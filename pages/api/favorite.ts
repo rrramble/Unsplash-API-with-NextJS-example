@@ -8,7 +8,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
   Promise.allSettled(photosPromises).
     then(photos => {
       photos = photos.filter(photo => photo)
-      res.end(JSON.stringify(photos))
+      return res.end(JSON.stringify(photos))
     }).
     catch(e => console.log(e))
 }
