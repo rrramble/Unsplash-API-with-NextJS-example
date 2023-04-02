@@ -2,7 +2,7 @@ import { EMPTY_JSON, EMPTY_JSON_AS_TEXT } from '@/utils/helper-common'
 import { readFileContents, readFileContentsAsArray, saveFile } from '@/utils/filesystem'
 import { fetchPhotoRawEntry } from '@/utils/unsplash'
 import { Photo, Photos } from 'types/photos'
-import { SearchTopics } from 'types/search-tags'
+import { SearchTopic, SearchTopics } from 'types/search-tags'
 
 export async function getPhoto(id: string): Promise<Photo> {
   const photoRawEntry = await getPhotoRawEntry(id)
@@ -23,6 +23,7 @@ export async function getPhotoRawEntry(id: string): Promise<string> {
 
   // If not found - download from Unsplash API
   let contents: string
+
   try {
     contents = await fetchPhotoRawEntry(id)
     const _ = JSON.parse(contents)
