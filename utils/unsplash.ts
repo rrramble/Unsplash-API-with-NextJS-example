@@ -1,6 +1,6 @@
 import { env } from 'node:process'
 
-function getPhotoJSONUrl(id: string) {
+function getUrlOfJsonOfPhoto(id: string) {
   if (!env?.UNSPLASH_API_KEY) {
     throw new Error(
         'Error. Provide UNSPLASH_KEY in your NodeJS environment.'
@@ -12,7 +12,7 @@ function getPhotoJSONUrl(id: string) {
 }
 
 export async function fetchPhotoRawEntry(id: string): Promise<string> {
-  const url = getPhotoJSONUrl(id)
+  const url = getUrlOfJsonOfPhoto(id)
   let response: Response
   try {
     response = await fetch(url)
