@@ -32,7 +32,7 @@ export async function fetchPhotos(photoIds: PhotoIds): Promise<Photos> {
   return photos
 }
 
-export async function fetchPhoto(id: PhotoId) {
+export async function fetchPhoto(id: PhotoId): Promise<Photo> {
   try {
     const response = await fetch(`/api/photos/${id}`)
     if (response.ok) {
