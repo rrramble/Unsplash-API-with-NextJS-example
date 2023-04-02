@@ -1,8 +1,7 @@
 import { getPhotoRawEntry } from '@/utils/helper-filesystem'
 import { NextApiRequest, NextApiResponse } from "next"
 import { PhotoIds } from 'types/photos'
-
-const EMPTY_JSON_TEXT = JSON.stringify('{}')
+import { EMPTY_JSON_AS_TEXT } from '@/utils/helper-common'
 
 type queryType = {
   ids?: PhotoIds,
@@ -11,7 +10,7 @@ type queryType = {
 export default function handler(req: NextApiRequest, res: NextApiResponse): void {
   const { ids } = req.query as queryType
   if (typeof ids === 'undefined') {
-    res.end(EMPTY_JSON_TEXT)
+    res.end(EMPTY_JSON_AS_TEXT)
     return
   }
 
