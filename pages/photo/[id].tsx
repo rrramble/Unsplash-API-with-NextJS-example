@@ -1,14 +1,14 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { useLikedPhotoIds } from 'hooks/use-liked-photo-ids'
 import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
-import { toggleFavoriteStatus } from '@/utils/favorites'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
-import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
+import { Photo, PhotoId, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 import styles from './[id].module.scss'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
+import { useAppDispatch, useAppSelector } from 'hooks/store'
+import { toggleOneFavoriteId } from 'store/actions'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -58,8 +58,8 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
   const titleText = (description || authorName) ?
     `. ${description ? description + '. ' : ''} ${authorName ?? ''}` :
     ''
-  const likedPhotoIds = useLikedPhotoIds()
-  const onClickLikeButton = (id: PhotoId) => toggleFavoriteStatus(id)
+  const likedPhotoIds = useAppSelector (store => store.favoritePhotoIds)
+  const dispatch = useAppDispatch()
 
   return(
     <>
@@ -74,7 +74,7 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
         <IndividualImageCard
           isLikedPhoto={likedPhotoIds.includes(photoId)}
           likedPhotosIds={likedPhotoIds}
-          onClickLikeButton={onClickLikeButton}
+          onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
           photo={photo}
           photos={photos}
         />

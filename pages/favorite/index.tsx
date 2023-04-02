@@ -1,11 +1,13 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { toggleOneFavoriteId } from 'store/actions'
+import { useLikedPhotos } from 'hooks/use-liked-photos'
+import { useAppDispatch } from 'hooks/store'
 import { getTopics } from '@/utils/helper-filesystem'
-import { toggleFavoriteStatus } from '@/utils/favorites'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import styles from './index.module.scss'
-import { useLikedPhotos } from 'hooks/use-liked-photos'
+import { PhotoId } from 'types/photos'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -17,6 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function FavoriteIndex(): JSX.Element {
   const likedPhotos = useLikedPhotos()
+  const dispatch = useAppDispatch()
 
   return (
     <>
@@ -32,7 +35,7 @@ export default function FavoriteIndex(): JSX.Element {
           <ImageCards
             photos={likedPhotos}
             likedPhotosIds={likedPhotos.map(photo => photo.id)}
-            onClickLikeButton={(id) => toggleFavoriteStatus(id)}
+            onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
           />
         </section>
       </div>

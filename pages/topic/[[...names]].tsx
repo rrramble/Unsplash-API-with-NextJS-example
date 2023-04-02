@@ -1,14 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { toggleOneFavoriteId } from 'store/actions'
+import { useAppDispatch, useAppSelector } from 'hooks/store'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import {
-  getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
-} from '@/utils/favorites'
 import { getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
-import { Photos } from 'types/photos'
+import { PhotoId, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 import styles from './[[...names]].module.scss'
 
@@ -44,12 +42,8 @@ export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextPara
 }
 
 export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
-  const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
-  subscribeOnChangeFavorites(() => setLikedPhotosIds(getFavoritePhotosIds()))
-
-  useEffect(() => {
-    setLikedPhotosIds(getFavoritePhotosIds())
-  }, [photos])
+  const likedPhotosIds = useAppSelector(store => store.favoritePhotoIds)
+  const dispatch = useAppDispatch()
 
   const mainH1Header = topicName === 'default' ?
     'Случайные фотографии' :
@@ -72,7 +66,7 @@ export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
         <ImageCards
           photos={photos}
           likedPhotosIds={likedPhotosIds}
-          onClickLikeButton={(id) => toggleFavoriteStatus(id)}
+          onClickLikeButton={(id: PhotoId) => dispatch(toggleOneFavoriteId(id))}
         />
       </div>
     </>
