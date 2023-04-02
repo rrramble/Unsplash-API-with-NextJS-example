@@ -5,11 +5,12 @@ import { store } from 'store/index'
 import Layout from '@/components/layout/layout'
 import { getFavoritePhotosIds } from '@/utils/favorites'
 import { fetchPhotos } from '@/utils/helper-browser'
-import { setPhotos } from 'store/actions'
+import { setFavoriteIds, setPhotos } from 'store/actions'
 
 const favoritePhotoIds = getFavoritePhotosIds()
 fetchPhotos(favoritePhotoIds)
   .then(photos => store.dispatch(setPhotos(photos)))
+store.dispatch(setFavoriteIds(favoritePhotoIds))
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
