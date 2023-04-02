@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { useLikedPhotoIds } from 'hooks/use-liked-photo-ids'
 import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
-import {
-  getFavoritePhotosIds, saveFavoritePhotoId, removeFavoritePhotoId
-} from '@/utils/favorites'
+import { toggleFavoriteStatus } from '@/utils/favorites'
 import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
-import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
-import { Photo, Photos } from 'types/photos'
+import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 import styles from './[id].module.scss'
+import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -51,30 +49,17 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
 }
 
 export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
-  const { description, user, id: photoId } = photo || {}
-  const authorName = user?.name
+  const {
+    description,
+    id: photoId,
+    user: { name: authorName },
+  } = photo || {}
+
   const titleText = (description || authorName) ?
     `. ${description ? description + '. ' : ''} ${authorName ?? ''}` :
     ''
-
-  const [ likedPhotosIds, setLikedPhotosIds ] = useState([])
-  const [ isLikedPhoto, setIsLikedPhoto ] = useState(false)
-
-  useEffect(() => {
-    setLikedPhotosIds(getFavoritePhotosIds());
-  }, [])
-
-  useEffect(() => {
-    const isLiked = likedPhotosIds.includes(photoId)
-    setIsLikedPhoto(isLiked)
-  }, [likedPhotosIds, photoId])
-
-  const onClickLikeButton = (id: string) => {
-    likedPhotosIds.includes(id) ?
-      removeFavoritePhotoId(id) :
-      saveFavoritePhotoId(id)
-    setLikedPhotosIds(getFavoritePhotosIds())
-  }
+  const likedPhotoIds = useLikedPhotoIds()
+  const onClickLikeButton = (id: PhotoId) => toggleFavoriteStatus(id)
 
   return(
     <>
@@ -87,8 +72,8 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
       <h1 className="visually-hidden">Фотография с Unsplash.com</h1>
       <div className={styles.self}>
         <IndividualImageCard
-          isLikedPhoto={isLikedPhoto}
-          likedPhotosIds={likedPhotosIds}
+          isLikedPhoto={likedPhotoIds.includes(photoId)}
+          likedPhotosIds={likedPhotoIds}
           onClickLikeButton={onClickLikeButton}
           photo={photo}
           photos={photos}
