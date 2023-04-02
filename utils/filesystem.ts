@@ -5,7 +5,7 @@ export async function readFileContents(pathParts: string[]) {
   const fileFullPath = path.join(process.cwd(), 'data', ...pathParts)
   try {
     return await fs.readFile(fileFullPath, 'utf8')
-  } catch(e) {
+  } catch (_err) {
     throw new Error(`Error reading file: "${fileFullPath}"`)
   }
 }
@@ -29,7 +29,7 @@ export async function saveFile(pathParts: string[], contents: string) {
   const fileFullPath = path.join(process.cwd(), 'data', ...pathParts)
   try {
     await fs.writeFile(fileFullPath, contents)
-  } catch (e) {
+  } catch (_err) {
     throw new Error(`Could not save file: ${fileFullPath}`)
   }
 }
