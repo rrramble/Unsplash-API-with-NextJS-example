@@ -1,5 +1,5 @@
 import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
-import { EMPTY_JSON, getPromiseFulfilledValue } from './helper-common'
+import { getPromiseFulfilledValue } from 'utils/helper-common'
 
 export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
   let image: Response
@@ -38,9 +38,9 @@ export async function fetchPhoto(id: PhotoId): Promise<Photo> {
     if (response.ok) {
       return await response.json()
     }
-    return EMPTY_JSON
+    return null
   }
   catch (err) {
-    return Promise.reject(`Fetching error. ${err.message}`)
+    return null
   }
 }
