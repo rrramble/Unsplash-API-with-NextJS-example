@@ -2,8 +2,8 @@ import Link from 'next/link'
 import styles from './favorite.module.scss'
 
 type FavoriteProps = {
-  className: string;
-};
+  className: string,
+}
 
 export default function Favorite({ className }: FavoriteProps): JSX.Element {
   return (
