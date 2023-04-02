@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { setColumnCount, setFavoriteIds, toggleOneFavoriteId } from 'store/actions'
+import { addFavoriteId, removeFavoriteId, setColumnCount, setFavoriteIds, toggleOneFavoriteId } from 'store/actions'
 import { addPhoto, setPhotos } from 'store/actions'
 import { PhotoIds, Photos } from 'types/photos'
 
@@ -34,6 +34,16 @@ export const reducer = createReducer(
 
         .addCase(setFavoriteIds, (state, { payload }) => {
           state.favoritePhotoIds = payload
+        })
+
+        .addCase(addFavoriteId, (state, { payload }) => {
+          state.favoritePhotoIds.push(payload)
+        })
+
+        .addCase(removeFavoriteId, (state, { payload }) => {
+          state.favoritePhotoIds = state.favoritePhotoIds.filter(
+              id => id !== payload
+          )
         })
 
         .addCase(toggleOneFavoriteId, (state, { payload }) => {
