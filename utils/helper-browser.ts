@@ -40,7 +40,7 @@ export async function fetchPhoto(id: PhotoId): Promise<Photo> {
     }
     return null
   }
-  catch (err) {
+  catch (_) {
     return null
   }
 }
