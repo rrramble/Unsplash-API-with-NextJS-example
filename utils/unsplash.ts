@@ -1,4 +1,7 @@
 import { env } from 'node:process'
+if (!env) {
+  throw new Error('Error accessing Environment.')
+}
 
 function getUrlOfJsonOfPhoto(id: string): string {
   if (!env?.UNSPLASH_API_KEY) {
