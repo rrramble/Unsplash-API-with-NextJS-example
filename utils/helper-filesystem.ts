@@ -5,7 +5,7 @@ import { Photo, Photos } from 'types/photos'
 import { SearchTopics } from 'types/search-tags'
 
 export async function getPhoto(id: string): Promise<Photo> {
-  const  photoRawEntry = await getPhotoRawEntry(id)
+  const photoRawEntry = await getPhotoRawEntry(id)
   try {
     return JSON.parse(photoRawEntry)
   } catch (err) {
