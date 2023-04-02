@@ -1,6 +1,6 @@
 import { env } from 'node:process'
 
-function getUrlOfJsonOfPhoto(id: string) {
+function getUrlOfJsonOfPhoto(id: string): string {
   if (!env?.UNSPLASH_API_KEY) {
     throw new Error(
         'Error. Provide UNSPLASH_KEY in your NodeJS environment.'
