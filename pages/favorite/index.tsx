@@ -1,16 +1,11 @@
-import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { getTopics } from '@/utils/helper-filesystem'
-import {
-  getFavoritePhotosIds, subscribeOnChangeFavorites, toggleFavoriteStatus
-} from '@/utils/favorites'
+import { toggleFavoriteStatus } from '@/utils/favorites'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
-import { PhotoIds } from 'types/photos'
 import styles from './index.module.scss'
 import { useLikedPhotos } from 'hooks/use-liked-photos'
-import { useAppSelector } from 'hooks/store'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -21,15 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function FavoriteIndex(): JSX.Element {
-  const photos = useAppSelector(store => store.photos)
-  const [ likedPhotosIds, setLikedPhotosIds ] =
-    useState<PhotoIds>(getFavoritePhotosIds())
-
-  const likedPhotos = useLikedPhotos(photos, likedPhotosIds)
-
-  subscribeOnChangeFavorites(
-      () => setLikedPhotosIds(getFavoritePhotosIds())
-  )
+  const likedPhotos = useLikedPhotos()
 
   return (
     <>
@@ -44,7 +31,7 @@ export default function FavoriteIndex(): JSX.Element {
           <LayoutButtons />
           <ImageCards
             photos={likedPhotos}
-            likedPhotosIds={likedPhotosIds}
+            likedPhotosIds={likedPhotos.map(photo => photo.id)}
             onClickLikeButton={(id) => toggleFavoriteStatus(id)}
           />
         </section>
