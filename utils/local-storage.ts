@@ -7,7 +7,7 @@ export function getSearchedTexts(): SearchTopics {
   return texts
 }
 
-export function subscribeOnChangeSearchedTexts(cb) {
+export function subscribeOnChangeSearchedTexts(cb) { // TODO: delete. use store
   subscribeOnChange('searchedTexts', cb)
 }
 
