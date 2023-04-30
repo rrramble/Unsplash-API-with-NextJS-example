@@ -6,6 +6,7 @@ import { PlainFunction } from 'types/types'
 import SearchInput from './search-input'
 import Tags from './tags'
 import styles from './search.module.scss'
+import classNames from 'classnames'
 
 type SearchProps = {
   isFull: boolean,
@@ -26,15 +27,9 @@ export default function Search(props: SearchProps) {
     }
   }
 
-  let additionalClassName = ''
-  if (props.isHidden) {
-    additionalClassName = styles['self--hidden']
-  } else if (props.isFull) {
-    additionalClassName = styles['self--full']
-  }
-
   useEffect(() => {
     window.addEventListener('click', windowClickHandler)
+
     return () => {
       window.removeEventListener('click', windowClickHandler)
     }
@@ -43,7 +38,10 @@ export default function Search(props: SearchProps) {
   return (
     <form
       action="/search"
-      className={styles.self + ' ' + additionalClassName}
+      className={classNames(styles.self, {
+        [ styles['self--hidden'] ]: props.isHidden,
+        [ styles['self--full'] ]: !props.isHidden && props.isFull,
+      })}
       data-test="menu-search__modal"
       method="GET"
       onBlur={getCallbackOnBlur(props.onBlur)}
