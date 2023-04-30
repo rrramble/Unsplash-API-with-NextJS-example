@@ -7,6 +7,7 @@ import SearchInput from './search-input'
 import Tags from './tags'
 import styles from './search.module.scss'
 import classNames from 'classnames'
+import { AppRoute } from 'consts/consts'
 
 type SearchProps = {
   isFull: boolean,
@@ -37,7 +38,7 @@ export default function Search(props: SearchProps) {
 
   return (
     <form
-      action="/search"
+      action={AppRoute.Search}
       className={classNames(styles.self, {
         [ styles['self--hidden'] ]: props.isHidden,
         [ styles['self--full'] ]: !props.isHidden && props.isFull,

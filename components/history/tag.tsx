@@ -14,7 +14,7 @@ export default function Tag({ item }: TagProps): JSX.Element {
   const { slug, title } = item
   const href = slug ?
     `${AppRoute.Topics}${encodeURI(slug)}` :
-    `/search/${encodeURI(title)}`
+    `${AppRoute.Search}/${encodeURI(title)}`
 
   return (
     <li
