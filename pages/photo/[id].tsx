@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
 
 export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
   const dispatch = useAppDispatch()
-  const likedPhotoIds = useAppSelector(store => store.favoritePhotoIds)
+  const likedPhotoIds = useAppSelector(getFavoritePhotoIdsSelector)
   const [ isLiked, setIsLiked ] = useState(false);
 
   const {
