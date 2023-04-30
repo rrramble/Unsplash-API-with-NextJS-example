@@ -110,8 +110,8 @@ const onSubmitSearch = (router: NextRouter, topics: SearchTopics) => {
   return function headerSubmitHandler(evt: FormEvent<HTMLFormElement>, text: string) {
     evt.preventDefault()
     const topic = findTopicByText(topics, text)
-    saveSearchedTexts(topic && text)
-    const { slug } = topic
+    saveSearchedTexts(topic || text)
+    const { slug } = topic || {}
 
     router.push({
       pathname: slug === undefined ? `${AppRoute.Search}/[text]` : `${AppRoute.Topics}${slug}`,
