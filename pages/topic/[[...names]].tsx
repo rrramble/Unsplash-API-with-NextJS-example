@@ -1,14 +1,17 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
-import { useAppDispatch, useAppSelector } from 'hooks/store'
+import { useEffect, useState } from 'react'
+import { store } from 'store'
+import { useAppDispatch } from 'hooks/store'
 import { clickLikeAction } from 'store/async-actions'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
 import { getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
-import { PhotoId, Photos } from 'types/photos'
-import { SearchTopics } from 'types/search-tags'
 import styles from './[[...names]].module.scss'
+import { getFavoritePhotoIdsSelector } from 'store/selectors'
+import { PhotoId, PhotoIds, Photos } from 'types/photos'
+import { SearchTopics } from 'types/search-tags'
 
 const DEFAULT_TOPIC_SLUG = 'default'
 
@@ -42,8 +45,13 @@ export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextPara
 }
 
 export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
-  const likedPhotosIds = useAppSelector(store => store.favoritePhotoIds)
   const dispatch = useAppDispatch()
+  const [ likedPhotosIds, setlikedPhotosIds ] = useState<PhotoIds>([])
+
+  useEffect(() => {
+    const state = store.getState()
+    setlikedPhotosIds(getFavoritePhotoIdsSelector(state));
+  }, [])
 
   const mainH1Header = topicName === 'default' ?
     'Случайные фотографии' :
