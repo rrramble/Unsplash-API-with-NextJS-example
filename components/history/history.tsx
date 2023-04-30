@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { HistoryEntry } from 'types/history'
+import classNames from 'classnames'
 import { contains } from '@/utils/helper-common'
 import Tags from './tags'
 import styles from './history.module.scss'
+import { HistoryEntry } from 'types/history'
 import { PlainFunction } from 'types/types'
 
 type HistoryProps = {
@@ -13,27 +14,30 @@ type HistoryProps = {
 
 export default function History(props: HistoryProps): JSX.Element {
   const ref = useRef<HTMLDivElement | null>(null)
-  const windowClickHandler = (evt: MouseEvent) => {
+
+  const handleWindowClick = (evt: MouseEvent) => {
     const { target } = evt
+
     if (!contains(ref.current, target) && !props.isHidden) {
       props.onBlur()
     }
   }
 
   useEffect(() => {
-    window.addEventListener('click', windowClickHandler)
+    window.addEventListener('click', handleWindowClick)
+
     return () => {
-      window.removeEventListener('click', windowClickHandler)
+      window.removeEventListener('click', handleWindowClick)
     }
   })
 
-  const additionalClassName = props.isHidden ?
-    styles['self--hidden'] :
-    styles['self--shown']
-
   return (
     <div
-      className={`${styles.self} ${additionalClassName}`}
+      className={classNames(styles.self, {
+        [ styles['self--hidden'] ]: props.isHidden,
+        [ styles['self--shown'] ]: !props.isHidden,
+      })}
+
       data-test="menu-history__modal"
       ref={ref}
     >
