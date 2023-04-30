@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './favorite.module.scss'
+import { AppRoute } from 'consts/consts'
 
 type FavoriteProps = {
   className: string,
@@ -13,7 +14,7 @@ export default function Favorite({ className }: FavoriteProps): JSX.Element {
     >
       <Link
         className={styles.self}
-        href='/favorite'
+        href={AppRoute.Favorites}
       >
         <span
           className={styles.title}
