@@ -2,16 +2,18 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import styles from './tag.module.scss'
 import { HistoryEntry } from 'types/history'
+import { AppRoute } from 'consts/consts'
 
 type TagProps = {
   item: HistoryEntry,
 }
 
 export default function Tag({ item }: TagProps): JSX.Element {
-  const { slug, title } = item
   const ref = useRef<HTMLAnchorElement | null>(null)
+
+  const { slug, title } = item
   const href = slug ?
-    `/topic/${encodeURI(slug)}` :
+    `${AppRoute.Topics}${encodeURI(slug)}` :
     `/search/${encodeURI(title)}`
 
   return (

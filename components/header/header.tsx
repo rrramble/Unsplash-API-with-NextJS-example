@@ -9,11 +9,12 @@ import { default as SearchIcon } from '@/components/search/icon'
 import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
+import { headerReducer, INITIAL_STATE } from './header-reducer'
+import { AppRoute } from 'consts/consts'
+import styles from './header.module.scss'
+import { findTopicByText } from '@/utils/topics'
 import { SearchTopics } from 'types/search-tags'
 import { MenuState } from 'types/menu-state'
-import { findTopicByText } from '@/utils/topics'
-import { headerReducer, INITIAL_STATE } from './header-reducer'
-import styles from './header.module.scss'
 
 type HeaderProps = {
   topics: SearchTopics,
@@ -113,7 +114,7 @@ const onSubmitSearch = (router: NextRouter, topics: SearchTopics) => {
     const { slug } = topic
 
     router.push({
-      pathname: slug === undefined ? '/search/[text]' : `/topic/${slug}`,
+      pathname: slug === undefined ? '/search/[text]' : `${AppRoute.Topics}${slug}`,
       query: slug === undefined ? ({ text }) : undefined,
     })
   }
