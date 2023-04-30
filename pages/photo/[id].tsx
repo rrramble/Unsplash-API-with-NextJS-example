@@ -1,14 +1,16 @@
 import { GetServerSideProps } from 'next'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { clickLikeAction } from 'store/async-actions'
+import { getFavoritePhotoIdsSelector } from 'store/selectors'
+import { useAppDispatch, useAppSelector } from 'hooks/store'
+import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
 import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
-import IndividualImageCard from '@/components/individual-image-card/individual-image-card'
-import { Photo, PhotoId, Photos } from 'types/photos'
-import { SearchTopics } from 'types/search-tags'
-import styles from './[id].module.scss'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
-import { useAppDispatch, useAppSelector } from 'hooks/store'
+import { SearchTopics } from 'types/search-tags'
+import { Photo, PhotoId, Photos } from 'types/photos'
+import styles from './[id].module.scss'
 
 type PhotoIndexProps = {
   photo: Photo,
@@ -49,6 +51,10 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
 }
 
 export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
+  const dispatch = useAppDispatch()
+  const likedPhotoIds = useAppSelector(store => store.favoritePhotoIds)
+  const [ isLiked, setIsLiked ] = useState(false);
+
   const {
     description,
     id: photoId,
@@ -58,8 +64,10 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
   const titleText = (description || authorName) ?
     `. ${description ? description + '. ' : ''} ${authorName ?? ''}` :
     ''
-  const likedPhotoIds = useAppSelector (store => store.favoritePhotoIds)
-  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    setIsLiked(likedPhotoIds.includes(photoId));
+  }, [ likedPhotoIds, photoId ])
 
   return(
     <>
@@ -72,7 +80,7 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
       <h1 className="visually-hidden">Фотография с Unsplash.com</h1>
       <div className={styles.self}>
         <IndividualImageCard
-          isLikedPhoto={likedPhotoIds.includes(photoId)}
+          isLikedPhoto={isLiked}
           likedPhotosIds={likedPhotoIds}
           onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
           photo={photo}
