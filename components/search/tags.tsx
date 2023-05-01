@@ -1,5 +1,4 @@
 import { SearchTopic, SearchTopics } from 'types/search-tags'
-import classNames from 'classnames'
 import Tag from './tag'
 import { AppRoute } from 'consts/consts'
 import styles from './tags.module.scss'
@@ -11,7 +10,11 @@ type TagsProps = {
 }
 
 export default function Tags({ items, isFull, onClick }: TagsProps) {
-  return (
+  const additionalClassName = isFull ?
+    styles['self--full'] :
+    styles['self--minimized']
+
+  return (items &&
     <>
       <header
         className="visually-hidden"
@@ -23,10 +26,7 @@ export default function Tags({ items, isFull, onClick }: TagsProps) {
         className={styles.shadow}
       >
         <menu
-          className={classNames(styles.self, {
-            [ styles['self--full'] ]: isFull,
-            [ styles['self--minimized'] ]: !isFull,
-          })}
+          className={styles.self + ' ' + additionalClassName}
           data-test={"menu-search__topic-list"}
           id="search-tags"
         >
