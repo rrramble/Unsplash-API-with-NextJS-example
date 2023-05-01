@@ -12,11 +12,14 @@
       "FunctionExpression": {"parameters": 2},
       "CallExpression": {"arguments": 2}
     }],
+    "no-unused-vars": ["warn", { "args": "after-used", "argsIgnorePattern": "^_"}],
+    "no-nested-ternary": "warn",
     "space-in-parens": ["error", "never"],
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", {"named": "never", "anonymous": "always"}],
     "spaced-comment": ["error", "always"],
     "space-infix-ops": "error",
-    "space-unary-ops": ["error", {"words": true, "nonwords": false}]
+    "space-unary-ops": ["error", {"words": true, "nonwords": false}],
+    "yoda": ["warn", "never"]
   }
 }
