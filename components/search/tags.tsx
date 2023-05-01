@@ -7,7 +7,7 @@ import styles from './tags.module.scss'
 type TagsProps = {
   isFull: boolean,
   items: SearchTopics,
-  onClick: (tag: SearchTopic) => void,
+  onClick: (_tag: SearchTopic) => void,
 }
 
 export default function Tags({ items, isFull, onClick }: TagsProps) {
