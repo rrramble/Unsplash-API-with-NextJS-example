@@ -1,17 +1,19 @@
 import { env } from 'node:process'
+
 if (!env) {
-  throw new Error('Error accessing Environment.')
+  console.error('Error accessing environment "end" out of "node:process"');
+  process.exit(1);
 }
 
 function getUrlOfJsonOfPhoto(id: string): string {
-  if (!env?.UNSPLASH_API_KEY) {
-    throw new Error(
-        'Error. Provide UNSPLASH_KEY in your NodeJS environment.'
+  if (env?.UNSPLASH_API_KEY) {
+    return (
+      `https://api.unsplash.com/photos/${id}?client_id=${env.UNSPLASH_API_KEY}`
     )
   }
-  return (
-    `https://api.unsplash.com/photos/${id}?client_id=${env.UNSPLASH_API_KEY}`
-  )
+
+  console.error('Error. UNSPLASH_KEY variable must be provided in the NodeJS environment');
+  process.exit(1);
 }
 
 export async function fetchPhotoRawEntry(id: string): Promise<string> {
