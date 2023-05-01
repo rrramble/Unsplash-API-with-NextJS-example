@@ -17,6 +17,9 @@ export default function History(props: HistoryProps): JSX.Element {
 
   const handleWindowClick = (evt: MouseEvent) => {
     const { target } = evt
+    if (!target || !(target instanceof Node)) {
+      return
+    }
 
     if (!contains(ref.current, target) && !props.isHidden) {
       props.onBlur()

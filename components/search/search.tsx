@@ -1,6 +1,6 @@
-import { FocusEvent, FormEvent, MouseEvent, useEffect, useRef, useState } from 'react'
+import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { saveSearchedTexts } from '@/utils/local-storage'
-import { HTMLElementWithParentNode, contains } from '@/utils/helper-common'
+import { contains } from '@/utils/helper-common'
 import { SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
 import SearchInput from './search-input'
@@ -23,6 +23,9 @@ export default function Search(props: SearchProps) {
 
   const handleWindowClick = (evt: MouseEvent) => {
     const { target } = evt
+    if (!target || !(target instanceof Node)) {
+      return
+    }
 
     if (!contains(formRef.current, target) && !props.isHidden) {
       props.onBlur()
