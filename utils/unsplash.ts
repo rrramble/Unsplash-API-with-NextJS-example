@@ -17,23 +17,25 @@ function getUrlOfJsonOfPhoto(id: string): string {
 export async function fetchPhotoRawEntry(id: string): Promise<string> {
   const url = getUrlOfJsonOfPhoto(id)
   let response: Response
+
   try {
     response = await fetch(url)
     if (response.status !== 200) {
-      throw new Error(
-          `Error fetching status: ${response.status}.`
-      )
+      const errMessage = `Error fetching from url "${url}" with status: ${response.status}.`
+      return Promise.reject(errMessage)
     }
-  } catch (e) {
-    throw new Error(e.message)
+  } catch (err: unknown) {
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error fetching url: "${url}"`
+    return Promise.reject(errMessage)
   }
 
   try {
     return await response.text()
-  } catch(e) {
-    throw new Error(
-        `Recieved response from Unsplash.com,
-        but could not get its data.`
+  } catch (err) {
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error fetching url: "${url}"`
+    return Promise.reject(
+        `Received response from Unsplash.com,
+        but could not get text content from it. Error message: "${errMessage}"`
     )
   }
 }

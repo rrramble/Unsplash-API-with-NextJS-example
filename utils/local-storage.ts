@@ -7,42 +7,39 @@ export function getSearchedTexts(): SearchTopics {
   return texts
 }
 
-export function subscribeOnChangeSearchedTexts(cb) { // TODO: delete. use store
+export function subscribeOnChangeSearchedTexts(cb: PlainFunction) { // TODO: use Store instead
   subscribeOnChange('searchedTexts', cb)
 }
 
 export function saveSearchedTexts(topic: string | SearchTopic): void {
   const searchedTopics = lsGetArray<SearchTopic>('searchedTexts')
 
-  if (typeof topic === 'string') {
-    const isAlreadySaved = searchedTopics.some(({ title }) => title === topic)
-    if (isAlreadySaved) {
-      return
-    }
+  const isAlreadySaved = searchedTopics.some((searchedTopic: SearchTopic) => {
+    return searchedTopic.title === topic ||
+      (typeof topic === 'object' && searchedTopic.slug === topic.slug)
+  })
 
-    return lsAddItem('searchedTexts', {
-      id: generateUniqueID(),
-      title: topic,
-    })
-  }
-
-  const isAlreadySaved = searchedTopics.some(
-      (searched: SearchTopic): boolean => 'slug' in searched && searched.slug === topic.slug
-  )
   if (isAlreadySaved) {
     return
   }
-  return lsAddItem('searchedTexts', topic)
+
+  const itemToAdd = typeof topic === 'string' ?
+    {
+      id: generateUniqueID(),
+      title: topic,
+    } :
+    topic
+
+  lsAddItem('searchedTexts', itemToAdd)
 }
 
-
 // Local Storage direct manipulation functions
-export function lsGetArray<T>(
+export function lsGetArray<T = any>(
     keyName: string
 ): T[] {
   let asString: string
   try {
-    asString = localStorage.getItem(keyName)
+    asString = localStorage.getItem(keyName) ?? '[]'
   } catch (e) {
     asString = '[]'
   }
@@ -54,7 +51,7 @@ export function lsGetArray<T>(
   }
 }
 
-export function lsAddItem(keyName: string, item) {
+export function lsAddItem<T = any>(keyName: string, item: T) {
   const items = lsGetArray(keyName)
   if (items.includes(item)) {
     return
@@ -74,18 +71,16 @@ function lsSave(keyName: string, obj: unknown) {
   localStorage.setItem(keyName, str)
 }
 
-export function lsRemoveItem(keyName: string, item, cb) {
-  const unfilteredItems = lsGetArray(keyName)
-  if (typeof unfilteredItems !== 'object') {
+export function lsRemoveItem<T = any>(keyName: string, item: T) {
+  const previousItems = lsGetArray(keyName)
+  if (typeof previousItems !== 'object') {
     return
   }
 
-  const items = unfilteredItems.filter(
-      oldItem => cb(oldItem) !== cb(item)
-  )
+  const restItems = previousItems.filter(oldItem => oldItem !== item)
 
   try {
-    lsSave(keyName, items)
+    lsSave(keyName, restItems)
     callSubscribers(keyName)
   } catch (e) {
     return

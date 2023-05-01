@@ -9,7 +9,7 @@ import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 import { SearchTopics } from 'types/search-tags'
-import { Photo, PhotoId, Photos } from 'types/photos'
+import { Photo, Photos } from 'types/photos'
 import styles from './[id].module.scss'
 
 type PhotoIndexProps = {
@@ -22,14 +22,14 @@ type ContextParams = {
 }
 
 export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextParams> = async (context) => {
-  const { id } = context.params
-  if (typeof id === 'object') {
+  const { id } = context.params ?? {}
+  if (typeof id === 'object' || typeof id === 'undefined') {
     return NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT
   }
 
   try {
     var photo = await getPhoto(id)
-  } catch (e) {
+  } catch (_err) {
     return NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT
   }
   if (!photo) {
@@ -44,8 +44,8 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
   return {
     props: {
       photo,
-      photos: getPromiseFulfilledValue<Photos>(photos),
-      topics: getPromiseFulfilledValue<SearchTopics>(topics),
+      photos: getPromiseFulfilledValue<Photos>(photos) ?? [],
+      topics: getPromiseFulfilledValue<SearchTopics>(topics) ?? [],
     },
   }
 }
@@ -82,7 +82,7 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
         <IndividualImageCard
           isLikedPhoto={isLiked}
           likedPhotosIds={likedPhotoIds}
-          onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
+          onClickLikeButton={() => dispatch(clickLikeAction(photoId))}
           photo={photo}
           photos={photos}
         />

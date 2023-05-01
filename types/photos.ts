@@ -28,9 +28,9 @@ type ProfileUrl = {
 }
 
 type User = {
-  instagram_username: string | null,
+  instagram_username?: string,
   name: string,
-  profile_image: ProfileUrl,
+  profile_image?: ProfileUrl,
 }
 
 export type Photo = {

@@ -1,6 +1,7 @@
+import { MouseEvent } from 'react'
+import { downloadPhotoByUrl } from '@/utils/helper-browser'
 import { PlainFunction } from 'types/types'
 import styles from './menu.module.scss'
-import { downloadPhotoByUrl } from '@/utils/helper-browser'
 
 type MenuProps = {
   downloadPhotoUrl: string,
@@ -49,7 +50,7 @@ export default function Menu(props: MenuProps) {
   )
 }
 // FIXME: filenames are different between 'image-cards/image-card-menu' and 'individual-image-card/menu'
-async function onClickDownload(evt, url, savingFilename) {
+async function onClickDownload(evt: MouseEvent, url: string, savingFilename: string) {
   evt.preventDefault()
   await downloadPhotoByUrl(url, savingFilename)
 }

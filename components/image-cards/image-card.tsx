@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { CSSProperties } from 'react'
-import { Photo } from 'types/photos'
-import { PlainFunction } from 'types/types'
 import ImageCardAuthor from './image-card-author'
 import ImageCardMenu from './image-card-menu'
+import { Photo } from 'types/photos'
+import { PlainFunction } from 'types/types'
 import styles from './image-card.module.scss'
 
 // This constant must be the same as in 'varibales.scss'
@@ -46,24 +46,25 @@ export default function ImageCard({
     thumb: thumbnailPhotoUrl,
   } = photoUrls
 
-  const photoUrl = regularPhotoUrl || smallPhotoUrl || thumbnailPhotoUrl
+  const photoUrl = regularPhotoUrl ?? smallPhotoUrl ?? thumbnailPhotoUrl ?? ''
   const photoProfileUrl = '/photo/' + (photoId ?? '')
   const authorProfileUrl =
-    authorProfileImages?.large ||
-    authorProfileImages?.medium ||
-    authorProfileImages?.small
+    authorProfileImages?.large ??
+    authorProfileImages?.medium ??
+    authorProfileImages?.small ?? ''
 
   const maxQualityPhotoUrl =
-    rawPhotoUrl ||
-    fullPhotoUrl ||
-    regularPhotoUrl ||
-    smallPhotoUrl
+    rawPhotoUrl ??
+    fullPhotoUrl ??
+    regularPhotoUrl ??
+    smallPhotoUrl ??
+    ''
 
   const savingFilename = `${photoAlt}-${photoId}`
 
 
   const backgroundColorStyle: CSSPropertiesWithVars = {
-    '--data-background-color': color.toString(),
+    '--data-background-color': color === undefined ? undefined : color.toString(),
   }
   const aspectRatioStyle: CSSPropertiesWithVars = {
     '--data-aspect-ratio': (width / height).toString(),
@@ -100,7 +101,7 @@ export default function ImageCard({
       <figcaption className={styles['author-menu-container']}>
         <ImageCardAuthor
           imageUrl={authorProfileUrl}
-          instagramUsername={author.instagram_username}
+          instagramUsername={author.instagram_username ?? ''}
           name={author.name}
         />
 

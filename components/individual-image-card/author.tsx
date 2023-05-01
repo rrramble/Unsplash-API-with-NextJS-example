@@ -3,8 +3,8 @@ import Link from 'next/link'
 import styles from './author.module.scss'
 
 type AuthorProps = {
-  imageUrl: string,
-  instagramUsername: string,
+  imageUrl?: string,
+  instagramUsername?: string,
   name: string,
 }
 
@@ -41,7 +41,7 @@ export default function Author(props: AuthorProps) {
         { props.instagramUsername &&
           <Link
             className={styles.instagram}
-            href={instagramLink}
+            href={instagramLink ?? '#'}
             rel="author"
           >
             <span className="visually-hidden">Инстаграм:</span>

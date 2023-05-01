@@ -10,5 +10,5 @@ export function saveFavoritePhotoId(id: PhotoId) {
 }
 
 export function removeFavoritePhotoId(id: PhotoId) {
-  return lsRemoveItem('favoritePhotosIds', id, id => id)
+  return lsRemoveItem('favoritePhotosIds', id)
 }

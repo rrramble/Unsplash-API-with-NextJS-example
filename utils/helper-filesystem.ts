@@ -1,16 +1,17 @@
-import { EMPTY_JSON, EMPTY_JSON_AS_TEXT } from '@/utils/helper-common'
 import { readFileContents, readFileContentsAsArray, saveFile } from '@/utils/filesystem'
 import { fetchPhotoRawEntry } from '@/utils/unsplash'
 import { Photo, Photos } from 'types/photos'
 import { SearchTopic, SearchTopics } from 'types/search-tags'
 
-export async function getPhoto(id: string): Promise<Photo> {
+export async function getPhoto(id: string): Promise<Photo | null> {
   const photoRawEntry = await getPhotoRawEntry(id)
+
   try {
+    console.info('Reading of fetching photo with id:', id)
     return JSON.parse(photoRawEntry)
-  } catch (err) {
-    console.info(err.message)
-    return EMPTY_JSON // TODO: Promise.reject(e.message)
+  } catch (err: unknown) {
+    console.error(err)
+    return Promise.reject(`Could not parse read photo with id: "${id}"`)
   }
 }
 
@@ -18,25 +19,29 @@ export async function getPhotoRawEntry(id: string): Promise<string> {
   try {
     return await readFileContents(['photos', `${id}.json`])
   } catch (err) {
-    console.info(err.message)
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Could not read file with photo id: "${id}"`
+    console.info(errMessage)
   }
 
-  // If not found - download from Unsplash API
+  // If not found in our server - download from Unsplash API
   let contents: string
 
   try {
     contents = await fetchPhotoRawEntry(id)
-    const _ = JSON.parse(contents)
+    JSON.parse(contents)
   } catch (err) {
-    console.log(err.message)
-    return EMPTY_JSON_AS_TEXT // TODO: Promise.reject(e.message)
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error fetching url: "${id}"`
+    console.log(errMessage)
+    return Promise.reject(errMessage)
   }
 
   try {
     saveFile(['photos', `${id}.json`], contents)
   } catch (err) {
-    console.log(err.message)
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error saving photo with id: "${id}"`
+    console.log(errMessage)
   }
+
   return contents
 }
 

@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect } from 'react'
 import { useAppDispatch } from 'hooks/store'
-import { throttle } from '@/utils/helper-common'
 import { setColumnCount } from 'store/actions'
+import { throttle } from '@/utils/helper-common'
 
 export function useWindowResize(
     layoutRef: MutableRefObject<HTMLElement | null>,
@@ -14,9 +14,11 @@ export function useWindowResize(
       if (!layoutRef.current) {
         return
       }
+
       const style = window.getComputedStyle(layoutRef.current)
-      const columnCountAsString: string = style['column-count'] || '0'
+      const columnCountAsString: string = style.getPropertyValue('column-count') ?? '0'
       const columnCount = parseInt(columnCountAsString, 10)
+
       dispatch(setColumnCount(columnCount))
     }, timeoutMs)
 
@@ -26,5 +28,5 @@ export function useWindowResize(
     return () => {
       window.removeEventListener('resize', handleWindowResize)
     }
-  }, [dispatch, layoutRef, timeoutMs])
+  }, [ dispatch, layoutRef, timeoutMs ])
 }

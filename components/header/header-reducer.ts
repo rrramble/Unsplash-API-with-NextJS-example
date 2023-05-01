@@ -1,3 +1,4 @@
+import { Action } from '@reduxjs/toolkit'
 import { MenuState } from 'types/menu-state'
 
 export const INITIAL_STATE: MenuState = {
@@ -32,7 +33,7 @@ const MODALS_CLOSED: MenuState = {
   isHistoryHidden: true,
 } as const
 
-export function headerReducer(state: MenuState, { type }) {
+export function headerReducer(state: MenuState, { type }: Action) {
   switch (true) {
     case
       type === 'init':

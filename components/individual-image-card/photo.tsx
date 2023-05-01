@@ -45,8 +45,8 @@ export default function Photo(props: PhotoProps) {
   const photoAlt = props.photo?.alt_description ??
     `Фотография от автора: ${author?.name}`
 
-  const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl
-  const photoUrl = fullPhotoUrl || regularPhotoUrl || smallPhotoUrl || thumbPhotoUrl
+  const maxQualityPhotoUrl = rawPhotoUrl ?? fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl ?? ''
+  const photoUrl = fullPhotoUrl ?? regularPhotoUrl ?? smallPhotoUrl ?? thumbPhotoUrl ?? ''
   const smallQualityPhotoUrl = smallPhotoUrl ?? thumbPhotoUrl ?? regularPhotoUrl
   const savingFilename = `${photoAlt}-${photoId}`
 
@@ -56,12 +56,12 @@ export default function Photo(props: PhotoProps) {
     authorProfileImages?.small
 
   const figureStyle: CSSPropertiesWithVars = {
-    '--data-background-color': backgroundColor.toString(),
+    '--data-background-color': backgroundColor === undefined ? undefined : backgroundColor.toString(),
     '--data-with-url-tag': `url(${smallQualityPhotoUrl})`,
   }
 
   const imageStyle: CSSPropertiesWithVars = {
-    '--data-background-color': backgroundColor.toString(),
+    '--data-background-color': backgroundColor === undefined ? undefined : backgroundColor.toString(),
     '--data-url': photoUrl,
     'height': 'auto',
     'width': '100%',

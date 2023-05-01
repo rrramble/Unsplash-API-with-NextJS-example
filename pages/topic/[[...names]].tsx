@@ -25,7 +25,7 @@ type ContextParams = {
 }
 
 export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextParams> = async (context: GetServerSidePropsContext) => {
-  const { names: topicNames } = context.params
+  const { names: topicNames } = context.params ?? {}
   const [ topicName = DEFAULT_TOPIC_SLUG ] = topicNames && typeof topicNames !== 'string' ?
     topicNames :
     []

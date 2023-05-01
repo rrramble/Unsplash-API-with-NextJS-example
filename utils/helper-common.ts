@@ -1,14 +1,24 @@
 export const EMPTY_JSON_AS_TEXT = '{}'
 export const EMPTY_JSON = JSON.parse(EMPTY_JSON_AS_TEXT)
 
-export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T {
-  return  promiseResult.status === 'fulfilled' ?
+type HTMLElementContainingParentNode = { parentNode: HTMLElementContainingParentNode | null } | null | undefined
+
+export function getFulfilledValues<T>(promiseResults: PromiseSettledResult<T>[]): T[] {
+  const fulfilledValues = promiseResults.
+    filter(promiseResult => promiseResult.status === 'fulfilled') as PromiseFulfilledResult<T>[]
+
+  return fulfilledValues.
+    map(({ value }) => value)
+}
+
+export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<T>): T | null {
+  return promiseResult.status === 'fulfilled' ?
     promiseResult.value :
     null
 }
 
-export function contains(parent, item) {
-  if (parent === undefined || item === undefined || item === null) {
+export function contains(parent: HTMLElementContainingParentNode, item: HTMLElementContainingParentNode): boolean {
+  if (parent === undefined || item === undefined || item === null || item === undefined) {
     return false
   }
 
@@ -27,9 +37,9 @@ export function generateUniqueID(): string {
 }
 
 export function throttle(cb: (...args: unknown[]) => void, timeoutMs: number) {
-  let timerId = null
+  let timerId: NodeJS.Timeout
 
-  function run(...args) {
+  function run(...args: unknown[]) {
     if (timerId) {
       return
     }
@@ -38,7 +48,6 @@ export function throttle(cb: (...args: unknown[]) => void, timeoutMs: number) {
       cb(...args)
 
       clearTimeout(timerId)
-      timerId = null
     }, timeoutMs)
   }
 

@@ -1,9 +1,9 @@
 import { useRef } from 'react'
-import ImageCard from './image-card'
-import styles from './image-cards.module.scss'
-import { PhotoIds, PhotoId, Photos } from 'types/photos'
 import { useWindowResize } from 'hooks/use-window-resize'
+import ImageCard from './image-card'
 import { WINDOW_RESIZE_THROTTLE_DELAY_MS } from 'consts/consts'
+import { PhotoIds, PhotoId, Photos } from 'types/photos'
+import styles from './image-cards.module.scss'
 
 type ImageCardsProps = {
   likedPhotosIds: PhotoIds,
@@ -16,7 +16,7 @@ export default function ImageCards({
   onClickLikeButton,
   photos,
 }: ImageCardsProps) {
-  const layoutRef = useRef()
+  const layoutRef = useRef<HTMLUListElement>(null)
 
   useWindowResize(layoutRef, WINDOW_RESIZE_THROTTLE_DELAY_MS)
 

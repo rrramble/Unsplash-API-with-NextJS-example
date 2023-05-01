@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { downloadPhotoByUrl } from '@/utils/helper-browser'
 import styles from './image-card-menu.module.scss'
 import { PlainFunction } from 'types/types'
+import { MouseEvent } from 'react'
 
 type ImageCardMenuProps = {
   downloadPhotoUrl: string,
@@ -68,7 +69,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
   )
 }
 // FIXME: filenames are different between 'image-cards/image-card-menu' and 'individual-image-card/menu'
-async function onClickDownload(evt, url: string, savingFilename: string) {
+async function onClickDownload(evt: MouseEvent, url: string, savingFilename: string) {
   evt.preventDefault()
   await downloadPhotoByUrl(url, savingFilename)
 }

@@ -26,7 +26,7 @@ export default function Header({ topics }: HeaderProps) {
   const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, INITIAL_STATE)
   const [ searchedPhotos, setSearchedPhotos ] = useState<SearchTopics>([])
 
-  const onKeyUpWindow = ({ key }) => key === 'Escape' && dispatch({ type: 'escape-pressed' })
+  const onKeyUpWindow = ({ key }: KeyboardEvent) => key === 'Escape' && dispatch({ type: 'escape-pressed' })
   const onScrollWindow = () => dispatch({ type: 'window-scrolled' })
 
   useEffect(() => {
