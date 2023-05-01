@@ -1,7 +1,7 @@
 export const EMPTY_JSON_AS_TEXT = '{}'
 export const EMPTY_JSON = JSON.parse(EMPTY_JSON_AS_TEXT)
 
-type HTMLElementContainingParentNode = { parentNode: HTMLElementContainingParentNode | null } | null | undefined
+export type HTMLElementWithPossibleParentNode = { parentNode?: HTMLElementWithPossibleParentNode | null } | null | undefined
 
 export function getFulfilledValues<T>(promiseResults: PromiseSettledResult<T>[]): T[] {
   const fulfilledValues = promiseResults.
@@ -17,8 +17,8 @@ export function getPromiseFulfilledValue<T>(promiseResult: PromiseSettledResult<
     null
 }
 
-export function contains(parent: HTMLElementContainingParentNode, item: HTMLElementContainingParentNode): boolean {
-  if (parent === undefined || item === undefined || item === null || item === undefined) {
+export function contains(parent: HTMLElementWithPossibleParentNode, item: HTMLElementWithPossibleParentNode): boolean {
+  if (parent === undefined || parent === null || item === undefined || item === null) {
     return false
   }
 
