@@ -1,11 +1,18 @@
 import ImageCards from '@/components/image-cards/image-cards'
 import styles from './similar-photos.module.scss'
+import { PhotoId, PhotoIds, Photos } from 'types/photos'
+
+type SimilarPhotosProps = {
+  likedPhotosIds: PhotoIds,
+  onClickLikeButton: (_id: PhotoId) => void,
+  photos: Photos,
+}
 
 export default function SimilarPhotos({
   likedPhotosIds,
   onClickLikeButton,
   photos,
-}) {
+}: SimilarPhotosProps): JSX.Element {
   return (
     <div
       className={styles.self}

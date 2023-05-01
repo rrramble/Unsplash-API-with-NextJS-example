@@ -7,7 +7,7 @@ import styles from './image-cards.module.scss'
 
 type ImageCardsProps = {
   likedPhotosIds: PhotoIds,
-  onClickLikeButton: (id: PhotoId) => void,
+  onClickLikeButton: (_id: PhotoId) => void,
   photos: Photos,
 }
 
@@ -34,7 +34,7 @@ export default function ImageCards({
             <ImageCard
               isLiked={likedPhotosIds.includes(photo.id)}
               isPrefetched={index <= 2}
-              onClickLikeButton={() => onClickLikeButton && onClickLikeButton(photo.id)}
+              onClickLikeButton={() => onClickLikeButton(photo.id)}
               photo={photo}
             />
           </li>

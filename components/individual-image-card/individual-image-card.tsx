@@ -5,7 +5,7 @@ import { Photo as PhotoType, PhotoId, PhotoIds, Photos } from 'types/photos'
 type IndividualImageCardProps = {
   isLikedPhoto: boolean,
   likedPhotosIds: PhotoIds,
-  onClickLikeButton: () => void,
+  onClickLikeButton: (_id: PhotoId) => void,
   photo: PhotoType,
   photos: Photos,
 }
@@ -22,7 +22,7 @@ export default function IndividualImageCard(props: IndividualImageCardProps) {
       <Photo
         photo={props.photo}
         isLiked={props.isLikedPhoto}
-        onClickLikeButton={() => props.onClickLikeButton()}
+        onClickLikeButton={() => props.onClickLikeButton(photoId)}
         relatedTags={relatedTags}
       />
       <aside>

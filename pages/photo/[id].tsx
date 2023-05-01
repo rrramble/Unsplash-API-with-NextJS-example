@@ -9,7 +9,7 @@ import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 import { SearchTopics } from 'types/search-tags'
-import { Photo, Photos } from 'types/photos'
+import { Photo, PhotoId, Photos } from 'types/photos'
 import styles from './[id].module.scss'
 
 type PhotoIndexProps = {
@@ -82,7 +82,7 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
         <IndividualImageCard
           isLikedPhoto={isLiked}
           likedPhotosIds={likedPhotoIds}
-          onClickLikeButton={() => dispatch(clickLikeAction(photoId))}
+          onClickLikeButton={(id: PhotoId) => dispatch(clickLikeAction(id))}
           photo={photo}
           photos={photos}
         />
