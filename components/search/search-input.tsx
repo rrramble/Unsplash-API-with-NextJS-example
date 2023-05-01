@@ -2,12 +2,16 @@ import { useRef } from 'react'
 import styles from './search-input.module.scss'
 
 type SearchInputProps = {
-  onChange: (text: string) => void,
+  onChange: (_text: string) => void,
   text: string,
 }
 
 export default function SearchInput({ onChange, text }: SearchInputProps): JSX.Element {
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const handleInputChange = () => {
+    onChange(inputRef.current?.value ?? '')
+  }
 
   return (
     <div
@@ -22,7 +26,7 @@ export default function SearchInput({ onChange, text }: SearchInputProps): JSX.E
         className={styles.input}
         id="text"
         name="text"
-        onChange={() => onChange(inputRef.current?.value)}
+        onChange={handleInputChange}
         placeholder="Поиск"
         ref={inputRef}
         size={10}
