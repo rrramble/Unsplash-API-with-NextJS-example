@@ -1,8 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { store } from 'store'
-import { useAppDispatch } from 'hooks/store'
+import { useAppDispatch, useAppSelector } from 'hooks/store'
 import { clickLikeAction } from 'store/async-actions'
 import ImageCards from '@/components/image-cards/image-cards'
 import LayoutButtons from '@/components/layout-buttons/layout-buttons'
@@ -46,12 +45,12 @@ export const getServerSideProps: GetServerSideProps<TopicIndexProps, ContextPara
 
 export default function TopicIndex({ topicName, photos }: TopicIndexProps) {
   const dispatch = useAppDispatch()
+  const stateLikedPhotosIds = useAppSelector(getFavoritePhotoIdsSelector)
   const [ likedPhotosIds, setlikedPhotosIds ] = useState<PhotoIds>([])
 
   useEffect(() => {
-    const state = store.getState()
-    setlikedPhotosIds(getFavoritePhotoIdsSelector(state));
-  }, [])
+    setlikedPhotosIds(stateLikedPhotosIds);
+  }, [ stateLikedPhotosIds ])
 
   const mainH1Header = topicName === 'default' ?
     'Случайные фотографии' :
