@@ -1,21 +1,24 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './header-logo.module.scss'
+import { AppRoute } from 'consts/consts'
 
 type HeaderLogoProps = {
   className: string,
-  isRootPage: boolean, // TODO: use it
+  isRootPage: boolean,
 }
 
-export default function HeaderLogo({ className = '' }: HeaderLogoProps): JSX.Element {
+export default function HeaderLogo({ className = '', isRootPage }: HeaderLogoProps): JSX.Element {
+  const LinkWrapper = ({ children }) => isRootPage ?
+    <div>{children}</div> :
+    <Link className={styles.self} href={AppRoute.Root}>{children}</Link>
+
   return (
     <div
       className={className}
       data-test="menu-logo"
     >
-      <Link
-        className={styles.self}
-        href="/"
+      <LinkWrapper
       >
         <figure
           className={styles.container}
@@ -32,7 +35,7 @@ export default function HeaderLogo({ className = '' }: HeaderLogoProps): JSX.Ele
             ImageStock
           </figcaption>
         </figure>
-      </Link>
+      </LinkWrapper>
     </div>
   )
 }
