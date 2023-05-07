@@ -4,8 +4,7 @@ import { FormEvent, Reducer, useEffect, useReducer, useState } from 'react'
 import { getSearchedTexts, saveSearchedTexts, subscribeOnChangeSearchedTexts } from '@/utils/local-storage'
 import Favorite from '@/components/favorite/favorite'
 import HeaderLogo from '@/components/header-logo/header-logo'
-import { default as HistoryIcon } from '@/components/history/icon'
-import { default as SearchIcon } from '@/components/search/icon'
+import NavButton from '@/components/nav-button/nav-button'
 import MenuModal from '@/components/menu-modal/menu-modal'
 import Search from '@/components/search/search'
 import History from '@/components/history/history'
@@ -61,26 +60,30 @@ export default function Header({ topics }: HeaderProps) {
           isRootPage={isRootPage}
         />
 
-        <SearchIcon
-          className={styles.icon}
+        <NavButton
+          className={styles['icon--search']}
           isHidden={state.isSearchIconHidden}
           onClick={(evt) => {
-            evt.stopPropagation()
+            evt.stopPropagation() // TODO remove?
             dispatch({ type: 'search-icon-clicked' })
           }}
+          title="Поиск"
+          wrapperClassName={styles.icon}
         />
 
         <Favorite
           className={styles.icon}
         />
 
-        <HistoryIcon
-          className={styles.icon}
+        <NavButton
+          className={styles['icon--history']}
           isHidden={state.isHistoryIconHidden}
           onClick={(evt) => {
             evt.stopPropagation()
             dispatch({ type: 'history-icon-clicked' })
           }}
+          title="История поиска"
+          wrapperClassName={styles.icon}
         />
       </div>
 

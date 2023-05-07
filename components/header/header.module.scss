@@ -54,6 +54,14 @@ $MENU-LOGO-WIDTH: 25px;
     min-width: $MENU--ICON-WIDTH;
 }
 
+.icon--search {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-MENU-SEARCH}");
+}
+
+.icon--history {
+    background-image: url("data:image/svg+xml;charset=utf-8, #{$ICON-MENU-TIMELINE}");
+}
+
 .submenu {
     position: relative;
 }
