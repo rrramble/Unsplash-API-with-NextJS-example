@@ -1,7 +1,7 @@
-import { HistoryEntry } from 'types/history'
-import styles from './tags.module.scss'
-import ListItem from '../list-item/list-item'
+import ListItem from '@/components/list-item/list-item'
 import { AppRoute } from 'consts/consts'
+import { HistoryEntry } from 'types/history'
+import styles from './history-list.module.scss'
 
 type TagsProps = {
   items: HistoryEntry[] | null,

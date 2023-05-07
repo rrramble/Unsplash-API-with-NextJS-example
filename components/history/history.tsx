@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import classNames from 'classnames'
+import HistoryList from '@/components/history-list/history-list'
 import { contains } from '@/utils/helper-common'
-import Tags from './tags'
-import styles from './history.module.scss'
 import { HistoryEntry } from 'types/history'
 import { PlainFunction } from 'types/types'
+import styles from './history.module.scss'
 
 type HistoryProps = {
   isHidden: boolean,
@@ -49,7 +49,7 @@ export default function History(props: HistoryProps): JSX.Element {
       >
         Ваши запросы
       </header>
-      <Tags
+      <HistoryList
         items={props.items}
       />
     </div>
