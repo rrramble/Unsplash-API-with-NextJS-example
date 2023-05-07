@@ -8,7 +8,7 @@ type HeaderLogoProps = {
   isRootPage: boolean,
 }
 
-export default function HeaderLogo({ className = '', isRootPage }: HeaderLogoProps): JSX.Element {
+export default function HeaderLogo({ className, isRootPage }: HeaderLogoProps): JSX.Element {
   const LinkWrapper = ({ children }) => isRootPage ?
     <div>{children}</div> :
     <Link className={styles.self} href={AppRoute.Root}>{children}</Link>
