@@ -16,6 +16,7 @@ const config = {
     '^@/styles/(.*)$': '<rootDir>/styles/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
   },
+  setupFilesAfterEnv: ['<rootDir>/tests-jest/setup.jest.ts'],
   testEnvironment: 'jest-environment-jsdom',
 };
 
