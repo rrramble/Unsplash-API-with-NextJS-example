@@ -1,5 +1,4 @@
 import { HistoryEntry } from 'types/history'
-import Tag from './tag'
 import styles from './tags.module.scss'
 import ListItem from '../list-item/list-item'
 import { AppRoute } from 'consts/consts'
