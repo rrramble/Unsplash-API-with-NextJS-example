@@ -1,7 +1,7 @@
 import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import SearchInput from '@/components/search-input/search-input'
-import Tags from './tags'
+import SearchList from '@/components/search-list/search-list'
 import { saveSearchedTexts } from '@/utils/local-storage'
 import { contains } from '@/utils/helper-common'
 import { AppRoute } from 'consts/consts'
@@ -57,7 +57,7 @@ export default function Search(props: SearchProps) {
         text={searchedText}
         onChange={(text) => setSearchedText(text)}
       />
-      <Tags
+      <SearchList
         isFull={props.isFull}
         items={props.items}
         onClick={(item) => saveSearchedTexts(item)}

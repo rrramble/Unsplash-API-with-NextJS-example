@@ -1,7 +1,7 @@
-import { SearchTopic, SearchTopics } from 'types/search-tags'
+import ListItem from '@/components/list-item/list-item'
 import { AppRoute } from 'consts/consts'
-import styles from './tags.module.scss'
-import ListItem from '../list-item/list-item'
+import { SearchTopic, SearchTopics } from 'types/search-tags'
+import styles from './search-list.module.scss'
 
 type TagsProps = {
   isFull: boolean,
