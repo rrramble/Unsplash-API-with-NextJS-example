@@ -16,3 +16,15 @@
     position: relative;
     width: 100%;
 }
+
+.item {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 40px;
+    padding: 0 11px;
+    min-height: $MENU--ICON-HEIGHT;
+    min-width: $MENU--ICON-WIDTH;
+}
