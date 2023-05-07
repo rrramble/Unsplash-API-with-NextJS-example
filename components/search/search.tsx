@@ -1,13 +1,13 @@
 import { FocusEvent, FormEvent, useEffect, useRef, useState } from 'react'
+import classNames from 'classnames'
+import SearchInput from '@/components/search-input/search-input'
+import Tags from './tags'
 import { saveSearchedTexts } from '@/utils/local-storage'
 import { contains } from '@/utils/helper-common'
+import { AppRoute } from 'consts/consts'
 import { SearchTopics } from 'types/search-tags'
 import { PlainFunction } from 'types/types'
-import SearchInput from './search-input'
-import Tags from './tags'
 import styles from './search.module.scss'
-import classNames from 'classnames'
-import { AppRoute } from 'consts/consts'
 
 type SearchProps = {
   isFull: boolean,
