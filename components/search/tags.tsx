@@ -1,7 +1,7 @@
 import { SearchTopic, SearchTopics } from 'types/search-tags'
-import Tag from './tag'
 import { AppRoute } from 'consts/consts'
 import styles from './tags.module.scss'
+import ListItem from '../list-item/list-item'
 
 type TagsProps = {
   isFull: boolean,
@@ -35,10 +35,11 @@ export default function Tags({ items, isFull, onClick }: TagsProps) {
               className={styles['item-container']}
               key={slug}
             >
-              <Tag
+              <ListItem
+                className={styles.item}
                 link={`${AppRoute.Topics}${slug}`}
                 text={title}
-                cb={() => onClick({ slug, title, id: '' })}
+                onClick={() => onClick({ slug, title, id: '' })}
               />
             </li>
           ))}
