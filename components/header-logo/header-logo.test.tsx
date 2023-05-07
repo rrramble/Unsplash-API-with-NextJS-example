@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import "@testing-library/jest-dom";
 import HeaderLogo from './header-logo'
-import { AppRoute } from 'consts/consts';
+import { AppRoute } from 'consts/consts'
 
 
 describe('Component: <HeaderLogo>', () => {
