@@ -22,7 +22,7 @@ type HeaderProps = {
 
 export default function Header({ topics }: HeaderProps) {
   const router = useRouter()
-  const isRootPage = usePathname() === '/'
+  const isRootPage = usePathname() === AppRoute.Root
   const [ state, dispatch ] = useReducer<Reducer<MenuState, any>>(headerReducer, INITIAL_STATE)
   const [ searchedPhotos, setSearchedPhotos ] = useState<SearchTopics>([])
 
