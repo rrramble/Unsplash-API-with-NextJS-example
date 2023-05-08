@@ -4,16 +4,17 @@ import { throttle } from '@/utils/helper-common'
 export function useWindowScrollY(delayMs: number): number {
   const [ scrollY, setScrollY ] = useState<number>(0)
 
-  useEffect(() => {
-    const handleScroll = throttle(() => {
-      setScrollY(window.scrollY)
-    }, delayMs)
+  const handleScroll = throttle(() => {
+    setScrollY(window.scrollY)
+  }, delayMs)
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [delayMs])
+  }, [ delayMs, handleScroll ])
 
   return scrollY
 }
