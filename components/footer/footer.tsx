@@ -16,7 +16,7 @@ export default function Footer({ onClick }: FooterProps): JSX.Element {
   }, [ scrollY ])
 
   if (isHidden) {
-    return null
+    return <></>
   }
 
   return (
