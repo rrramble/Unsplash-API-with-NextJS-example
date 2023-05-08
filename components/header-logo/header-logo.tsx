@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { PropsWithChildren } from 'react'
 import styles from './header-logo.module.scss'
 import { AppRoute } from 'consts/consts'
 
@@ -9,7 +10,7 @@ type HeaderLogoProps = {
 }
 
 export default function HeaderLogo({ className, isRootPage }: HeaderLogoProps): JSX.Element {
-  const LinkWrapper = ({ children }) => isRootPage ?
+  const LinkWrapper = ({ children }: PropsWithChildren): JSX.Element => isRootPage ?
     <div>{children}</div> :
     <Link className={styles.self} href={AppRoute.Root}>{children}</Link>
 
