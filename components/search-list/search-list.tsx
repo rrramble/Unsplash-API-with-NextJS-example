@@ -14,7 +14,7 @@ export default function Tags({ items, isFull, onClick }: TagsProps) {
     styles['self--full'] :
     styles['self--minimized']
 
-  return (
+  return (items &&
     <>
       <header
         className="visually-hidden"
