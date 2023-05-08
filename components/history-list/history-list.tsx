@@ -3,11 +3,11 @@ import { AppRoute } from 'consts/consts'
 import { HistoryEntry } from 'types/history'
 import styles from './history-list.module.scss'
 
-type TagsProps = {
+type HistoryListProps = {
   items: HistoryEntry[] | null,
 }
 
-export default function Tags({ items }: TagsProps) {
+export default function HistoryList({ items }: HistoryListProps) {
   if (!items || !items.length) {
     return null
   }
