@@ -20,11 +20,11 @@ export default function SearchInput({ onChange, text }: SearchInputProps): JSX.E
     >
       <label
         className="visually-hidden"
-        htmlFor="topic-search">Поиск
+        htmlFor="topic-search-input">Поиск
       </label>
       <input
         className={styles.input}
-        id="text"
+        id="topic-search-input"
         name="text"
         onChange={handleInputChange}
         placeholder="Поиск"
