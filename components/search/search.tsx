@@ -60,7 +60,7 @@ export default function Search(props: SearchProps) {
       <SearchList
         isFull={props.isFull}
         items={props.items}
-        onClick={(item) => saveSearchedTexts(item)}
+        onSearchTopicClick={(item) => saveSearchedTexts(item)}
       />
     </form>
   )

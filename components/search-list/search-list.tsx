@@ -6,10 +6,10 @@ import styles from './search-list.module.scss'
 type SearchListProps = {
   isFull: boolean,
   items: SearchTopics,
-  onClick: (_tag: SearchTopic) => void,
+  onSearchTopicClick: (_tag: SearchTopic) => void,
 }
 
-export default function SearchList({ items, isFull, onClick }: SearchListProps) {
+export default function SearchList({ items, isFull, onSearchTopicClick }: SearchListProps) {
   const additionalClassName = isFull ?
     styles['self--full'] :
     styles['self--minimized']
@@ -30,16 +30,16 @@ export default function SearchList({ items, isFull, onClick }: SearchListProps) 
           data-test={"menu-search__topic-list"}
           id="search-tags"
         >
-          {items.map(({ slug, title }) => (
+          {items.map((item) => (
             <li
               className={styles['item-container']}
-              key={slug}
+              key={item.slug}
             >
               <ListItem
                 className={styles.item}
-                link={`${AppRoute.Topics}${slug}`}
-                text={title}
-                onClick={() => onClick({ slug, title, id: '' })}
+                link={`${AppRoute.Topics}${item.slug}`}
+                text={item.title}
+                onClick={() => onSearchTopicClick(item)}
               />
             </li>
           ))}
