@@ -19,9 +19,10 @@ export default function HistoryList({ items }: HistoryListProps) {
     >
       {
         items.map(item => {
-          const link = item.slug ?
-            `${AppRoute.Topics}${encodeURI(item.slug)}` :
-            `${AppRoute.Search}/${encodeURI(item.title)}`
+          const { slug, title } = item
+          const link = slug === undefined ?
+            `${AppRoute.Search}/${encodeURIComponent(title)}` :
+            `${AppRoute.Topics}${encodeURIComponent(slug)}`
 
           return (
             <ListItem
