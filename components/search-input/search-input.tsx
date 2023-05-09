@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { ChangeEvent } from 'react'
 import styles from './search-input.module.scss'
 
 type SearchInputProps = {
@@ -7,10 +7,8 @@ type SearchInputProps = {
 }
 
 export default function SearchInput({ onChange, text }: SearchInputProps): JSX.Element {
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  const handleInputChange = () => {
-    onChange(inputRef.current?.value ?? '')
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    onChange(target.value)
   }
 
   return (
@@ -28,7 +26,6 @@ export default function SearchInput({ onChange, text }: SearchInputProps): JSX.E
         name="text"
         onChange={handleInputChange}
         placeholder="Поиск"
-        ref={inputRef}
         size={10}
         type="text"
         value={text}
