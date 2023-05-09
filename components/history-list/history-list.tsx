@@ -1,10 +1,10 @@
 import ListItem from '@/components/list-item/list-item'
 import { AppRoute } from 'consts/consts'
-import { HistoryEntry } from 'types/history'
 import styles from './history-list.module.scss'
+import { HistoryEntries } from 'types/history'
 
 type HistoryListProps = {
-  items: HistoryEntry[] | null,
+  items: HistoryEntries,
 }
 
 export default function HistoryList({ items }: HistoryListProps) {

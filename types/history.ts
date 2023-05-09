@@ -3,3 +3,5 @@ export type HistoryEntry = {
   slug?: string,
   title: string,
 }
+
+export type HistoryEntries = HistoryEntry[]
