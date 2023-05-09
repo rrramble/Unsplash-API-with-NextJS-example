@@ -26,7 +26,7 @@ export default function HistoryList({ items }: HistoryListProps) {
           return (
             <ListItem
               className={styles.item}
-              key={item.slug || item.id}
+              key={item.id ?? item.slug ?? item.title}
               link={link}
               text={item.title}
             />
