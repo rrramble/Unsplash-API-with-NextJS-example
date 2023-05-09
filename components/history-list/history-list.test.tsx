@@ -29,7 +29,6 @@ describe('Component: <SearchList />', () => {
     foundLinks.forEach((foundLink, index) => {
       const href = foundLink.getAttribute('href')
       const { slug, title } = mockItems[index]
-      if (slug === undefined) console.log('title: ', title)
       const hrefToBe = slug === undefined ?
         `${AppRoute.Search}/${encodeURIComponent(title)}` :
         `${AppRoute.Topics}${encodeURIComponent(slug)}`
