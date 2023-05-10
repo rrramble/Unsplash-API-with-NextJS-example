@@ -25,6 +25,7 @@
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
+    "@jedmao/redux-mock-store": "^3.0.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/faker": "^5.5.8",
