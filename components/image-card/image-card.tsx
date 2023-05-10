@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import { CSSProperties } from 'react'
-import ImageCardAuthor from '@/components/image-cards/image-card-author'
 import ImageCardMenu from '@/components/image-cards/image-card-menu'
+import AuthorInfo from '@/components/author-info/author-info'
 import { Photo } from 'types/photos'
 import { PlainFunction } from 'types/types'
 import styles from './image-card.module.scss'
+import authorInfoStyles from './author-info.module.scss'
 
 // This constant must be the same as in 'varibales.scss'
 const SCREEN__BIG = 768
@@ -99,10 +100,11 @@ export default function ImageCard({
       </div>
 
       <figcaption className={styles['author-menu-container']}>
-        <ImageCardAuthor
+        <AuthorInfo
           imageUrl={authorProfileUrl}
           instagramUsername={author.instagram_username ?? ''}
           name={author.name}
+          styles={authorInfoStyles}
         />
 
         <div
