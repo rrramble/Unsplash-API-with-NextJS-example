@@ -1,8 +1,9 @@
 import { useAppSelector } from 'hooks/store'
+import { getColumnCountSelector } from 'store/selectors'
 import styles from './layout-buttons.module.scss'
 
 export default function LayoutButtons(): JSX.Element {
-  const photoColumnCount = useAppSelector(state => state.columnCount)
+  const photoColumnCount = useAppSelector(getColumnCountSelector)
 
   return (
     <fieldset className={styles.self}>
