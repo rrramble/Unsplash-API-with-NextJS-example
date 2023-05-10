@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import styles from './menu-modal.module.scss'
 
 type MenuModalProps = {
+  children?: ReactNode,
   dataTestId?: string,
   className: string,
   isHidden: boolean,
