@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { CSSProperties } from 'react'
-import ImageCardMenu from '@/components/image-cards/image-card-menu'
+import ImageCardMenu from '@/components/image-card-menu/image-card-menu'
 import AuthorInfo from '@/components/author-info/author-info'
 import { Photo } from 'types/photos'
 import { PlainFunction } from 'types/types'
