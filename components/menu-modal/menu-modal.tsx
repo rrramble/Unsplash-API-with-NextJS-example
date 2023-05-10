@@ -6,11 +6,15 @@ type MenuModalProps = {
   children?: ReactNode,
   dataTestId?: string,
   className: string,
-  isHidden: boolean,
   isFullHeight: boolean,
+  isHidden: boolean,
 }
 
-export default function MenuModal(props: MenuModalProps) {
+export default function MenuModal(props: MenuModalProps): JSX.Element {
+  if (props.isHidden) {
+    return <></>
+  }
+
   return (
     <div
       className={props.className}
@@ -18,7 +22,6 @@ export default function MenuModal(props: MenuModalProps) {
     >
       <div
         className={classNames(styles.self, {
-          [ styles['self--hidden'] ]: props.isHidden,
           [ styles['self--fill-window'] ]: !props.isHidden && props.isFullHeight,
         })}
       >

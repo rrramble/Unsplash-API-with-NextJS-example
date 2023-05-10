@@ -6,11 +6,6 @@
     height: calc(100vh - $MENU-HEIGHT);
 }
 
-.self--hidden {
-    padding: 0;
-    visibility: hidden;
-}
-
 @media (width >= $SCREEN--BIG) {
     .self {
         height: unset;
