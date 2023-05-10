@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useWindowResize } from 'hooks/use-window-resize'
-import ImageCard from './image-card'
+import ImageCard from '@/components/image-card/image-card'
 import { WINDOW_RESIZE_THROTTLE_DELAY_MS } from 'consts/consts'
 import { PhotoIds, PhotoId, Photos } from 'types/photos'
 import styles from './image-cards.module.scss'
