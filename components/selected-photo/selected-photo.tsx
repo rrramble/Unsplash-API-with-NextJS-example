@@ -3,9 +3,9 @@ import { CSSProperties } from 'react'
 import Author from './author'
 import Menu from './menu'
 import SimilarTags from './similar-tags'
-import styles from './photo.module.scss'
 import { Photo as PhotoType, RelatedCollections } from 'types/photos'
 import { PlainFunction } from 'types/types'
+import styles from './selected-photo.module.scss'
 
 type PhotoProps = {
   isLiked: boolean,

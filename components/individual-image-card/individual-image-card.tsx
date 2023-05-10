@@ -1,4 +1,4 @@
-import Photo from '@/components/individual-image-card/photo'
+import Photo from '@/components/selected-photo/selected-photo'
 import SimilarPhotos from '@/components/individual-image-card/similar-photos'
 import { Photo as PhotoType, PhotoId, PhotoIds, Photos } from 'types/photos'
 
