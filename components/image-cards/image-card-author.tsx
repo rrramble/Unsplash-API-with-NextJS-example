@@ -23,8 +23,9 @@ export default function ImageCardAuthor(props: ImageCardAuthorProps) {
         <Image
           alt="Аватар автора"
           className={styles.thumbnail}
-          src={props.imageUrl}
+
           height="70"
+          src={props.imageUrl}
           width="70"
         />
       }
@@ -35,16 +36,17 @@ export default function ImageCardAuthor(props: ImageCardAuthorProps) {
           {props.name}
         </p>
 
-        { props.instagramUsername ?
-          <Link
-            className={styles['instagram-account']}
-            href={instagramLink}
-            rel="author"
-          >
-            <span className="visually-hidden">Инстаграм:</span>
-            @{props.instagramUsername}
-          </Link>
-          : null
+        {
+          props.instagramUsername ?
+            <Link
+              className={styles.instagram}
+              href={instagramLink ?? '#'}
+              rel="author"
+            >
+              <span className="visually-hidden">Инстаграм:</span>
+              @{props.instagramUsername}
+            </Link> :
+            null
         }
       </div>
     </address>
