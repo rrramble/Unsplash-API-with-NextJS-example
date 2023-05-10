@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { CSSProperties } from 'react'
-import Author from './author'
+import AuthorInfo from '@/components/author-info/author-info'
 import Menu from './menu'
 import SimilarTags from './similar-tags'
 import { Photo as PhotoType, RelatedCollections } from 'types/photos'
 import { PlainFunction } from 'types/types'
 import styles from './selected-photo.module.scss'
+import authorInfoStyles from './author-info.module.scss'
 
 type PhotoProps = {
   isLiked: boolean,
@@ -75,10 +76,11 @@ export default function Photo(props: PhotoProps) {
       <figcaption
         className={styles.header}
       >
-        <Author
+        <AuthorInfo
           imageUrl={authorProfileUrl}
           instagramUsername={author?.instagram_username}
           name={author?.name}
+          styles={authorInfoStyles}
         />
 
         <Menu
