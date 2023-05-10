@@ -9,7 +9,7 @@ import { getPhoto, getPhotos, getTopics } from '@/utils/helper-filesystem'
 import { getPromiseFulfilledValue } from '@/utils/helper-common'
 import { NEXTJS_STATIC_PAGE_NOT_FOUND_OBJECT } from 'consts/consts'
 import { SearchTopics } from 'types/search-tags'
-import { Photo, PhotoId, Photos } from 'types/photos'
+import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
 import styles from './[id].module.scss'
 
 type PhotoIndexProps = {
@@ -52,7 +52,9 @@ export const getServerSideProps: GetServerSideProps<PhotoIndexProps, ContextPara
 
 export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX.Element {
   const dispatch = useAppDispatch()
-  const likedPhotoIds = useAppSelector(getFavoritePhotoIdsSelector)
+  const storeLikedPhotoIds = useAppSelector(getFavoritePhotoIdsSelector)
+
+  const [ likedPhotoIds, setLikedPhotoIds ] = useState<PhotoIds>([])
   const [ isLiked, setIsLiked ] = useState(false);
 
   const {
@@ -68,6 +70,10 @@ export default function PhotoIndex({ photo, photos = [] }: PhotoIndexProps): JSX
   useEffect(() => {
     setIsLiked(likedPhotoIds.includes(photoId));
   }, [ likedPhotoIds, photoId ])
+
+  useEffect(() => {
+    setLikedPhotoIds(storeLikedPhotoIds)
+  }, [ storeLikedPhotoIds ])
 
   return(
     <>
