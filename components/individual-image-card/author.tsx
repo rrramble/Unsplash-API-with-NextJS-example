@@ -20,17 +20,14 @@ export default function Author(props: AuthorProps) {
       className={styles.self}
     >
       { props.imageUrl &&
-        <div
+        <Image
+          alt="Аватар автора"
           className={styles.thumbnail}
-        >
-          <Image
-            alt="Аватар автора"
-            fill
-            priority
-            sizes="70px"
-            src={props.imageUrl}
-          />
-        </div>
+          priority
+          height="70"
+          src={props.imageUrl}
+          width="70"
+        />
       }
 
       <div>
@@ -38,18 +35,20 @@ export default function Author(props: AuthorProps) {
           <span className={'visually-hidden'}>Автор: </span>
           {props.name}
         </p>
-        { props.instagramUsername &&
-          <Link
-            className={styles.instagram}
-            href={instagramLink ?? '#'}
-            rel="author"
-          >
-            <span className="visually-hidden">Инстаграм:</span>
-            {props.instagramUsername}
-          </Link>
+
+        {
+          props.instagramUsername ?
+            <Link
+              className={styles.instagram}
+              href={instagramLink ?? '#'}
+              rel="author"
+            >
+              <span className="visually-hidden">Инстаграм:</span>
+              {props.instagramUsername}
+            </Link> :
+            null
         }
       </div>
-
     </address>
   )
 }
