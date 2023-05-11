@@ -1,13 +1,13 @@
 import Link from 'next/link'
-import { downloadPhotoByUrl } from '@/utils/helper-browser'
-import styles from './image-card-menu.module.scss'
-import { PlainFunction } from 'types/types'
 import { MouseEvent } from 'react'
+import { PlainFunction } from 'types/types'
+import styles from './image-card-menu.module.scss'
 
 type ImageCardMenuProps = {
   downloadPhotoUrl: string,
   isLiked: boolean,
   onClickLikeButton: PlainFunction,
+  onClickDownload: (_evt: MouseEvent<HTMLAnchorElement>) => void,
   photoProfileUrl: string,
   savingFilename: string,
 }
@@ -55,9 +55,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
           className={styles.button + ' ' + styles['button--download']}
           download={props.savingFilename}
           href={props.downloadPhotoUrl}
-          onClick={async evt =>
-            onClickDownload(evt, props.downloadPhotoUrl, props.savingFilename)
-          }
+          onClick={props.onClickDownload}
           rel="noreferrer"
         >
           <span className="visually-hidden">Скачать фотографию</span>
@@ -65,9 +63,4 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
       </li>
     </menu>
   )
-}
-// FIXME: filenames are different between 'image-cards/image-card-menu' and 'individual-image-card/menu'
-async function onClickDownload(evt: MouseEvent, url: string, savingFilename: string) {
-  evt.preventDefault()
-  await downloadPhotoByUrl(url, savingFilename)
 }

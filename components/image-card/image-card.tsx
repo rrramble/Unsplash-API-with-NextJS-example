@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { CSSProperties } from 'react'
 import ImageCardMenu from '@/components/image-card-menu/image-card-menu'
 import AuthorInfo from '@/components/author-info/author-info'
+import { getOnClickDownload } from '@/utils/helper-browser'
 import { Photo } from 'types/photos'
 import { PlainFunction } from 'types/types'
 import styles from './image-card.module.scss'
@@ -63,7 +64,6 @@ export default function ImageCard({
 
   const savingFilename = `${photoAlt}-${photoId}`
 
-
   const backgroundColorStyle: CSSPropertiesWithVars = {
     '--data-background-color': color === undefined ? undefined : color.toString(),
   }
@@ -116,6 +116,7 @@ export default function ImageCard({
           downloadPhotoUrl={maxQualityPhotoUrl}
           isLiked={isLiked}
           onClickLikeButton={onClickLikeButton}
+          onClickDownload={getOnClickDownload(maxQualityPhotoUrl, savingFilename)}
           photoProfileUrl={photoProfileUrl}
           savingFilename={savingFilename}
         />
