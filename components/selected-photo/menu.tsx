@@ -1,6 +1,5 @@
-import { MouseEvent } from 'react'
-import { downloadPhotoByUrl } from '@/utils/helper-browser'
 import { PlainFunction } from 'types/types'
+import { getOnClickDownload } from '@/utils/helper-browser'
 import styles from './menu.module.scss'
 
 type MenuProps = {
@@ -36,9 +35,7 @@ export default function Menu(props: MenuProps) {
           className={`${styles.button} ${styles['button--download']}`}
           download={props.savingFilename}
           href={props.downloadPhotoUrl}
-          onClick={async evt =>
-            onClickDownload(evt, props.downloadPhotoUrl, props.savingFilename)
-          }
+          onClick={getOnClickDownload(props.downloadPhotoUrl, props.savingFilename)}
           rel="noreferrer"
         >
           <span
@@ -48,9 +45,4 @@ export default function Menu(props: MenuProps) {
       </li>
     </menu>
   )
-}
-// FIXME: filenames are different between 'image-cards/image-card-menu' and 'individual-image-card/menu'
-async function onClickDownload(evt: MouseEvent, url: string, savingFilename: string) {
-  evt.preventDefault()
-  await downloadPhotoByUrl(url, savingFilename)
 }
