@@ -17,6 +17,7 @@ export default function NavButton(props: NavButtonProps): JSX.Element {
     >
       <button
         aria-haspopup="true"
+        aria-hidden={props.isHidden}
         className={`${styles.self} ${props.className} ${props.isHidden ? styles['self--hidden'] : ''}`}
         data-testid={props.dataTestId}
         onClick={props.onClick}
