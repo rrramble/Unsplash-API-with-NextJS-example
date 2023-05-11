@@ -19,16 +19,16 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
         className={styles['button-container']}
         data-test="menu-item--like"
       >
-        <label className="visually-hidden" htmlFor="like-input">Лайк</label>
-        <input
-          aria-label="Like status"
-          checked={props.isLiked}
-          className={styles.button + ' ' + styles['button--like']}
-          id="like-input"
-          name="like-toggle"
-          onChange={props.onClickLikeButton}
-          type="checkbox"
-        />
+        <label>
+          <span className="visually-hidden">Лайк</span>
+          <input
+            aria-label="Like status"
+            checked={props.isLiked}
+            className={styles.button + ' ' + styles['button--like']}
+            onChange={props.onClickLikeButton}
+            type="checkbox"
+          />
+        </label>
       </li>
 
       <li className={styles['button-container']}
