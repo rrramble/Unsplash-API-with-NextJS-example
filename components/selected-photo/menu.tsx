@@ -10,21 +10,15 @@ type MenuProps = {
 }
 
 export default function Menu(props: MenuProps) {
-  const likeButtonText = props.isLiked ?
-    'Убрать лайк' :
-    'Поставить лайк'
-
   return (
     <menu className={styles.self}>
       <li className={styles['button-container']}>
         <label
         >
-          <span className="visually-hidden">{likeButtonText}</span>
+          <span className="visually-hidden">Лайк</span>
           <input
             checked={props.isLiked}
             className={`${styles.button} ${styles['button--like']}`}
-            id="like-toggle"
-            name="like-toggle"
             onChange={props.onClickLikeButton}
             type="checkbox"
           />
