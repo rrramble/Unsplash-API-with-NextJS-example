@@ -1,5 +1,13 @@
+import { MouseEvent } from 'react'
 import { Photo, PhotoId, PhotoIds, Photos } from 'types/photos'
 import { getFulfilledValues } from 'utils/helper-common'
+
+export function getOnClickDownload(url: string, savingFilename: string) {
+  return async (evt: MouseEvent<HTMLAnchorElement>) => {
+    evt.preventDefault()
+    await downloadPhotoByUrl(url, savingFilename)
+  }
+}
 
 export async function downloadPhotoByUrl(url: string, filename: string): Promise<void> {
   let image: Response
@@ -16,7 +24,7 @@ export async function downloadPhotoByUrl(url: string, filename: string): Promise
   const imageURL = URL.createObjectURL(blob)
   const el = document.createElement('a')
   el.href = imageURL
-  el.download = filename ?? `${url}.jpeg`
+  el.download = filename === '' ? `${encodeURIComponent(url)}.jpeg` : filename
   el.style.display = 'none'
   document.body.appendChild(el)
   el.click()
