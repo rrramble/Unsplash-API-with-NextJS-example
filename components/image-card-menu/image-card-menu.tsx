@@ -13,21 +13,18 @@ type ImageCardMenuProps = {
 }
 
 export default function ImageCardMenu(props: ImageCardMenuProps) {
-  const likeButtonText = props.isLiked ?
-    'Убрать лайк' :
-    'Лайк!'
-
   return (
     <menu className={styles.self}>
       <li
         className={styles['button-container']}
         data-test="menu-item--like"
       >
-        <span className="visually-hidden">{likeButtonText}</span>
+        <label className="visually-hidden" htmlFor="like-input">Лайк</label>
         <input
           aria-label="Like status"
           checked={props.isLiked}
           className={styles.button + ' ' + styles['button--like']}
+          id="like-input"
           name="like-toggle"
           onChange={props.onClickLikeButton}
           type="checkbox"
@@ -54,6 +51,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
         data-test="menu-item--download"
       >
         <a
+          aria-label="Download photo"
           className={styles.button + ' ' + styles['button--download']}
           download={props.savingFilename}
           href={props.downloadPhotoUrl}
