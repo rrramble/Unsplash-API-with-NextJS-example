@@ -24,7 +24,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
           <input
             aria-label="Like status"
             checked={props.isLiked}
-            className={styles.button + ' ' + styles['button--like']}
+            className={`${styles.button} ${styles['button--like']}`}
             onChange={props.onClickLikeButton}
             type="checkbox"
           />
@@ -36,7 +36,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
       >
         <Link
           aria-label="Open profile of photo"
-          className={styles.button + ' ' + styles['button--open']}
+          className={`${styles.button} ${styles['button--open']}`}
           href={props.photoProfileUrl}
         >
           <span
@@ -52,7 +52,7 @@ export default function ImageCardMenu(props: ImageCardMenuProps) {
       >
         <a
           aria-label="Download photo"
-          className={styles.button + ' ' + styles['button--download']}
+          className={`${styles.button} ${styles['button--download']}`}
           download={props.savingFilename}
           href={props.downloadPhotoUrl}
           onClick={props.onClickDownload}
