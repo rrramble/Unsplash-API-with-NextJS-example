@@ -27,14 +27,20 @@ export async function fetchPhotoRawEntry(id: string): Promise<string> {
       return Promise.reject(errMessage)
     }
   } catch (err: unknown) {
-    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error fetching url: "${url}"`
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ?
+      err.message :
+      `Error fetching url: "${url}"`
+
     return Promise.reject(errMessage)
   }
 
   try {
     return await response.text()
   } catch (err) {
-    const errMessage = err !== null && typeof err === 'object' && 'message' in err ? err.message : `Error fetching url: "${url}"`
+    const errMessage = err !== null && typeof err === 'object' && 'message' in err ?
+      err.message :
+      `Error fetching url: "${url}"`
+
     return Promise.reject(
         `Received response from Unsplash.com,
         but could not get text content from it. Error message: "${errMessage}"`
