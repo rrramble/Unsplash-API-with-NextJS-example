@@ -12,7 +12,7 @@ function getUrlOfJsonOfPhoto(id: string): string {
     )
   }
 
-  console.error('Error. UNSPLASH_KEY variable must be provided in the NodeJS environment');
+  console.error('Error. UNSPLASH_API_KEY variable must be provided in the NodeJS environment');
   process.exit(1);
 }
 
