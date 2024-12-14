@@ -18,11 +18,11 @@
 > 4. Дополнительное задание: реализовать эту же задачу используя [Next.js](https://nextjs.org) для server-side-rendering.
 
 ## Краткая информация о реализации
-- [NextJS](https://nextjs.org/) 13.2 для Server Side Rendering (SSR)
-- ReactJS 18.2
+- [NextJS](https://nextjs.org/) 14.2 для Server Side Rendering (SSR)
+- ReactJS 18.3
 - [Redux Toolkit](https://redux-toolkit.js.org)
 - [Sass](https://sass-lang.com)
-- [NodeJS](https://nodejs.org) версии 16 или более
+- [NodeJS](https://nodejs.org) версии 20 или более
 
 ## Как запустить
 - Скачать проект ```git clone https://github.com/rrramble/Unsplash-API-with-NextJS-example```
